@@ -2627,7 +2627,7 @@ async function importData(data, label) {
 }
 /* move code = link + #jacmove=<all jac-* keys, base64url> — works across sites (Netlify → Cloudflare) and
    inside a home-screen app, where opening a link may land in a different storage */
-const NEW_HOME = 'https://ancient-paper-902c.deadpoo258.workers.dev/';   // set to the new Cloudflare Pages address when the Netlify copy should send people there
+const NEW_HOME = 'https://jac-app.deadpoo258.workers.dev/';   // set to the new Cloudflare Pages address when the Netlify copy should send people there
 const b64u = s => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const unb64u = s => decodeURIComponent(escape(atob(s.replace(/-/g, '+').replace(/_/g, '/'))));
 function moveCode(base) {
