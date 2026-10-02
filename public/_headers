@@ -1,0 +1,11 @@
+# Cloudflare Pages (and Netlify) headers
+# the page and service worker are always re-checked so updates reach phones
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/sw.js
+  Cache-Control: no-cache
+# ask AI crawlers not to use anything on the site
+/*
+  X-Robots-Tag: noai, noimageai
