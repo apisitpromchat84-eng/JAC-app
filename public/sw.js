@@ -1,6 +1,6 @@
 // the page is network-first (cached as './' — Cloudflare Pages redirects /index.html to /)
 // index.html is network-first, so CACHE only needs a new number when images/icons change
-const CACHE = 'jac-exam-v15';
+const CACHE = 'jac-exam-v16';
 const ASSETS = [
   './', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png',
   './img/s1_q01.jpg',
@@ -61,9 +61,14 @@ const ASSETS = [
   './img/l2_006.jpg',
   './img/l2_009.jpg',
   './img/l2_010.jpg',
+  './img/l2_014.jpg',
+  './img/l2_016.jpg',
   './img/l2_018.jpg',
+  './img/l2_019.jpg',
   './img/l2_021.jpg',
+  './img/l2_023.jpg',
   './img/l2_035.jpg',
+  './img/l2_036.jpg',
   './img/l2_037.jpg',
   './img/l2_038.jpg',
   './img/l2_039.jpg',
@@ -75,18 +80,33 @@ const ASSETS = [
   './img/l2_066.jpg',
   './img/l2_068.jpg',
   './img/l2_072.jpg',
+  './img/l2_074.jpg',
+  './img/l2_075.jpg',
+  './img/l2_076.jpg',
   './img/l2_084.jpg',
+  './img/l2_194.jpg',
   './img/l2_087.jpg',
   './img/l2_088.jpg',
   './img/l2_089.jpg',
+  './img/l2_095.jpg',
   './img/l2_096.jpg',
   './img/l2_103.jpg',
   './img/l2_108.jpg',
+  './img/l2_202.jpg',
+  './img/l2_208.jpg',
   './img/l2_135.jpg',
+  './img/l2_137.jpg',
+  './img/l2_139.jpg',
+  './img/l2_142.jpg',
   './img/l2_144.jpg',
+  './img/l2_146.jpg',
   './img/l2_153.jpg',
+  './img/l2_155.jpg',
   './img/l2_167.jpg',
+  './img/l2_173.jpg',
+  './img/l2_174.jpg',
   './img/l2_182.jpg',
+  './img/l2_214.jpg',
 ];
 
 self.addEventListener('install', e => {
