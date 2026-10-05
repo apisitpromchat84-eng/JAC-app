@@ -1,0 +1,1 @@
+no changes (l080–l084 colours verified: 電力=橙, 通信=赤, ガス=緑, 上水道=青, 下水道=茶 — 浜松市地下埋設物件表示要領 https://www.city.hamamatsu.shizuoka.jp/documents/6229/tikamaisetsubukkenhyoujiyouryou.pdf ; l077–l079 copper cutting/deburring verified — 日本銅センター 冷媒用被覆銅管施工マニュアル via https://www.inaba-denko.com/ja/inaba_note/detail/13)

@@ -1,0 +1,7 @@
+j069 — sth "ไม่เข้าข่าย" stiff and negative not emphasised → "ที่<b>ไม่</b>ควรใช้"
+j071 — negative not emphasised in sth → bolded "ไม่ใช่"
+j073 — ath justified with death count only, question asks most frequent → added "เกิดบ่อยที่สุด"
+j075 — stated the slinger always gives crane signals (not always true) → "มักเป็นคนให้สัญญาณ...ด้วย"; "มีคุณสมบัติ" → "ผ่านการอบรม/มีคุณสมบัติ"
+j076 — negative not emphasised in sth → bolded "ผิด"
+j077 — negative not emphasised in sth → bolded "ผิด"
+j079 — negative not emphasised in sth → bolded "ไม่ใช่"

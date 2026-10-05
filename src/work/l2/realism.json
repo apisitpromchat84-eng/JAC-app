@@ -1,0 +1,1584 @@
+[
+ {
+  "id": "hA-01",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-02",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-03",
+  "topic": "C",
+  "format": 1,
+  "real_match": null,
+  "note": "電工ナイフ not explicitly highlighted",
+  "suggest": ""
+ },
+ {
+  "id": "hA-04",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hA-05",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-06",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-07",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "mid-sentence blank like j011/j026",
+  "suggest": ""
+ },
+ {
+  "id": "hA-08",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "minor fact",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-09",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-10",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-11",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-12",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-13",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-14",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "negative like j079",
+  "suggest": ""
+ },
+ {
+  "id": "hA-16",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-17",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-18",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-19",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-20",
+  "topic": "C",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-21",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-22",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-23",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hA-24",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hA-25",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "verified vs textbook P102 (C管 = 屋内露出)",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-26",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-27",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-28",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "といいます blank matches j009/j034",
+  "suggest": ""
+ },
+ {
+  "id": "hA-29",
+  "topic": "C",
+  "format": 3,
+  "real_match": null,
+  "note": "",
+  "suggest": "drop or recast; real never asks abbreviation spellings — ask 〜の説明で正しいものを選べ instead"
+ },
+ {
+  "id": "hA-30",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-31",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-32",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-33",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-34",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-35",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "用途で正しい = j050 pattern",
+  "suggest": ""
+ },
+ {
+  "id": "hA-36",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j046",
+   "j065"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-37",
+  "topic": "B",
+  "format": 1,
+  "real_match": [
+   "j065",
+   "j081"
+  ],
+  "note": "same family as j065/j081 description items",
+  "suggest": ""
+ },
+ {
+  "id": "hA-38",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j046"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-39",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j046"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-40",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j046"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hA-41",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j046"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hA-42",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j001"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-01",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-02",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-03",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hB-04",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-05",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-06",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-07",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-08",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-09",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-10",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hB-11",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "not in highlight log",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-12",
+  "topic": "C",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-13",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-14",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-15",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-16",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "answer is an abbreviation; ask 〜を測定する機器はなんですか with full names",
+  "suggest": "drop or recast; real never asks abbreviation spellings — ask 〜の説明で正しいものを選べ instead"
+ },
+ {
+  "id": "hB-17",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j037",
+   "j005"
+  ],
+  "note": "real asks positively (j037)",
+  "suggest": ""
+ },
+ {
+  "id": "hB-18",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-19",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-20",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j041"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-21",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hB-22",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-23",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hB-24",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j022",
+   "j036"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-25",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j023",
+   "j067"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-26",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-27",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-28",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-29",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-30",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-31",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j055"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-32",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j044"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-33",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hB-34",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-35",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-36",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j008"
+  ],
+  "note": "near-identical to j008",
+  "suggest": ""
+ },
+ {
+  "id": "hB-37",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-38",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j008"
+  ],
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hB-39",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j078"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-40",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-41",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-42",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "ask the tool, not its alias",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-43",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hB-44",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hB-45",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hC-01",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j036",
+   "j022"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-02",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j048",
+   "j063"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-03",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j063",
+   "j036"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-04",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hC-05",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-06",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j038"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-07",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j005"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hC-08",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j038"
+  ],
+  "note": "",
+  "suggest": "add photo and use 写真の〜はなんですか (real 33% photo)"
+ },
+ {
+  "id": "hC-09",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j038"
+  ],
+  "note": "j038 is this exact fact with a photo",
+  "suggest": "add photo and use 写真の〜はなんですか (real 33% photo)"
+ },
+ {
+  "id": "hC-10",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j040"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-11",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j040"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-12",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-13",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j039"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hC-14",
+  "topic": "C",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-15",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hC-16",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j007"
+  ],
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hC-17",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j007"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-18",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j007"
+  ],
+  "note": "copy j007 form: 写真の…「伸び馬」と呼ばれる道具はなんですか",
+  "suggest": "add photo and use 写真の〜はなんですか (real 33% photo)"
+ },
+ {
+  "id": "hC-19",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j007"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-20",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hC-21",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-22",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-23",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "procedural negative like j029",
+  "suggest": ""
+ },
+ {
+  "id": "hC-24",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hC-25",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-01",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hD-02",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-03",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-04",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-05",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hD-06",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-07",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hD-08",
+  "topic": "B",
+  "format": 3,
+  "real_match": null,
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hD-09",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-10",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-11",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-12",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-13",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-14",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hD-15",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hD-16",
+  "topic": "B",
+  "format": 3,
+  "real_match": null,
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hD-17",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hD-18",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "0.3m spacing not in highlight log",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hD-19",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hD-20",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hD-21",
+  "topic": "C",
+  "format": 3,
+  "real_match": null,
+  "note": "duplicate of hD-20",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hD-22",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-23",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-24",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-25",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hD-26",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "like j072/j076",
+  "suggest": ""
+ },
+ {
+  "id": "hD-27",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hD-28",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hD-29",
+  "topic": "C",
+  "format": 3,
+  "real_match": null,
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hD-30",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hE-01",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-02",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "drop or recast; real never asks abbreviation spellings — ask 〜の説明で正しいものを選べ instead"
+ },
+ {
+  "id": "hE-03",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-04",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hE-05",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-06",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-07",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "long purpose stem",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hE-08",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-09",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-10",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hE-11",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-12",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hE-13",
+  "topic": "B",
+  "format": 3,
+  "real_match": null,
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hE-14",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-15",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-16",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-17",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hE-18",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-19",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hE-20",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "overlaps hD-22",
+  "suggest": "convert to: 「Xの説明で正しいものを選べ」 with 4 near-verbatim textbook definitions of sibling items (real style), not mutated statements about X"
+ },
+ {
+  "id": "hF-01",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-02",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-03",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-04",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-05",
+  "topic": "C",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-06",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j062"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-07",
+  "topic": "A",
+  "format": 3,
+  "real_match": [
+   "j030",
+   "j013"
+  ],
+  "note": "",
+  "suggest": "real has no 組合せ/ordering items; split into single-fact 〜はどれですか (e.g. one step / one value per question)"
+ },
+ {
+  "id": "hF-08",
+  "topic": "B",
+  "format": 1,
+  "real_match": [
+   "j028"
+  ],
+  "note": "j028-style 行わないもの",
+  "suggest": ""
+ },
+ {
+  "id": "hF-09",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j013"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-10",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j030"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hF-11",
+  "topic": "C",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-12",
+  "topic": "B",
+  "format": 2,
+  "real_match": null,
+  "note": "",
+  "suggest": "real exam has no bare-number answers; recast so the number sits in the stem and a term/tool is the answer, or demote to drill"
+ },
+ {
+  "id": "hF-13",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-14",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j080"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-15",
+  "topic": "A",
+  "format": 2,
+  "real_match": [
+   "j059"
+  ],
+  "note": "",
+  "suggest": "convert to: 〜はなんですか。/〜を何と言いますか。 (keep 4 names) — real uses （　　）-blanks in only ~11% of items"
+ },
+ {
+  "id": "hF-16",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j080",
+   "j060"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-17",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-18",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-19",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-20",
+  "topic": "B",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-21",
+  "topic": "B",
+  "format": 1,
+  "real_match": [
+   "j007"
+  ],
+  "note": "高所作業車 is a j007 option",
+  "suggest": ""
+ },
+ {
+  "id": "hF-22",
+  "topic": "C",
+  "format": 1,
+  "real_match": null,
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-23",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j060",
+   "j073"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-24",
+  "topic": "A",
+  "format": 1,
+  "real_match": [
+   "j060",
+   "j073"
+  ],
+  "note": "",
+  "suggest": ""
+ },
+ {
+  "id": "hF-25",
+  "topic": "C",
+  "format": 2,
+  "real_match": null,
+  "note": "source-agency trivia; drop",
+  "suggest": "drop (agency-name trivia never seen in real items)"
+ }
+]

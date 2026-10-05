@@ -1,0 +1,2202 @@
+[
+ {
+  "id": "l001",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 001",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>建設<rt>けんせつ</rt></ruby><ruby>機械<rt>きかい</rt></ruby>の<ruby>名称<rt>めいしょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "タワークレーン",
+   "トラッククレーン",
+   "ホイールローダ",
+   "クローラクレーン"
+  ],
+  "stem": "写真(しゃしん)の建設(けんせつ)機械(きかい)の名称(めいしょう)は何(なん)ですか。",
+  "opts": [
+   "タワークレーン",
+   "トラッククレーン",
+   "ホイールローダ",
+   "クローラクレーン"
+  ],
+  "img": "img/l_001.jpg"
+ },
+ {
+  "id": "l002",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 002",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>建設<rt>けんせつ</rt></ruby><ruby>機械<rt>きかい</rt></ruby>の<ruby>用途<rt>ようと</rt></ruby>について、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "ローラで<ruby>地面<rt>じめん</rt></ruby>を<ruby>締<rt>し</rt></ruby>め<ruby>固<rt>かた</rt></ruby>める",
+   "<ruby>土砂<rt>どしゃ</rt></ruby>をすくい、<ruby>運搬車<rt>うんぱんくるま</rt></ruby>に<ruby>積<rt>つ</rt></ruby>み<ruby>込<rt>こ</rt></ruby>む",
+   "つり<ruby>荷<rt>に</rt></ruby>をワイヤで<ruby>高<rt>たか</rt></ruby>くつり<ruby>上<rt>あ</rt></ruby>げる",
+   "<ruby>荷台<rt>にだい</rt></ruby>を<ruby>傾<rt>かたむ</rt></ruby>けて<ruby>土砂<rt>どしゃ</rt></ruby>を<ruby>排出<rt>はいしゅつ</rt></ruby>する"
+  ],
+  "stem": "写真(しゃしん)の建設(けんせつ)機械(きかい)の用途(ようと)について、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "ローラで地面(じめん)を締(し)め固(かた)める",
+   "土砂(どしゃ)をすくい、運搬車(うんぱんくるま)に積(つ)み込(こ)む",
+   "つり荷(に)をワイヤで高(たか)くつり上(あ)げる",
+   "荷台(にだい)を傾(かたむ)けて土砂(どしゃ)を排出(はいしゅつ)する"
+  ],
+  "img": "img/l_002.jpg"
+ },
+ {
+  "id": "l003",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 003",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>建設<rt>けんせつ</rt></ruby><ruby>機械<rt>きかい</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>前方<rt>ぜんぽう</rt></ruby>のバケットで<ruby>土砂<rt>どしゃ</rt></ruby>を<ruby>掘<rt>ほ</rt></ruby>り<ruby>取<rt>と</rt></ruby>る",
+   "<ruby>荷台<rt>にだい</rt></ruby>を<ruby>傾<rt>かたむ</rt></ruby>けて<ruby>積<rt>つ</rt></ruby>んだ<ruby>土砂<rt>どしゃ</rt></ruby>を<ruby>排出<rt>はいしゅつ</rt></ruby>する",
+   "<ruby>鉄<rt>てつ</rt></ruby>のローラで<ruby>路面<rt>ろめん</rt></ruby>を<ruby>締<rt>し</rt></ruby>め<ruby>固<rt>かた</rt></ruby>める",
+   "ゴムのタイヤで<ruby>路面<rt>ろめん</rt></ruby>を<ruby>締<rt>し</rt></ruby>め<ruby>固<rt>かた</rt></ruby>める"
+  ],
+  "stem": "写真(しゃしん)の建設(けんせつ)機械(きかい)の説明(せつめい)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "前方(ぜんぽう)のバケットで土砂(どしゃ)を掘(ほ)り取(と)る",
+   "荷台(にだい)を傾(かたむ)けて積(つ)んだ土砂(どしゃ)を排出(はいしゅつ)する",
+   "鉄(てつ)のローラで路面(ろめん)を締(し)め固(かた)める",
+   "ゴムのタイヤで路面(ろめん)を締(し)め固(かた)める"
+  ],
+  "img": "img/l_003.jpg"
+ },
+ {
+  "id": "l004",
+  "cat": "l_denki",
+  "src": "ライフライン練習 004",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>機器<rt>きき</rt></ruby>を<ruby>使<rt>つか</rt></ruby>って、<ruby>何<rt>なに</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べますか。",
+  "opts_html": [
+   "<ruby>三相<rt>さんそう</rt></ruby><ruby>電源<rt>でんげん</rt></ruby>の<ruby>相<rt>そう</rt></ruby>の<ruby>順番<rt>じゅんばん</rt></ruby>",
+   "<ruby>電線<rt>でんせん</rt></ruby>を<ruby>流<rt>なが</rt></ruby>れる<ruby>電流<rt>でんりゅう</rt></ruby>の<ruby>大<rt>おお</rt></ruby>きさ",
+   "<ruby>電線<rt>でんせん</rt></ruby>などが<ruby>電気<rt>でんき</rt></ruby>を<ruby>帯<rt>お</rt></ruby>びているか",
+   "光ファイバーを<ruby>通<rt>とう</rt></ruby>る<ruby>光<rt>ひかり</rt></ruby>の<ruby>強<rt>つよ</rt></ruby>さ"
+  ],
+  "stem": "写真(しゃしん)の機器(きき)を使(つか)って、何(なに)を調(しら)べますか。",
+  "opts": [
+   "三相(さんそう)電源(でんげん)の相(そう)の順番(じゅんばん)",
+   "電線(でんせん)を流(なが)れる電流(でんりゅう)の大(おお)きさ",
+   "電線(でんせん)などが電気(でんき)を帯(お)びているか",
+   "光ファイバーを通(とう)る光(ひかり)の強(つよ)さ"
+  ],
+  "img": "img/l_004.jpg"
+ },
+ {
+  "id": "l005",
+  "cat": "l_denki",
+  "src": "ライフライン練習 005",
+  "stem_html": "<ruby>天井<rt>てんじょう</rt></ruby>からケーブルを引<ruby>き出<rt>ひきだす</rt></ruby>す<ruby>箇所<rt>かしょ</rt></ruby>に<ruby>使<rt>つか</rt></ruby>う、<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>部材<rt>ぶざい</rt></ruby>の<ruby>名称<rt>めいしょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "カップリング",
+   "ボックスコネクタ",
+   "サドル",
+   "エンドカバー"
+  ],
+  "stem": "天井(てんじょう)からケーブルを引き出(ひきだす)す箇所(かしょ)に使(つか)う、写真(しゃしん)の部材(ぶざい)の名称(めいしょう)は何(なん)ですか。",
+  "opts": [
+   "カップリング",
+   "ボックスコネクタ",
+   "サドル",
+   "エンドカバー"
+  ],
+  "img": "img/l_005.jpg"
+ },
+ {
+  "id": "l006",
+  "cat": "l_denki",
+  "src": "ライフライン練習 006",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>部材<rt>ぶざい</rt></ruby>の<ruby>用途<rt>ようと</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>電線管<rt>でんせんかん</rt></ruby>を<ruby>壁<rt>かべ</rt></ruby>に<ruby>直接<rt>ちょくせつ</rt></ruby><ruby>固定<rt>こてい</rt></ruby>する",
+   "<ruby>管<rt>かん</rt></ruby>と<ruby>管<rt>かん</rt></ruby>を<ruby>一直線<rt>いっちょくせん</rt></ruby>に<ruby>接続<rt>せつぞく</rt></ruby>する",
+   "<ruby>露出<rt>ろしゅつ</rt></ruby><ruby>配線<rt>はいせん</rt></ruby>のスイッチやコンセントを<ruby>収納<rt>しゅうのう</rt></ruby>する",
+   "<ruby>地中<rt>ちちゅう</rt></ruby>に打<ruby>ち込<rt>うちこん</rt></ruby>んで<ruby>接地<rt>せっち</rt></ruby>する"
+  ],
+  "stem": "写真(しゃしん)の部材(ぶざい)の用途(ようと)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "電線管(でんせんかん)を壁(かべ)に直接(ちょくせつ)固定(こてい)する",
+   "管(かん)と管(かん)を一直線(いっちょくせん)に接続(せつぞく)する",
+   "露出(ろしゅつ)配線(はいせん)のスイッチやコンセントを収納(しゅうのう)する",
+   "地中(ちちゅう)に打ち込(うちこん)んで接地(せっち)する"
+  ],
+  "img": "img/l_006.jpg"
+ },
+ {
+  "id": "l007",
+  "cat": "l_denki",
+  "src": "ライフライン練習 007",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>部材<rt>ぶざい</rt></ruby>で<ruby>電線<rt>でんせん</rt></ruby>を<ruby>接続<rt>せつぞく</rt></ruby>するときの<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>部材<rt>ぶざい</rt></ruby>を<ruby>溶<rt>と</rt></ruby>かして<ruby>芯線<rt>しんせん</rt></ruby>を<ruby>溶接<rt>ようせつ</rt></ruby>する",
+   "<ruby>芯線<rt>しんせん</rt></ruby>を<ruby>差<rt>さ</rt></ruby>し<ruby>込<rt>こ</rt></ruby>んで<ruby>接続<rt>せつぞく</rt></ruby>する",
+   "<ruby>芯線<rt>しんせん</rt></ruby>にねじを<ruby>切<rt>き</rt></ruby>って<ruby>接続<rt>せつぞく</rt></ruby>する",
+   "<ruby>管用接着剤<rt>かんようせっちゃくざい</rt></ruby>を<ruby>芯線<rt>しんせん</rt></ruby>に<ruby>塗<rt>ぬ</rt></ruby>って<ruby>接続<rt>せつぞく</rt></ruby>する"
+  ],
+  "stem": "写真(しゃしん)の部材(ぶざい)で電線(でんせん)を接続(せつぞく)するときの説明(せつめい)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "部材(ぶざい)を溶(と)かして芯線(しんせん)を溶接(ようせつ)する",
+   "芯線(しんせん)を差(さ)し込(こ)んで接続(せつぞく)する",
+   "芯線(しんせん)にねじを切(き)って接続(せつぞく)する",
+   "管用接着剤(かんようせっちゃくざい)を芯線(しんせん)に塗(ぬ)って接続(せつぞく)する"
+  ],
+  "img": "img/l_007.jpg"
+ },
+ {
+  "id": "l008",
+  "cat": "l_denki",
+  "src": "ライフライン練習 008",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>部材<rt>ぶざい</rt></ruby>を<ruby>地中<rt>ちちゅう</rt></ruby>に打<ruby>ち込<rt>うちこむ</rt></ruby>む<ruby>目的<rt>もくてき</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>接地<rt>せっち</rt></ruby>してアースを<ruby>取<rt>と</rt></ruby>るため",
+   "<ruby>壁<rt>かべ</rt></ruby>に<ruby>配管<rt>はいかん</rt></ruby>の<ruby>貫通<rt>かんつう</rt></ruby><ruby>穴<rt>あな</rt></ruby>を<ruby>作<rt>つく</rt></ruby>るため",
+   "光ファイバーを<ruby>接続<rt>せつぞく</rt></ruby>するため",
+   "<ruby>電線<rt>でんせん</rt></ruby>の<ruby>相<rt>そう</rt></ruby>の<ruby>順番<rt>じゅんばん</rt></ruby>を<ruby>変<rt>か</rt></ruby>えるため"
+  ],
+  "stem": "写真(しゃしん)の部材(ぶざい)を地中(ちちゅう)に打ち込(うちこむ)む目的(もくてき)は何(なん)ですか。",
+  "opts": [
+   "接地(せっち)してアースを取(と)るため",
+   "壁(かべ)に配管(はいかん)の貫通(かんつう)穴(あな)を作(つく)るため",
+   "光ファイバーを接続(せつぞく)するため",
+   "電線(でんせん)の相(そう)の順番(じゅんばん)を変(か)えるため"
+  ],
+  "img": "img/l_008.jpg"
+ },
+ {
+  "id": "l009",
+  "cat": "l_denki",
+  "src": "ライフライン練習 009",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>部材<rt>ぶざい</rt></ruby>の<ruby>用途<rt>ようと</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>電線管<rt>でんせんかん</rt></ruby>を<ruby>壁<rt>かべ</rt></ruby>や<ruby>天井<rt>てんじょう</rt></ruby>に<ruby>直接<rt>ちょくせつ</rt></ruby><ruby>固定<rt>こてい</rt></ruby>する",
+   "<ruby>電線管<rt>でんせんかん</rt></ruby>どうしを<ruby>一直線<rt>いっちょくせん</rt></ruby>に<ruby>接続<rt>せつぞく</rt></ruby>する",
+   "<ruby>電線管<rt>でんせんかん</rt></ruby>をボックスの<ruby>入口<rt>にゅうくち</rt></ruby>に<ruby>接続<rt>せつぞく</rt></ruby>する",
+   "<ruby>天井<rt>てんじょう</rt></ruby>からのケーブル引<ruby>き出<rt>ひきだし</rt></ruby>し<ruby>口<rt>くち</rt></ruby>を<ruby>覆<rt>おお</rt></ruby>う"
+  ],
+  "stem": "写真(しゃしん)の部材(ぶざい)の用途(ようと)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "電線管(でんせんかん)を壁(かべ)や天井(てんじょう)に直接(ちょくせつ)固定(こてい)する",
+   "電線管(でんせんかん)どうしを一直線(いっちょくせん)に接続(せつぞく)する",
+   "電線管(でんせんかん)をボックスの入口(にゅうくち)に接続(せつぞく)する",
+   "天井(てんじょう)からのケーブル引き出(ひきだし)し口(くち)を覆(おお)う"
+  ],
+  "img": "img/l_009.jpg"
+ },
+ {
+  "id": "l010",
+  "cat": "l_denki",
+  "src": "ライフライン練習 010",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>のコンセントの<ruby>取付<rt>とりつ</rt></ruby>け<ruby>方<rt>ほう</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "コードの<ruby>先<rt>さき</rt></ruby>に取<ruby>り付<rt>とりつけ</rt></ruby>けて<ruby>移動<rt>いどう</rt></ruby>させる",
+   "<ruby>壁<rt>かべ</rt></ruby>に埋<ruby>め込<rt>うめこん</rt></ruby>んで取<ruby>り付<rt>とりつけ</rt></ruby>ける",
+   "<ruby>配管<rt>はいかん</rt></ruby><ruby>内<rt>ない</rt></ruby>に<ruby>入<rt>い</rt></ruby>れて取<ruby>り付<rt>とりつけ</rt></ruby>ける",
+   "<ruby>地中<rt>ちちゅう</rt></ruby>に打<ruby>ち込<rt>うちこん</rt></ruby>んで取<ruby>り付<rt>とりつけ</rt></ruby>ける"
+  ],
+  "stem": "写真(しゃしん)のコンセントの取付(とりつ)け方(ほう)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "コードの先(さき)に取り付(とりつけ)けて移動(いどう)させる",
+   "壁(かべ)に埋め込(うめこん)んで取り付(とりつけ)ける",
+   "配管(はいかん)内(ない)に入(い)れて取り付(とりつけ)ける",
+   "地中(ちちゅう)に打ち込(うちこん)んで取り付(とりつけ)ける"
+  ],
+  "img": "img/l_010.jpg"
+ },
+ {
+  "id": "l011",
+  "cat": "l_denki",
+  "src": "ライフライン練習 011",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>に<ruby>示<rt>しめ</rt></ruby>す、<ruby>光<rt>ひかり</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>える<ruby>細<rt>こま</rt></ruby>い<ruby>繊維状<rt>せんいじょう</rt></ruby>のものは<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>同軸<rt>どうじく</rt></ruby>ケーブル",
+   "光ファイバー",
+   "メタルケーブル",
+   "ワイヤーロープ"
+  ],
+  "stem": "写真(しゃしん)に示(しめ)す、光(ひかり)を伝(つた)える細(こま)い繊維状(せんいじょう)のものは何(なん)ですか。",
+  "opts": [
+   "同軸(どうじく)ケーブル",
+   "光ファイバー",
+   "メタルケーブル",
+   "ワイヤーロープ"
+  ],
+  "img": "img/l_011.jpg"
+ },
+ {
+  "id": "l012",
+  "cat": "l_denki",
+  "src": "ライフライン練習 012",
+  "stem_html": "テレビのアンテナ<ruby>配線<rt>はいせん</rt></ruby>などに<ruby>使<rt>つか</rt></ruby>う、<ruby>写真<rt>しゃしん</rt></ruby>のケーブルの<ruby>名称<rt>めいしょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "メタルケーブル",
+   "<ruby>接地線<rt>せっちせん</rt></ruby>",
+   "光ファイバーケーブル",
+   "<ruby>同軸<rt>どうじく</rt></ruby>ケーブル"
+  ],
+  "stem": "テレビのアンテナ配線(はいせん)などに使(つか)う、写真(しゃしん)のケーブルの名称(めいしょう)は何(なん)ですか。",
+  "opts": [
+   "メタルケーブル",
+   "接地線(せっちせん)",
+   "光ファイバーケーブル",
+   "同軸(どうじく)ケーブル"
+  ],
+  "img": "img/l_012.jpg"
+ },
+ {
+  "id": "l013",
+  "cat": "l_denki",
+  "src": "ライフライン練習 013",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>のメタルケーブルは、どのような<ruby>信号<rt>しんごう</rt></ruby>を<ruby>使<rt>つか</rt></ruby>って<ruby>通信<rt>つうしん</rt></ruby>しますか。",
+  "opts_html": [
+   "<ruby>空気圧<rt>くうきあつ</rt></ruby>の<ruby>変化<rt>へんか</rt></ruby>",
+   "<ruby>水圧<rt>すいあつ</rt></ruby>の<ruby>変化<rt>へんか</rt></ruby>",
+   "<ruby>電気信号<rt>でんきしんごう</rt></ruby>",
+   "<ruby>光信号<rt>ひかりしんごう</rt></ruby>"
+  ],
+  "stem": "写真(しゃしん)のメタルケーブルは、どのような信号(しんごう)を使(つか)って通信(つうしん)しますか。",
+  "opts": [
+   "空気圧(くうきあつ)の変化(へんか)",
+   "水圧(すいあつ)の変化(へんか)",
+   "電気信号(でんきしんごう)",
+   "光信号(ひかりしんごう)"
+  ],
+  "img": "img/l_013.jpg"
+ },
+ {
+  "id": "l014",
+  "cat": "l_denki",
+  "src": "ライフライン練習 014",
+  "stem_html": "光ファイバーの<ruby>接続<rt>せつぞく</rt></ruby>に<ruby>使<rt>つか</rt></ruby>う、<ruby>写真<rt>しゃしん</rt></ruby>のコネクタの<ruby>名称<rt>めいしょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>圧着<rt>あっちゃく</rt></ruby><ruby>端子<rt>たんし</rt></ruby>",
+   "T<ruby>型<rt>がた</rt></ruby>コネクタ",
+   "差<ruby>し込<rt>さしこみ</rt></ruby>みコネクタ",
+   "SCコネクタ"
+  ],
+  "stem": "光ファイバーの接続(せつぞく)に使(つか)う、写真(しゃしん)のコネクタの名称(めいしょう)は何(なん)ですか。",
+  "opts": [
+   "圧着(あっちゃく)端子(たんし)",
+   "T型(がた)コネクタ",
+   "差し込(さしこみ)みコネクタ",
+   "SCコネクタ"
+  ],
+  "img": "img/l_014.jpg"
+ },
+ {
+  "id": "l015",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 015",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>工具<rt>こうぐ</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>片方<rt>かたほう</rt></ruby>に<ruby>刃<rt>は</rt></ruby>があり、ハンマーでたたいて<ruby>薄<rt>うす</rt></ruby>い<ruby>金属<rt>きんぞく</rt></ruby>などを<ruby>切断<rt>せつだん</rt></ruby>する",
+   "<ruby>金属<rt>きんぞく</rt></ruby>のワイヤで<ruby>表面<rt>ひょうめん</rt></ruby>のさびを<ruby>落<rt>お</rt></ruby>とす",
+   "<ruby>刃<rt>は</rt></ruby>を<ruby>回転<rt>かいてん</rt></ruby>させて<ruby>銅管<rt>どうかん</rt></ruby>の<ruby>外周<rt>がいしゅう</rt></ruby>を<ruby>少<rt>すこ</rt></ruby>しずつ<ruby>切断<rt>せつだん</rt></ruby>する",
+   "<ruby>先端<rt>せんたん</rt></ruby>の<ruby>溝<rt>みぞ</rt></ruby>に<ruby>釘<rt>くぎ</rt></ruby>を<ruby>入<rt>い</rt></ruby>れ、てこで引<ruby>き抜<rt>ひきぬく</rt></ruby>く"
+  ],
+  "stem": "写真(しゃしん)の工具(こうぐ)の説明(せつめい)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "片方(かたほう)に刃(は)があり、ハンマーでたたいて薄(うす)い金属(きんぞく)などを切断(せつだん)する",
+   "金属(きんぞく)のワイヤで表面(ひょうめん)のさびを落(お)とす",
+   "刃(は)を回転(かいてん)させて銅管(どうかん)の外周(がいしゅう)を少(すこ)しずつ切断(せつだん)する",
+   "先端(せんたん)の溝(みぞ)に釘(くぎ)を入(い)れ、てこで引き抜(ひきぬく)く"
+  ],
+  "img": "img/l_015.jpg"
+ },
+ {
+  "id": "l016",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 016",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>工具<rt>こうぐ</rt></ruby>の<ruby>用途<rt>ようと</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>材料<rt>ざいりょう</rt></ruby>をつかむ、<ruby>曲<rt>ま</rt></ruby>げる、<ruby>切<rt>き</rt></ruby>る",
+   "ねじの<ruby>加工精度<rt>かこうせいど</rt></ruby>を<ruby>検査<rt>けんさ</rt></ruby>する",
+   "<ruby>管<rt>かん</rt></ruby>の<ruby>内側<rt>うちがわ</rt></ruby>のバリを<ruby>削<rt>けず</rt></ruby>り<ruby>取<rt>と</rt></ruby>る",
+   "<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>表面<rt>ひょうめん</rt></ruby>に<ruby>円<rt>えん</rt></ruby>を<ruby>描<rt>えが</rt></ruby>く"
+  ],
+  "stem": "写真(しゃしん)の工具(こうぐ)の用途(ようと)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "材料(ざいりょう)をつかむ、曲(ま)げる、切(き)る",
+   "ねじの加工精度(かこうせいど)を検査(けんさ)する",
+   "管(かん)の内側(うちがわ)のバリを削(けず)り取(と)る",
+   "材料(ざいりょう)の表面(ひょうめん)に円(えん)を描(えが)く"
+  ],
+  "img": "img/l_016.jpg"
+ },
+ {
+  "id": "l017",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 017",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>工具<rt>こうぐ</rt></ruby>の<ruby>名称<rt>めいしょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>大<rt>だい</rt></ruby>ハンマー",
+   "かけや",
+   "ゴムハンマー",
+   "<ruby>木<rt>き</rt></ruby>づち"
+  ],
+  "stem": "写真(しゃしん)の工具(こうぐ)の名称(めいしょう)は何(なん)ですか。",
+  "opts": [
+   "大(だい)ハンマー",
+   "かけや",
+   "ゴムハンマー",
+   "木(き)づち"
+  ],
+  "img": "img/l_017.jpg"
+ },
+ {
+  "id": "l018",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 018",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>工具<rt>こうぐ</rt></ruby>の<ruby>用途<rt>ようと</rt></ruby>として、<ruby>適切<rt>てきせつ</rt></ruby>でないものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>金属<rt>きんぞく</rt></ruby>のさびを<ruby>落<rt>お</rt></ruby>とす",
+   "<ruby>塗装<rt>とそう</rt></ruby>をはがす",
+   "<ruby>金属<rt>きんぞく</rt></ruby><ruby>板<rt>いた</rt></ruby>にねじ<ruby>穴<rt>あな</rt></ruby>をあける",
+   "やすりの目<ruby>詰ま<rt>めづまり</rt></ruby>りを<ruby>取<rt>と</rt></ruby>る"
+  ],
+  "stem": "写真(しゃしん)の工具(こうぐ)の用途(ようと)として、適切(てきせつ)でないものを選(えら)びなさい。",
+  "opts": [
+   "金属(きんぞく)のさびを落(お)とす",
+   "塗装(とそう)をはがす",
+   "金属(きんぞく)板(いた)にねじ穴(あな)をあける",
+   "やすりの目詰ま(めづまり)りを取(と)る"
+  ],
+  "img": "img/l_018.jpg"
+ },
+ {
+  "id": "l019",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 019",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>道具<rt>どうぐ</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>台<rt>だい</rt></ruby>にキャスターを<ruby>付<rt>つ</rt></ruby>け、<ruby>物<rt>もの</rt></ruby>を<ruby>運<rt>はこ</rt></ruby>ぶために<ruby>使<rt>つか</rt></ruby>う",
+   "<ruby>丸太<rt>まるた</rt></ruby>を<ruby>並<rt>なら</rt></ruby>べ、その<ruby>上<rt>うえ</rt></ruby>で<ruby>物<rt>もの</rt></ruby>を<ruby>転<rt>ころ</rt></ruby>がして<ruby>運<rt>はこ</rt></ruby>ぶ",
+   "<ruby>重<rt>おも</rt></ruby>い<ruby>物<rt>もの</rt></ruby>を<ruby>載<rt>の</rt></ruby>せ、<ruby>地面<rt>じめん</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>を<ruby>引<rt>ひ</rt></ruby>いて<ruby>運<rt>はこ</rt></ruby>ぶ",
+   "フォークを<ruby>油圧<rt>ゆあつ</rt></ruby>で上<ruby>げ下<rt>あげさげ</rt></ruby>げして<ruby>物<rt>もの</rt></ruby>を<ruby>運<rt>はこ</rt></ruby>ぶ"
+  ],
+  "stem": "写真(しゃしん)の道具(どうぐ)の説明(せつめい)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "台(だい)にキャスターを付(つ)け、物(もの)を運(はこ)ぶために使(つか)う",
+   "丸太(まるた)を並(なら)べ、その上(うえ)で物(もの)を転(ころ)がして運(はこ)ぶ",
+   "重(おも)い物(もの)を載(の)せ、地面(じめん)の上(うえ)を引(ひ)いて運(はこ)ぶ",
+   "フォークを油圧(ゆあつ)で上げ下(あげさげ)げして物(もの)を運(はこ)ぶ"
+  ],
+  "img": "img/l_019.jpg"
+ },
+ {
+  "id": "l020",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 020",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>作業台<rt>さぎょうだい</rt></ruby>は「<ruby>伸<rt>の</rt></ruby>び<ruby>馬<rt>うま</rt></ruby>」とも<ruby>呼<rt>よ</rt></ruby>ばれます。この<ruby>道具<rt>どうぐ</rt></ruby>の<ruby>名称<rt>めいしょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>可搬式<rt>かはんしき</rt></ruby><ruby>作業台<rt>さぎょうだい</rt></ruby>",
+   "ローリングタワー",
+   "<ruby>脚立<rt>きゃたつ</rt></ruby>",
+   "<ruby>高所<rt>こうしょ</rt></ruby><ruby>作業車<rt>さぎょうしゃ</rt></ruby>"
+  ],
+  "stem": "写真(しゃしん)の作業台(さぎょうだい)は「伸(の)び馬(うま)」とも呼(よ)ばれます。この道具(どうぐ)の名称(めいしょう)は何(なん)ですか。",
+  "opts": [
+   "可搬式(かはんしき)作業台(さぎょうだい)",
+   "ローリングタワー",
+   "脚立(きゃたつ)",
+   "高所(こうしょ)作業車(さぎょうしゃ)"
+  ],
+  "img": "img/l_020.jpg"
+ },
+ {
+  "id": "l021",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 021",
+  "stem_html": "<ruby>図<rt>ず</rt></ruby>の<ruby>継手<rt>つぎて</rt></ruby>を<ruby>使<rt>つか</rt></ruby>う<ruby>管<rt>かん</rt></ruby>の<ruby>接合<rt>せつごう</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby>は、<ruby>次<rt>つぎ</rt></ruby>のうちどれですか。",
+  "opts_html": [
+   "<ruby>接着接合<rt>せっちゃくせつごう</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby>",
+   "メカニカル<ruby>接合<rt>せつごう</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby>",
+   "<ruby>溶接<rt>ようせつ</rt></ruby><ruby>接合<rt>せつごう</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby>",
+   "ねじ<ruby>接合<rt>せつごう</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby>"
+  ],
+  "stem": "図(ず)の継手(つぎて)を使(つか)う管(かん)の接合(せつごう)方法(ほうほう)は、次(つぎ)のうちどれですか。",
+  "opts": [
+   "接着接合(せっちゃくせつごう)方法(ほうほう)",
+   "メカニカル接合(せつごう)方法(ほうほう)",
+   "溶接(ようせつ)接合(せつごう)方法(ほうほう)",
+   "ねじ接合(せつごう)方法(ほうほう)"
+  ],
+  "img": "img/l_021.jpg"
+ },
+ {
+  "id": "l022",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 022",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>機器<rt>きき</rt></ruby>は、<ruby>熱中症対策<rt>ねっちゅうしょうたいさく</rt></ruby>のために<ruby>使<rt>つか</rt></ruby>います。<ruby>何<rt>なに</rt></ruby>を<ruby>測<rt>はか</rt></ruby>る<ruby>機器<rt>きき</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>暑<rt>あつ</rt></ruby>さ<ruby>指数<rt>しすう</rt></ruby>（WBGT）",
+   "<ruby>電気抵抗<rt>でんきていこう</rt></ruby>",
+   "<ruby>酸素<rt>さんそ</rt></ruby><ruby>濃度<rt>のうど</rt></ruby>",
+   "<ruby>硫化水素<rt>りゅうかすいそ</rt></ruby><ruby>濃度<rt>のうど</rt></ruby>"
+  ],
+  "stem": "写真(しゃしん)の機器(きき)は、熱中症対策(ねっちゅうしょうたいさく)のために使(つか)います。何(なに)を測(はか)る機器(きき)ですか。",
+  "opts": [
+   "暑(あつ)さ指数(しすう)（WBGT）",
+   "電気抵抗(でんきていこう)",
+   "酸素(さんそ)濃度(のうど)",
+   "硫化水素(りゅうかすいそ)濃度(のうど)"
+  ],
+  "img": "img/l_022.jpg"
+ },
+ {
+  "id": "l023",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 023",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>のマークは、<ruby>何<rt>なん</rt></ruby>のシンボルですか。",
+  "opts_html": [
+   "<ruby>感電<rt>かんでん</rt></ruby>の<ruby>危険<rt>きけん</rt></ruby>",
+   "<ruby>立入禁止<rt>たちいりきんし</rt></ruby>",
+   "<ruby>安全<rt>あんぜん</rt></ruby>や<ruby>衛生<rt>えいせい</rt></ruby>",
+   "<ruby>火気厳禁<rt>かきげんきん</rt></ruby>"
+  ],
+  "stem": "写真(しゃしん)のマークは、何(なん)のシンボルですか。",
+  "opts": [
+   "感電(かんでん)の危険(きけん)",
+   "立入禁止(たちいりきんし)",
+   "安全(あんぜん)や衛生(えいせい)",
+   "火気厳禁(かきげんきん)"
+  ],
+  "img": "img/l_023.jpg"
+ },
+ {
+  "id": "l024",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 024",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>設備<rt>せつび</rt></ruby>は、<ruby>屋外<rt>おくがい</rt></ruby>で<ruby>初期<rt>しょき</rt></ruby><ruby>消火<rt>しょうか</rt></ruby>や<ruby>隣接<rt>りんせつ</rt></ruby><ruby>建物<rt>たてもの</rt></ruby>への<ruby>延焼<rt>えんしょう</rt></ruby><ruby>防止<rt>ぼうし</rt></ruby>に<ruby>使<rt>つか</rt></ruby>います。<ruby>名称<rt>めいしょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "スプリンクラー<ruby>設備<rt>せつび</rt></ruby>",
+   "<ruby>給湯<rt>きゅうとう</rt></ruby><ruby>設備<rt>せつび</rt></ruby>",
+   "<ruby>屋外<rt>おくがい</rt></ruby><ruby>消火栓<rt>しょうかせん</rt></ruby><ruby>設備<rt>せつび</rt></ruby>",
+   "<ruby>屋内<rt>おくない</rt></ruby><ruby>消火栓<rt>しょうかせん</rt></ruby><ruby>設備<rt>せつび</rt></ruby>"
+  ],
+  "stem": "写真(しゃしん)の設備(せつび)は、屋外(おくがい)で初期(しょき)消火(しょうか)や隣接(りんせつ)建物(たてもの)への延焼(えんしょう)防止(ぼうし)に使(つか)います。名称(めいしょう)は何(なん)ですか。",
+  "opts": [
+   "スプリンクラー設備(せつび)",
+   "給湯(きゅうとう)設備(せつび)",
+   "屋外(おくがい)消火栓(しょうかせん)設備(せつび)",
+   "屋内(おくない)消火栓(しょうかせん)設備(せつび)"
+  ],
+  "img": "img/l_024.jpg"
+ },
+ {
+  "id": "l025",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 025",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>のスプリンクラーヘッドの<ruby>種類<rt>しゅるい</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>閉鎖<rt>へいさ</rt></ruby><ruby>型<rt>がた</rt></ruby>",
+   "<ruby>開放<rt>かいほう</rt></ruby><ruby>型<rt>がた</rt></ruby>",
+   "<ruby>放水<rt>ほうすい</rt></ruby><ruby>型<rt>がた</rt></ruby>",
+   "<ruby>屋外<rt>おくがい</rt></ruby><ruby>消火栓<rt>しょうかせん</rt></ruby>"
+  ],
+  "stem": "写真(しゃしん)のスプリンクラーヘッドの種類(しゅるい)はどれですか。",
+  "opts": [
+   "閉鎖(へいさ)型(がた)",
+   "開放(かいほう)型(がた)",
+   "放水(ほうすい)型(がた)",
+   "屋外(おくがい)消火栓(しょうかせん)"
+  ],
+  "img": "img/l_025.jpg"
+ },
+ {
+  "id": "l026",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 026",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>墜落<rt>ついらく</rt></ruby><ruby>制止<rt>せいし</rt></ruby><ruby>用器<rt>ようき</rt></ruby><ruby>具<rt>ぐ</rt></ruby>を<ruby>使用<rt>しよう</rt></ruby>する<ruby>目的<rt>もくてき</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>作業<rt>さぎょう</rt></ruby><ruby>床<rt>とこ</rt></ruby>の<ruby>揺<rt>ゆ</rt></ruby>れを止める",
+   "<ruby>墜落<rt>ついらく</rt></ruby>したときに<ruby>落下<rt>らっか</rt></ruby>を<ruby>制止<rt>せいし</rt></ruby>する",
+   "<ruby>落下<rt>らっか</rt></ruby>してくる<ruby>工具<rt>こうぐ</rt></ruby>を<ruby>受<rt>う</rt></ruby>け止める",
+   "<ruby>足場<rt>あしば</rt></ruby><ruby>全体<rt>ぜんたい</rt></ruby>の<ruby>倒壊<rt>とうかい</rt></ruby>を<ruby>防<rt>ふせ</rt></ruby>ぐ"
+  ],
+  "stem": "写真(しゃしん)の墜落(ついらく)制止(せいし)用器(ようき)具(ぐ)を使用(しよう)する目的(もくてき)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "作業(さぎょう)床(とこ)の揺(ゆ)れを止める",
+   "墜落(ついらく)したときに落下(らっか)を制止(せいし)する",
+   "落下(らっか)してくる工具(こうぐ)を受(う)け止める",
+   "足場(あしば)全体(ぜんたい)の倒壊(とうかい)を防(ふせ)ぐ"
+  ],
+  "img": "img/l_026.jpg"
+ },
+ {
+  "id": "l027",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 027",
+  "stem_html": "ロードローラとタイヤローラのローラの<ruby>材質<rt>ざいしつ</rt></ruby>の<ruby>組合<rt>くみあわ</rt></ruby>せとして、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "ロードローラ：ゴム／タイヤローラ：<ruby>鉄<rt>てつ</rt></ruby>",
+   "ロードローラ：ゴム／タイヤローラ：ゴム",
+   "ロードローラ：<ruby>鉄<rt>てつ</rt></ruby>／タイヤローラ：ゴム",
+   "ロードローラ：<ruby>鉄<rt>てつ</rt></ruby>／タイヤローラ：<ruby>鉄<rt>てつ</rt></ruby>"
+  ],
+  "stem": "ロードローラとタイヤローラのローラの材質(ざいしつ)の組合(くみあわ)せとして、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "ロードローラ：ゴム／タイヤローラ：鉄(てつ)",
+   "ロードローラ：ゴム／タイヤローラ：ゴム",
+   "ロードローラ：鉄(てつ)／タイヤローラ：ゴム",
+   "ロードローラ：鉄(てつ)／タイヤローラ：鉄(てつ)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l028",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 028",
+  "stem_html": "ゴム<ruby>製<rt>せい</rt></ruby>のローラを<ruby>使<rt>つか</rt></ruby>って<ruby>地面<rt>じめん</rt></ruby>を<ruby>締<rt>し</rt></ruby>め<ruby>固<rt>かた</rt></ruby>める<ruby>建設<rt>けんせつ</rt></ruby><ruby>機械<rt>きかい</rt></ruby>は、（　　）です。",
+  "opts_html": [
+   "ホイールローダ",
+   "ダンプトラック",
+   "ロードローラ",
+   "タイヤローラ"
+  ],
+  "stem": "ゴム製(せい)のローラを使(つか)って地面(じめん)を締(し)め固(かた)める建設(けんせつ)機械(きかい)は、（　　）です。",
+  "opts": [
+   "ホイールローダ",
+   "ダンプトラック",
+   "ロードローラ",
+   "タイヤローラ"
+  ],
+  "img": null
+ },
+ {
+  "id": "l029",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 029",
+  "stem_html": "<ruby>土砂<rt>どしゃ</rt></ruby>をすくって、ダンプトラックに<ruby>積<rt>つ</rt></ruby>み<ruby>込<rt>こ</rt></ruby>みます。この<ruby>作業<rt>さぎょう</rt></ruby>に<ruby>使<rt>つか</rt></ruby>う<ruby>建設<rt>けんせつ</rt></ruby><ruby>機械<rt>きかい</rt></ruby>を<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "ホイールローダ",
+   "タイヤローラ",
+   "ロードローラ",
+   "ダンプトラック"
+  ],
+  "stem": "土砂(どしゃ)をすくって、ダンプトラックに積(つ)み込(こ)みます。この作業(さぎょう)に使(つか)う建設(けんせつ)機械(きかい)を選(えら)びなさい。",
+  "opts": [
+   "ホイールローダ",
+   "タイヤローラ",
+   "ロードローラ",
+   "ダンプトラック"
+  ],
+  "img": null
+ },
+ {
+  "id": "l030",
+  "cat": "l_denki",
+  "src": "ライフライン練習 030",
+  "stem_html": "<ruby>回路<rt>かいろ</rt></ruby>を<ruby>流<rt>なが</rt></ruby>れる<ruby>電流<rt>でんりゅう</rt></ruby>を<ruby>測<rt>はか</rt></ruby>るため、センサー<ruby>部<rt>ぶ</rt></ruby>に<ruby>電線<rt>でんせん</rt></ruby>を<ruby>挟<rt>はさ</rt></ruby>みます。<ruby>使用<rt>しよう</rt></ruby>する<ruby>機器<rt>きき</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>検電器<rt>けんでんき</rt></ruby>",
+   "<ruby>光<rt>ひかり</rt></ruby>パワーメーター",
+   "クランプメーター",
+   "<ruby>検相器<rt>けんそうき</rt></ruby>"
+  ],
+  "stem": "回路(かいろ)を流(なが)れる電流(でんりゅう)を測(はか)るため、センサー部(ぶ)に電線(でんせん)を挟(はさ)みます。使用(しよう)する機器(きき)はどれですか。",
+  "opts": [
+   "検電器(けんでんき)",
+   "光(ひかり)パワーメーター",
+   "クランプメーター",
+   "検相器(けんそうき)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l031",
+  "cat": "l_denki",
+  "src": "ライフライン練習 031",
+  "stem_html": "テスター・マルチメーターについて、<ruby>正<rt>ただ</rt></ruby>しい<ruby>説明<rt>せつめい</rt></ruby>を<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>電気回路<rt>でんきかいろ</rt></ruby>や<ruby>電圧<rt>でんあつ</rt></ruby>などの<ruby>状態<rt>じょうたい</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる<ruby>機器<rt>きき</rt></ruby>",
+   "<ruby>管<rt>かん</rt></ruby>のねじの<ruby>精度<rt>せいど</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる<ruby>機器<rt>きき</rt></ruby>",
+   "光ファイバーの<ruby>線路<rt>せんろ</rt></ruby><ruby>長<rt>ちょう</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる<ruby>機器<rt>きき</rt></ruby>",
+   "<ruby>作業場<rt>さぎょうば</rt></ruby><ruby>所<rt>ところ</rt></ruby>の<ruby>暑<rt>あつ</rt></ruby>さ<ruby>指数<rt>しすう</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる<ruby>機器<rt>きき</rt></ruby>"
+  ],
+  "stem": "テスター・マルチメーターについて、正(ただ)しい説明(せつめい)を選(えら)びなさい。",
+  "opts": [
+   "電気回路(でんきかいろ)や電圧(でんあつ)などの状態(じょうたい)を調(しら)べる機器(きき)",
+   "管(かん)のねじの精度(せいど)を調(しら)べる機器(きき)",
+   "光ファイバーの線路(せんろ)長(ちょう)を調(しら)べる機器(きき)",
+   "作業場(さぎょうば)所(ところ)の暑(あつ)さ指数(しすう)を調(しら)べる機器(きき)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l032",
+  "cat": "l_denki",
+  "src": "ライフライン練習 032",
+  "stem_html": "<ruby>検電器<rt>けんでんき</rt></ruby>と<ruby>検相器<rt>けんそうき</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "どちらも光ファイバーの<ruby>損失<rt>そんしつ</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる",
+   "<ruby>検電器<rt>けんでんき</rt></ruby>は<ruby>帯電<rt>たいでん</rt></ruby>の<ruby>有無<rt>うむ</rt></ruby>、<ruby>検相器<rt>けんそうき</rt></ruby>は<ruby>相<rt>そう</rt></ruby>の<ruby>順番<rt>じゅんばん</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる",
+   "<ruby>検電器<rt>けんでんき</rt></ruby>は<ruby>相<rt>そう</rt></ruby>の<ruby>順番<rt>じゅんばん</rt></ruby>、<ruby>検相器<rt>けんそうき</rt></ruby>は<ruby>帯電<rt>たいでん</rt></ruby>の<ruby>有無<rt>うむ</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる",
+   "どちらも<ruby>管内<rt>かんない</rt></ruby>の<ruby>水圧<rt>すいあつ</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる"
+  ],
+  "stem": "検電器(けんでんき)と検相器(けんそうき)の説明(せつめい)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "どちらも光ファイバーの損失(そんしつ)を調(しら)べる",
+   "検電器(けんでんき)は帯電(たいでん)の有無(うむ)、検相器(けんそうき)は相(そう)の順番(じゅんばん)を調(しら)べる",
+   "検電器(けんでんき)は相(そう)の順番(じゅんばん)、検相器(けんそうき)は帯電(たいでん)の有無(うむ)を調(しら)べる",
+   "どちらも管内(かんない)の水圧(すいあつ)を調(しら)べる"
+  ],
+  "img": null
+ },
+ {
+  "id": "l033",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 033",
+  "stem_html": "<ruby>壁<rt>かべ</rt></ruby>やスラブをはつって、<ruby>配管<rt>はいかん</rt></ruby>を<ruby>通<rt>とう</rt></ruby>す<ruby>経路<rt>けいろ</rt></ruby>を<ruby>確保<rt>かくほ</rt></ruby>します。この<ruby>作業<rt>さぎょう</rt></ruby>に<ruby>使<rt>つか</rt></ruby>う<ruby>電動<rt>でんどう</rt></ruby><ruby>工具<rt>こうぐ</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>電動<rt>でんどう</rt></ruby>ハンマー",
+   "<ruby>電動圧着<rt>でんどうあっちゃく</rt></ruby><ruby>工具<rt>こうぐ</rt></ruby>",
+   "<ruby>電動<rt>でんどう</rt></ruby>ドライバー",
+   "<ruby>電動<rt>でんどう</rt></ruby>ね<ruby>じ切<rt>ねじきり</rt></ruby>り<ruby>機<rt>き</rt></ruby>"
+  ],
+  "stem": "壁(かべ)やスラブをはつって、配管(はいかん)を通(とう)す経路(けいろ)を確保(かくほ)します。この作業(さぎょう)に使(つか)う電動(でんどう)工具(こうぐ)はどれですか。",
+  "opts": [
+   "電動(でんどう)ハンマー",
+   "電動圧着(でんどうあっちゃく)工具(こうぐ)",
+   "電動(でんどう)ドライバー",
+   "電動(でんどう)ねじ切(ねじきり)り機(き)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l034",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 034",
+  "stem_html": "<ruby>石膏<rt>せっこう</rt></ruby>ボードに<ruby>配線<rt>はいせん</rt></ruby><ruby>器具<rt>きぐ</rt></ruby>の<ruby>開口<rt>かいくち</rt></ruby><ruby>部<rt>ぶ</rt></ruby>を<ruby>作<rt>つく</rt></ruby>るときに<ruby>使<rt>つか</rt></ruby>う、<ruby>細<rt>こま</rt></ruby>い<ruby>刃<rt>は</rt></ruby>ののこぎりはどれですか。",
+  "opts_html": [
+   "パイプカッター",
+   "チューブベンダー",
+   "廻<ruby>し挽<rt>まわしびき</rt></ruby>き",
+   "リーマ"
+  ],
+  "stem": "石膏(せっこう)ボードに配線(はいせん)器具(きぐ)の開口(かいくち)部(ぶ)を作(つく)るときに使(つか)う、細(こま)い刃(は)ののこぎりはどれですか。",
+  "opts": [
+   "パイプカッター",
+   "チューブベンダー",
+   "廻し挽(まわしびき)き",
+   "リーマ"
+  ],
+  "img": null
+ },
+ {
+  "id": "l035",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 035",
+  "stem_html": "<ruby>金属<rt>きんぞく</rt></ruby><ruby>製<rt>せい</rt></ruby><ruby>電線管<rt>でんせんかん</rt></ruby>を<ruby>切断<rt>せつだん</rt></ruby>せずに<ruby>曲<rt>ま</rt></ruby>げるときに<ruby>使<rt>つか</rt></ruby>う<ruby>工具<rt>こうぐ</rt></ruby>は、（　　）です。",
+  "opts_html": [
+   "リーマ",
+   "ベンダー",
+   "ねじゲージ",
+   "パイプカッター"
+  ],
+  "stem": "金属(きんぞく)製(せい)電線管(でんせんかん)を切断(せつだん)せずに曲(ま)げるときに使(つか)う工具(こうぐ)は、（　　）です。",
+  "opts": [
+   "リーマ",
+   "ベンダー",
+   "ねじゲージ",
+   "パイプカッター"
+  ],
+  "img": null
+ },
+ {
+  "id": "l036",
+  "cat": "l_denki",
+  "src": "ライフライン練習 036",
+  "stem_html": "PF<ruby>管<rt>かん</rt></ruby>とCD<ruby>管<rt>かん</rt></ruby>について、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "PF<ruby>管<rt>かん</rt></ruby>とCD<ruby>管<rt>かん</rt></ruby>は、どちらも<ruby>鋼製<rt>こうせい</rt></ruby>の<ruby>電線管<rt>でんせんかん</rt></ruby>である",
+   "CD<ruby>管<rt>かん</rt></ruby>には<ruby>自己<rt>じこ</rt></ruby><ruby>消火<rt>しょうか</rt></ruby><ruby>性<rt>せい</rt></ruby>があるが、PF<ruby>管<rt>かん</rt></ruby>にはない",
+   "PF<ruby>管<rt>かん</rt></ruby>には<ruby>自己<rt>じこ</rt></ruby><ruby>消火<rt>しょうか</rt></ruby><ruby>性<rt>せい</rt></ruby>がある",
+   "PF<ruby>管<rt>かん</rt></ruby>は<ruby>光<rt>ひかり</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>えるためのケーブルである"
+  ],
+  "stem": "PF管(かん)とCD管(かん)について、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "PF管(かん)とCD管(かん)は、どちらも鋼製(こうせい)の電線管(でんせんかん)である",
+   "CD管(かん)には自己(じこ)消火(しょうか)性(せい)があるが、PF管(かん)にはない",
+   "PF管(かん)には自己(じこ)消火(しょうか)性(せい)がある",
+   "PF管(かん)は光(ひかり)を伝(つた)えるためのケーブルである"
+  ],
+  "img": null
+ },
+ {
+  "id": "l037",
+  "cat": "l_denki",
+  "src": "ライフライン練習 037",
+  "stem_html": "コンクリートに<ruby>埋設<rt>まいせつ</rt></ruby>して<ruby>使<rt>つか</rt></ruby>うことが<ruby>多<rt>おお</rt></ruby>い<ruby>可<rt>か</rt></ruby>とう<ruby>電線管<rt>でんせんかん</rt></ruby>は、（　　）です。",
+  "opts_html": [
+   "E<ruby>管<rt>かん</rt></ruby>",
+   "C<ruby>管<rt>かん</rt></ruby>",
+   "G<ruby>管<rt>かん</rt></ruby>",
+   "CD<ruby>管<rt>かん</rt></ruby>"
+  ],
+  "stem": "コンクリートに埋設(まいせつ)して使(つか)うことが多(おお)い可(か)とう電線管(でんせんかん)は、（　　）です。",
+  "opts": [
+   "E管(かん)",
+   "C管(かん)",
+   "G管(かん)",
+   "CD管(かん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l038",
+  "cat": "l_denki",
+  "src": "ライフライン練習 038",
+  "stem_html": "<ruby>鋼製<rt>こうせい</rt></ruby><ruby>電線管<rt>でんせんかん</rt></ruby>のうち、ねじなし<ruby>電線管<rt>でんせんかん</rt></ruby>を<ruby>表<rt>あらわ</rt></ruby>すものはどれですか。",
+  "opts_html": [
+   "C<ruby>管<rt>かん</rt></ruby>",
+   "PF<ruby>管<rt>かん</rt></ruby>",
+   "E<ruby>管<rt>かん</rt></ruby>",
+   "G<ruby>管<rt>かん</rt></ruby>"
+  ],
+  "stem": "鋼製(こうせい)電線管(でんせんかん)のうち、ねじなし電線管(でんせんかん)を表(あらわ)すものはどれですか。",
+  "opts": [
+   "C管(かん)",
+   "PF管(かん)",
+   "E管(かん)",
+   "G管(かん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l039",
+  "cat": "l_denki",
+  "src": "ライフライン練習 039",
+  "stem_html": "スラブ・<ruby>梁<rt>はり</rt></ruby>・<ruby>壁<rt>かべ</rt></ruby>に<ruby>配管<rt>はいかん</rt></ruby><ruby>用<rt>よう</rt></ruby>の<ruby>貫通<rt>かんつう</rt></ruby><ruby>穴<rt>あな</rt></ruby>を<ruby>作<rt>つく</rt></ruby>るため、<ruby>紙製<rt>かみせい</rt></ruby>の<ruby>管<rt>かん</rt></ruby>をあらかじめ<ruby>設<rt>もう</rt></ruby>けます。この<ruby>管<rt>かん</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "ボイド<ruby>管<rt>かん</rt></ruby>",
+   "CD<ruby>管<rt>かん</rt></ruby>",
+   "SGP",
+   "VP<ruby>管<rt>かん</rt></ruby>"
+  ],
+  "stem": "スラブ・梁(はり)・壁(かべ)に配管(はいかん)用(よう)の貫通(かんつう)穴(あな)を作(つく)るため、紙製(かみせい)の管(かん)をあらかじめ設(もう)けます。この管(かん)は何(なん)ですか。",
+  "opts": [
+   "ボイド管(かん)",
+   "CD管(かん)",
+   "SGP",
+   "VP管(かん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l040",
+  "cat": "l_denki",
+  "src": "ライフライン練習 040",
+  "stem_html": "差<ruby>し込<rt>さしこみ</rt></ruby>みコネクタの<ruby>接続方法<rt>せつぞくほうほう</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>管<rt>かん</rt></ruby>のねじを<ruby>切<rt>き</rt></ruby>って<ruby>接続<rt>せつぞく</rt></ruby>する",
+   "<ruby>管用接着剤<rt>かんようせっちゃくざい</rt></ruby>で<ruby>固定<rt>こてい</rt></ruby>する",
+   "<ruby>接続部<rt>せつぞくぶ</rt></ruby>を<ruby>溶接<rt>ようせつ</rt></ruby>して<ruby>使<rt>つか</rt></ruby>う",
+   "<ruby>芯線<rt>しんせん</rt></ruby>を<ruby>差<rt>さ</rt></ruby>し<ruby>込<rt>こ</rt></ruby>んで<ruby>接続<rt>せつぞく</rt></ruby>する"
+  ],
+  "stem": "差し込(さしこみ)みコネクタの接続方法(せつぞくほうほう)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "管(かん)のねじを切(き)って接続(せつぞく)する",
+   "管用接着剤(かんようせっちゃくざい)で固定(こてい)する",
+   "接続部(せつぞくぶ)を溶接(ようせつ)して使(つか)う",
+   "芯線(しんせん)を差(さ)し込(こ)んで接続(せつぞく)する"
+  ],
+  "img": null
+ },
+ {
+  "id": "l041",
+  "cat": "l_denki",
+  "src": "ライフライン練習 041",
+  "stem_html": "<ruby>電気設備<rt>でんきせつび</rt></ruby>のアースを<ruby>取<rt>と</rt></ruby>るため、<ruby>地中<rt>ちちゅう</rt></ruby>に打<ruby>ち込<rt>うちこむ</rt></ruby>む<ruby>部材<rt>ぶざい</rt></ruby>は、（　　）です。",
+  "opts_html": [
+   "エンドカバー",
+   "サドル",
+   "<ruby>接地棒<rt>せっちぼう</rt></ruby>",
+   "ボイド<ruby>管<rt>かん</rt></ruby>"
+  ],
+  "stem": "電気設備(でんきせつび)のアースを取(と)るため、地中(ちちゅう)に打ち込(うちこむ)む部材(ぶざい)は、（　　）です。",
+  "opts": [
+   "エンドカバー",
+   "サドル",
+   "接地棒(せっちぼう)",
+   "ボイド管(かん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l042",
+  "cat": "l_denki",
+  "src": "ライフライン練習 042",
+  "stem_html": "光ファイバーの<ruby>中心<rt>ちゅうしん</rt></ruby>にあり、<ruby>光<rt>ひかり</rt></ruby>が<ruby>伝<rt>つた</rt></ruby>わる<ruby>部分<rt>ぶぶん</rt></ruby>を（　　）といいます。",
+  "opts_html": [
+   "<ruby>外部<rt>がいぶ</rt></ruby><ruby>導体<rt>どうたい</rt></ruby>",
+   "クラッド",
+   "コア",
+   "シース"
+  ],
+  "stem": "光ファイバーの中心(ちゅうしん)にあり、光(ひかり)が伝(つた)わる部分(ぶぶん)を（　　）といいます。",
+  "opts": [
+   "外部(がいぶ)導体(どうたい)",
+   "クラッド",
+   "コア",
+   "シース"
+  ],
+  "img": null
+ },
+ {
+  "id": "l043",
+  "cat": "l_denki",
+  "src": "ライフライン練習 043",
+  "stem_html": "光ファイバーのコアとクラッドの<ruby>位置関係<rt>いちかんけい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>中心<rt>ちゅうしん</rt></ruby>がコアで、その<ruby>周囲<rt>しゅうい</rt></ruby>がクラッドである",
+   "コアは光ファイバーの<ruby>接続<rt>せつぞく</rt></ruby><ruby>工具<rt>こうぐ</rt></ruby>のことである",
+   "コアとクラッドは<ruby>離<rt>はな</rt></ruby>れた<ruby>別々<rt>べつべつ</rt></ruby>のケーブルである",
+   "<ruby>中心<rt>ちゅうしん</rt></ruby>がクラッドで、その<ruby>周囲<rt>しゅうい</rt></ruby>がコアである"
+  ],
+  "stem": "光ファイバーのコアとクラッドの位置関係(いちかんけい)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "中心(ちゅうしん)がコアで、その周囲(しゅうい)がクラッドである",
+   "コアは光ファイバーの接続(せつぞく)工具(こうぐ)のことである",
+   "コアとクラッドは離(はな)れた別々(べつべつ)のケーブルである",
+   "中心(ちゅうしん)がクラッドで、その周囲(しゅうい)がコアである"
+  ],
+  "img": null
+ },
+ {
+  "id": "l044",
+  "cat": "l_denki",
+  "src": "ライフライン練習 044",
+  "stem_html": "光ファイバーの<ruby>取扱<rt>とりあつか</rt></ruby>いについて、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>細<rt>こま</rt></ruby>い<ruby>繊維状<rt>せんいじょう</rt></ruby>の<ruby>材料<rt>ざいりょう</rt></ruby>である",
+   "<ruby>曲<rt>ま</rt></ruby>げや<ruby>汚<rt>よご</rt></ruby>れに<ruby>強<rt>つよ</rt></ruby>いため、<ruby>取扱<rt>とりあつか</rt></ruby>いに<ruby>注意<rt>ちゅうい</rt></ruby>する<ruby>必要<rt>ひつよう</rt></ruby>はない",
+   "<ruby>傷<rt>きず</rt></ruby>や<ruby>曲<rt>ま</rt></ruby>げ、<ruby>汚<rt>よご</rt></ruby>れに<ruby>注意<rt>ちゅうい</rt></ruby>する<ruby>必要<rt>ひつよう</rt></ruby>がある",
+   "<ruby>光<rt>ひかり</rt></ruby>を<ruby>用<rt>もち</rt></ruby>いて<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>える"
+  ],
+  "stem": "光ファイバーの取扱(とりあつか)いについて、誤(あやま)っているものを選(えら)びなさい。",
+  "opts": [
+   "細(こま)い繊維状(せんいじょう)の材料(ざいりょう)である",
+   "曲(ま)げや汚(よご)れに強(つよ)いため、取扱(とりあつか)いに注意(ちゅうい)する必要(ひつよう)はない",
+   "傷(きず)や曲(ま)げ、汚(よご)れに注意(ちゅうい)する必要(ひつよう)がある",
+   "光(ひかり)を用(もち)いて情報(じょうほう)を伝(つた)える"
+  ],
+  "img": null
+ },
+ {
+  "id": "l045",
+  "cat": "l_denki",
+  "src": "ライフライン練習 045",
+  "stem_html": "メタルケーブルと光ファイバーの<ruby>通信<rt>つうしん</rt></ruby>に<ruby>使<rt>つか</rt></ruby>う<ruby>信号<rt>しんごう</rt></ruby>の<ruby>組合<rt>くみあわ</rt></ruby>せとして、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "メタル：<ruby>電気<rt>でんき</rt></ruby>／光ファイバー：<ruby>光<rt>ひかり</rt></ruby>",
+   "メタル：<ruby>電気<rt>でんき</rt></ruby>／光ファイバー：<ruby>電気<rt>でんき</rt></ruby>",
+   "メタル：<ruby>光<rt>ひかり</rt></ruby>／光ファイバー：<ruby>光<rt>ひかり</rt></ruby>",
+   "メタル：<ruby>光<rt>ひかり</rt></ruby>／光ファイバー：<ruby>電気<rt>でんき</rt></ruby>"
+  ],
+  "stem": "メタルケーブルと光ファイバーの通信(つうしん)に使(つか)う信号(しんごう)の組合(くみあわ)せとして、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "メタル：電気(でんき)／光ファイバー：光(ひかり)",
+   "メタル：電気(でんき)／光ファイバー：電気(でんき)",
+   "メタル：光(ひかり)／光ファイバー：光(ひかり)",
+   "メタル：光(ひかり)／光ファイバー：電気(でんき)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l046",
+  "cat": "l_denki",
+  "src": "ライフライン練習 046",
+  "stem_html": "テレビのアンテナ<ruby>配線<rt>はいせん</rt></ruby>で、<ruby>中心導体<rt>ちゅうしんどうたい</rt></ruby>の<ruby>周囲<rt>しゅうい</rt></ruby>に<ruby>絶縁体<rt>ぜつえんたい</rt></ruby>や<ruby>外部<rt>がいぶ</rt></ruby><ruby>導体<rt>どうたい</rt></ruby>があるケーブルを<ruby>使<rt>つか</rt></ruby>います。<ruby>名称<rt>めいしょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "ワイヤーロープ",
+   "<ruby>接地線<rt>せっちせん</rt></ruby>",
+   "光ファイバーケーブル",
+   "<ruby>同軸<rt>どうじく</rt></ruby>ケーブル"
+  ],
+  "stem": "テレビのアンテナ配線(はいせん)で、中心導体(ちゅうしんどうたい)の周囲(しゅうい)に絶縁体(ぜつえんたい)や外部(がいぶ)導体(どうたい)があるケーブルを使(つか)います。名称(めいしょう)は何(なん)ですか。",
+  "opts": [
+   "ワイヤーロープ",
+   "接地線(せっちせん)",
+   "光ファイバーケーブル",
+   "同軸(どうじく)ケーブル"
+  ],
+  "img": null
+ },
+ {
+  "id": "l047",
+  "cat": "l_denki",
+  "src": "ライフライン練習 047",
+  "stem_html": "光ファイバーの<ruby>線路<rt>せんろ</rt></ruby><ruby>長<rt>ちょう</rt></ruby>、<ruby>損失<rt>そんしつ</rt></ruby>、<ruby>反射<rt>はんしゃ</rt></ruby>などを<ruby>調<rt>しら</rt></ruby>べるときに<ruby>使<rt>つか</rt></ruby>う<ruby>装置<rt>そうち</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>検相器<rt>けんそうき</rt></ruby>",
+   "<ruby>水圧<rt>すいあつ</rt></ruby><ruby>試験<rt>しけん</rt></ruby><ruby>器<rt>うつわ</rt></ruby>",
+   "<ruby>光<rt>ひかり</rt></ruby>パルス<ruby>試験機<rt>しけんき</rt></ruby>",
+   "ねじゲージ"
+  ],
+  "stem": "光ファイバーの線路(せんろ)長(ちょう)、損失(そんしつ)、反射(はんしゃ)などを調(しら)べるときに使(つか)う装置(そうち)はどれですか。",
+  "opts": [
+   "検相器(けんそうき)",
+   "水圧(すいあつ)試験(しけん)器(うつわ)",
+   "光(ひかり)パルス試験機(しけんき)",
+   "ねじゲージ"
+  ],
+  "img": null
+ },
+ {
+  "id": "l048",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 048",
+  "stem_html": "<ruby>銅管<rt>どうかん</rt></ruby>を<ruby>所定<rt>しょてい</rt></ruby>の<ruby>形<rt>かたち</rt></ruby>に<ruby>曲<rt>ま</rt></ruby>げるために<ruby>使<rt>つか</rt></ruby>う<ruby>工具<rt>こうぐ</rt></ruby>は、（　　）です。",
+  "opts_html": [
+   "チューブベンダー",
+   "パイプカッター",
+   "ねじゲージ",
+   "リーマ"
+  ],
+  "stem": "銅管(どうかん)を所定(しょてい)の形(かたち)に曲(ま)げるために使(つか)う工具(こうぐ)は、（　　）です。",
+  "opts": [
+   "チューブベンダー",
+   "パイプカッター",
+   "ねじゲージ",
+   "リーマ"
+  ],
+  "img": null
+ },
+ {
+  "id": "l049",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 049",
+  "stem_html": "<ruby>管<rt>かん</rt></ruby>をねじ<ruby>込<rt>こ</rt></ruby>む<ruby>際<rt>きわ</rt></ruby>、<ruby>管内<rt>かんない</rt></ruby>の<ruby>流体<rt>りゅうたい</rt></ruby>が<ruby>接合<rt>せつごう</rt></ruby><ruby>部<rt>ぶ</rt></ruby>から<ruby>漏<rt>も</rt></ruby>れないようにする<ruby>材料<rt>ざいりょう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>防振<rt>ぼうしん</rt></ruby>ゴム",
+   "ボイド<ruby>管<rt>かん</rt></ruby>",
+   "<ruby>保温<rt>ほおん</rt></ruby><ruby>材<rt>ざい</rt></ruby>",
+   "シール<ruby>材<rt>ざい</rt></ruby>"
+  ],
+  "stem": "管(かん)をねじ込(こ)む際(きわ)、管内(かんない)の流体(りゅうたい)が接合(せつごう)部(ぶ)から漏(も)れないようにする材料(ざいりょう)は何(なん)ですか。",
+  "opts": [
+   "防振(ぼうしん)ゴム",
+   "ボイド管(かん)",
+   "保温(ほおん)材(ざい)",
+   "シール材(ざい)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l050",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 050",
+  "stem_html": "<ruby>塩化<rt>えんか</rt></ruby>ビニル<ruby>樹脂<rt>じゅし</rt></ruby><ruby>用接着剤<rt>ようせっちゃくざい</rt></ruby>の<ruby>用途<rt>ようと</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>電線管<rt>でんせんかん</rt></ruby>を<ruby>曲<rt>ま</rt></ruby>げる",
+   "<ruby>銅管<rt>どうかん</rt></ruby>の<ruby>切断<rt>せつだん</rt></ruby><ruby>面<rt>めん</rt></ruby>のバリを<ruby>取<rt>と</rt></ruby>る",
+   "<ruby>鋼管<rt>こうかん</rt></ruby>の<ruby>外面<rt>がいめん</rt></ruby>を<ruby>保温<rt>ほおん</rt></ruby>する",
+   "<ruby>塩化<rt>えんか</rt></ruby>ビニル<ruby>管<rt>かん</rt></ruby>の<ruby>接合<rt>せつごう</rt></ruby><ruby>部<rt>ぶ</rt></ruby>からの<ruby>流体<rt>りゅうたい</rt></ruby><ruby>漏<rt>も</rt></ruby>れを<ruby>防<rt>ふせ</rt></ruby>ぐ"
+  ],
+  "stem": "塩化(えんか)ビニル樹脂(じゅし)用接着剤(ようせっちゃくざい)の用途(ようと)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "電線管(でんせんかん)を曲(ま)げる",
+   "銅管(どうかん)の切断(せつだん)面(めん)のバリを取(と)る",
+   "鋼管(こうかん)の外面(がいめん)を保温(ほおん)する",
+   "塩化(えんか)ビニル管(かん)の接合(せつごう)部(ぶ)からの流体(りゅうたい)漏(も)れを防(ふせ)ぐ"
+  ],
+  "img": null
+ },
+ {
+  "id": "l051",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 051",
+  "stem_html": "<ruby>硬質<rt>こうしつ</rt></ruby>ポリ<ruby>塩化<rt>えんか</rt></ruby>ビニル<ruby>管<rt>かん</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "VU<ruby>管<rt>かん</rt></ruby>は<ruby>薄肉<rt>うすにく</rt></ruby><ruby>管<rt>かん</rt></ruby>である",
+   "<ruby>内面<rt>ないめん</rt></ruby>が<ruby>滑<rt>なめ</rt></ruby>らかで<ruby>摩擦抵抗<rt>まさつていこう</rt></ruby>が<ruby>小<rt>ちー</rt></ruby>さい",
+   "VP<ruby>管<rt>かん</rt></ruby>は<ruby>薄肉<rt>うすにく</rt></ruby><ruby>管<rt>かん</rt></ruby>、VU<ruby>管<rt>かん</rt></ruby>は<ruby>厚肉<rt>あつにく</rt></ruby><ruby>管<rt>かん</rt></ruby>である",
+   "VP<ruby>管<rt>かん</rt></ruby>は<ruby>厚肉<rt>あつにく</rt></ruby><ruby>管<rt>かん</rt></ruby>である"
+  ],
+  "stem": "硬質(こうしつ)ポリ塩化(えんか)ビニル管(かん)の説明(せつめい)として、誤(あやま)っているものを選(えら)びなさい。",
+  "opts": [
+   "VU管(かん)は薄肉(うすにく)管(かん)である",
+   "内面(ないめん)が滑(なめ)らかで摩擦抵抗(まさつていこう)が小(ちー)さい",
+   "VP管(かん)は薄肉(うすにく)管(かん)、VU管(かん)は厚肉(あつにく)管(かん)である",
+   "VP管(かん)は厚肉(あつにく)管(かん)である"
+  ],
+  "img": null
+ },
+ {
+  "id": "l052",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 052",
+  "stem_html": "<ruby>外部<rt>がいぶ</rt></ruby>からの<ruby>衝撃<rt>しょうげき</rt></ruby>が<ruby>大<rt>おお</rt></ruby>きい<ruby>場所<rt>ばしょ</rt></ruby>などで<ruby>使用<rt>しよう</rt></ruby>するため、<ruby>耐衝撃性<rt>たいしょうげきせい</rt></ruby>を<ruby>高<rt>たか</rt></ruby>めた<ruby>塩<rt>しお</rt></ruby>ビ<ruby>管<rt>かん</rt></ruby>はどれですか。",
+  "opts_html": [
+   "HIVP<ruby>管<rt>かん</rt></ruby>",
+   "<ruby>一般<rt>いっぱん</rt></ruby>のVU<ruby>管<rt>かん</rt></ruby>",
+   "<ruby>一般<rt>いっぱん</rt></ruby>のVP<ruby>管<rt>かん</rt></ruby>",
+   "HT<ruby>管<rt>かん</rt></ruby>"
+  ],
+  "stem": "外部(がいぶ)からの衝撃(しょうげき)が大(おお)きい場所(ばしょ)などで使用(しよう)するため、耐衝撃性(たいしょうげきせい)を高(たか)めた塩(しお)ビ管(かん)はどれですか。",
+  "opts": [
+   "HIVP管(かん)",
+   "一般(いっぱん)のVU管(かん)",
+   "一般(いっぱん)のVP管(かん)",
+   "HT管(かん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l053",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 053",
+  "stem_html": "<ruby>冷<rt>れい</rt></ruby>・<ruby>暖房<rt>だんぼう</rt></ruby><ruby>管<rt>かん</rt></ruby>や<ruby>温泉<rt>おんせん</rt></ruby><ruby>配管<rt>はいかん</rt></ruby>などに<ruby>使<rt>つか</rt></ruby>うため、<ruby>耐熱<rt>たいねつ</rt></ruby><ruby>性<rt>せい</rt></ruby>を<ruby>高<rt>たか</rt></ruby>めた<ruby>塩<rt>しお</rt></ruby>ビ<ruby>管<rt>かん</rt></ruby>は、（　　）です。",
+  "opts_html": [
+   "VU<ruby>管<rt>かん</rt></ruby>",
+   "VP<ruby>管<rt>かん</rt></ruby>",
+   "HIVP<ruby>管<rt>かん</rt></ruby>",
+   "HT<ruby>管<rt>かん</rt></ruby>"
+  ],
+  "stem": "冷(れい)・暖房(だんぼう)管(かん)や温泉(おんせん)配管(はいかん)などに使(つか)うため、耐熱(たいねつ)性(せい)を高(たか)めた塩(しお)ビ管(かん)は、（　　）です。",
+  "opts": [
+   "VU管(かん)",
+   "VP管(かん)",
+   "HIVP管(かん)",
+   "HT管(かん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l054",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 054",
+  "stem_html": "テキストに<ruby>示<rt>しめ</rt></ruby>された<ruby>管<rt>かん</rt></ruby>の<ruby>種類<rt>しゅるい</rt></ruby>と<ruby>色<rt>いろ</rt></ruby>の<ruby>組合<rt>くみあわ</rt></ruby>せとして、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "HT<ruby>管<rt>かん</rt></ruby>：<ruby>濃<rt>こ</rt></ruby>い<ruby>青色<rt>あおいろ</rt></ruby>",
+   "HIVP<ruby>管<rt>かん</rt></ruby>：<ruby>赤茶色<rt>あかちゃいろ</rt></ruby>",
+   "<ruby>一般<rt>いっぱん</rt></ruby>の<ruby>硬質<rt>こうしつ</rt></ruby><ruby>塩<rt>しお</rt></ruby>ビ<ruby>管<rt>かん</rt></ruby>：<ruby>濃<rt>こ</rt></ruby>い<ruby>青色<rt>あおいろ</rt></ruby>",
+   "HT<ruby>管<rt>かん</rt></ruby>：<ruby>赤茶色<rt>あかちゃいろ</rt></ruby>"
+  ],
+  "stem": "テキストに示(しめ)された管(かん)の種類(しゅるい)と色(いろ)の組合(くみあわ)せとして、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "HT管(かん)：濃(こ)い青色(あおいろ)",
+   "HIVP管(かん)：赤茶色(あかちゃいろ)",
+   "一般(いっぱん)の硬質(こうしつ)塩(しお)ビ管(かん)：濃(こ)い青色(あおいろ)",
+   "HT管(かん)：赤茶色(あかちゃいろ)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l055",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 055",
+  "stem_html": "<ruby>配管<rt>はいかん</rt></ruby>やダクトを<ruby>通<rt>とう</rt></ruby>すスリーブは、コンクリート（　　）に埋<ruby>め込<rt>うめこみ</rt></ruby>みます。",
+  "opts_html": [
+   "<ruby>打設<rt>だせつ</rt></ruby><ruby>前<rt>まえ</rt></ruby>",
+   "<ruby>打設<rt>だせつ</rt></ruby><ruby>直後<rt>ちょくご</rt></ruby>",
+   "<ruby>硬化<rt>こうか</rt></ruby><ruby>後<rt>のち</rt></ruby>",
+   "<ruby>解体<rt>かいたい</rt></ruby><ruby>後<rt>のち</rt></ruby>"
+  ],
+  "stem": "配管(はいかん)やダクトを通(とう)すスリーブは、コンクリート（　　）に埋め込(うめこみ)みます。",
+  "opts": [
+   "打設(だせつ)前(まえ)",
+   "打設(だせつ)直後(ちょくご)",
+   "硬化(こうか)後(のち)",
+   "解体(かいたい)後(のち)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l056",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 056",
+  "stem_html": "<ruby>給排水<rt>きゅうはいすい</rt></ruby><ruby>衛生設備<rt>えいせいせつび</rt></ruby>に<ruby>含<rt>ふく</rt></ruby>まれないものはどれですか。",
+  "opts_html": [
+   "<ruby>給湯<rt>きゅうとう</rt></ruby><ruby>設備<rt>せつび</rt></ruby>",
+   "<ruby>照明設備<rt>しょうめいせつび</rt></ruby>",
+   "ガス<ruby>設備<rt>せつび</rt></ruby>",
+   "<ruby>消火<rt>しょうか</rt></ruby><ruby>設備<rt>せつび</rt></ruby>"
+  ],
+  "stem": "給排水(きゅうはいすい)衛生設備(えいせいせつび)に含(ふく)まれないものはどれですか。",
+  "opts": [
+   "給湯(きゅうとう)設備(せつび)",
+   "照明設備(しょうめいせつび)",
+   "ガス設備(せつび)",
+   "消火(しょうか)設備(せつび)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l057",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 057",
+  "stem_html": "<ruby>主<rt>おも</rt></ruby>にリサイクルガラスを<ruby>高温<rt>こうおん</rt></ruby>で<ruby>溶<rt>と</rt></ruby>かし、<ruby>細<rt>こま</rt></ruby>い<ruby>繊維<rt>せんい</rt></ruby>にして<ruby>作<rt>つく</rt></ruby>る<ruby>保温<rt>ほおん</rt></ruby><ruby>材<rt>ざい</rt></ruby>はどれですか。",
+  "opts_html": [
+   "ロックウール<ruby>保温<rt>ほおん</rt></ruby><ruby>材<rt>ざい</rt></ruby>",
+   "シールテープ",
+   "グラスウール<ruby>保温<rt>ほおん</rt></ruby><ruby>材<rt>ざい</rt></ruby>",
+   "ポリスチレンフォーム<ruby>保温<rt>ほおん</rt></ruby><ruby>材<rt>ざい</rt></ruby>"
+  ],
+  "stem": "主(おも)にリサイクルガラスを高温(こうおん)で溶(と)かし、細(こま)い繊維(せんい)にして作(つく)る保温(ほおん)材(ざい)はどれですか。",
+  "opts": [
+   "ロックウール保温(ほおん)材(ざい)",
+   "シールテープ",
+   "グラスウール保温(ほおん)材(ざい)",
+   "ポリスチレンフォーム保温(ほおん)材(ざい)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l058",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 058",
+  "stem_html": "<ruby>屋外<rt>おくがい</rt></ruby><ruby>消火栓<rt>しょうかせん</rt></ruby><ruby>設備<rt>せつび</rt></ruby>は、テキストでは<ruby>建築物<rt>けんちくぶつ</rt></ruby>の（　　）<ruby>部分<rt>ぶぶん</rt></ruby>の<ruby>火災<rt>かさい</rt></ruby>を<ruby>消火<rt>しょうか</rt></ruby>することを<ruby>目的<rt>もくてき</rt></ruby>としています。",
+  "opts_html": [
+   "<ruby>屋上<rt>おくじょう</rt></ruby>のみ",
+   "1<ruby>階<rt>かい</rt></ruby>および2<ruby>階<rt>かい</rt></ruby>",
+   "<ruby>地下<rt>ちか</rt></ruby>1<ruby>階<rt>かい</rt></ruby>のみ",
+   "3<ruby>階<rt>かい</rt></ruby>および4<ruby>階<rt>かい</rt></ruby>"
+  ],
+  "stem": "屋外(おくがい)消火栓(しょうかせん)設備(せつび)は、テキストでは建築物(けんちくぶつ)の（　　）部分(ぶぶん)の火災(かさい)を消火(しょうか)することを目的(もくてき)としています。",
+  "opts": [
+   "屋上(おくじょう)のみ",
+   "1階(かい)および2階(かい)",
+   "地下(ちか)1階(かい)のみ",
+   "3階(かい)および4階(かい)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l059",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 059",
+  "stem_html": "<ruby>消火<rt>しょうか</rt></ruby><ruby>配管<rt>はいかん</rt></ruby>に取<ruby>り付<rt>とりつけ</rt></ruby>け、<ruby>火災<rt>かさい</rt></ruby><ruby>時<rt>とき</rt></ruby>に<ruby>天井<rt>てんじょう</rt></ruby>から<ruby>散水<rt>さんすい</rt></ruby>する<ruby>器具<rt>きぐ</rt></ruby>を<ruby>使<rt>つか</rt></ruby>う<ruby>設備<rt>せつび</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>加湿<rt>かしつ</rt></ruby><ruby>設備<rt>せつび</rt></ruby>",
+   "スプリンクラー<ruby>設備<rt>せつび</rt></ruby>",
+   "<ruby>屋外<rt>おくがい</rt></ruby><ruby>消火栓<rt>しょうかせん</rt></ruby><ruby>設備<rt>せつび</rt></ruby>",
+   "<ruby>給湯<rt>きゅうとう</rt></ruby><ruby>設備<rt>せつび</rt></ruby>"
+  ],
+  "stem": "消火(しょうか)配管(はいかん)に取り付(とりつけ)け、火災(かさい)時(とき)に天井(てんじょう)から散水(さんすい)する器具(きぐ)を使(つか)う設備(せつび)は何(なん)ですか。",
+  "opts": [
+   "加湿(かしつ)設備(せつび)",
+   "スプリンクラー設備(せつび)",
+   "屋外(おくがい)消火栓(しょうかせん)設備(せつび)",
+   "給湯(きゅうとう)設備(せつび)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l060",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 060",
+  "stem_html": "たがねを<ruby>用<rt>もち</rt></ruby>いる<ruby>作業<rt>さぎょう</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "ハンマーでたたいてコンクリートを<ruby>割<rt>わ</rt></ruby>る",
+   "<ruby>金属<rt>きんぞく</rt></ruby>ワイヤでやすりの目<ruby>詰ま<rt>めづまり</rt></ruby>りを<ruby>取<rt>と</rt></ruby>る",
+   "<ruby>回転<rt>かいてん</rt></ruby>させて<ruby>銅管<rt>どうかん</rt></ruby>のねじを<ruby>切<rt>き</rt></ruby>る",
+   "<ruby>電線<rt>でんせん</rt></ruby>を<ruby>挟<rt>はさ</rt></ruby>んで<ruby>電流<rt>でんりゅう</rt></ruby>を<ruby>測<rt>はか</rt></ruby>る"
+  ],
+  "stem": "たがねを用(もち)いる作業(さぎょう)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "ハンマーでたたいてコンクリートを割(わ)る",
+   "金属(きんぞく)ワイヤでやすりの目詰ま(めづまり)りを取(と)る",
+   "回転(かいてん)させて銅管(どうかん)のねじを切(き)る",
+   "電線(でんせん)を挟(はさ)んで電流(でんりゅう)を測(はか)る"
+  ],
+  "img": null
+ },
+ {
+  "id": "l061",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 061",
+  "stem_html": "ワイヤーブラシの<ruby>用途<rt>ようと</rt></ruby>に<ruby>含<rt>ふく</rt></ruby>まれないものはどれですか。",
+  "opts_html": [
+   "<ruby>金属<rt>きんぞく</rt></ruby>のさび<ruby>落<rt>お</rt></ruby>とし",
+   "<ruby>管<rt>かん</rt></ruby>のねじ<ruby>精度<rt>せいど</rt></ruby>の<ruby>検査<rt>けんさ</rt></ruby>",
+   "やすりの目<ruby>詰ま<rt>めづまり</rt></ruby>りの<ruby>除去<rt>じょきょ</rt></ruby>",
+   "<ruby>塗装<rt>とそう</rt></ruby>はがし"
+  ],
+  "stem": "ワイヤーブラシの用途(ようと)に含(ふく)まれないものはどれですか。",
+  "opts": [
+   "金属(きんぞく)のさび落(お)とし",
+   "管(かん)のねじ精度(せいど)の検査(けんさ)",
+   "やすりの目詰ま(めづまり)りの除去(じょきょ)",
+   "塗装(とそう)はがし"
+  ],
+  "img": null
+ },
+ {
+  "id": "l062",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 062",
+  "stem_html": "<ruby>台車<rt>だいしゃ</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>台<rt>だい</rt></ruby>に4つのキャスターを<ruby>付<rt>つ</rt></ruby>けたもの",
+   "<ruby>取<rt>と</rt></ruby>っ<ruby>手<rt>て</rt></ruby>が<ruby>付<rt>つ</rt></ruby>いたものと、<ruby>付<rt>つ</rt></ruby>かないものがある",
+   "ブレーキ<ruby>付<rt>つ</rt></ruby>きのものもある",
+   "キャスターを<ruby>使<rt>つか</rt></ruby>わず、<ruby>丸太<rt>まるた</rt></ruby>を<ruby>転<rt>ころ</rt></ruby>がして<ruby>物<rt>もの</rt></ruby>を<ruby>運<rt>はこ</rt></ruby>ぶ"
+  ],
+  "stem": "台車(だいしゃ)の説明(せつめい)として、誤(あやま)っているものを選(えら)びなさい。",
+  "opts": [
+   "台(だい)に4つのキャスターを付(つ)けたもの",
+   "取(と)っ手(て)が付(つ)いたものと、付(つ)かないものがある",
+   "ブレーキ付(つ)きのものもある",
+   "キャスターを使(つか)わず、丸太(まるた)を転(ころ)がして物(もの)を運(はこ)ぶ"
+  ],
+  "img": null
+ },
+ {
+  "id": "l063",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 063",
+  "stem_html": "てこや<ruby>滑車<rt>かっしゃ</rt></ruby>の<ruby>原理<rt>げんり</rt></ruby>を<ruby>応用<rt>おうよう</rt></ruby>し、<ruby>三脚<rt>さんきゃく</rt></ruby>などに取<ruby>り付<rt>とりつけ</rt></ruby>けて<ruby>重<rt>おも</rt></ruby>いものを上<ruby>げ下<rt>あげさげ</rt></ruby>げする<ruby>機械<rt>きかい</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "ターンバックル",
+   "シャックル",
+   "<ruby>台車<rt>だいしゃ</rt></ruby>",
+   "チェーンブロック"
+  ],
+  "stem": "てこや滑車(かっしゃ)の原理(げんり)を応用(おうよう)し、三脚(さんきゃく)などに取り付(とりつけ)けて重(おも)いものを上げ下(あげさげ)げする機械(きかい)は何(なん)ですか。",
+  "opts": [
+   "ターンバックル",
+   "シャックル",
+   "台車(だいしゃ)",
+   "チェーンブロック"
+  ],
+  "img": null
+ },
+ {
+  "id": "l064",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 064",
+  "stem_html": "<ruby>作業用<rt>さぎょうよう</rt></ruby>バスケットを<ruby>高<rt>たか</rt></ruby>さ（　　）<ruby>以上<rt>いじょう</rt></ruby>に<ruby>昇降<rt>しょうこう</rt></ruby>させる<ruby>装置<rt>そうち</rt></ruby>を<ruby>備<rt>そな</rt></ruby>えた<ruby>車両<rt>しゃりょう</rt></ruby>を、<ruby>高所<rt>こうしょ</rt></ruby><ruby>作業車<rt>さぎょうしゃ</rt></ruby>といいます。",
+  "opts_html": [
+   "6.75m",
+   "5m",
+   "2m",
+   "1m"
+  ],
+  "stem": "作業用(さぎょうよう)バスケットを高(たか)さ（　　）以上(いじょう)に昇降(しょうこう)させる装置(そうち)を備(そな)えた車両(しゃりょう)を、高所(こうしょ)作業車(さぎょうしゃ)といいます。",
+  "opts": [
+   "6.75m",
+   "5m",
+   "2m",
+   "1m"
+  ],
+  "img": null
+ },
+ {
+  "id": "l065",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 065",
+  "stem_html": "<ruby>建設<rt>けんせつ</rt></ruby><ruby>現場<rt>げんば</rt></ruby>で<ruby>全<rt>すべ</rt></ruby>ての<ruby>技能者<rt>ぎのうしゃ</rt></ruby>が<ruby>共通<rt>きょうつう</rt></ruby><ruby>事項<rt>じこう</rt></ruby>を<ruby>理解<rt>りかい</rt></ruby>して<ruby>作業<rt>さぎょう</rt></ruby>することは、（　　）につながります。",
+  "opts_html": [
+   "<ruby>施工<rt>せこう</rt></ruby><ruby>計画<rt>けいかく</rt></ruby>の<ruby>不要<rt>ふよう</rt></ruby><ruby>化<rt>か</rt></ruby>",
+   "<ruby>安全確認<rt>あんぜんかくにん</rt></ruby>の<ruby>省略<rt>しょうりゃく</rt></ruby>",
+   "<ruby>高<rt>たか</rt></ruby>い<ruby>品質<rt>ひんしつ</rt></ruby>と<ruby>安全<rt>あんぜん</rt></ruby>",
+   "<ruby>作業手順<rt>さぎょうてじゅん</rt></ruby>の<ruby>省略<rt>しょうりゃく</rt></ruby>"
+  ],
+  "stem": "建設(けんせつ)現場(げんば)で全(すべ)ての技能者(ぎのうしゃ)が共通(きょうつう)事項(じこう)を理解(りかい)して作業(さぎょう)することは、（　　）につながります。",
+  "opts": [
+   "施工(せこう)計画(けいかく)の不要(ふよう)化(か)",
+   "安全確認(あんぜんかくにん)の省略(しょうりゃく)",
+   "高(たか)い品質(ひんしつ)と安全(あんぜん)",
+   "作業手順(さぎょうてじゅん)の省略(しょうりゃく)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l066",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 066",
+  "stem_html": "<ruby>施工<rt>せこう</rt></ruby><ruby>手段<rt>しゅだん</rt></ruby>の5Mに<ruby>含<rt>ふく</rt></ruby>まれないものはどれですか。",
+  "opts_html": [
+   "Methods",
+   "Materials",
+   "Machinery",
+   "Marketing"
+  ],
+  "stem": "施工(せこう)手段(しゅだん)の5Mに含(ふく)まれないものはどれですか。",
+  "opts": [
+   "Methods",
+   "Materials",
+   "Machinery",
+   "Marketing"
+  ],
+  "img": null
+ },
+ {
+  "id": "l067",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 067",
+  "stem_html": "<ruby>施工<rt>せこう</rt></ruby><ruby>手段<rt>しゅだん</rt></ruby>の5Mの<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しい<ruby>組合<rt>くみあわ</rt></ruby>せを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "Money：<ruby>機械<rt>きかい</rt></ruby>／Men：<ruby>材料<rt>ざいりょう</rt></ruby>",
+   "Money：<ruby>方法<rt>ほうほう</rt></ruby>／Men：<ruby>資金<rt>しきん</rt></ruby>",
+   "Money：<ruby>資金<rt>しきん</rt></ruby>／Men：<ruby>人<rt>にん</rt></ruby>または<ruby>労力<rt>ろうりょく</rt></ruby>",
+   "Money：<ruby>材料<rt>ざいりょう</rt></ruby>／Men：<ruby>機械<rt>きかい</rt></ruby>"
+  ],
+  "stem": "施工(せこう)手段(しゅだん)の5Mの説明(せつめい)として、正(ただ)しい組合(くみあわ)せを選(えら)びなさい。",
+  "opts": [
+   "Money：機械(きかい)／Men：材料(ざいりょう)",
+   "Money：方法(ほうほう)／Men：資金(しきん)",
+   "Money：資金(しきん)／Men：人(にん)または労力(ろうりょく)",
+   "Money：材料(ざいりょう)／Men：機械(きかい)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l068",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 068",
+  "stem_html": "<ruby>発注者<rt>はっちゅうもの</rt></ruby>が<ruby>要求<rt>ようきゅう</rt></ruby>する<ruby>品質<rt>ひんしつ</rt></ruby>を<ruby>満<rt>み</rt></ruby>たすため、<ruby>品質<rt>ひんしつ</rt></ruby><ruby>検査<rt>けんさ</rt></ruby>や<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>試験<rt>しけん</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う<ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>環境保全<rt>かんきょうほぜん</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>品質<rt>ひんしつ</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>予算<rt>よさん</rt></ruby>の<ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>工程<rt>こうてい</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>"
+  ],
+  "stem": "発注者(はっちゅうもの)が要求(ようきゅう)する品質(ひんしつ)を満(み)たすため、品質(ひんしつ)検査(けんさ)や材料(ざいりょう)の試験(しけん)を行(おこな)う管(かん)理(り)はどれですか。",
+  "opts": [
+   "環境保全(かんきょうほぜん)管(かん)理(り)",
+   "品質(ひんしつ)管(かん)理(り)",
+   "予算(よさん)の管(かん)理(り)",
+   "工程(こうてい)管(かん)理(り)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l069",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 069",
+  "stem_html": "<ruby>材料<rt>ざいりょう</rt></ruby><ruby>費<rt>ひ</rt></ruby>・<ruby>労務費<rt>ろうむひ</rt></ruby>・<ruby>現場<rt>げんば</rt></ruby><ruby>経費<rt>けいひ</rt></ruby>などが<ruby>工事<rt>こうじ</rt></ruby><ruby>予算<rt>よさん</rt></ruby>を<ruby>超<rt>こ</rt></ruby>えないようにする<ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>を、（　　）といいます。",
+  "opts_html": [
+   "<ruby>安全<rt>あんぜん</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>予算<rt>よさん</rt></ruby>の<ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>品質<rt>ひんしつ</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>工程<rt>こうてい</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>"
+  ],
+  "stem": "材料(ざいりょう)費(ひ)・労務費(ろうむひ)・現場(げんば)経費(けいひ)などが工事(こうじ)予算(よさん)を超(こ)えないようにする管(かん)理(り)を、（　　）といいます。",
+  "opts": [
+   "安全(あんぜん)管(かん)理(り)",
+   "予算(よさん)の管(かん)理(り)",
+   "品質(ひんしつ)管(かん)理(り)",
+   "工程(こうてい)管(かん)理(り)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l070",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 070",
+  "stem_html": "<ruby>元請<rt>もとうけ</rt></ruby>や<ruby>他業<rt>たぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby>と<ruby>調整<rt>ちょうせい</rt></ruby>し、<ruby>施工<rt>せこう</rt></ruby>の<ruby>遅<rt>おく</rt></ruby>れを<ruby>防<rt>ふせ</rt></ruby>いで<ruby>工期<rt>こうき</rt></ruby><ruby>内<rt>ない</rt></ruby>の<ruby>完成<rt>かんせい</rt></ruby>を目<ruby>指<rt>めざす</rt></ruby>す<ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>予算<rt>よさん</rt></ruby>の<ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>品質<rt>ひんしつ</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>環境保全<rt>かんきょうほぜん</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>工程<rt>こうてい</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>"
+  ],
+  "stem": "元請(もとうけ)や他業(たぎょう)者(もの)と調整(ちょうせい)し、施工(せこう)の遅(おく)れを防(ふせ)いで工期(こうき)内(ない)の完成(かんせい)を目指(めざす)す管(かん)理(り)はどれですか。",
+  "opts": [
+   "予算(よさん)の管(かん)理(り)",
+   "品質(ひんしつ)管(かん)理(り)",
+   "環境保全(かんきょうほぜん)管(かん)理(り)",
+   "工程(こうてい)管(かん)理(り)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l071",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 071",
+  "stem_html": "<ruby>墜落<rt>ついらく</rt></ruby>・<ruby>落下<rt>らっか</rt></ruby>などの<ruby>事故<rt>じこ</rt></ruby>や、じん<ruby>肺<rt>はい</rt></ruby>・<ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>などの<ruby>疾病<rt>しっぺい</rt></ruby>を<ruby>防<rt>ふせ</rt></ruby>ぐ<ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>工程<rt>こうてい</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>安全<rt>あんぜん</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>品質<rt>ひんしつ</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>",
+   "<ruby>予算<rt>よさん</rt></ruby>の<ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>"
+  ],
+  "stem": "墜落(ついらく)・落下(らっか)などの事故(じこ)や、じん肺(はい)・熱中症(ねっちゅうしょう)などの疾病(しっぺい)を防(ふせ)ぐ管(かん)理(り)はどれですか。",
+  "opts": [
+   "工程(こうてい)管(かん)理(り)",
+   "安全(あんぜん)管(かん)理(り)",
+   "品質(ひんしつ)管(かん)理(り)",
+   "予算(よさん)の管(かん)理(り)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l072",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 072",
+  "stem_html": "<ruby>環境保全<rt>かんきょうほぜん</rt></ruby><ruby>管<rt>かん</rt></ruby><ruby>理<rt>り</rt></ruby>の<ruby>対象<rt>たいしょう</rt></ruby>として、<ruby>適切<rt>てきせつ</rt></ruby>なものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>工事<rt>こうじ</rt></ruby><ruby>目的物<rt>もくてきぶつ</rt></ruby>の<ruby>寸法<rt>すんぽう</rt></ruby>や<ruby>形状<rt>けいじょう</rt></ruby>",
+   "<ruby>他業<rt>たぎょう</rt></ruby><ruby>者<rt>もの</rt></ruby>との<ruby>作業<rt>さぎょう</rt></ruby><ruby>工程<rt>こうてい</rt></ruby>の<ruby>調整<rt>ちょうせい</rt></ruby>",
+   "<ruby>材料<rt>ざいりょう</rt></ruby><ruby>費<rt>ひ</rt></ruby>と<ruby>労務費<rt>ろうむひ</rt></ruby>の<ruby>予算<rt>よさん</rt></ruby><ruby>超過<rt>ちょうか</rt></ruby>",
+   "<ruby>工事<rt>こうじ</rt></ruby>による<ruby>騒音<rt>そうおん</rt></ruby>・<ruby>振動<rt>しんどう</rt></ruby>・<ruby>水質<rt>すいしつ</rt></ruby><ruby>汚濁<rt>おだく</rt></ruby>"
+  ],
+  "stem": "環境保全(かんきょうほぜん)管(かん)理(り)の対象(たいしょう)として、適切(てきせつ)なものを選(えら)びなさい。",
+  "opts": [
+   "工事(こうじ)目的物(もくてきぶつ)の寸法(すんぽう)や形状(けいじょう)",
+   "他業(たぎょう)者(もの)との作業(さぎょう)工程(こうてい)の調整(ちょうせい)",
+   "材料(ざいりょう)費(ひ)と労務費(ろうむひ)の予算(よさん)超過(ちょうか)",
+   "工事(こうじ)による騒音(そうおん)・振動(しんどう)・水質(すいしつ)汚濁(おだく)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l073",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 073",
+  "stem_html": "<ruby>鋼管<rt>こうかん</rt></ruby>の<ruby>切断<rt>せつだん</rt></ruby>について、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>管<rt>かん</rt></ruby>を<ruby>固定<rt>こてい</rt></ruby>せずに<ruby>切断<rt>せつだん</rt></ruby>する",
+   "ねじ<ruby>込<rt>こ</rt></ruby>みやすくするため、<ruby>管軸<rt>かんじく</rt></ruby>に<ruby>斜<rt>なな</rt></ruby>めに<ruby>切断<rt>せつだん</rt></ruby>する",
+   "<ruby>段<rt>だん</rt></ruby><ruby>切<rt>き</rt></ruby>れを<ruby>作<rt>つく</rt></ruby>って、ねじのかかりをよくする",
+   "<ruby>鋼管<rt>こうかん</rt></ruby>を<ruby>水平<rt>すいへい</rt></ruby>に<ruby>固定<rt>こてい</rt></ruby>し、<ruby>管軸<rt>かんじく</rt></ruby>に<ruby>直角<rt>ちょっかく</rt></ruby>に<ruby>切断<rt>せつだん</rt></ruby>する"
+  ],
+  "stem": "鋼管(こうかん)の切断(せつだん)について、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "管(かん)を固定(こてい)せずに切断(せつだん)する",
+   "ねじ込(こ)みやすくするため、管軸(かんじく)に斜(なな)めに切断(せつだん)する",
+   "段(だん)切(き)れを作(つく)って、ねじのかかりをよくする",
+   "鋼管(こうかん)を水平(すいへい)に固定(こてい)し、管軸(かんじく)に直角(ちょっかく)に切断(せつだん)する"
+  ],
+  "img": null
+ },
+ {
+  "id": "l074",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 074",
+  "stem_html": "ね<ruby>じ切<rt>ねじきり</rt></ruby>り<ruby>機<rt>き</rt></ruby>によるねじ<ruby>加工<rt>かこう</rt></ruby>で、してはいけない<ruby>作業<rt>さぎょう</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>適切<rt>てきせつ</rt></ruby>なダイヘッドを取<ruby>り付<rt>とりつけ</rt></ruby>ける",
+   "<ruby>軍手<rt>ぐんて</rt></ruby>を<ruby>着<rt>つ</rt></ruby>けたまま<ruby>作業<rt>さぎょう</rt></ruby>する",
+   "<ruby>加工<rt>かこう</rt></ruby><ruby>後<rt>のち</rt></ruby>にねじゲージで<ruby>検査<rt>けんさ</rt></ruby>する",
+   "<ruby>切断<rt>せつだん</rt></ruby><ruby>後<rt>のち</rt></ruby>の<ruby>管<rt>かん</rt></ruby>にねじ<ruby>加工<rt>かこう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う"
+  ],
+  "stem": "ねじ切(ねじきり)り機(き)によるねじ加工(かこう)で、してはいけない作業(さぎょう)はどれですか。",
+  "opts": [
+   "適切(てきせつ)なダイヘッドを取り付(とりつけ)ける",
+   "軍手(ぐんて)を着(つ)けたまま作業(さぎょう)する",
+   "加工(かこう)後(のち)にねじゲージで検査(けんさ)する",
+   "切断(せつだん)後(のち)の管(かん)にねじ加工(かこう)を行(おこな)う"
+  ],
+  "img": null
+ },
+ {
+  "id": "l075",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 075",
+  "stem_html": "<ruby>鋼管<rt>こうかん</rt></ruby>をねじ<ruby>込<rt>こ</rt></ruby>む<ruby>前<rt>まえ</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>について、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>切粉<rt>きりこ</rt></ruby>や<ruby>油分<rt>あぶらぶん</rt></ruby>を<ruby>残<rt>のこ</rt></ruby>したままねじ<ruby>込<rt>こ</rt></ruby>む",
+   "<ruby>切粉<rt>きりこ</rt></ruby>・<ruby>土砂<rt>どしゃ</rt></ruby>・ゴミを<ruby>除去<rt>じょきょ</rt></ruby>する",
+   "ねじ<ruby>接合<rt>せつごう</rt></ruby><ruby>部<rt>ぶ</rt></ruby>を<ruby>清掃<rt>せいそう</rt></ruby>する",
+   "ねじ<ruby>接合<rt>せつごう</rt></ruby><ruby>部<rt>ぶ</rt></ruby>を<ruby>脱脂<rt>だっし</rt></ruby>する"
+  ],
+  "stem": "鋼管(こうかん)をねじ込(こ)む前(まえ)の準備(じゅんび)について、誤(あやま)っているものを選(えら)びなさい。",
+  "opts": [
+   "切粉(きりこ)や油分(あぶらぶん)を残(のこ)したままねじ込(こ)む",
+   "切粉(きりこ)・土砂(どしゃ)・ゴミを除去(じょきょ)する",
+   "ねじ接合(せつごう)部(ぶ)を清掃(せいそう)する",
+   "ねじ接合(せつごう)部(ぶ)を脱脂(だっし)する"
+  ],
+  "img": null
+ },
+ {
+  "id": "l076",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 076",
+  "stem_html": "メカニカル<ruby>接合<rt>せつごう</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby>で<ruby>使用<rt>しよう</rt></ruby>する<ruby>継手<rt>つぎて</rt></ruby>はどれですか。",
+  "opts_html": [
+   "ろう<ruby>付<rt>つ</rt></ruby>け<ruby>用<rt>よう</rt></ruby>の<ruby>継手<rt>つぎて</rt></ruby>",
+   "ハウジング<ruby>継手<rt>つぎて</rt></ruby>",
+   "ねじ<ruby>込<rt>こ</rt></ruby>み<ruby>式<rt>しき</rt></ruby>の<ruby>継手<rt>つぎて</rt></ruby>",
+   "<ruby>接着接合<rt>せっちゃくせつごう</rt></ruby><ruby>用<rt>よう</rt></ruby>の<ruby>継手<rt>つぎて</rt></ruby>"
+  ],
+  "stem": "メカニカル接合(せつごう)方法(ほうほう)で使用(しよう)する継手(つぎて)はどれですか。",
+  "opts": [
+   "ろう付(つ)け用(よう)の継手(つぎて)",
+   "ハウジング継手(つぎて)",
+   "ねじ込(こ)み式(しき)の継手(つぎて)",
+   "接着接合(せっちゃくせつごう)用(よう)の継手(つぎて)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l077",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 077",
+  "stem_html": "<ruby>冷媒<rt>れいばい</rt></ruby><ruby>用<rt>よう</rt></ruby><ruby>銅管<rt>どうかん</rt></ruby>の<ruby>切断<rt>せつだん</rt></ruby>について、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>管<rt>かん</rt></ruby>をつぶしてからグラインダーで<ruby>切断<rt>せつだん</rt></ruby>する",
+   "<ruby>切粉<rt>きりこ</rt></ruby>が<ruby>残<rt>のこ</rt></ruby>らないように<ruby>金<rt>きん</rt></ruby>ノコで<ruby>切断<rt>せつだん</rt></ruby>する",
+   "パイプカッターをゆっくり<ruby>締<rt>し</rt></ruby>め<ruby>込<rt>こ</rt></ruby>みながら<ruby>回転<rt>かいてん</rt></ruby>させる",
+   "<ruby>管<rt>かん</rt></ruby>に<ruby>対<rt>たい</rt></ruby>して<ruby>斜<rt>なな</rt></ruby>めにパイプカッターを<ruby>当<rt>あ</rt></ruby>てる"
+  ],
+  "stem": "冷媒(れいばい)用(よう)銅管(どうかん)の切断(せつだん)について、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "管(かん)をつぶしてからグラインダーで切断(せつだん)する",
+   "切粉(きりこ)が残(のこ)らないように金(きん)ノコで切断(せつだん)する",
+   "パイプカッターをゆっくり締(し)め込(こ)みながら回転(かいてん)させる",
+   "管(かん)に対(たい)して斜(なな)めにパイプカッターを当(あ)てる"
+  ],
+  "img": null
+ },
+ {
+  "id": "l078",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 078",
+  "stem_html": "パイプカッターで<ruby>切断<rt>せつだん</rt></ruby>した<ruby>銅管<rt>どうかん</rt></ruby>の<ruby>内面<rt>ないめん</rt></ruby>に<ruby>出<rt>で</rt></ruby>る「まくり」を取<ruby>り除<rt>とりのぞく</rt></ruby>く<ruby>工具<rt>こうぐ</rt></ruby>はどれですか。",
+  "opts_html": [
+   "ねじゲージ",
+   "リーマ・スクレーパ",
+   "パイプ<ruby>万力<rt>まんりき</rt></ruby>",
+   "チューブベンダー"
+  ],
+  "stem": "パイプカッターで切断(せつだん)した銅管(どうかん)の内面(ないめん)に出(で)る「まくり」を取り除(とりのぞく)く工具(こうぐ)はどれですか。",
+  "opts": [
+   "ねじゲージ",
+   "リーマ・スクレーパ",
+   "パイプ万力(まんりき)",
+   "チューブベンダー"
+  ],
+  "img": null
+ },
+ {
+  "id": "l079",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 079",
+  "stem_html": "<ruby>銅管<rt>どうかん</rt></ruby>のバリ<ruby>取<rt>と</rt></ruby>りで、<ruby>削<rt>けず</rt></ruby>り<ruby>粉<rt>こな</rt></ruby>を<ruby>管内<rt>かんない</rt></ruby>に<ruby>入<rt>い</rt></ruby>れないためには、<ruby>管<rt>かん</rt></ruby>を（　　）にします。",
+  "opts_html": [
+   "<ruby>下向<rt>したむ</rt></ruby>き",
+   "<ruby>上向<rt>うわむ</rt></ruby>き",
+   "<ruby>水中<rt>すいちゅう</rt></ruby>",
+   "<ruby>必<rt>かなら</rt></ruby>ず<ruby>水平<rt>すいへい</rt></ruby>"
+  ],
+  "stem": "銅管(どうかん)のバリ取(と)りで、削(けず)り粉(こな)を管内(かんない)に入(い)れないためには、管(かん)を（　　）にします。",
+  "opts": [
+   "下向(したむ)き",
+   "上向(うわむ)き",
+   "水中(すいちゅう)",
+   "必(かなら)ず水平(すいへい)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l080",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 080",
+  "stem_html": "<ruby>地下<rt>ちか</rt></ruby><ruby>埋設物<rt>まいせつぶつ</rt></ruby><ruby>表示<rt>ひょうじ</rt></ruby>シートで、<ruby>通信<rt>つうしん</rt></ruby>ケーブルの<ruby>表示色<rt>ひょうじしょく</rt></ruby>は（　　）です。",
+  "opts_html": [
+   "<ruby>青<rt>あお</rt></ruby>",
+   "<ruby>茶<rt>ちゃ</rt></ruby>",
+   "<ruby>橙<rt>だいだい</rt></ruby>",
+   "<ruby>赤<rt>あか</rt></ruby>"
+  ],
+  "stem": "地下(ちか)埋設物(まいせつぶつ)表示(ひょうじ)シートで、通信(つうしん)ケーブルの表示色(ひょうじしょく)は（　　）です。",
+  "opts": [
+   "青(あお)",
+   "茶(ちゃ)",
+   "橙(だいだい)",
+   "赤(あか)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l081",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 081",
+  "stem_html": "<ruby>地下<rt>ちか</rt></ruby><ruby>埋設物<rt>まいせつぶつ</rt></ruby><ruby>表示<rt>ひょうじ</rt></ruby>シートの<ruby>種類<rt>しゅるい</rt></ruby>と<ruby>表示色<rt>ひょうじしょく</rt></ruby>の<ruby>組合<rt>くみあわ</rt></ruby>せで、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>水道<rt>すいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>茶<rt>ちゃ</rt></ruby>",
+   "<ruby>高圧<rt>こうあつ</rt></ruby>・<ruby>低圧電力<rt>ていあつでんりょく</rt></ruby>：<ruby>赤<rt>あか</rt></ruby>",
+   "<ruby>高圧<rt>こうあつ</rt></ruby>・<ruby>低圧電力<rt>ていあつでんりょく</rt></ruby>：<ruby>橙<rt>だいだい</rt></ruby>",
+   "<ruby>下水道<rt>げすいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>青<rt>あお</rt></ruby>"
+  ],
+  "stem": "地下(ちか)埋設物(まいせつぶつ)表示(ひょうじ)シートの種類(しゅるい)と表示色(ひょうじしょく)の組合(くみあわ)せで、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "水道(すいどう)管(かん)：茶(ちゃ)",
+   "高圧(こうあつ)・低圧電力(ていあつでんりょく)：赤(あか)",
+   "高圧(こうあつ)・低圧電力(ていあつでんりょく)：橙(だいだい)",
+   "下水道(げすいどう)管(かん)：青(あお)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l082",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 082",
+  "stem_html": "<ruby>水道<rt>すいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>と<ruby>下水道<rt>げすいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>の<ruby>表示<rt>ひょうじ</rt></ruby>シートの<ruby>色<rt>いろ</rt></ruby>の<ruby>組合<rt>くみあわ</rt></ruby>せで、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>水道<rt>すいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>茶<rt>ちゃ</rt></ruby>／<ruby>下水道<rt>げすいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>青<rt>あお</rt></ruby>",
+   "<ruby>水道<rt>すいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>青<rt>あお</rt></ruby>／<ruby>下水道<rt>げすいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>茶<rt>ちゃ</rt></ruby>",
+   "<ruby>水道<rt>すいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>緑<rt>みどり</rt></ruby>／<ruby>下水道<rt>げすいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>赤<rt>あか</rt></ruby>",
+   "<ruby>水道<rt>すいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>赤<rt>あか</rt></ruby>／<ruby>下水道<rt>げすいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>：<ruby>橙<rt>だいだい</rt></ruby>"
+  ],
+  "stem": "水道(すいどう)管(かん)と下水道(げすいどう)管(かん)の表示(ひょうじ)シートの色(いろ)の組合(くみあわ)せで、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "水道(すいどう)管(かん)：茶(ちゃ)／下水道(げすいどう)管(かん)：青(あお)",
+   "水道(すいどう)管(かん)：青(あお)／下水道(げすいどう)管(かん)：茶(ちゃ)",
+   "水道(すいどう)管(かん)：緑(みどり)／下水道(げすいどう)管(かん)：赤(あか)",
+   "水道(すいどう)管(かん)：赤(あか)／下水道(げすいどう)管(かん)：橙(だいだい)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l083",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 083",
+  "stem_html": "<ruby>地下<rt>ちか</rt></ruby><ruby>埋設物<rt>まいせつぶつ</rt></ruby><ruby>表示<rt>ひょうじ</rt></ruby>シートの<ruby>表示色<rt>ひょうじしょく</rt></ruby>について、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>電力<rt>でんりょく</rt></ruby>は<ruby>橙<rt>だいだい</rt></ruby>である",
+   "<ruby>通信<rt>つうしん</rt></ruby>ケーブルは<ruby>赤<rt>あか</rt></ruby>である",
+   "<ruby>下水道<rt>げすいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>は<ruby>青<rt>あお</rt></ruby>である",
+   "ガス<ruby>管<rt>かん</rt></ruby>は<ruby>緑<rt>みどり</rt></ruby>である"
+  ],
+  "stem": "地下(ちか)埋設物(まいせつぶつ)表示(ひょうじ)シートの表示色(ひょうじしょく)について、誤(あやま)っているものを選(えら)びなさい。",
+  "opts": [
+   "電力(でんりょく)は橙(だいだい)である",
+   "通信(つうしん)ケーブルは赤(あか)である",
+   "下水道(げすいどう)管(かん)は青(あお)である",
+   "ガス管(かん)は緑(みどり)である"
+  ],
+  "img": null
+ },
+ {
+  "id": "l084",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 084",
+  "stem_html": "<ruby>地下<rt>ちか</rt></ruby><ruby>埋設物<rt>まいせつぶつ</rt></ruby><ruby>表示<rt>ひょうじ</rt></ruby>シートで、<ruby>緑色<rt>りょくしょく</rt></ruby>が<ruby>示<rt>しめ</rt></ruby>す<ruby>埋設<rt>まいせつ</rt></ruby><ruby>設備<rt>せつび</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>通信<rt>つうしん</rt></ruby>ケーブル",
+   "<ruby>水道<rt>すいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>",
+   "<ruby>下水道<rt>げすいどう</rt></ruby><ruby>管<rt>かん</rt></ruby>",
+   "ガス<ruby>管<rt>かん</rt></ruby>"
+  ],
+  "stem": "地下(ちか)埋設物(まいせつぶつ)表示(ひょうじ)シートで、緑色(りょくしょく)が示(しめ)す埋設(まいせつ)設備(せつび)はどれですか。",
+  "opts": [
+   "通信(つうしん)ケーブル",
+   "水道(すいどう)管(かん)",
+   "下水道(げすいどう)管(かん)",
+   "ガス管(かん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l085",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 085",
+  "stem_html": "マンホール<ruby>内<rt>ない</rt></ruby>では、<ruby>酸素<rt>さんそ</rt></ruby><ruby>濃度<rt>のうど</rt></ruby>を（　　）に<ruby>保<rt>たも</rt></ruby>つよう<ruby>換気<rt>かんき</rt></ruby>します。",
+  "opts_html": [
+   "18%<ruby>以上<rt>いじょう</rt></ruby>",
+   "10%<ruby>以上<rt>いじょう</rt></ruby>",
+   "10%<ruby>以下<rt>いか</rt></ruby>",
+   "18%<ruby>以下<rt>いか</rt></ruby>"
+  ],
+  "stem": "マンホール内(ない)では、酸素(さんそ)濃度(のうど)を（　　）に保(たも)つよう換気(かんき)します。",
+  "opts": [
+   "18%以上(いじょう)",
+   "10%以上(いじょう)",
+   "10%以下(いか)",
+   "18%以下(いか)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l086",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 086",
+  "stem_html": "マンホール<ruby>内<rt>ない</rt></ruby>では、<ruby>硫化水素<rt>りゅうかすいそ</rt></ruby><ruby>濃度<rt>のうど</rt></ruby>を（　　）にするよう<ruby>換気<rt>かんき</rt></ruby>します。",
+  "opts_html": [
+   "10ppm<ruby>以下<rt>いか</rt></ruby>",
+   "18%<ruby>以上<rt>いじょう</rt></ruby>",
+   "10ppm<ruby>以上<rt>いじょう</rt></ruby>",
+   "18%<ruby>以下<rt>いか</rt></ruby>"
+  ],
+  "stem": "マンホール内(ない)では、硫化水素(りゅうかすいそ)濃度(のうど)を（　　）にするよう換気(かんき)します。",
+  "opts": [
+   "10ppm以下(いか)",
+   "18%以上(いじょう)",
+   "10ppm以上(いじょう)",
+   "18%以下(いか)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l087",
+  "cat": "l_dougu",
+  "src": "ライフライン練習 087",
+  "stem_html": "<ruby>板金<rt>ばんきん</rt></ruby>の<ruby>加工<rt>かこう</rt></ruby>に<ruby>基本的<rt>きほんてき</rt></ruby>に<ruby>必要<rt>ひつよう</rt></ruby>な<ruby>作業<rt>さぎょう</rt></ruby>に<ruby>含<rt>ふく</rt></ruby>まれないものはどれですか。",
+  "opts_html": [
+   "<ruby>曲<rt>ま</rt></ruby>げ",
+   "ケガキ",
+   "<ruby>切断<rt>せつだん</rt></ruby>",
+   "<ruby>検相<rt>けんそう</rt></ruby>"
+  ],
+  "stem": "板金(ばんきん)の加工(かこう)に基本的(きほんてき)に必要(ひつよう)な作業(さぎょう)に含(ふく)まれないものはどれですか。",
+  "opts": [
+   "曲(ま)げ",
+   "ケガキ",
+   "切断(せつだん)",
+   "検相(けんそう)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l088",
+  "cat": "l_denki",
+  "src": "ライフライン練習 088",
+  "stem_html": "2<ruby>本<rt>ほん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>電線<rt>でんせん</rt></ruby>が<ruby>負<rt>ふ</rt></ruby><ruby>荷<rt>に</rt></ruby>を<ruby>通<rt>とう</rt></ruby>らずに<ruby>接触<rt>せっしょく</rt></ruby>することを、（　　）といいます。",
+  "opts_html": [
+   "<ruby>漏電<rt>ろうでん</rt></ruby>",
+   "<ruby>接地<rt>せっち</rt></ruby>",
+   "<ruby>地絡<rt>ちらく</rt></ruby>",
+   "<ruby>短絡<rt>たんらく</rt></ruby>"
+  ],
+  "stem": "2本(ほん)以上(いじょう)の電線(でんせん)が負(ふ)荷(に)を通(とう)らずに接触(せっしょく)することを、（　　）といいます。",
+  "opts": [
+   "漏電(ろうでん)",
+   "接地(せっち)",
+   "地絡(ちらく)",
+   "短絡(たんらく)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l089",
+  "cat": "l_denki",
+  "src": "ライフライン練習 089",
+  "stem_html": "<ruby>地絡<rt>ちらく</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>電路<rt>でんろ</rt></ruby>に<ruby>電流<rt>でんりゅう</rt></ruby>が<ruby>流<rt>なが</rt></ruby>れていないこと",
+   "<ruby>負<rt>ふ</rt></ruby><ruby>荷<rt>に</rt></ruby>を<ruby>通<rt>とう</rt></ruby>らずに<ruby>電線<rt>でんせん</rt></ruby>どうしが<ruby>接触<rt>せっしょく</rt></ruby>すること",
+   "光ファイバーから<ruby>光<rt>ひかり</rt></ruby>が<ruby>漏<rt>も</rt></ruby>れること",
+   "<ruby>大地<rt>だいち</rt></ruby>に<ruby>電流<rt>でんりゅう</rt></ruby>が<ruby>流<rt>なが</rt></ruby>れてしまうこと"
+  ],
+  "stem": "地絡(ちらく)の説明(せつめい)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "電路(でんろ)に電流(でんりゅう)が流(なが)れていないこと",
+   "負(ふ)荷(に)を通(とう)らずに電線(でんせん)どうしが接触(せっしょく)すること",
+   "光ファイバーから光(ひかり)が漏(も)れること",
+   "大地(だいち)に電流(でんりゅう)が流(なが)れてしまうこと"
+  ],
+  "img": null
+ },
+ {
+  "id": "l090",
+  "cat": "l_denki",
+  "src": "ライフライン練習 090",
+  "stem_html": "<ruby>本来<rt>ほんらい</rt></ruby>の<ruby>回路<rt>かいろ</rt></ruby>に<ruby>電流<rt>でんりゅう</rt></ruby>が<ruby>流<rt>なが</rt></ruby>れながら、<ruby>流<rt>なが</rt></ruby>れるべきでないところにも<ruby>電流<rt>でんりゅう</rt></ruby>が<ruby>流<rt>なが</rt></ruby>れることを<ruby>何<rt>なん</rt></ruby>といいますか。",
+  "opts_html": [
+   "<ruby>整流<rt>せいりゅう</rt></ruby>",
+   "<ruby>絶縁<rt>ぜつえん</rt></ruby>",
+   "<ruby>漏電<rt>ろうでん</rt></ruby>",
+   "<ruby>停電<rt>ていでん</rt></ruby>"
+  ],
+  "stem": "本来(ほんらい)の回路(かいろ)に電流(でんりゅう)が流(なが)れながら、流(なが)れるべきでないところにも電流(でんりゅう)が流(なが)れることを何(なん)といいますか。",
+  "opts": [
+   "整流(せいりゅう)",
+   "絶縁(ぜつえん)",
+   "漏電(ろうでん)",
+   "停電(ていでん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l091",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 091",
+  "stem_html": "<ruby>道路上<rt>どうろじょう</rt></ruby>で<ruby>作業<rt>さぎょう</rt></ruby>するとき、<ruby>作業<rt>さぎょう</rt></ruby><ruby>責任者<rt>せきにんしゃ</rt></ruby>が<ruby>携行<rt>けいこう</rt></ruby>するものはどれですか。",
+  "opts_html": [
+   "<ruby>施工<rt>せこう</rt></ruby><ruby>写真<rt>しゃしん</rt></ruby>の<ruby>記録<rt>きろく</rt></ruby><ruby>簿<rt>ぼ</rt></ruby>",
+   "<ruby>工具<rt>こうぐ</rt></ruby>の<ruby>取扱説明書<rt>とりあつかいせつめいしょ</rt></ruby>",
+   "<ruby>道路<rt>どうろ</rt></ruby><ruby>使用許可<rt>しようきょか</rt></ruby><ruby>証<rt>しょう</rt></ruby>",
+   "<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>品質<rt>ひんしつ</rt></ruby><ruby>試験<rt>しけん</rt></ruby><ruby>成績<rt>せいせき</rt></ruby><ruby>書<rt>かき</rt></ruby>"
+  ],
+  "stem": "道路上(どうろじょう)で作業(さぎょう)するとき、作業(さぎょう)責任者(せきにんしゃ)が携行(けいこう)するものはどれですか。",
+  "opts": [
+   "施工(せこう)写真(しゃしん)の記録(きろく)簿(ぼ)",
+   "工具(こうぐ)の取扱説明書(とりあつかいせつめいしょ)",
+   "道路(どうろ)使用許可(しようきょか)証(しょう)",
+   "材料(ざいりょう)の品質(ひんしつ)試験(しけん)成績(せいせき)書(かき)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l092",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 092",
+  "stem_html": "<ruby>管路<rt>かんろ</rt></ruby>の「<ruby>土被<rt>どかぶ</rt></ruby>り」の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>管路<rt>かんろ</rt></ruby>の<ruby>上端<rt>じょうたん</rt></ruby>から<ruby>下端<rt>かたん</rt></ruby>までの<ruby>距離<rt>きょり</rt></ruby>",
+   "<ruby>隣<rt>とな</rt></ruby>り<ruby>合<rt>あ</rt></ruby>うマンホールの<ruby>中心<rt>ちゅうしん</rt></ruby><ruby>間<rt>ま</rt></ruby>の<ruby>距離<rt>きょり</rt></ruby>",
+   "<ruby>道路<rt>どうろ</rt></ruby><ruby>表面<rt>ひょうめん</rt></ruby>から<ruby>管路<rt>かんろ</rt></ruby>の<ruby>上端<rt>じょうたん</rt></ruby>までの<ruby>距離<rt>きょり</rt></ruby>",
+   "<ruby>道路<rt>どうろ</rt></ruby><ruby>表面<rt>ひょうめん</rt></ruby>から<ruby>管路<rt>かんろ</rt></ruby>の<ruby>下端<rt>かたん</rt></ruby>までの<ruby>距離<rt>きょり</rt></ruby>"
+  ],
+  "stem": "管路(かんろ)の「土被(どかぶ)り」の説明(せつめい)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "管路(かんろ)の上端(じょうたん)から下端(かたん)までの距離(きょり)",
+   "隣(とな)り合(あ)うマンホールの中心(ちゅうしん)間(ま)の距離(きょり)",
+   "道路(どうろ)表面(ひょうめん)から管路(かんろ)の上端(じょうたん)までの距離(きょり)",
+   "道路(どうろ)表面(ひょうめん)から管路(かんろ)の下端(かたん)までの距離(きょり)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l093",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 093",
+  "stem_html": "<ruby>地下<rt>ちか</rt></ruby><ruby>管路<rt>かんろ</rt></ruby>に<ruby>勾配<rt>こうばい</rt></ruby>を<ruby>設定<rt>せってい</rt></ruby>する<ruby>目的<rt>もくてき</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>管路<rt>かんろ</rt></ruby>と<ruby>他<rt>ほか</rt></ruby>の<ruby>埋設物<rt>まいせつぶつ</rt></ruby>を<ruby>接触<rt>せっしょく</rt></ruby>させる",
+   "マンホールを<ruby>設<rt>もう</rt></ruby>けずに<ruby>済<rt>す</rt></ruby>むようにする",
+   "<ruby>管路<rt>かんろ</rt></ruby>の<ruby>土被<rt>どかぶ</rt></ruby>りをなくす",
+   "<ruby>水<rt>みず</rt></ruby>や<ruby>土砂<rt>どしゃ</rt></ruby>が<ruby>停滞<rt>ていたい</rt></ruby>せずに<ruby>流<rt>なが</rt></ruby>れるようにする"
+  ],
+  "stem": "地下(ちか)管路(かんろ)に勾配(こうばい)を設定(せってい)する目的(もくてき)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "管路(かんろ)と他(ほか)の埋設物(まいせつぶつ)を接触(せっしょく)させる",
+   "マンホールを設(もう)けずに済(す)むようにする",
+   "管路(かんろ)の土被(どかぶ)りをなくす",
+   "水(みず)や土砂(どしゃ)が停滞(ていたい)せずに流(なが)れるようにする"
+  ],
+  "img": null
+ },
+ {
+  "id": "l094",
+  "cat": "l_chikuro",
+  "src": "ライフライン練習 094",
+  "stem_html": "<ruby>焼却炉<rt>しょうきゃくろ</rt></ruby>や<ruby>溶解<rt>ようかい</rt></ruby><ruby>炉<rt>ろ</rt></ruby>などの<ruby>高温<rt>こうおん</rt></ruby>になる<ruby>内側<rt>うちがわ</rt></ruby>を、<ruby>耐火<rt>たいか</rt></ruby><ruby>物<rt>もの</rt></ruby>で<ruby>構築<rt>こうちく</rt></ruby>する<ruby>工事<rt>こうじ</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>建築<rt>けんちく</rt></ruby><ruby>板金<rt>ばんきん</rt></ruby><ruby>工事<rt>こうじ</rt></ruby>",
+   "<ruby>給排水<rt>きゅうはいすい</rt></ruby><ruby>衛生設備<rt>えいせいせつび</rt></ruby><ruby>工事<rt>こうじ</rt></ruby>",
+   "<ruby>築炉<rt>ちくろ</rt></ruby><ruby>工事<rt>こうじ</rt></ruby>",
+   "<ruby>保温<rt>ほおん</rt></ruby><ruby>保冷<rt>ほれい</rt></ruby><ruby>工事<rt>こうじ</rt></ruby>"
+  ],
+  "stem": "焼却炉(しょうきゃくろ)や溶解(ようかい)炉(ろ)などの高温(こうおん)になる内側(うちがわ)を、耐火(たいか)物(もの)で構築(こうちく)する工事(こうじ)は何(なん)ですか。",
+  "opts": [
+   "建築(けんちく)板金(ばんきん)工事(こうじ)",
+   "給排水(きゅうはいすい)衛生設備(えいせいせつび)工事(こうじ)",
+   "築炉(ちくろ)工事(こうじ)",
+   "保温(ほおん)保冷(ほれい)工事(こうじ)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l095",
+  "cat": "l_chikuro",
+  "src": "ライフライン練習 095",
+  "stem_html": "<ruby>築炉<rt>ちくろ</rt></ruby>の<ruby>煉瓦<rt>れんが</rt></ruby><ruby>積<rt>つ</rt></ruby>みで、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>材料<rt>ざいりょう</rt></ruby>を<ruby>正<rt>ただ</rt></ruby>しく<ruby>使用<rt>しよう</rt></ruby>する",
+   "<ruby>水平<rt>すいへい</rt></ruby>・<ruby>垂直<rt>すいちょく</rt></ruby>を<ruby>基準<rt>きじゅん</rt></ruby>とする",
+   "<ruby>寸法<rt>すんぽう</rt></ruby>を<ruby>正確<rt>せいかく</rt></ruby>にする",
+   "<ruby>長<rt>なが</rt></ruby>さを1/4以<ruby>下<rt>いかに</rt></ruby>に<ruby>割<rt>さ</rt></ruby>った<ruby>小<rt>ちい</rt></ruby>さな<ruby>煉瓦<rt>れんが</rt></ruby>を<ruby>使用<rt>しよう</rt></ruby>する"
+  ],
+  "stem": "築炉(ちくろ)の煉瓦(れんが)積(つ)みで、誤(あやま)っているものを選(えら)びなさい。",
+  "opts": [
+   "材料(ざいりょう)を正(ただ)しく使用(しよう)する",
+   "水平(すいへい)・垂直(すいちょく)を基準(きじゅん)とする",
+   "寸法(すんぽう)を正確(せいかく)にする",
+   "長(なが)さを1/4以下(いかに)に割(さ)った小(ちい)さな煉瓦(れんが)を使用(しよう)する"
+  ],
+  "img": null
+ },
+ {
+  "id": "l096",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 096",
+  "stem_html": "<ruby>高所<rt>こうしょ</rt></ruby>で<ruby>使用中<rt>しようちゅう</rt></ruby>の<ruby>移動用<rt>いどうよう</rt></ruby>ロープを<ruby>外<rt>はず</rt></ruby>し、<ruby>次<rt>つぎ</rt></ruby>のロープにかけ<ruby>替<rt>か</rt></ruby>えるときに<ruby>起<rt>お</rt></ruby>こりやすい<ruby>事故<rt>じこ</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>墜落<rt>ついらく</rt></ruby>",
+   "<ruby>感電<rt>かんでん</rt></ruby>",
+   "<ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>",
+   "<ruby>酸素<rt>さんそ</rt></ruby><ruby>欠乏<rt>けつぼう</rt></ruby>"
+  ],
+  "stem": "高所(こうしょ)で使用中(しようちゅう)の移動用(いどうよう)ロープを外(はず)し、次(つぎ)のロープにかけ替(か)えるときに起(お)こりやすい事故(じこ)はどれですか。",
+  "opts": [
+   "墜落(ついらく)",
+   "感電(かんでん)",
+   "熱中症(ねっちゅうしょう)",
+   "酸素(さんそ)欠乏(けつぼう)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l097",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 097",
+  "stem_html": "<ruby>停電<rt>ていでん</rt></ruby>していると<ruby>思<rt>おも</rt></ruby>っている<ruby>電路<rt>でんろ</rt></ruby>で<ruby>作業<rt>さぎょう</rt></ruby>します。<ruby>作業<rt>さぎょう</rt></ruby><ruby>前<rt>まえ</rt></ruby>の<ruby>対応<rt>たいおう</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>手<rt>て</rt></ruby>で触れて<ruby>停電<rt>ていでん</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>する",
+   "<ruby>関係者<rt>かんけいしゃ</rt></ruby>への<ruby>連絡<rt>れんらく</rt></ruby>だけで<ruby>確認<rt>かくにん</rt></ruby>を<ruby>終<rt>お</rt></ruby>える",
+   "<ruby>照明<rt>しょうめい</rt></ruby>が<ruby>消<rt>き</rt></ruby>えていれば<ruby>確認<rt>かくにん</rt></ruby>せずに<ruby>作業<rt>さぎょう</rt></ruby>する",
+   "<ruby>検電<rt>けんでん</rt></ruby>して<ruby>停電状態<rt>ていでんじょうたい</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>する"
+  ],
+  "stem": "停電(ていでん)していると思(おも)っている電路(でんろ)で作業(さぎょう)します。作業(さぎょう)前(まえ)の対応(たいおう)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "手(て)で触れて停電(ていでん)を確認(かくにん)する",
+   "関係者(かんけいしゃ)への連絡(れんらく)だけで確認(かくにん)を終(お)える",
+   "照明(しょうめい)が消(き)えていれば確認(かくにん)せずに作業(さぎょう)する",
+   "検電(けんでん)して停電状態(ていでんじょうたい)を確認(かくにん)する"
+  ],
+  "img": null
+ },
+ {
+  "id": "l098",
+  "cat": "l_kanri",
+  "src": "ライフライン練習 098",
+  "stem_html": "<ruby>安全<rt>あんぜん</rt></ruby><ruby>施工<rt>せこう</rt></ruby>サイクルの「<ruby>作業中<rt>さぎょうちゅう</rt></ruby>の<ruby>指導<rt>しどう</rt></ruby>・<ruby>監督<rt>かんとく</rt></ruby>」は、<ruby>主<rt>おも</rt></ruby>に<ruby>誰<rt>だれ</rt></ruby>が<ruby>行<rt>おこな</rt></ruby>いますか。",
+  "opts_html": [
+   "<ruby>工事<rt>こうじ</rt></ruby>に<ruby>関係<rt>かんけい</rt></ruby>のない<ruby>通行人<rt>つうこうにん</rt></ruby>",
+   "<ruby>職長<rt>しょくちょう</rt></ruby>・<ruby>作業<rt>さぎょう</rt></ruby><ruby>主任<rt>しゅにん</rt></ruby><ruby>者等<rt>ものなど</rt></ruby>の<ruby>現場監督<rt>げんばかんとく</rt></ruby><ruby>者<rt>もの</rt></ruby>",
+   "<ruby>材料<rt>ざいりょう</rt></ruby>を<ruby>納入<rt>のうにゅう</rt></ruby>する<ruby>運転者<rt>うんてんしゃ</rt></ruby>",
+   "<ruby>新規<rt>しんき</rt></ruby><ruby>入場者<rt>にゅうじょうしゃ</rt></ruby>だけ"
+  ],
+  "stem": "安全(あんぜん)施工(せこう)サイクルの「作業中(さぎょうちゅう)の指導(しどう)・監督(かんとく)」は、主(おも)に誰(だれ)が行(おこな)いますか。",
+  "opts": [
+   "工事(こうじ)に関係(かんけい)のない通行人(つうこうにん)",
+   "職長(しょくちょう)・作業(さぎょう)主任(しゅにん)者等(ものなど)の現場監督(げんばかんとく)者(もの)",
+   "材料(ざいりょう)を納入(のうにゅう)する運転者(うんてんしゃ)",
+   "新規(しんき)入場者(にゅうじょうしゃ)だけ"
+  ],
+  "img": null
+ },
+ {
+  "id": "l099",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 099",
+  "stem_html": "<ruby>高<rt>たか</rt></ruby>さ6.75mを<ruby>超<rt>こ</rt></ruby>える<ruby>箇所<rt>かしょ</rt></ruby>で<ruby>墜落<rt>ついらく</rt></ruby><ruby>制止<rt>せいし</rt></ruby><ruby>用器<rt>ようき</rt></ruby><ruby>具<rt>ぐ</rt></ruby>を<ruby>使<rt>つか</rt></ruby>います。<ruby>選<rt>えら</rt></ruby>ぶ<ruby>型<rt>がた</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>保護<rt>ほご</rt></ruby><ruby>帽<rt>ぼう</rt></ruby>だけでよい",
+   "<ruby>胴<rt>どう</rt></ruby>ベルト<ruby>型<rt>がた</rt></ruby>",
+   "どちらでもよい",
+   "フルハーネス<ruby>型<rt>がた</rt></ruby>"
+  ],
+  "stem": "高(たか)さ6.75mを超(こ)える箇所(かしょ)で墜落(ついらく)制止(せいし)用器(ようき)具(ぐ)を使(つか)います。選(えら)ぶ型(がた)はどれですか。",
+  "opts": [
+   "保護(ほご)帽(ぼう)だけでよい",
+   "胴(どう)ベルト型(がた)",
+   "どちらでもよい",
+   "フルハーネス型(がた)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l100",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 100",
+  "stem_html": "<ruby>熱中症対策<rt>ねっちゅうしょうたいさく</rt></ruby>として、<ruby>適切<rt>てきせつ</rt></ruby>でないものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>通気性<rt>つうきせい</rt></ruby>のよい<ruby>作業服<rt>さぎょうふく</rt></ruby>を<ruby>使<rt>つか</rt></ruby>う",
+   "<ruby>作業<rt>さぎょう</rt></ruby>の<ruby>前後<rt>ぜんご</rt></ruby>に<ruby>水分<rt>すいぶん</rt></ruby>や<ruby>塩分<rt>えんぶん</rt></ruby>を<ruby>補給<rt>ほきゅう</rt></ruby>する",
+   "<ruby>涼<rt>すず</rt></ruby>しい<ruby>休憩場所<rt>きゅうけいばしょ</rt></ruby>で<ruby>休<rt>やす</rt></ruby>む",
+   "のどが<ruby>渇<rt>かわ</rt></ruby>くまで<ruby>水分<rt>すいぶん</rt></ruby>を<ruby>取<rt>と</rt></ruby>らずに<ruby>作業<rt>さぎょう</rt></ruby>を<ruby>続<rt>つづ</rt></ruby>ける"
+  ],
+  "stem": "熱中症対策(ねっちゅうしょうたいさく)として、適切(てきせつ)でないものを選(えら)びなさい。",
+  "opts": [
+   "通気性(つうきせい)のよい作業服(さぎょうふく)を使(つか)う",
+   "作業(さぎょう)の前後(ぜんご)に水分(すいぶん)や塩分(えんぶん)を補給(ほきゅう)する",
+   "涼(すず)しい休憩場所(きゅうけいばしょ)で休(やす)む",
+   "のどが渇(かわ)くまで水分(すいぶん)を取(と)らずに作業(さぎょう)を続(つづ)ける"
+  ],
+  "img": null
+ },
+ {
+  "id": "l101",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 101",
+  "stem_html": "<ruby>暑<rt>あつ</rt></ruby>い<ruby>場所<rt>ばしょ</rt></ruby>で<ruby>作業<rt>さぎょう</rt></ruby>するときは、<ruby>作業<rt>さぎょう</rt></ruby>の<ruby>前後<rt>ぜんご</rt></ruby>に（　　）の<ruby>補給<rt>ほきゅう</rt></ruby>を<ruby>心<rt>こころ</rt></ruby>がけます。",
+  "opts_html": [
+   "<ruby>水分<rt>すいぶん</rt></ruby>と<ruby>塩分<rt>えんぶん</rt></ruby>",
+   "<ruby>水分<rt>すいぶん</rt></ruby>だけ",
+   "<ruby>塩分<rt>えんぶん</rt></ruby>だけ",
+   "<ruby>糖分<rt>とうぶん</rt></ruby>だけ"
+  ],
+  "stem": "暑(あつ)い場所(ばしょ)で作業(さぎょう)するときは、作業(さぎょう)の前後(ぜんご)に（　　）の補給(ほきゅう)を心(こころ)がけます。",
+  "opts": [
+   "水分(すいぶん)と塩分(えんぶん)",
+   "水分(すいぶん)だけ",
+   "塩分(えんぶん)だけ",
+   "糖分(とうぶん)だけ"
+  ],
+  "img": null
+ },
+ {
+  "id": "l102",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 102",
+  "stem_html": "<ruby>白<rt>しろ</rt></ruby>い<ruby>背景<rt>はいけい</rt></ruby>に<ruby>緑<rt>みどり</rt></ruby>の<ruby>十字<rt>じゅうじ</rt></ruby>が<ruby>描<rt>えが</rt></ruby>かれ、「<ruby>安全第一<rt>あんぜんだいいち</rt></ruby>」とともに<ruby>使<rt>つか</rt></ruby>われるマークは<ruby>何<rt>なん</rt></ruby>ですか。",
+  "opts_html": [
+   "<ruby>白十字<rt>しろじゅうじ</rt></ruby>",
+   "<ruby>緑十字<rt>みどりじゅうじ</rt></ruby>",
+   "<ruby>立入禁止<rt>たちいりきんし</rt></ruby>の<ruby>標識<rt>ひょうしき</rt></ruby>",
+   "<ruby>赤十字<rt>せきじゅうじ</rt></ruby>"
+  ],
+  "stem": "白(しろ)い背景(はいけい)に緑(みどり)の十字(じゅうじ)が描(えが)かれ、「安全第一(あんぜんだいいち)」とともに使(つか)われるマークは何(なん)ですか。",
+  "opts": [
+   "白十字(しろじゅうじ)",
+   "緑十字(みどりじゅうじ)",
+   "立入禁止(たちいりきんし)の標識(ひょうしき)",
+   "赤十字(せきじゅうじ)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l103",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 103",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>のスプリンクラーヘッドの<ruby>種類<rt>しゅるい</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>屋外<rt>おくがい</rt></ruby><ruby>消火栓<rt>しょうかせん</rt></ruby>",
+   "<ruby>開放<rt>かいほう</rt></ruby><ruby>型<rt>がた</rt></ruby>",
+   "<ruby>閉鎖<rt>へいさ</rt></ruby><ruby>型<rt>がた</rt></ruby>",
+   "<ruby>放水<rt>ほうすい</rt></ruby><ruby>型<rt>がた</rt></ruby>"
+  ],
+  "stem": "写真(しゃしん)のスプリンクラーヘッドの種類(しゅるい)はどれですか。",
+  "opts": [
+   "屋外(おくがい)消火栓(しょうかせん)",
+   "開放(かいほう)型(がた)",
+   "閉鎖(へいさ)型(がた)",
+   "放水(ほうすい)型(がた)"
+  ],
+  "img": "img/l_103.jpg"
+ },
+ {
+  "id": "l104",
+  "cat": "l_chikuro",
+  "src": "ライフライン練習 104",
+  "stem_html": "<ruby>築炉<rt>ちくろ</rt></ruby>の<ruby>煉瓦<rt>れんが</rt></ruby><ruby>積<rt>つ</rt></ruby>みで、モルタルと<ruby>目地<rt>めじ</rt></ruby>について<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "モルタルを<ruby>使<rt>つか</rt></ruby>わず、<ruby>目地<rt>めじ</rt></ruby>だけを<ruby>広<rt>ひろ</rt></ruby>くする",
+   "モルタルを<ruby>十分<rt>じゅうぶん</rt></ruby>にまわし、<ruby>目地<rt>めじ</rt></ruby>を<ruby>均一<rt>きんいつ</rt></ruby>にする",
+   "モルタルを<ruby>一部<rt>いちぶ</rt></ruby>だけに<ruby>付<rt>つ</rt></ruby>け、<ruby>目地<rt>めじ</rt></ruby>を<ruby>空<rt>あ</rt></ruby>ける",
+   "<ruby>目地<rt>めじ</rt></ruby>の<ruby>幅<rt>はば</rt></ruby>を<ruby>一段<rt>いちだん</rt></ruby>ごとに<ruby>変<rt>か</rt></ruby>える"
+  ],
+  "stem": "築炉(ちくろ)の煉瓦(れんが)積(つ)みで、モルタルと目地(めじ)について正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "モルタルを使(つか)わず、目地(めじ)だけを広(ひろ)くする",
+   "モルタルを十分(じゅうぶん)にまわし、目地(めじ)を均一(きんいつ)にする",
+   "モルタルを一部(いちぶ)だけに付(つ)け、目地(めじ)を空(あ)ける",
+   "目地(めじ)の幅(はば)を一段(いちだん)ごとに変(か)える"
+  ],
+  "img": null
+ },
+ {
+  "id": "l105",
+  "cat": "l_chikuro",
+  "src": "ライフライン練習 105",
+  "stem_html": "<ruby>築炉<rt>ちくろ</rt></ruby>の<ruby>煉瓦<rt>れんが</rt></ruby><ruby>積<rt>つ</rt></ruby>みは、<ruby>必<rt>かなら</rt></ruby>ず（　　）を<ruby>基準<rt>きじゅん</rt></ruby>とします。",
+  "opts_html": [
+   "<ruby>重<rt>おも</rt></ruby>さ・<ruby>温度<rt>おんど</rt></ruby>",
+   "<ruby>傾斜<rt>けいしゃ</rt></ruby>・<ruby>曲線<rt>きょくせん</rt></ruby>",
+   "<ruby>水平<rt>すいへい</rt></ruby>・<ruby>垂直<rt>すいちょく</rt></ruby>",
+   "<ruby>色<rt>いろ</rt></ruby>・<ruby>光沢<rt>こうたく</rt></ruby>"
+  ],
+  "stem": "築炉(ちくろ)の煉瓦(れんが)積(つ)みは、必(かなら)ず（　　）を基準(きじゅん)とします。",
+  "opts": [
+   "重(おも)さ・温度(おんど)",
+   "傾斜(けいしゃ)・曲線(きょくせん)",
+   "水平(すいへい)・垂直(すいちょく)",
+   "色(いろ)・光沢(こうたく)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l106",
+  "cat": "l_chikuro",
+  "src": "ライフライン練習 106",
+  "stem_html": "<ruby>築炉<rt>ちくろ</rt></ruby>の<ruby>煉瓦<rt>れんが</rt></ruby><ruby>積<rt>つ</rt></ruby>みで、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>平壁<rt>ひらかべ</rt></ruby><ruby>積<rt>つ</rt></ruby>みでは<ruby>必<rt>かなら</rt></ruby>ず<ruby>継<rt>つ</rt></ruby>ぎを<ruby>取<rt>と</rt></ruby>る",
+   "<ruby>小<rt>ちー</rt></ruby>さい<ruby>煉瓦<rt>れんが</rt></ruby>ほどよいので1/4以<ruby>下<rt>いかの</rt></ruby>のものを<ruby>多<rt>おお</rt></ruby>く<ruby>使<rt>つか</rt></ruby>う",
+   "<ruby>目地<rt>めじ</rt></ruby>は<ruby>場所<rt>ばしょ</rt></ruby>によって<ruby>不<rt>ふ</rt></ruby><ruby>均一<rt>きんいつ</rt></ruby>にする",
+   "<ruby>寸法<rt>すんぽう</rt></ruby>は<ruby>積<rt>つ</rt></ruby>み<ruby>終<rt>お</rt></ruby>わった<ruby>後<rt>あと</rt></ruby>だけ<ruby>確認<rt>かくにん</rt></ruby>する"
+  ],
+  "stem": "築炉(ちくろ)の煉瓦(れんが)積(つ)みで、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "平壁(ひらかべ)積(つ)みでは必(かなら)ず継(つ)ぎを取(と)る",
+   "小(ちー)さい煉瓦(れんが)ほどよいので1/4以下(いかの)のものを多(おお)く使(つか)う",
+   "目地(めじ)は場所(ばしょ)によって不(ふ)均一(きんいつ)にする",
+   "寸法(すんぽう)は積(つ)み終(お)わった後(あと)だけ確認(かくにん)する"
+  ],
+  "img": null
+ },
+ {
+  "id": "l107",
+  "cat": "l_anzen",
+  "src": "ライフライン練習 107",
+  "stem_html": "テキストでは<ruby>建設業<rt>けんせつぎょう</rt></ruby>について、<ruby>高<rt>たか</rt></ruby>さ（　　）を<ruby>超<rt>こ</rt></ruby>える<ruby>作業<rt>さぎょう</rt></ruby>でもフルハーネス<ruby>型<rt>がた</rt></ruby>の<ruby>使用<rt>しよう</rt></ruby>を<ruby>求<rt>もと</rt></ruby>めています。",
+  "opts_html": [
+   "2m",
+   "5m",
+   "1m",
+   "0.6m"
+  ],
+  "stem": "テキストでは建設業(けんせつぎょう)について、高(たか)さ（　　）を超(こ)える作業(さぎょう)でもフルハーネス型(がた)の使用(しよう)を求(もと)めています。",
+  "opts": [
+   "2m",
+   "5m",
+   "1m",
+   "0.6m"
+  ],
+  "img": null
+ },
+ {
+  "id": "l108",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 108",
+  "stem_html": "テキストに<ruby>示<rt>しめ</rt></ruby>す、<ruby>一般的<rt>いっぱんてき</rt></ruby>な<ruby>硬質<rt>こうしつ</rt></ruby>ポリ<ruby>塩化<rt>えんか</rt></ruby>ビニル<ruby>管<rt>かん</rt></ruby>の<ruby>色<rt>いろ</rt></ruby>はどれですか。",
+  "opts_html": [
+   "<ruby>赤茶色<rt>あかちゃいろ</rt></ruby>",
+   "<ruby>橙色<rt>だいだいいろ</rt></ruby>",
+   "グレー",
+   "<ruby>濃<rt>こ</rt></ruby>い<ruby>青色<rt>あおいろ</rt></ruby>"
+  ],
+  "stem": "テキストに示(しめ)す、一般的(いっぱんてき)な硬質(こうしつ)ポリ塩化(えんか)ビニル管(かん)の色(いろ)はどれですか。",
+  "opts": [
+   "赤茶色(あかちゃいろ)",
+   "橙色(だいだいいろ)",
+   "グレー",
+   "濃(こ)い青色(あおいろ)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l109",
+  "cat": "l_kankan",
+  "src": "ライフライン練習 109",
+  "stem_html": "<ruby>濃<rt>こ</rt></ruby>い<ruby>青色<rt>あおいろ</rt></ruby>で、<ruby>外部<rt>がいぶ</rt></ruby>からの<ruby>衝撃<rt>しょうげき</rt></ruby>に<ruby>強<rt>つよ</rt></ruby>くした<ruby>塩<rt>しお</rt></ruby>ビ<ruby>管<rt>かん</rt></ruby>はどれですか。",
+  "opts_html": [
+   "HIVP<ruby>管<rt>かん</rt></ruby>",
+   "<ruby>一般<rt>いっぱん</rt></ruby>のVP<ruby>管<rt>かん</rt></ruby>",
+   "HT<ruby>管<rt>かん</rt></ruby>",
+   "<ruby>一般<rt>いっぱん</rt></ruby>のVU<ruby>管<rt>かん</rt></ruby>"
+  ],
+  "stem": "濃(こ)い青色(あおいろ)で、外部(がいぶ)からの衝撃(しょうげき)に強(つよ)くした塩(しお)ビ管(かん)はどれですか。",
+  "opts": [
+   "HIVP管(かん)",
+   "一般(いっぱん)のVP管(かん)",
+   "HT管(かん)",
+   "一般(いっぱん)のVU管(かん)"
+  ],
+  "img": null
+ },
+ {
+  "id": "l110",
+  "cat": "l_kikai",
+  "src": "ライフライン練習 110",
+  "stem_html": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>機器<rt>きき</rt></ruby>の<ruby>用途<rt>ようと</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+  "opts_html": [
+   "<ruby>荷<rt>に</rt></ruby>をつり<ruby>上<rt>あ</rt></ruby>げたり、<ruby>締<rt>し</rt></ruby>め<ruby>付<rt>つ</rt></ruby>けたりする",
+   "<ruby>配管<rt>はいかん</rt></ruby>を<ruby>切断<rt>せつだん</rt></ruby>してねじを<ruby>切<rt>き</rt></ruby>る",
+   "<ruby>管内<rt>かんない</rt></ruby>に<ruby>水<rt>みず</rt></ruby>を<ruby>送<rt>おく</rt></ruby>り、<ruby>水圧<rt>すいあつ</rt></ruby>を<ruby>測定<rt>そくてい</rt></ruby>する",
+   "<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>水平<rt>すいへい</rt></ruby>・<ruby>垂直<rt>すいちょく</rt></ruby>を<ruby>測定<rt>そくてい</rt></ruby>する"
+  ],
+  "stem": "写真(しゃしん)の機器(きき)の用途(ようと)として、正(ただ)しいものを選(えら)びなさい。",
+  "opts": [
+   "荷(に)をつり上(あ)げたり、締(し)め付(つ)けたりする",
+   "配管(はいかん)を切断(せつだん)してねじを切(き)る",
+   "管内(かんない)に水(みず)を送(おく)り、水圧(すいあつ)を測定(そくてい)する",
+   "材料(ざいりょう)の水平(すいへい)・垂直(すいちょく)を測定(そくてい)する"
+  ],
+  "img": "img/l_110.jpg"
+ }
+]

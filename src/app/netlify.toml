@@ -1,0 +1,18 @@
+[build]
+  publish = "."
+
+# the service worker and page must always be re-checked so updates reach phones
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+# ask AI crawlers not to use anything on the site
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noai, noimageai"

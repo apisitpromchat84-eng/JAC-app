@@ -1,0 +1,721 @@
+{
+ "text5l_px1": {
+  "pdf": "text5l",
+  "pdfpage": 1,
+  "printed": "x1",
+  "figs": []
+ },
+ "text5l_px2": {
+  "pdf": "text5l",
+  "pdfpage": 2,
+  "printed": "x2",
+  "figs": []
+ },
+ "text5l_px3": {
+  "pdf": "text5l",
+  "pdfpage": 3,
+  "printed": "x3",
+  "figs": []
+ },
+ "text5l_px4": {
+  "pdf": "text5l",
+  "pdfpage": 4,
+  "printed": "x4",
+  "figs": []
+ },
+ "text5l_p100": {
+  "pdf": "text5l",
+  "pdfpage": 5,
+  "printed": "100",
+  "figs": [
+   "fig/text5_p100_1.jpg",
+   "fig/text5_p100_2.jpg",
+   "fig/text5_p100_3.jpg",
+   "fig/text5_p100_4.jpg"
+  ]
+ },
+ "text5l_p101": {
+  "pdf": "text5l",
+  "pdfpage": 6,
+  "printed": "101",
+  "figs": [
+   "fig/text5_p101_1.jpg",
+   "fig/text5_p101_2.jpg",
+   "fig/text5_p101_3.jpg"
+  ]
+ },
+ "text5l_p102": {
+  "pdf": "text5l",
+  "pdfpage": 7,
+  "printed": "102",
+  "figs": [
+   "fig/text5_p102_1.jpg",
+   "fig/text5_p102_2.jpg"
+  ]
+ },
+ "text5l_p103": {
+  "pdf": "text5l",
+  "pdfpage": 8,
+  "printed": "103",
+  "figs": [
+   "fig/text5_p103_1.jpg",
+   "fig/text5_p103_2.jpg"
+  ]
+ },
+ "text5l_p104": {
+  "pdf": "text5l",
+  "pdfpage": 9,
+  "printed": "104",
+  "figs": [
+   "fig/text5_p104_1.jpg",
+   "fig/text5_p104_2.jpg",
+   "fig/text5_p104_3.jpg"
+  ]
+ },
+ "text5l_p105": {
+  "pdf": "text5l",
+  "pdfpage": 10,
+  "printed": "105",
+  "figs": [
+   "fig/text5_p105_1.jpg",
+   "fig/text5_p105_2.jpg",
+   "fig/text5_p105_3.jpg"
+  ]
+ },
+ "text5l_p106": {
+  "pdf": "text5l",
+  "pdfpage": 11,
+  "printed": "106",
+  "figs": [
+   "fig/text5_p106_1.jpg"
+  ]
+ },
+ "text5l_p107": {
+  "pdf": "text5l",
+  "pdfpage": 12,
+  "printed": "107",
+  "figs": [
+   "fig/text5_p107_1.jpg",
+   "fig/text5_p107_2.jpg",
+   "fig/text5_p107_3.jpg",
+   "fig/text5_p107_4.jpg"
+  ]
+ },
+ "text5l_p108": {
+  "pdf": "text5l",
+  "pdfpage": 13,
+  "printed": "108",
+  "figs": [
+   "fig/text5_p108_1.jpg",
+   "fig/text5_p108_2.jpg",
+   "fig/text5_p108_3.jpg"
+  ]
+ },
+ "text5l_p109": {
+  "pdf": "text5l",
+  "pdfpage": 14,
+  "printed": "109",
+  "figs": [
+   "fig/text5_p109_1.jpg",
+   "fig/text5_p109_2.jpg",
+   "fig/text5_p109_3.jpg"
+  ]
+ },
+ "text5l_p110": {
+  "pdf": "text5l",
+  "pdfpage": 15,
+  "printed": "110",
+  "figs": [
+   "fig/text5_p110_1.jpg",
+   "fig/text5_p110_2.jpg"
+  ]
+ },
+ "text5l_p111": {
+  "pdf": "text5l",
+  "pdfpage": 16,
+  "printed": "111",
+  "figs": [
+   "fig/text5_p111_1.jpg"
+  ]
+ },
+ "text5l_p112": {
+  "pdf": "text5l",
+  "pdfpage": 17,
+  "printed": "112",
+  "figs": [
+   "fig/text5_p112_1.jpg",
+   "fig/text5_p112_2.jpg"
+  ]
+ },
+ "text5l_p113": {
+  "pdf": "text5l",
+  "pdfpage": 18,
+  "printed": "113",
+  "figs": []
+ },
+ "text5l_p114": {
+  "pdf": "text5l",
+  "pdfpage": 19,
+  "printed": "114",
+  "figs": [
+   "fig/text5_p114_1.jpg",
+   "fig/text5_p114_2.jpg"
+  ]
+ },
+ "text5l_p115": {
+  "pdf": "text5l",
+  "pdfpage": 20,
+  "printed": "115",
+  "figs": [
+   "fig/text5_p115_1.jpg"
+  ]
+ },
+ "text5l_p116": {
+  "pdf": "text5l",
+  "pdfpage": 21,
+  "printed": "116",
+  "figs": [
+   "fig/text5_p116_1.jpg",
+   "fig/text5_p116_2.jpg"
+  ]
+ },
+ "text5l_p117": {
+  "pdf": "text5l",
+  "pdfpage": 22,
+  "printed": "117",
+  "figs": []
+ },
+ "text5l_p118": {
+  "pdf": "text5l",
+  "pdfpage": 23,
+  "printed": "118",
+  "figs": [
+   "fig/text5_p118_1.jpg",
+   "fig/text5_p118_2.jpg",
+   "fig/text5_p118_3.jpg",
+   "fig/text5_p118_4.jpg"
+  ]
+ },
+ "text5l_p119": {
+  "pdf": "text5l",
+  "pdfpage": 24,
+  "printed": "119",
+  "figs": [
+   "fig/text5_p119_1.jpg",
+   "fig/text5_p119_2.jpg",
+   "fig/text5_p119_3.jpg"
+  ]
+ },
+ "text5l_p120": {
+  "pdf": "text5l",
+  "pdfpage": 25,
+  "printed": "120",
+  "figs": [
+   "fig/text5_p120_1.jpg",
+   "fig/text5_p120_2.jpg",
+   "fig/text5_p120_3.jpg"
+  ]
+ },
+ "text5l_p121": {
+  "pdf": "text5l",
+  "pdfpage": 26,
+  "printed": "121",
+  "figs": [
+   "fig/text5_p121_1.jpg",
+   "fig/text5_p121_2.jpg"
+  ]
+ },
+ "text5l_p122": {
+  "pdf": "text5l",
+  "pdfpage": 27,
+  "printed": "122",
+  "figs": [
+   "fig/text5_p122_1.jpg",
+   "fig/text5_p122_2.jpg",
+   "fig/text5_p122_3.jpg"
+  ]
+ },
+ "text5l_p123": {
+  "pdf": "text5l",
+  "pdfpage": 28,
+  "printed": "123",
+  "figs": [
+   "fig/text5_p123_1.jpg",
+   "fig/text5_p123_2.jpg",
+   "fig/text5_p123_3.jpg",
+   "fig/text5_p123_4.jpg",
+   "fig/text5_p123_5.jpg"
+  ]
+ },
+ "text5l_p124": {
+  "pdf": "text5l",
+  "pdfpage": 29,
+  "printed": "124",
+  "figs": [
+   "fig/text5_p124_1.jpg",
+   "fig/text5_p124_2.jpg",
+   "fig/text5_p124_3.jpg"
+  ]
+ },
+ "text5l_p125": {
+  "pdf": "text5l",
+  "pdfpage": 30,
+  "printed": "125",
+  "figs": [
+   "fig/text5_p125_1.jpg",
+   "fig/text5_p125_2.jpg",
+   "fig/text5_p125_3.jpg",
+   "fig/text5_p125_4.jpg",
+   "fig/text5_p125_5.jpg"
+  ]
+ },
+ "text5l_p126": {
+  "pdf": "text5l",
+  "pdfpage": 31,
+  "printed": "126",
+  "figs": [
+   "fig/text5_p126_1.jpg",
+   "fig/text5_p126_2.jpg",
+   "fig/text5_p126_3.jpg"
+  ]
+ },
+ "text5l_p127": {
+  "pdf": "text5l",
+  "pdfpage": 32,
+  "printed": "127",
+  "figs": [
+   "fig/text5_p127_1.jpg",
+   "fig/text5_p127_2.jpg",
+   "fig/text5_p127_3.jpg"
+  ]
+ },
+ "text5l_p128": {
+  "pdf": "text5l",
+  "pdfpage": 33,
+  "printed": "128",
+  "figs": [
+   "fig/text5_p128_1.jpg",
+   "fig/text5_p128_2.jpg",
+   "fig/text5_p128_3.jpg",
+   "fig/text5_p128_4.jpg"
+  ]
+ },
+ "text5l_p129": {
+  "pdf": "text5l",
+  "pdfpage": 34,
+  "printed": "129",
+  "figs": [
+   "fig/text5_p129_1.jpg"
+  ]
+ },
+ "text5l_p130": {
+  "pdf": "text5l",
+  "pdfpage": 35,
+  "printed": "130",
+  "figs": [
+   "fig/text5_p130_1.jpg",
+   "fig/text5_p130_2.jpg"
+  ]
+ },
+ "text5l_p131": {
+  "pdf": "text5l",
+  "pdfpage": 36,
+  "printed": "131",
+  "figs": [
+   "fig/text5_p131_1.jpg",
+   "fig/text5_p131_2.jpg",
+   "fig/text5_p131_3.jpg"
+  ]
+ },
+ "text5l_p132": {
+  "pdf": "text5l",
+  "pdfpage": 37,
+  "printed": "132",
+  "figs": [
+   "fig/text5_p132_1.jpg",
+   "fig/text5_p132_2.jpg",
+   "fig/text5_p132_3.jpg"
+  ]
+ },
+ "text5l_p133": {
+  "pdf": "text5l",
+  "pdfpage": 38,
+  "printed": "133",
+  "figs": [
+   "fig/text5_p133_1.jpg",
+   "fig/text5_p133_2.jpg"
+  ]
+ },
+ "text5l_p134": {
+  "pdf": "text5l",
+  "pdfpage": 39,
+  "printed": "134",
+  "figs": [
+   "fig/text5_p134_1.jpg",
+   "fig/text5_p134_2.jpg",
+   "fig/text5_p134_3.jpg"
+  ]
+ },
+ "text6l_p135": {
+  "pdf": "text6l",
+  "pdfpage": 1,
+  "printed": "135",
+  "figs": []
+ },
+ "text6l_p136": {
+  "pdf": "text6l",
+  "pdfpage": 2,
+  "printed": "136",
+  "figs": []
+ },
+ "text6l_p137": {
+  "pdf": "text6l",
+  "pdfpage": 3,
+  "printed": "137",
+  "figs": []
+ },
+ "text6l_p138": {
+  "pdf": "text6l",
+  "pdfpage": 4,
+  "printed": "138",
+  "figs": []
+ },
+ "text6l_p139": {
+  "pdf": "text6l",
+  "pdfpage": 5,
+  "printed": "139",
+  "figs": []
+ },
+ "text6l_p140": {
+  "pdf": "text6l",
+  "pdfpage": 6,
+  "printed": "140",
+  "figs": [
+   "fig/text6_p140_1.jpg"
+  ]
+ },
+ "text6l_p141": {
+  "pdf": "text6l",
+  "pdfpage": 7,
+  "printed": "141",
+  "figs": []
+ },
+ "text6l_p142": {
+  "pdf": "text6l",
+  "pdfpage": 8,
+  "printed": "142",
+  "figs": []
+ },
+ "text6l_p143": {
+  "pdf": "text6l",
+  "pdfpage": 9,
+  "printed": "143",
+  "figs": [
+   "fig/text6_p143_1.jpg"
+  ]
+ },
+ "text6l_p144": {
+  "pdf": "text6l",
+  "pdfpage": 10,
+  "printed": "144",
+  "figs": [
+   "fig/text6_p144_1.jpg"
+  ]
+ },
+ "text6l_p145": {
+  "pdf": "text6l",
+  "pdfpage": 11,
+  "printed": "145",
+  "figs": [
+   "fig/text6_p145_1.jpg"
+  ]
+ },
+ "text6l_p146": {
+  "pdf": "text6l",
+  "pdfpage": 12,
+  "printed": "146",
+  "figs": [
+   "fig/text6_p146_1.jpg"
+  ]
+ },
+ "text6l_p147": {
+  "pdf": "text6l",
+  "pdfpage": 13,
+  "printed": "147",
+  "figs": []
+ },
+ "text6l_p148": {
+  "pdf": "text6l",
+  "pdfpage": 14,
+  "printed": "148",
+  "figs": [
+   "fig/text6_p148_1.jpg",
+   "fig/text6_p148_2.jpg"
+  ]
+ },
+ "text6l_p149": {
+  "pdf": "text6l",
+  "pdfpage": 15,
+  "printed": "149",
+  "figs": [
+   "fig/text6_p149_1.jpg"
+  ]
+ },
+ "text6l_p150": {
+  "pdf": "text6l",
+  "pdfpage": 16,
+  "printed": "150",
+  "figs": [
+   "fig/text6_p150_1.jpg"
+  ]
+ },
+ "text6l_p151": {
+  "pdf": "text6l",
+  "pdfpage": 17,
+  "printed": "151",
+  "figs": [
+   "fig/text6_p151_1.jpg",
+   "fig/text6_p151_2.jpg"
+  ]
+ },
+ "text6l_p152": {
+  "pdf": "text6l",
+  "pdfpage": 18,
+  "printed": "152",
+  "figs": []
+ },
+ "text6l_p153": {
+  "pdf": "text6l",
+  "pdfpage": 19,
+  "printed": "153",
+  "figs": [
+   "fig/text6_p153_1.jpg"
+  ]
+ },
+ "text6l_p154": {
+  "pdf": "text6l",
+  "pdfpage": 20,
+  "printed": "154",
+  "figs": [
+   "fig/text6_p154_1.jpg"
+  ]
+ },
+ "text6l_p155": {
+  "pdf": "text6l",
+  "pdfpage": 21,
+  "printed": "155",
+  "figs": []
+ },
+ "text6l_p156": {
+  "pdf": "text6l",
+  "pdfpage": 22,
+  "printed": "156",
+  "figs": [
+   "fig/text6_p156_1.jpg"
+  ]
+ },
+ "text6l_p157": {
+  "pdf": "text6l",
+  "pdfpage": 23,
+  "printed": "157",
+  "figs": [
+   "fig/text6_p157_1.jpg",
+   "fig/text6_p157_2.jpg"
+  ]
+ },
+ "text6l_p158": {
+  "pdf": "text6l",
+  "pdfpage": 24,
+  "printed": "158",
+  "figs": [
+   "fig/text6_p158_1.jpg"
+  ]
+ },
+ "text6l_p159": {
+  "pdf": "text6l",
+  "pdfpage": 25,
+  "printed": "159",
+  "figs": [
+   "fig/text6_p159_1.jpg",
+   "fig/text6_p159_2.jpg"
+  ]
+ },
+ "text6l_p160": {
+  "pdf": "text6l",
+  "pdfpage": 26,
+  "printed": "160",
+  "figs": [
+   "fig/text6_p160_1.jpg"
+  ]
+ },
+ "text6l_p161": {
+  "pdf": "text6l",
+  "pdfpage": 27,
+  "printed": "161",
+  "figs": []
+ },
+ "text6l_p162": {
+  "pdf": "text6l",
+  "pdfpage": 28,
+  "printed": "162",
+  "figs": [
+   "fig/text6_p162_1.jpg",
+   "fig/text6_p162_2.jpg",
+   "fig/text6_p162_3.jpg"
+  ]
+ },
+ "text6l_p163": {
+  "pdf": "text6l",
+  "pdfpage": 29,
+  "printed": "163",
+  "figs": [
+   "fig/text6_p163_1.jpg"
+  ]
+ },
+ "text6l_p164": {
+  "pdf": "text6l",
+  "pdfpage": 30,
+  "printed": "164",
+  "figs": [
+   "fig/text6_p164_1.jpg"
+  ]
+ },
+ "text6l_p165": {
+  "pdf": "text6l",
+  "pdfpage": 31,
+  "printed": "165",
+  "figs": []
+ },
+ "text6l_p166": {
+  "pdf": "text6l",
+  "pdfpage": 32,
+  "printed": "166",
+  "figs": []
+ },
+ "text6l_p167": {
+  "pdf": "text6l",
+  "pdfpage": 33,
+  "printed": "167",
+  "figs": []
+ },
+ "text6l_p168": {
+  "pdf": "text6l",
+  "pdfpage": 34,
+  "printed": "168",
+  "figs": [
+   "fig/text6_p168_1.jpg"
+  ]
+ },
+ "text7l_p169": {
+  "pdf": "text7l",
+  "pdfpage": 1,
+  "printed": "169",
+  "figs": []
+ },
+ "text7l_p170": {
+  "pdf": "text7l",
+  "pdfpage": 2,
+  "printed": "170",
+  "figs": []
+ },
+ "text7l_p171": {
+  "pdf": "text7l",
+  "pdfpage": 3,
+  "printed": "171",
+  "figs": []
+ },
+ "text7l_p172": {
+  "pdf": "text7l",
+  "pdfpage": 4,
+  "printed": "172",
+  "figs": [
+   "fig/text7_p172_1.jpg"
+  ]
+ },
+ "text7l_p173": {
+  "pdf": "text7l",
+  "pdfpage": 5,
+  "printed": "173",
+  "figs": []
+ },
+ "text7l_p174": {
+  "pdf": "text7l",
+  "pdfpage": 6,
+  "printed": "174",
+  "figs": [
+   "fig/text7_p174_1.jpg"
+  ]
+ },
+ "text7l_p175": {
+  "pdf": "text7l",
+  "pdfpage": 7,
+  "printed": "175",
+  "figs": [
+   "fig/text7_p175_1.jpg"
+  ]
+ },
+ "text7l_p176": {
+  "pdf": "text7l",
+  "pdfpage": 8,
+  "printed": "176",
+  "figs": [
+   "fig/text7_p176_1.jpg"
+  ]
+ },
+ "text7l_p177": {
+  "pdf": "text7l",
+  "pdfpage": 9,
+  "printed": "177",
+  "figs": []
+ },
+ "text7l_p178": {
+  "pdf": "text7l",
+  "pdfpage": 10,
+  "printed": "178",
+  "figs": []
+ },
+ "text7l_p179": {
+  "pdf": "text7l",
+  "pdfpage": 11,
+  "printed": "179",
+  "figs": [
+   "fig/text7_p179_1.jpg",
+   "fig/text7_p179_2.jpg"
+  ]
+ },
+ "text7l_p180": {
+  "pdf": "text7l",
+  "pdfpage": 12,
+  "printed": "180",
+  "figs": [
+   "fig/text7_p180_1.jpg"
+  ]
+ },
+ "text7l_p181": {
+  "pdf": "text7l",
+  "pdfpage": 13,
+  "printed": "181",
+  "figs": [
+   "fig/text7_p181_1.jpg",
+   "fig/text7_p181_2.jpg"
+  ]
+ },
+ "text7l_p182": {
+  "pdf": "text7l",
+  "pdfpage": 14,
+  "printed": "182",
+  "figs": []
+ },
+ "text7l_p183": {
+  "pdf": "text7l",
+  "pdfpage": 15,
+  "printed": "183",
+  "figs": []
+ },
+ "text7l_p184": {
+  "pdf": "text7l",
+  "pdfpage": 16,
+  "printed": "184",
+  "figs": []
+ }
+}
