@@ -1,6 +1,6 @@
 // the page is network-first (cached as './' — Cloudflare Pages redirects /index.html to /)
 // index.html is network-first, so CACHE only needs a new number when images/icons change
-const CACHE = 'jac-exam-v17';
+const CACHE = 'jac-exam-v18';
 const ASSETS = [
   './', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png',
   './img/s1_q01.jpg',
@@ -27,6 +27,10 @@ const ASSETS = [
   './img/s4_q03.jpg',
   './img/s4_q07.jpg',
   './img/s4_q14.jpg',
+  './img/jt_085.jpg',
+  './img/jt_086.jpg',
+  './img/jt_099.jpg',
+  './img/jt_103.jpg',
   './img/s4_q16.jpg',
   './img/s5_q10.jpg',
   './img/s5_q13.jpg',
