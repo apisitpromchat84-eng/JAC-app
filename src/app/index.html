@@ -736,6 +736,12 @@ html[data-theme="dark"] .seen-rounds .rchip{ background:#3A2414; color:#FFB27A }
 .hotcard .hhead .g{ flex:1; min-width:0 } .hotcard .hhead .sub{ display:block; font:600 .74rem/1.5 var(--thf); color:var(--mute) }
 .hotcard .hpill{ background:#FFE3CC; color:#B4480A; border-radius:999px; padding:3px 10px; font:800 .8rem var(--thf); white-space:nowrap }
 .hotcard .hrow{ display:grid; grid-template-columns:auto auto minmax(0,1fr) auto; gap:8px; align-items:center; width:100%; text-align:left; background:var(--surf2); border:0; border-radius:12px; padding:8px 10px; margin-top:6px; font:.8rem/1.45 var(--thf); color:inherit; cursor:pointer }
+.rk{ display:inline-grid; place-items:center; min-width:26px; height:26px; padding:0 4px; border-radius:8px; font:900 .9rem/1 system-ui, sans-serif; color:#fff; letter-spacing:.02em; box-shadow:0 2px 0 rgba(0,0,0,.18) }
+.rk.sm{ min-width:18px; height:18px; font-size:.68rem; border-radius:6px; vertical-align:-3px; box-shadow:none }
+.rkS{ background:linear-gradient(135deg,#FF4D2E,#D61F69) } .rkA{ background:#F08C00 } .rkB{ background:#3B82C4 } .rkC{ background:#9AA3A0 }
+.hotcard .rklegend{ margin-top:10px; padding-top:8px; border-top:2px dashed var(--line); font:.76rem/1.55 var(--thf) }
+.hotcard .rklegend > div{ display:flex; gap:8px; align-items:flex-start; margin:5px 0 } .hotcard .rklegend .rk{ flex:none; min-width:22px; height:22px; font-size:.78rem }
+.hotcard .rklegend b{ white-space:nowrap } .hotcard .rklegend .hnote{ display:block; margin-top:6px }
 .hotcard .hb{ font-weight:800; color:#D9480F; white-space:nowrap } .hotcard .hb.sib{ color:var(--mute); font-weight:700 }
 .hotcard .hc{ font-weight:800; white-space:nowrap } .hotcard .hs{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
 .hotcard .hk{ font-weight:800 } .hotcard .hk.ok{ color:#1F9D55 } .hotcard .hk.ng{ color:#D9480F }
@@ -5313,6 +5319,8 @@ document.addEventListener('click', e => { const b = e.target.closest('[data-seen
 //   seen in more exam rounds → higher; a recent round adds a little; questions that test the same fact
 //   (SIB: same options, same stem, or dup link) inherit half the score; ties → not yet mastered, then wrong-book first
 let hotOpen = false;
+// rank: S = seen in 3+ exam rounds, A = 2 rounds, B = 1 round, C = not seen itself but tests the same fact as a seen question
+const hotRank = o => o.kind === 'sib' ? 'C' : o.n >= 3 ? 'S' : o.n === 2 ? 'A' : 'B';
 function hotList() {
   const now = new Date(), cur = now.getFullYear() * 12 + now.getMonth();
   const ym = r => { const [y, m] = r.split('-').map(Number); return y * 12 + m - 1; };
@@ -5332,7 +5340,8 @@ function hotList() {
   }));
   const out = [...map.values()];
   out.forEach(o => { const id = QUESTIONS[o.i].id; o.done = !!qok[id]; o.wrong = !!wrongBook[id]; });
-  return out.sort((a, b) => b.score - a.score || (a.done - b.done) || (b.wrong - a.wrong));
+  const ro = o => 'SABC'.indexOf(hotRank(o));
+  return out.sort((a, b) => ro(a) - ro(b) || b.score - a.score || (a.done - b.done) || (b.wrong - a.wrong));
 }
 const thShort = h => String(h || '').replace(/<rt>.*?<\/rt>/g, '').replace(/<[^>]+>/g, '').replace(/[​‌⁠]/g, '');
 function renderHot() {
@@ -5340,21 +5349,28 @@ function renderHot() {
   const list = hotList(), seenN = list.filter(o => o.kind === 'seen').length, sibN = list.length - seenN;
   if (!list.length) {
     el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">ไปสอบแล้วเจอข้อไหน กดปุ่ม 🔥 ที่ข้อนั้นแล้วเลือกเดือนที่สอบ — ข้อจะมารวมที่นี่ เรียงจากสำคัญที่สุด</span></span></div>
+      <div class="hnote">แต่ละข้อจะได้แรงค์ <span class="rk rkS sm">S</span> ออก 3 รอบขึ้นไป · <span class="rk rkA sm">A</span> 2 รอบ · <span class="rk rkB sm">B</span> 1 รอบ · <span class="rk rkC sm">C</span> เนื้อหาเดียวกับข้อที่ออก</div>
       <div class="hact"><button class="btn" id="seenIn">📥 รับไฟล์ข้อที่ออกสอบจากเพื่อน</button></div>`;
     return;
   }
   const todo = list.filter(o => !o.done).length;
   const rows = (hotOpen ? list : list.slice(0, 5)).map(o => {
     const q = QUESTIONS[o.i];
-    const badge = o.kind === 'seen' ? `<span class="hb">🔥×${o.n}</span>` : `<span class="hb sib" title="เนื้อหาเดียวกับข้อที่ออก">🔗</span>`;
+    const rk = hotRank(o), badge = `<span class="rk rk${rk}" title="${o.kind === 'seen' ? 'ออก ' + o.n + ' รอบ' : 'เนื้อหาเดียวกับข้อที่ออก'}">${rk}</span>`;
     const mark = o.done ? '<span class="hk ok">✓</span>' : o.wrong ? '<span class="hk ng">✗</span>' : '<span class="hk"></span>';
     return `<button class="hrow" data-hot="${o.i}">${badge}<span class="hc">${qCode(q)}</span><span class="hs">${esc(thShort(q.sth || q.th))}</span>${mark}</button>`;
   }).join('');
-  el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">เคยออก ${seenN} ข้อ${sibN ? ` + เนื้อหาเดียวกัน ${sibN} ข้อ` : ''} · ยังไม่แม่น ${todo} ข้อ</span></span><span class="hpill">${list.length} ข้อ</span></div>
+  el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">${['S', 'A', 'B', 'C'].map(r => { const k = list.filter(o => hotRank(o) === r).length; return k ? `<span class="rk rk${r} sm">${r}</span> ${k}` : ''; }).filter(Boolean).join('　')} · ยังไม่แม่น ${todo} ข้อ</span></span><span class="hpill">${list.length} ข้อ</span></div>
     ${rows}
     <div class="hact"><button class="btn primary" id="hotGo">▶ ฝึกเรียงตามสำคัญ</button>${list.length > 5 ? `<button class="btn" id="hotMore">${hotOpen ? 'ย่อ' : 'ดูทั้งหมด ' + list.length}</button>` : ''}</div>
     <div class="hact">${Object.keys(seenMine).length ? '<button class="btn" id="seenOutBtn">📤 แชร์ไฟล์ให้เพื่อน</button>' : ''}<button class="btn" id="seenIn">📥 รับไฟล์จากเพื่อน</button></div>
-    <div class="hnote">🔥×n = ออกมาแล้ว n รอบ (ยิ่งมากยิ่งสำคัญ, รอบล่าสุดได้น้ำหนักเพิ่ม) · 🔗 = ถามเรื่องเดียวกันอีกแบบ · ✓ เคยตอบถูก ✗ เคยผิด</div>`;
+    <div class="rklegend">
+      <div><span class="rk rkS">S</span><b>ออกบ่อยมาก</b> เจอในข้อสอบจริง 3 รอบขึ้นไป — ต้องตอบได้ทุกครั้ง</div>
+      <div><span class="rk rkA">A</span><b>ออกซ้ำ</b> เจอ 2 รอบ — มีโอกาสออกอีกสูง</div>
+      <div><span class="rk rkB">B</span><b>เคยออก</b> เจอ 1 รอบ</div>
+      <div><span class="rk rkC">C</span><b>เนื้อหาเดียวกัน</b> ไม่ได้ออกเอง แต่ถามเรื่องเดียวกับข้อที่ออก (ถามอีกแบบ)</div>
+      <div class="hnote">นับจากรอบสอบที่จดไว้ (ของคุณ + ที่รับจากเพื่อน) · แรงค์เดียวกัน: ข้อที่ออกรอบล่าสุดขึ้นก่อน แล้วตามด้วยข้อที่ยังไม่เคยตอบถูก · ✓ เคยตอบถูก ✗ เคยผิด</div>
+    </div>`;
 }
 $('hotCard').addEventListener('click', e => {
   const r = e.target.closest('[data-hot]'); if (r) { openQ(+r.dataset.hot); return; }
