@@ -731,6 +731,16 @@ html[data-theme="dark"] .seen-rounds .rchip{ background:#3A2414; color:#FFB27A }
 .seencard .sline{ display:grid; grid-template-columns:minmax(0,1fr) 110px 58px; gap:8px; align-items:center; font:.84rem var(--thf); margin:6px 0 }
 .seencard .sline .bar{ height:10px; border-radius:6px; background:var(--surf2); overflow:hidden } .seencard .sline .bar i{ display:block; height:100%; background:#FF7A1A; border-radius:6px }
 .seencard .sline .n{ text-align:right; font-weight:700 }
+.hotcard{ padding:14px 14px 12px }
+.hotcard .hhead{ display:flex; align-items:center; gap:10px; font:800 1rem var(--thf) }
+.hotcard .hhead .g{ flex:1; min-width:0 } .hotcard .hhead .sub{ display:block; font:600 .74rem/1.5 var(--thf); color:var(--mute) }
+.hotcard .hpill{ background:#FFE3CC; color:#B4480A; border-radius:999px; padding:3px 10px; font:800 .8rem var(--thf); white-space:nowrap }
+.hotcard .hrow{ display:grid; grid-template-columns:auto auto minmax(0,1fr) auto; gap:8px; align-items:center; width:100%; text-align:left; background:var(--surf2); border:0; border-radius:12px; padding:8px 10px; margin-top:6px; font:.8rem/1.45 var(--thf); color:inherit; cursor:pointer }
+.hotcard .hb{ font-weight:800; color:#D9480F; white-space:nowrap } .hotcard .hb.sib{ color:var(--mute); font-weight:700 }
+.hotcard .hc{ font-weight:800; white-space:nowrap } .hotcard .hs{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+.hotcard .hk{ font-weight:800 } .hotcard .hk.ok{ color:#1F9D55 } .hotcard .hk.ng{ color:#D9480F }
+.hotcard .hact{ display:flex; gap:8px; margin-top:10px } .hotcard .hact .btn{ flex:1; text-align:center; padding:10px 8px; font-size:.86rem }
+.hotcard .hnote{ font:.74rem/1.6 var(--thf); color:var(--mute); margin-top:8px }
 .seencard .shead{ font:.84rem/1.6 var(--thf); margin-bottom:6px } .seencard .snote{ font:.74rem/1.6 var(--thf); color:var(--mute); margin-top:8px }
 .seencard textarea{ width:100%; box-sizing:border-box; min-height:120px; margin-top:8px; border:2px solid var(--line); border-radius:12px; padding:8px; font:.8rem var(--thf); background:var(--surf); color:var(--ink) }
 
@@ -807,6 +817,8 @@ img{ -webkit-user-drag:none; user-drag:none }
     <button class="btn row review" id="goReview"><span class="ico3d">🔁</span><span class="g">ทบทวนวันนี้<span class="sub" id="reviewSub"></span></span><span class="pill" id="reviewN">0 ข้อ</span></button>
     <div style="height:10px"></div>
     <button class="btn primary row" id="goWeak"><span class="ico3d">🎯</span><span class="g">ฝึกจุดอ่อน<span class="sub">รวมข้อที่ผิดบ่อยและหมวดที่อ่อนที่สุด</span></span><span class="pill" id="weakN">15 ข้อ</span></button>
+    <div style="height:10px"></div>
+    <div class="card hotcard" id="hotCard"></div>
     <div style="height:10px"></div>
     <div class="grid2">
       <button class="btn" id="goWrong">ข้อที่เคยผิด<span class="sub">ทั้งหมด <b id="wrongN">0</b> ข้อ</span></button>
@@ -1298,6 +1310,7 @@ function renderHome() {
   $('favN').textContent = favIdx().length;
   $('goWrong').disabled = wrongIdx().length === 0;
   $('goFav').disabled = favIdx().length === 0;
+  renderHot();
   // bar = how much of the category you have mastered (questions answered correctly at least once / all questions in it)
   // small line = accuracy of all your answers in that category (correct answers / answers given)
   const poolQ = pool().map(i => QUESTIONS[i]);
@@ -3664,9 +3677,60 @@ $('seenRounds').addEventListener('click', e => {
   if (list.length) seenMine[seenId] = list; else delete seenMine[seenId];
   save(SEEN_KEY, seenMine); renderSeenRounds(); refreshSeenButtons();
 });
-$('seenClose').addEventListener('click', () => { $('seenSheet').classList.remove('on'); if (current === 'record') renderSeenStats(); });
+$('seenClose').addEventListener('click', () => { $('seenSheet').classList.remove('on'); if (current === 'record') renderSeenStats(); if (current === 'home') renderHot(); });
 $('seenSheet').addEventListener('click', e => { if (e.target.id === 'seenSheet') $('seenClose').click(); });
 document.addEventListener('click', e => { const b = e.target.closest('[data-seen]'); if (!b) return; e.stopPropagation(); e.preventDefault(); openSeen(b.dataset.seen); }, true);
+
+// 🔥 priority list for the home screen:
+//   seen in more exam rounds → higher; a recent round adds a little; questions that test the same fact
+//   (SIB: same options, same stem, or dup link) inherit half the score; ties → not yet mastered, then wrong-book first
+let hotOpen = false;
+function hotList() {
+  const now = new Date(), cur = now.getFullYear() * 12 + now.getMonth();
+  const ym = r => { const [y, m] = r.split('-').map(Number); return y * 12 + m - 1; };
+  const inPart = i => partOf(QUESTIONS[i]) === prefs.part;
+  const map = new Map();
+  QUESTIONS.forEach((q, i) => {
+    if (!inPart(i)) return;
+    const rs = seenRounds(q.id); if (!rs.length) return;
+    const last = rs[rs.length - 1];
+    map.set(i, { i, kind: 'seen', n: rs.length, last, score: rs.length * 10 + Math.max(0, 6 - (cur - ym(last))) });
+  });
+  [...map.values()].forEach(v => SIB[v.i].forEach(j => {
+    if (!inPart(j)) return;
+    const e = map.get(j), sc = v.score / 2;
+    if (!e) map.set(j, { i: j, kind: 'sib', n: v.n, score: sc, from: v.i });
+    else if (e.kind === 'sib' && sc > e.score) { e.score = sc; e.n = v.n; e.from = v.i; }
+  }));
+  const out = [...map.values()];
+  out.forEach(o => { const id = QUESTIONS[o.i].id; o.done = !!qok[id]; o.wrong = !!wrongBook[id]; });
+  return out.sort((a, b) => b.score - a.score || (a.done - b.done) || (b.wrong - a.wrong));
+}
+const thShort = h => String(h || '').replace(/<rt>.*?<\/rt>/g, '').replace(/<[^>]+>/g, '').replace(/[​‌⁠]/g, '');
+function renderHot() {
+  const el = $('hotCard'); if (!el) return;
+  const list = hotList(), seenN = list.filter(o => o.kind === 'seen').length, sibN = list.length - seenN;
+  if (!list.length) {
+    el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">ไปสอบแล้วเจอข้อไหน กดปุ่ม 🔥 ที่ข้อนั้นแล้วเลือกเดือนที่สอบ — ข้อจะมารวมที่นี่ เรียงจากสำคัญที่สุด</span></span></div>`;
+    return;
+  }
+  const todo = list.filter(o => !o.done).length;
+  const rows = (hotOpen ? list : list.slice(0, 5)).map(o => {
+    const q = QUESTIONS[o.i];
+    const badge = o.kind === 'seen' ? `<span class="hb">🔥×${o.n}</span>` : `<span class="hb sib" title="เนื้อหาเดียวกับข้อที่ออก">🔗</span>`;
+    const mark = o.done ? '<span class="hk ok">✓</span>' : o.wrong ? '<span class="hk ng">✗</span>' : '<span class="hk"></span>';
+    return `<button class="hrow" data-hot="${o.i}">${badge}<span class="hc">${qCode(q)}</span><span class="hs">${esc(thShort(q.sth || q.th))}</span>${mark}</button>`;
+  }).join('');
+  el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">เคยออก ${seenN} ข้อ${sibN ? ` + เนื้อหาเดียวกัน ${sibN} ข้อ` : ''} · ยังไม่แม่น ${todo} ข้อ</span></span><span class="hpill">${list.length} ข้อ</span></div>
+    ${rows}
+    <div class="hact"><button class="btn primary" id="hotGo">▶ ฝึกเรียงตามสำคัญ</button>${list.length > 5 ? `<button class="btn" id="hotMore">${hotOpen ? 'ย่อ' : 'ดูทั้งหมด ' + list.length}</button>` : ''}</div>
+    <div class="hnote">🔥×n = ออกมาแล้ว n รอบ (ยิ่งมากยิ่งสำคัญ, รอบล่าสุดได้น้ำหนักเพิ่ม) · 🔗 = ถามเรื่องเดียวกันอีกแบบ · ✓ เคยตอบถูก ✗ เคยผิด</div>`;
+}
+$('hotCard').addEventListener('click', e => {
+  const r = e.target.closest('[data-hot]'); if (r) { openQ(+r.dataset.hot); return; }
+  if (e.target.closest('#hotMore')) { hotOpen = !hotOpen; renderHot(); return; }
+  if (e.target.closest('#hotGo')) { const l = hotList(); if (l.length) startQuiz(l.map(o => o.i), '🔥 ข้อที่ออกสอบจริง', 'hot', 0); }
+});
 
 // สถิติ: which categories come up most, and a report the user can send to be added for everyone
 function seenReport() {
