@@ -944,6 +944,7 @@ img{ -webkit-user-drag:none; user-drag:none }
         <button class="btn center" id="importBtn" style="text-align:center">กู้คืนข้อมูล<span class="sub">นำเข้าไฟล์สำรอง</span></button>
       </div>
       <input type="file" id="importFile" accept="application/json,.json" hidden>
+      <input type="file" id="seenFile" accept="application/json,.json" hidden>
       <div class="small muted th center" id="backupWhen" style="margin:-2px 0 4px"></div>
       <div class="small muted th center" style="margin:-4px 0 4px">ความคืบหน้าเก็บในเครื่องนี้เท่านั้น (ไม่มีบัญชีออนไลน์) — ย้ายเครื่องได้ด้วยไฟล์สำรอง</div>
       <div class="grid2"><button class="btn center" id="copyMoveBtn" style="text-align:center">📤 คัดลอกรหัสย้ายข้อมูล<span class="sub">ย้ายไปเครื่องอื่นแบบไม่ใช้ไฟล์</span></button>
@@ -4258,6 +4259,7 @@ $('importFile').addEventListener('change', async e => {
   const f = e.target.files[0]; e.target.value = ''; if (!f) return;
   let data;
   try { data = JSON.parse(await f.text()); } catch (err) { toast('ไฟล์นี้ไม่ใช่ไฟล์สำรองของแอป — ข้อมูลเดิมยังอยู่ครบ'); return; }
+  if (data && data.app === 'jac-exam' && data.kind === 'seen') { const r = mergeSeen(data.seen); toast(`🔥 เพิ่มข้อที่ออกสอบ: ข้อใหม่ ${r.newQ} ข้อ · รอบใหม่ ${r.newR} — ความคืบหน้าอื่นไม่เปลี่ยน`, 5000); return; }
   if (!data || data.app !== 'jac-exam' || !data.keys || typeof data.keys !== 'object') { toast('ไฟล์นี้ไม่ใช่ไฟล์สำรองของแอป — ข้อมูลเดิมยังอยู่ครบ'); return; }
   if (typeof data.v === 'number' && data.v > 1) { toast('ไฟล์สำรองนี้มาจากแอปเวอร์ชันใหม่กว่า — อัปเดตแอปก่อนแล้วลองอีกครั้ง'); return; }
   importData(data, 'ไฟล์สำรองวันที่ ' + (String(data.at || '').slice(0, 10) || '(ไม่ระบุ)'));
@@ -5337,7 +5339,8 @@ function renderHot() {
   const el = $('hotCard'); if (!el) return;
   const list = hotList(), seenN = list.filter(o => o.kind === 'seen').length, sibN = list.length - seenN;
   if (!list.length) {
-    el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">ไปสอบแล้วเจอข้อไหน กดปุ่ม 🔥 ที่ข้อนั้นแล้วเลือกเดือนที่สอบ — ข้อจะมารวมที่นี่ เรียงจากสำคัญที่สุด</span></span></div>`;
+    el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">ไปสอบแล้วเจอข้อไหน กดปุ่ม 🔥 ที่ข้อนั้นแล้วเลือกเดือนที่สอบ — ข้อจะมารวมที่นี่ เรียงจากสำคัญที่สุด</span></span></div>
+      <div class="hact"><button class="btn" id="seenIn">📥 รับไฟล์ข้อที่ออกสอบจากเพื่อน</button></div>`;
     return;
   }
   const todo = list.filter(o => !o.done).length;
@@ -5350,12 +5353,52 @@ function renderHot() {
   el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">เคยออก ${seenN} ข้อ${sibN ? ` + เนื้อหาเดียวกัน ${sibN} ข้อ` : ''} · ยังไม่แม่น ${todo} ข้อ</span></span><span class="hpill">${list.length} ข้อ</span></div>
     ${rows}
     <div class="hact"><button class="btn primary" id="hotGo">▶ ฝึกเรียงตามสำคัญ</button>${list.length > 5 ? `<button class="btn" id="hotMore">${hotOpen ? 'ย่อ' : 'ดูทั้งหมด ' + list.length}</button>` : ''}</div>
+    <div class="hact">${Object.keys(seenMine).length ? '<button class="btn" id="seenOutBtn">📤 แชร์ไฟล์ให้เพื่อน</button>' : ''}<button class="btn" id="seenIn">📥 รับไฟล์จากเพื่อน</button></div>
     <div class="hnote">🔥×n = ออกมาแล้ว n รอบ (ยิ่งมากยิ่งสำคัญ, รอบล่าสุดได้น้ำหนักเพิ่ม) · 🔗 = ถามเรื่องเดียวกันอีกแบบ · ✓ เคยตอบถูก ✗ เคยผิด</div>`;
 }
 $('hotCard').addEventListener('click', e => {
   const r = e.target.closest('[data-hot]'); if (r) { openQ(+r.dataset.hot); return; }
   if (e.target.closest('#hotMore')) { hotOpen = !hotOpen; renderHot(); return; }
+  if (e.target.closest('#seenOutBtn')) { shareSeenFile(); return; }
+  if (e.target.closest('#seenIn')) { $('seenFile').click(); return; }
   if (e.target.closest('#hotGo')) { const l = hotList(); if (l.length) startQuiz(l.map(o => o.i), '🔥 ข้อที่ออกสอบจริง', 'hot', 0); }
+});
+
+// share only the 🔥 marks as a small file; receiving it MERGES into this device (adds rounds, never removes or touches other progress)
+async function shareSeenFile() {
+  const data = { app: 'jac-exam', kind: 'seen', v: 1, at: new Date().toISOString(), seen: seenMine };
+  const name = `jac-exam-seen-${today()}.json`;
+  const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+  try {
+    const file = new File([blob], name, { type: 'application/json' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'ข้อที่ออกสอบ JAC' }); return; }
+  } catch (e) { if (e && e.name === 'AbortError') return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast('บันทึกไฟล์แล้ว — ส่งไฟล์นี้ให้เพื่อนใน LINE/Messenger ได้เลย', 4000);
+}
+function mergeSeen(incoming) {
+  const okRound = r => typeof r === 'string' && /^\d{4}-(0[1-9]|1[0-2])$/.test(r);
+  let newQ = 0, newR = 0;
+  Object.entries(incoming || {}).forEach(([id, rs]) => {
+    if (qIndex(id) === undefined || !Array.isArray(rs)) return;
+    const cur = new Set(seenMine[id] || []), before = cur.size;
+    rs.filter(okRound).forEach(r => cur.add(r));
+    if (cur.size > before) { if (!before) newQ++; newR += cur.size - before; seenMine[id] = [...cur].sort(); }
+  });
+  save(SEEN_KEY, seenMine); refreshSeenButtons();
+  if (current === 'home') renderHot(); if (current === 'record') renderSeenStats();
+  return { newQ, newR };
+}
+$('seenFile').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+  let d; try { d = JSON.parse(await f.text()); } catch (err) { toast('ไฟล์นี้อ่านไม่ได้ — ข้อมูลเดิมยังอยู่ครบ'); return; }
+  let inc = null;
+  if (d && d.app === 'jac-exam' && d.kind === 'seen') inc = d.seen;
+  else if (d && d.app === 'jac-exam' && d.keys && typeof d.keys['jac-seen-v1'] === 'string') { try { inc = JSON.parse(d.keys['jac-seen-v1']); } catch (err) {} }
+  if (!inc || typeof inc !== 'object') { toast('ไฟล์นี้ไม่มีข้อที่ออกสอบ — ข้อมูลเดิมยังอยู่ครบ'); return; }
+  const r = mergeSeen(inc);
+  toast(r.newR ? `🔥 เพิ่มแล้ว: ข้อใหม่ ${r.newQ} ข้อ · รอบสอบใหม่ ${r.newR} รายการ — ความคืบหน้าอื่นไม่เปลี่ยน` : 'ไม่มีข้อใหม่ — ในเครื่องมีครบแล้ว', 5000);
 });
 
 // สถิติ: which categories come up most, and a report the user can send to be added for everyone
