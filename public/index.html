@@ -134,6 +134,7 @@ html[data-theme="dark"] .hero .hint{ background:rgba(0,0,0,.3) }
 .catline{ display:flex; align-items:center; gap:10px; padding:8px 0 }
 .catline + .catline{ border-top:2px dashed var(--line) }
 .catline .nm{ width:8.2em; flex:none; font-size:.86rem }
+.minirow{ display:flex; gap:8px; align-items:stretch } .minirow > .btn.row{ flex:1; min-width:0 } .minireset{ flex:none; width:48px; padding:0; font-size:1.2rem; text-align:center }
 .minibar{ display:block; height:5px; border-radius:4px; background:var(--surf2); margin-top:6px; overflow:hidden } .minibar i{ display:block; height:100%; background:#1F9D55; border-radius:4px }
 .catline .nm small{ display:block; font-size:.7rem; color:var(--muted, #888); font-weight:600; margin-top:2px }
 .catlegend{ font-size:.72rem; color:var(--muted, #888); padding:2px 0 6px; line-height:1.5 }
@@ -844,7 +845,7 @@ img{ -webkit-user-drag:none; user-drag:none }
     <h2>แบบทดสอบ</h2>
     <button class="btn primary row" id="goReal"><span class="ico3d">⏱</span><span class="g">สอบจำลอง<span class="sub" id="realSub"></span></span><span class="pill" id="realPill"></span></button>
     <div style="height:10px"></div>
-    <button class="btn row" id="goAll"><span class="ico3d">🏗</span><span class="g">ทำทุกข้อ<span class="sub">ทำทุกข้อรวดเดียว ไม่จับเวลา</span></span><span class="pill" id="allN">123 ข้อ</span></button>
+    <button class="btn row" id="goAll"><span class="ico3d">🏗</span><span class="g">ทำทุกข้อ<span class="sub" id="allSub">ทำทุกข้อรวดเดียว ไม่จับเวลา</span></span><span class="pill" id="allN">123 ข้อ</span></button>
 
     <h2>ทดสอบย่อย (สูงสุด 10 ข้อต่อหมวด)</h2>
     <div class="small muted th" style="margin:-4px 0 10px;line-height:1.6">ข้อที่กด <b>มั่นใจ</b> แล้วตอบถูก จะไม่ออกซ้ำจนกว่าจะผ่านครบทั้งหมวด · ข้อที่เคยผิดหรือเดาถูกจะออกก่อน</div>
@@ -1342,12 +1343,19 @@ function renderPractice() {
   $('practiceTitle').textContent = P().ja;
   $('realSub').textContent = `${r.n} ข้อ ${r.min} นาที ผ่าน ${r.pass}% (ตามข้อสอบ 2号)`;
   $('realPill').textContent = r.n + ' ข้อ';
-  $('allN').textContent = pool().length + ' ข้อ';
+  const allLeft = allIdx().length; $('allN').textContent = allLeft + ' ข้อ';
+  $('allSub').textContent = allLeft < pool().length ? `ข้ามข้อที่มั่นใจและตอบถูกแล้ว ${pool().length - allLeft} ข้อ · ไม่จับเวลา` : 'ทำทุกข้อรวดเดียว ไม่จับเวลา';
   $('catMenu').innerHTML = P().cats.map(c => {
     const st = miniState(c.id); if (!st.all.length) return '';
     const left = st.remain.length;
-    return `<button class="btn row" data-cat="${c.id}"><span class="g">${c.th}<span class="sub"><span lang="ja">${c.ja}</span> · รอบที่ ${st.cycle} ผ่านแล้ว ${st.all.length - left}/${st.all.length}</span><span class="minibar"><i style="width:${Math.round((st.all.length - left) / st.all.length * 100)}%"></i></span></span><span class="pill">${Math.min(10, left || st.all.length)} ข้อ</span></button>`;
+    const done = st.all.length - left;
+    return `<div class="minirow"><button class="btn row" data-cat="${c.id}"><span class="g">${c.th}<span class="sub"><span lang="ja">${c.ja}</span> · รอบที่ ${st.cycle} ผ่านแล้ว ${done}/${st.all.length}</span><span class="minibar"><i style="width:${Math.round(done / st.all.length * 100)}%"></i></span></span><span class="pill">${Math.min(10, st.all.length)} ข้อ</span></button>${done ? `<button class="btn minireset" data-reset="${c.id}" aria-label="เริ่มรอบใหม่" title="เริ่มรอบใหม่">↺</button>` : ''}</div>`;
   }).join('');
+  $('catMenu').querySelectorAll('[data-reset]').forEach(b => b.addEventListener('click', async () => {
+    const c = b.dataset.reset;
+    if (!(await ask(`เริ่มรอบใหม่ในหมวด「${catJa(c)}」?\nทุกข้อจะกลับมาให้ทำใหม่ (ประวัติและสถิติอื่นไม่หาย)`))) return;
+    mini.clear[c] = []; mini.cycle[c] = (mini.cycle[c] || 1) + 1; save(MINI_KEY, mini); renderPractice(); toast('เริ่มรอบที่ ' + mini.cycle[c] + ' แล้ว');
+  }));
   $('catMenu').querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => {
     const pick = miniPick(b.dataset.cat);
     startQuiz(pick, 'ทดสอบย่อย: ' + catJa(b.dataset.cat), 'mini', 0);
@@ -1379,8 +1387,18 @@ function miniPick(cat) {
     return mini.shown[id] ? 2 : 1;
   };
   const pick = shuffle(st.remain).sort((a, b) => tier(a) - tier(b) || (tier(a) === 2 ? mini.shown[QUESTIONS[a].id] - mini.shown[QUESTIONS[b].id] : 0)).slice(0, 10);
+  if (pick.length < 10) {                         // end of a cycle: top up with cleared questions not seen for the longest time
+    const have = new Set(pick), when = i => mini.shown[QUESTIONS[i].id] || 0;
+    st.all.filter(i => !have.has(i)).sort((a, b) => when(a) - when(b)).slice(0, 10 - pick.length).forEach(i => pick.push(i));
+  }
   const now = Date.now(); pick.forEach(i => { mini.shown[QUESTIONS[i].id] = now; }); save(MINI_KEY, mini);
   return shuffle(pick);
+}
+const isCleared = q => (mini.clear[q.cat] || []).includes(q.id);
+// ทำทุกข้อ: skip questions already cleared (มั่นใจ + ถูก) in this cycle; wrong / shaky first
+function allIdx() {
+  const left = pool().filter(i => !isCleared(QUESTIONS[i]));
+  return left.length ? left : pool();
 }
 function miniRecord(q, sure, ok) {
   const list = new Set(mini.clear[q.cat] || []);
@@ -1422,7 +1440,8 @@ function pickReal(part) {
   const picked = [], used = new Set();
   const ok = i => !used.has(i) && ![...SIB[i]].some(j => used.has(j));
   const take = i => { picked.push(i); used.add(i); };
-  const fresh = list => shuffle(list).sort((a, b) => last.has(a) - last.has(b));   // unseen first, random within
+  const rank = i => (last.has(i) ? 2 : 0) + (isCleared(QUESTIONS[i]) ? 1 : 0);
+  const fresh = list => shuffle(list).sort((a, b) => rank(a) - rank(b));   // not in the last mock first, then not yet mastered, random within
   let textOnly = i => true;
   if (photoRule) {
     // pick the photo questions first, from different categories where possible
@@ -1445,7 +1464,11 @@ $('goReal').addEventListener('click', () => {
   const r = P().real;
   startQuiz(pickReal(prefs.part), 'สอบจำลอง (' + P().ja + ')', 'real', r.min * 60);
 });
-$('goAll').addEventListener('click', () => startQuiz(shuffle(pool()), 'ทำทุกข้อ (' + P().ja + ')', 'all', 0));
+$('goAll').addEventListener('click', () => {
+  const shaky = i => { const id = QUESTIONS[i].id, c = confBook[id]; return !!(wrongBook[id] || (c && ((c.c === 'sure' && !c.ok) || (c.c === 'guess' && c.ok)))); };
+  const list = shuffle(allIdx()).sort((a, b) => shaky(b) - shaky(a));
+  startQuiz(list, 'ทำทุกข้อ (' + P().ja + ')', 'all', 0);
+});
 $('goWrong').addEventListener('click', () => { const w = wrongIdx(); if (w.length) startQuiz(shuffle(w), 'ข้อที่เคยผิด', 'wrong', 0); });
 $('goFav').addEventListener('click', () => { const f = favIdx(); if (f.length) startQuiz(shuffle(f), 'ข้อที่ติดดาว', 'fav', 0); });
 $('goWeak').addEventListener('click', () => {
