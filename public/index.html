@@ -134,6 +134,7 @@ html[data-theme="dark"] .hero .hint{ background:rgba(0,0,0,.3) }
 .catline{ display:flex; align-items:center; gap:10px; padding:8px 0 }
 .catline + .catline{ border-top:2px dashed var(--line) }
 .catline .nm{ width:8.2em; flex:none; font-size:.86rem }
+.minibar{ display:block; height:5px; border-radius:4px; background:var(--surf2); margin-top:6px; overflow:hidden } .minibar i{ display:block; height:100%; background:#1F9D55; border-radius:4px }
 .catline .nm small{ display:block; font-size:.7rem; color:var(--muted, #888); font-weight:600; margin-top:2px }
 .catlegend{ font-size:.72rem; color:var(--muted, #888); padding:2px 0 6px; line-height:1.5 }
 .catline .pc{ min-width:3.6em; text-align:right }
@@ -846,6 +847,7 @@ img{ -webkit-user-drag:none; user-drag:none }
     <button class="btn row" id="goAll"><span class="ico3d">🏗</span><span class="g">ทำทุกข้อ<span class="sub">ทำทุกข้อรวดเดียว ไม่จับเวลา</span></span><span class="pill" id="allN">123 ข้อ</span></button>
 
     <h2>ทดสอบย่อย (สูงสุด 10 ข้อต่อหมวด)</h2>
+    <div class="small muted th" style="margin:-4px 0 10px;line-height:1.6">ข้อที่กด <b>มั่นใจ</b> แล้วตอบถูก จะไม่ออกซ้ำจนกว่าจะผ่านครบทั้งหมวด · ข้อที่เคยผิดหรือเดาถูกจะออกก่อน</div>
     <div id="catMenu" style="display:grid;gap:9px"></div>
 
     <h2>คลังข้อสอบ</h2>
@@ -1342,14 +1344,50 @@ function renderPractice() {
   $('realPill').textContent = r.n + ' ข้อ';
   $('allN').textContent = pool().length + ' ข้อ';
   $('catMenu').innerHTML = P().cats.map(c => {
-    const n = QUESTIONS.filter(q => q.cat === c.id).length;
-    return `<button class="btn row" data-cat="${c.id}"><span class="g">${c.th}<span class="sub" lang="ja">${c.ja}</span></span><span class="pill">${Math.min(10, n)} ข้อ</span></button>`;
+    const st = miniState(c.id); if (!st.all.length) return '';
+    const left = st.remain.length;
+    return `<button class="btn row" data-cat="${c.id}"><span class="g">${c.th}<span class="sub"><span lang="ja">${c.ja}</span> · รอบที่ ${st.cycle} ผ่านแล้ว ${st.all.length - left}/${st.all.length}</span><span class="minibar"><i style="width:${Math.round((st.all.length - left) / st.all.length * 100)}%"></i></span></span><span class="pill">${Math.min(10, left || st.all.length)} ข้อ</span></button>`;
   }).join('');
   $('catMenu').querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => {
-    const idx = QUESTIONS.map((q, i) => i).filter(i => QUESTIONS[i].cat === b.dataset.cat);
-    startQuiz(shuffle(idx).slice(0, 10), 'ทดสอบย่อย: ' + catJa(b.dataset.cat), 'mini', 0);
+    const pick = miniPick(b.dataset.cat);
+    startQuiz(pick, 'ทดสอบย่อย: ' + catJa(b.dataset.cat), 'mini', 0);
   }));
 }
+/* ทดสอบย่อย rotation (per category, per device)
+   - a question answered correctly with "มั่นใจ" is cleared for this cycle and does not come back
+     until every question in the category has been cleared; then a new cycle starts
+   - answering a cleared question wrong (in any mode) brings it back
+   - among the rest: wrong / shaky first (เคยผิด, มั่นใจแต่ผิด, เดาแต่ถูก), then never shown, then the one shown longest ago */
+const MINI_KEY = 'jac-mini-v1';
+let mini = load(MINI_KEY, { clear: {}, shown: {}, cycle: {} });
+['clear', 'shown', 'cycle'].forEach(k => { if (!mini[k] || typeof mini[k] !== 'object') mini[k] = {}; });
+function miniState(cat) {
+  const all = pool().filter(i => QUESTIONS[i].cat === cat);
+  const clear = new Set(mini.clear[cat] || []);
+  return { all, remain: all.filter(i => !clear.has(QUESTIONS[i].id)), cycle: mini.cycle[cat] || 1 };
+}
+function miniPick(cat) {
+  let st = miniState(cat);
+  if (!st.remain.length) {                        // every question cleared → new cycle
+    mini.clear[cat] = []; mini.cycle[cat] = (mini.cycle[cat] || 1) + 1; save(MINI_KEY, mini);
+    toast(`🎉 ผ่านครบทุกข้อในหมวดนี้แล้ว — เริ่มรอบที่ ${mini.cycle[cat]}`, 4000);
+    st = miniState(cat);
+  }
+  const tier = i => {
+    const id = QUESTIONS[i].id, c = confBook[id];
+    if (wrongBook[id] || (c && ((c.c === 'sure' && !c.ok) || (c.c === 'guess' && c.ok)))) return 0;
+    return mini.shown[id] ? 2 : 1;
+  };
+  const pick = shuffle(st.remain).sort((a, b) => tier(a) - tier(b) || (tier(a) === 2 ? mini.shown[QUESTIONS[a].id] - mini.shown[QUESTIONS[b].id] : 0)).slice(0, 10);
+  const now = Date.now(); pick.forEach(i => { mini.shown[QUESTIONS[i].id] = now; }); save(MINI_KEY, mini);
+  return shuffle(pick);
+}
+function miniRecord(q, sure, ok) {
+  const list = new Set(mini.clear[q.cat] || []);
+  if (ok && sure) list.add(q.id); else if (!ok) list.delete(q.id);
+  mini.clear[q.cat] = [...list];
+}
+
 /* Real-exam question picker
    - each category gets a share of the paper proportional to its size in the bank (largest remainder)
    - "sibling" questions never appear together: same option set (e.g. 機械式継手 / 重ね継手) or same stem
@@ -1593,7 +1631,9 @@ function grade(auto) {
     const cs = catStat[q.cat] || { c: 0, t: 0 }; cs.t++; if (ok) cs.c++; catStat[q.cat] = cs;
     srsUpdate(q.id, ok);
     if (conf[pos]) confBook[q.id] = { c: conf[pos], ok, t: Date.now() };
+    miniRecord(q, conf[pos] === 'sure', ok);
   });
+  save(MINI_KEY, mini);
   save(SRS_KEY, srs); save(QOK_KEY, qok); save(CONF_KEY, confBook);
   daily[today()] = (daily[today()] || 0) + layout.length;
   hist.unshift({ d: Date.now(), mode, label: modeLabel, n: layout.length, s: score, part: quizPart });
@@ -2605,7 +2645,7 @@ const Site = (() => {
 /* ================= backup / restore ================= */
 const CONF_KEY = 'jac-conf-v1';
 let confBook = load(CONF_KEY, {});
-const BACKUP_KEYS = Object.values(K).concat(['jac-conf-v1', 'jac-mig-id', 'jac-gamexp', 'jac-gbest', 'jac-vmiss', 'jac-zoomseen', 'jac-jigalb', 'jac-jigcur', 'jac-srs-v1', 'jac-qok-v1', 'jac-examdate', 'jac-srs-mig', 'jac-seen-v1']);
+const BACKUP_KEYS = Object.values(K).concat(['jac-conf-v1', 'jac-mig-id', 'jac-gamexp', 'jac-gbest', 'jac-vmiss', 'jac-zoomseen', 'jac-jigalb', 'jac-jigcur', 'jac-srs-v1', 'jac-qok-v1', 'jac-examdate', 'jac-srs-mig', 'jac-seen-v1', 'jac-mini-v1']);
 if (window.IMGDATA) { $('backupRow').hidden = true; $('backupNote').hidden = false; }   // file download is off in the preview
 $('exportBtn').addEventListener('click', () => {
   const data = { app: 'jac-exam', v: 1, at: new Date().toISOString(), keys: {} };
