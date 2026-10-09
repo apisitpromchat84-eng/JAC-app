@@ -134,6 +134,7 @@ html[data-theme="dark"] .hero .hint{ background:rgba(0,0,0,.3) }
 .catline{ display:flex; align-items:center; gap:10px; padding:8px 0 }
 .catline + .catline{ border-top:2px dashed var(--line) }
 .catline .nm{ width:8.2em; flex:none; font-size:.86rem }
+.miniset{ font-size:.8rem; color:var(--accent-ink); margin-left:4px }
 .minirow{ display:flex; gap:8px; align-items:stretch } .minirow > .btn.row{ flex:1; min-width:0 } .minireset{ flex:none; width:48px; padding:0; font-size:1.2rem; text-align:center }
 .minibar{ display:block; height:5px; border-radius:4px; background:var(--surf2); margin-top:6px; overflow:hidden } .minibar i{ display:block; height:100%; background:#1F9D55; border-radius:4px }
 .catline .nm small{ display:block; font-size:.7rem; color:var(--muted, #888); font-weight:600; margin-top:2px }
@@ -847,7 +848,7 @@ img{ -webkit-user-drag:none; user-drag:none }
     <div style="height:10px"></div>
     <button class="btn row" id="goAll"><span class="ico3d">🏗</span><span class="g">ทำทุกข้อ<span class="sub" id="allSub">ทำทุกข้อรวดเดียว ไม่จับเวลา</span></span><span class="pill" id="allN">123 ข้อ</span></button>
 
-    <h2>ทดสอบย่อย (สูงสุด 10 ข้อต่อหมวด)</h2>
+    <h2>ทดสอบย่อย (สูงสุด 10 ข้อต่อหมวด)<span id="miniSet" class="miniset"></span></h2>
     <div class="small muted th" style="margin:-4px 0 10px;line-height:1.6">ข้อที่กด <b>มั่นใจ</b> แล้วตอบถูก จะไม่ออกซ้ำจนกว่าจะผ่านครบทั้งหมวด · ข้อที่เคยผิดหรือเดาถูกจะออกก่อน</div>
     <div id="catMenu" style="display:grid;gap:9px"></div>
 
@@ -1345,6 +1346,7 @@ function renderPractice() {
   $('realPill').textContent = r.n + ' ข้อ';
   const allLeft = allIdx().length; $('allN').textContent = allLeft + ' ข้อ';
   $('allSub').textContent = allLeft < pool().length ? `ข้ามข้อที่มั่นใจและตอบถูกแล้ว ${pool().length - allLeft} ข้อ · ไม่จับเวลา` : 'ทำทุกข้อรวดเดียว ไม่จับเวลา';
+  $('miniSet').textContent = prefs.part === 'life' ? ({ all: ' · ทั้งหมด (ชุด 1 + 2)', v1: ' · ชุด 1', v2: ' · ชุด 2 จุดที่ออกสอบ' }[prefs.lset || 'all']) : '';
   $('catMenu').innerHTML = P().cats.map(c => {
     const st = miniState(c.id); if (!st.all.length) return '';
     const left = st.remain.length;
