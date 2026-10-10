@@ -137,6 +137,29 @@ html[data-theme="dark"] .hero .hint{ background:rgba(0,0,0,.3) }
 .miniset{ font-size:.8rem; color:var(--accent-ink); margin-left:4px }
 .avpick{ width:72px; height:72px; border-radius:50%; background:var(--surf2); display:grid; place-items:center; font-size:1.8rem; cursor:pointer; overflow:hidden; flex:none; border:2px dashed var(--line) }
 .avpick img{ width:100%; height:100%; object-fit:cover }
+.asstcard .ashd, .asstpanel .ashd{ display:flex; gap:10px; align-items:center; margin-bottom:10px }
+.asav{ width:38px; height:38px; flex:none; border-radius:12px; background:var(--accent); display:grid; place-items:center; font-size:1.25rem; box-shadow:0 3px 0 var(--accent-edge) }
+.asstcard .asgo{ width:100%; text-align:center; margin-bottom:8px }
+.asform{ display:flex; gap:6px; margin:6px 0 } .asin{ flex:1; min-width:0; padding:11px 12px; border-radius:12px; border:2px solid var(--line); background:var(--surf); color:var(--ink); font:inherit; font-size:16px }
+.asform .btn, .ashd .btn{ flex:none; width:auto; min-width:0; margin:0; padding:8px 14px; display:inline-grid; place-items:center }
+.ashd > div{ min-width:0 } .asform .asin{ flex:1 1 auto; width:auto }
+#asstChips{ flex:none; flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px; -webkit-overflow-scrolling:touch } #asstChips .aschip{ flex:none; white-space:nowrap }
+.askh{ font-weight:800; margin:8px 0 4px } .askh:first-child{ margin-top:0 }
+.askv{ padding:6px 0; border-bottom:1px dashed var(--line) } .askv b{ font-size:1.05rem } .askv .say{ margin-left:6px; vertical-align:middle }
+.askq{ padding:7px 0; border-bottom:1px dashed var(--line); font-size:.86rem } .askq .qchip{ display:inline-block; background:var(--surf2); border-radius:6px; padding:0 6px; font-weight:700; font-size:.76rem }
+.askans{ margin:3px 0; font-weight:600 } .askq .aschip{ margin-top:5px; font-size:.74rem; padding:4px 10px }
+.asmic.on{ background:#E5484D; color:#fff; border-color:#E5484D; animation:asPulse 1s infinite }
+@keyframes asPulse{ 50%{ box-shadow:0 0 0 6px rgba(229,72,77,.25) } }
+.aschips{ display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 } .aschip{ border:2px solid var(--line); background:var(--surf); color:var(--ink); border-radius:999px; padding:6px 11px; font:600 .8rem var(--thf); cursor:pointer }
+.asstpanel{ max-height:88vh; display:flex; flex-direction:column }
+.aslog{ flex:1; min-height:160px; overflow:auto; display:flex; flex-direction:column; gap:10px; padding:4px 2px 8px }
+.asme{ align-self:flex-end; max-width:80%; background:var(--accent); color:#1D2B3A; padding:8px 12px; border-radius:14px 14px 4px 14px; font-size:.9rem }
+.asbot{ display:flex; gap:8px; align-items:flex-start; max-width:94% } .asbot .asav{ width:30px; height:30px; font-size:1rem; border-radius:10px }
+.asbot > div{ background:var(--surf); border:2px solid var(--line); padding:9px 12px; border-radius:14px 14px 14px 4px; font-size:.9rem; line-height:1.55 }
+.asbot .asgo{ display:block; width:100%; margin-top:8px; text-align:center } .asbot .aschip{ margin-top:8px } .asmut{ color:var(--mute); font-size:.8rem } .asul{ margin:0 0 6px; padding-left:18px }
+.asfab{ position:fixed; right:14px; bottom:calc(84px + env(safe-area-inset-bottom,0px)); z-index:31; width:54px; height:54px; border-radius:18px; border:none; background:var(--accent); box-shadow:0 4px 0 var(--accent-edge), 0 6px 16px rgba(0,0,0,.18); font-size:1.6rem; cursor:pointer }
+body.quizmode .asfab{ display:none }
+@media (min-width:760px){ .asfab{ right:calc(50% - 360px + 14px) } }
 .minirow{ display:flex; gap:8px; align-items:stretch } .minirow > .btn.row{ flex:1; min-width:0 } .minireset{ flex:none; width:48px; padding:0; font-size:1.2rem; text-align:center }
 .minibar{ display:block; height:5px; border-radius:4px; background:var(--surf2); margin-top:6px; overflow:hidden } .minibar i{ display:block; height:100%; background:#1F9D55; border-radius:4px }
 .catline .nm small{ display:block; font-size:.7rem; color:var(--muted, #888); font-weight:600; margin-top:2px }
@@ -835,6 +858,8 @@ img{ -webkit-user-drag:none; user-drag:none }
     </div>
 
     <h2>เริ่มฝึกเลย</h2>
+    <div class="card asstcard th" id="asstCard"></div>
+    <div style="height:10px"></div>
     <button class="btn row review" id="goReview"><span class="ico3d">🔁</span><span class="g">ทบทวนวันนี้<span class="sub" id="reviewSub"></span></span><span class="pill" id="reviewN">0 ข้อ</span></button>
     <div style="height:10px"></div>
     <button class="btn primary row" id="goWeak"><span class="ico3d">🎯</span><span class="g">ฝึกจุดอ่อน<span class="sub">รวมข้อที่ผิดบ่อยและหมวดที่อ่อนที่สุด</span></span><span class="pill" id="weakN">15 ข้อ</span></button>
@@ -1033,6 +1058,13 @@ img{ -webkit-user-drag:none; user-drag:none }
 </main>
 <div class="gamebg" aria-hidden="true"><i></i><i></i><i></i></div>
 
+<button class="asfab" id="asstFab" aria-label="ผู้ช่วยฝึก">🤖</button>
+<div class="sheet" id="asstSheet" role="dialog" aria-label="ผู้ช่วยฝึก"><div class="panel asstpanel th">
+  <div class="ashd"><span class="asav">🤖</span><div style="flex:1"><b>ผู้ช่วยฝึก</b><div class="small muted">พิมพ์ หรือกด 🎤 แล้วพูดว่าวันนี้อยากทำข้อแบบไหน</div></div><button class="btn" id="asstClose">ปิด</button></div>
+  <div class="aslog" id="asstLog"></div>
+  <div class="aschips" id="asstChips"></div>
+  <form class="asform" data-asform><input class="asin" placeholder="เช่น ข้อที่เคยผิด 15 ข้อ · 足場 คืออะไร" maxlength="120" enterkeyhint="send"><button type="button" class="btn asmic" id="asstMic" aria-label="พูดสั่งด้วยเสียง" hidden>🎤</button><button class="btn primary" aria-label="ส่ง">➤</button></form>
+</div></div>
 <nav class="tabs">
   <div class="inner">
     <button data-tab="home" class="on"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 0 1 16 0z" fill="currentColor"/><rect x="2.5" y="17" width="19" height="3" rx="1.5" fill="currentColor"/></svg></span>หน้าแรก</button>
@@ -1338,6 +1370,7 @@ function renderHome() {
   renderNotice();
   $('partTitle').textContent = P().ja + '　' + pool().length + ' ข้อ';
   $('todayN').textContent = daily[today()] || 0;
+  if (typeof renderAsstCard === 'function') renderAsstCard();
   renderLevel(); Site.setPile(daily[today()] || 0);
   $('streak').textContent = streakDays();
   renderExam(); renderReview();
@@ -4084,6 +4117,291 @@ showNick();
 if (actOn && !load(NICK_KEY, '') && load('jac-nickskip', '') !== today()) setTimeout(() => { if (!load(NICK_KEY, '')) openNick(); }, 4000);
 if (actOn) { setTimeout(actSend, 1500); setInterval(() => { if (!document.hidden) actSend(); }, 120000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) actSend(); }); window.addEventListener('online', actSend); }
+
+/* ================= 🤖 ผู้ช่วยฝึก: type what you want to practise, the app builds the set ================= */
+// Works offline and costs nothing: it only reads this device's progress (done / wrong / unsure / due / 🔥).
+const ASST_CHIPS = [
+  ['🆕 ข้อที่ยังไม่เคยทำ', 'ข้อที่ยังไม่เคยทำ 10 ข้อ'], ['❌ ข้อที่เคยผิด', 'ข้อที่เคยผิด'], ['🎯 หมวดที่อ่อนที่สุด', 'หมวดที่อ่อนที่สุด'],
+  ['🔥 ข้อออกสอบจริง', 'ข้อออกสอบจริง'], ['🔁 ทบทวนครบกำหนด', 'ทบทวน'], ['🤔 ข้อที่ไม่มั่นใจ', 'ข้อที่ไม่มั่นใจ'],
+  ['⏱ ทำ 10 นาที', 'ทำ 10 นาที'], ['📊 ทำไปเท่าไหร่แล้ว', 'ทำไปเท่าไหร่แล้ว']
+];
+const ASST_TYPES = [                       // first match wins, so the specific ones come first
+  ['help', /ช่วยอะไร|ทำอะไรได้|ใช้ยังไง|วิธีใช้|^help$/i],
+  ['stat', /ทำไป(แล้ว)?(กี่|เท่า)|เหลือ(อีก)?กี่|ความคืบหน้า|สรุป|สถิติ|ไปถึงไหน/],
+  ['mock', /สอบจำลอง|จับเวลา(เหมือน|แบบ)?(สอบ)?จริง|ข้อสอบเต็ม|本番|模擬/],
+  ['untried', /ยังไม่(เคย)?ทำ|ไม่เคยทำ|ข้อใหม่|ยังไม่ได้ทำ|ไม่เคยเห็น|未/],
+  ['unsure', /ไม่มั่นใจ|ลังเล|เดา|ไม่ชัวร์/],
+  ['notyet', /ยังไม่แม่น|ยังไม่ผ่าน|ยังไม่เคยถูก|ยังไม่ถูก/],
+  ['wrong', /ผิด|พลาด|×/],
+  ['due', /ทบทวน|ครบกำหนด|review/i],
+  ['hot', /ออกสอบ|ออกจริง|ข้อสอบจริง|🔥|ที่เคยออก/],
+  ['weak', /อ่อน|จุดอ่อน|ไม่เก่ง|แย่ที่สุด|ต่ำสุด/],
+  ['fav', /ดาว|⭐|★|บันทึกไว้|ที่ชอบ|โปรด/],
+  ['any', /สุ่ม|อะไรก็ได้|ทั่วไป|ทุกหมวด|ฝึก|ทำ|ข้อ|\d/]
+];
+const ASST_NAME = { untried: 'ข้อที่ยังไม่เคยทำ', unsure: 'ข้อที่ไม่มั่นใจ', notyet: 'ข้อที่ยังไม่เคยตอบถูก', wrong: 'ข้อที่เคยผิด', due: 'ข้อที่ครบกำหนดทบทวน',
+  hot: 'ข้อออกสอบจริง 🔥', weak: 'หมวดที่อ่อนที่สุด', fav: 'ข้อที่ติดดาว', any: 'ข้อสุ่ม' };
+let asstLog = [], asstSets = {}, asstSeq = 0;
+
+function asstPartIn(t) {
+  if (/ภาคทฤษฎี|ทฤษฎี|学科/.test(t)) return 'gakka';
+  if (/ไลฟ์ไลน์|ライフライン|設備|ไลฟ์/.test(t)) return 'life';
+  if (/ภาคปฏิบัติ|ปฏิบัติ|土木|実技|โยธา/.test(t)) return /ไลฟ์|ライフ/.test(t) ? 'life' : (prefs.part === 'life' ? 'life' : 'jitsugi');
+  return '';
+}
+function asstCatIn(t, part) {
+  const words = c => c.th.split('/').map(w => w.trim()).concat(c.th.split('/').map(w => w.replace(/^(งาน|ความ|การ)/, '').trim())).filter(w => w.length >= 3);
+  const cats = PARTS[part].cats;
+  let best = null, len = 0;
+  cats.forEach(c => words(c).forEach(w => { if (t.includes(w) && w.length > len) { best = c; len = w.length; } }));
+  return best;
+}
+function asstNum(t) {          // "สิบห้าข้อ" / "ยี่สิบ นาที" → 15 / 20 (speech often gives words, not digits)
+  const D = { 'หนึ่ง': 1, 'เอ็ด': 1, 'สอง': 2, 'ยี่': 2, 'สาม': 3, 'สี่': 4, 'ห้า': 5, 'หก': 6, 'เจ็ด': 7, 'แปด': 8, 'เก้า': 9 };
+  return String(t).replace(/((?:หนึ่ง|สอง|ยี่|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?สิบ(?:เอ็ด|หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?|หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)(?=\s*(ข้อ|นาที))/g, w => {
+    const m = w.match(/^(.*?)สิบ(.*)$/); if (!m) return String(D[w] || w);
+    return String((m[1] ? D[m[1]] : 1) * 10 + (m[2] ? D[m[2]] : 0));
+  });
+}
+function asstCount(t) {
+  if (/ทั้งหมด|ทุกข้อ/.test(t)) return 999;
+  const mm = t.match(/(\d+)\s*นาที/); if (mm) return Math.min(40, Math.max(3, +mm[1]));
+  const m = t.match(/(\d+)\s*(ข้อ)?/); if (m) return Math.min(50, Math.max(1, +m[1]));
+  return 10;
+}
+const asstPool = part => QUESTIONS.map((q, i) => i).filter(i => partOf(QUESTIONS[i]) === part && (part !== 'life' || !prefs.lset || prefs.lset === 'all' || (prefs.lset === 'v2' ? QUESTIONS[i].id[0] === 'm' : QUESTIONS[i].id[0] === 'l')));
+const asstShaky = id => { const c = confBook[id]; return !!c && (c.c !== 'sure' || !c.ok); };
+
+function asstAnswer(text) {
+  const t = String(text || '').trim();
+  const type0 = (ASST_TYPES.find(([, re]) => re.test(t)) || [''])[0], type = type0 || 'any';
+  const part = asstPartIn(t) || prefs.part, pname = PARTS[part].ja;
+  const all = asstPool(part);
+  const tried = all.filter(i => triedQ(QUESTIONS[i].id)).length;
+  if (type === 'help') return { html: `พิมพ์บอกได้เลยว่าอยากฝึกแบบไหน เช่น<br>• <b>ข้อที่ยังไม่เคยทำ 15 ข้อ หมวดความปลอดภัย</b><br>• <b>ข้อที่เคยผิด ภาคปฏิบัติ</b><br>• <b>ทำ 20 นาที</b> · <b>สอบจำลอง</b> · <b>ทำไปเท่าไหร่แล้ว</b><br>ระบุได้ทั้งประเภทข้อ หมวด ภาค และจำนวนข้อ (ปกติ 10 ข้อ)<br><br>ถามเนื้อหาได้ด้วย เช่น<br>• <b>玉掛け คืออะไร</b> · <b>นั่งร้านภาษาญี่ปุ่นว่าอะไร</b><br>• <b>ข้อ ท-012</b> (เปิดดูข้อนั้นพร้อมเฉลย)` };
+  if (type === 'stat') {
+    const rows = Object.keys(PARTS).filter(p => asstPool(p).length).map(p => {
+      const a = asstPool(p), tr = a.filter(i => triedQ(QUESTIONS[i].id)).length, ok = a.filter(i => qok[QUESTIONS[i].id]).length;
+      return `<li><b>${PARTS[p].ja}</b> — ทำแล้ว ${tr}/${a.length} · ยังไม่ทำ <b>${a.length - tr}</b> · เคยถูกแล้ว ${ok}</li>`; }).join('');
+    const due = dueIdx().length, wr = all.filter(i => wrongBook[QUESTIONS[i].id]).length;
+    return { html: `<ul class="asul">${rows}</ul>วันนี้ทำไป <b>${(daily[today()] || 0)}</b> ข้อ${due ? ` · ครบกำหนดทบทวน <b>${due}</b> ข้อ` : ''}${wr ? ` · เคยผิดค้างอยู่ <b>${wr}</b> ข้อ (${pname})` : ''}`,
+      next: tried < all.length ? 'ข้อที่ยังไม่เคยทำ 10 ข้อ' : 'ข้อที่เคยผิด' };
+  }
+  if (type === 'mock') {
+    const R_ = PARTS[part].real;
+    return { html: `สอบจำลอง${pname} ${R_.n} ข้อ จับเวลา ${R_.min} นาที เหมือนสอบจริง (ผ่าน ${R_.pass}%)`, start: { part, mock: true, n: R_.n, label: 'สอบจำลอง' } };
+  }
+  // a content question ("足場 คืออะไร", "นั่งร้านภาษาญี่ปุ่นว่าอะไร", "ข้อ ท-012") → answer from the app's own vocab and questions
+  const strong = CODE_IN.test(t) || ASK_STRONG.test(t) || JP_CH.test(t);
+  if (strong || ((!type0 || type0 === 'any') && ASK_WEAK.test(t)) || (!type0 && !asstCatIn(t, part))) {
+    const a = askAnswer(t); if (a) return a;
+    if (strong) return { html: `ยังไม่พบ "${esc(t)}" ในคำศัพท์หรือข้อสอบของแอป 🙏 ลองพิมพ์คำให้สั้นลง เช่น <b>足場</b> หรือ <b>นั่งร้าน</b>` };
+  }
+  if (!type0 && !asstCatIn(t, asstPartIn(t) || prefs.part)) return { html: `ยังไม่เข้าใจคำว่า "${esc(t)}" 🙏 ลองพูดหรือพิมพ์แบบนี้: <b>ข้อที่ยังไม่เคยทำ 10 ข้อ</b>, <b>ข้อที่เคยผิด หมวดความปลอดภัย</b>, <b>ทำ 15 นาที</b>`, next: 'ข้อที่ยังไม่เคยทำ 10 ข้อ' };
+  let cat = asstCatIn(t, part), why = '';
+  if (type === 'weak') {
+    const w = readiness(part).weak[0];
+    if (!w) return { html: `${pname} ยังไม่มีหมวดที่อ่อนชัดเจน (ทุกหมวดถูก 80% ขึ้นไป หรือยังทำน้อยเกินไป) — ลอง <b>ข้อที่ยังไม่เคยทำ</b> ดูก่อนไหม`, next: 'ข้อที่ยังไม่เคยทำ' };
+    cat = PARTS[part].cats.find(c => c.id === w.id);
+    why = w.t < 5 ? 'แทบยังไม่ได้ฝึก' : `ตอบถูก ${Math.round(w.c / w.t * 100)}%`;
+  }
+  let set = cat ? all.filter(i => QUESTIONS[i].cat === cat.id) : all.slice();
+  const pickBy = {
+    untried: i => !triedQ(QUESTIONS[i].id), unsure: i => asstShaky(QUESTIONS[i].id), notyet: i => triedQ(QUESTIONS[i].id) && !qok[QUESTIONS[i].id],
+    wrong: i => !!wrongBook[QUESTIONS[i].id], fav: i => !!favs[QUESTIONS[i].id]
+  };
+  if (type === 'due') { const d = new Set(dueIdxAll()); set = set.filter(i => d.has(i)); }
+  else if (type === 'hot') { const h = new Set(hotList().map(x => x.i)); set = part === prefs.part ? set.filter(i => h.has(i)) : []; }
+  else if (pickBy[type]) set = set.filter(pickBy[type]);
+  // order: wrong / shaky first, then never tried, then the rest; random inside each group
+  const rank = i => { const id = QUESTIONS[i].id; return wrongBook[id] || asstShaky(id) ? 0 : !triedQ(id) ? 1 : qok[id] ? 3 : 2; };
+  set = shuffle(set).sort((a, b) => rank(a) - rank(b));
+  const want = asstCount(t), n = Math.min(want, set.length);
+  const where = `${pname}${cat ? ' · หมวด' + cat.th : ''}`;
+  if (!n) {
+    const alt = { untried: ['ทำครบทุกข้อแล้ว 🎉', 'ข้อที่ยังไม่แม่น'], wrong: ['ไม่มีข้อที่ผิดค้างอยู่เลย 👍', 'ข้อที่ยังไม่เคยทำ'], due: ['วันนี้ไม่มีข้อที่ครบกำหนดทบทวน', 'ข้อที่ยังไม่เคยทำ'],
+      unsure: ['ไม่มีข้อที่ตอบแบบไม่มั่นใจ', 'ข้อที่เคยผิด'], notyet: ['ทุกข้อที่ทำเคยตอบถูกแล้ว 👍', 'ข้อที่ยังไม่เคยทำ'], fav: ['ยังไม่ได้ติดดาวข้อไหน (กด ☆ ที่โจทย์)', 'ข้อที่ยังไม่เคยทำ'],
+      hot: [part === prefs.part ? 'ยังไม่มีข้อที่ทำเครื่องหมาย 🔥 ออกสอบจริง' : 'ข้อออกสอบจริงดูได้เฉพาะภาคที่เปิดอยู่', 'ข้อที่ยังไม่เคยทำ'] }[type] || ['ไม่พบข้อที่ตรงเงื่อนไข', 'ข้อที่ยังไม่เคยทำ'];
+    return { html: `${where}: ${alt[0]}`, next: alt[1] + (cat ? ' หมวด' + cat.th : '') };
+  }
+  const label = (type === 'any' ? 'ผู้ช่วยฝึก' : ASST_NAME[type].replace(' 🔥', '')) + (cat ? '・' + cat.th : '');
+  let html = `${type === 'weak' ? `หมวดที่ควรฝึกที่สุดตอนนี้คือ <b>${cat.th}</b> (${why})<br>` : ''}เจอ <b>${set.length}</b> ข้อ — ${ASST_NAME[type] || 'ข้อสุ่ม'} · ${where}`;
+  if (want < 999 && set.length < want) html += `<br><span class="asmut">มีแค่ ${set.length} ข้อ จึงจัดให้ครบเท่าที่มี</span>`;
+  else if (want < 999) html += `<br>จัดให้ <b>${n}</b> ข้อ${/นาที/.test(t) ? ' (ประมาณ 1 นาทีต่อข้อ)' : ''}`;
+  return { html, start: { part, idx: set.slice(0, n), label } };
+}
+
+function asstRender() {
+  const box = $('asstLog');
+  box.innerHTML = asstLog.map(m => m.me ? `<div class="asme">${esc(m.text)}</div>` :
+    `<div class="asbot"><span class="asav">🤖</span><div>${m.html}${m.sid ? `<button class="btn primary asgo" data-asgo="${m.sid}">▶ เริ่มเลย (${asstSets[m.sid].mock ? asstSets[m.sid].n + ' ข้อ จับเวลา' : asstSets[m.sid].idx.length + ' ข้อ'})</button>` : ''}${m.next ? `<button class="aschip" data-asq="${esc(m.next)}">${esc(m.next)}</button>` : ''}</div></div>`).join('');
+  box.scrollTop = box.scrollHeight;
+}
+function asstAsk(text) {
+  text = String(text || '').trim().slice(0, 120); if (!text) return;
+  const r = asstAnswer(asstNum(text)), msg = { html: r.html, next: r.next };
+  if (r.start) { const sid = 's' + (++asstSeq); asstSets[sid] = r.start; msg.sid = sid; }
+  asstLog.push({ me: true, text }, msg); asstLog = asstLog.slice(-20); asstRender();
+}
+function asstGo(sid) {
+  const s = asstSets[sid]; if (!s) return;
+  $('asstSheet').classList.remove('on');
+  if (s.part !== prefs.part) { prefs.part = s.part; if (s.part !== 'gakka') prefs.track = s.part; save(K.prefs, prefs); applyPrefs(); onPartChange(); }
+  if (s.mock) startQuiz(pickReal(s.part), 'สอบจำลอง', 'real', PARTS[s.part].real.min * 60);
+  else startQuiz(s.idx, '🤖 ' + s.label, 'asst', 0);
+}
+function asstSuggest() {                    // one line for the home card: what to do today
+  const all = pool(), due = dueIdx().length, wr = all.filter(i => wrongBook[QUESTIONS[i].id]).length, un = all.filter(i => !triedQ(QUESTIONS[i].id)).length;
+  if (due) return ['ทบทวน', `วันนี้มี <b>${due}</b> ข้อครบกำหนดทบทวน — ทำก่อนจะลืม`];
+  if (wr >= 5) return ['ข้อที่เคยผิด', `มีข้อที่เคยผิดค้างอยู่ <b>${wr}</b> ข้อ — แก้ให้ถูกก่อน`];
+  if (un) { const w = readiness(prefs.part).weak[0]; return [w ? 'ข้อที่ยังไม่เคยทำ หมวด' + w.th : 'ข้อที่ยังไม่เคยทำ', `ยังไม่เคยทำอีก <b>${un}</b> ข้อ${w ? ` · เริ่มจากหมวด <b>${w.th}</b>` : ''}`]; }
+  return ['ข้อที่ไม่มั่นใจ', 'ทำครบทุกข้อแล้ว 🎉 — ทบทวนข้อที่ไม่มั่นใจ หรือลองสอบจำลอง'];
+}
+function renderAsstCard() {
+  const el = $('asstCard'); if (!el) return;
+  const [q, txt] = asstSuggest();
+  el.innerHTML = `<div class="ashd"><span class="asav">🤖</span><div><b>ผู้ช่วยฝึก</b><div class="small muted">${txt}</div></div></div>
+    <button class="btn primary asgo" data-asq="${esc(q)}">▶ ${esc(q)}</button>
+    <form class="asform" data-asform><input class="asin" placeholder="วันนี้อยากทำอะไร เช่น ข้อที่ยังไม่ทำ 15 ข้อ" maxlength="120" enterkeyhint="send">${SPEECH_IN ? '<button type="button" class="btn asmic" aria-label="พูดสั่งด้วยเสียง">🎤</button>' : ''}<button class="btn" aria-label="ส่ง">➤</button></form>
+    <div class="aschips">${ASST_CHIPS.slice(0, 4).map(([l, q]) => `<button class="aschip" data-asq="${esc(q)}">${l}</button>`).join('')}</div>`;
+}
+function openAsst(first) {
+  if (!asstLog.length) asstLog.push({ html: 'สวัสดีครับ วันนี้อยากฝึกแบบไหน? กดปุ่มด้านล่าง หรือพิมพ์/พูดบอกได้เลย เช่น <b>"ข้อที่ยังไม่ทำ 15 ข้อ หมวดความปลอดภัย"</b><br>หรือถามศัพท์ก็ได้ เช่น <b>"玉掛け คืออะไร"</b>' });
+  $('asstChips').innerHTML = ASST_CHIPS.map(([l, q]) => `<button class="aschip" data-asq="${esc(q)}">${l}</button>`).join('');
+  $('asstSheet').classList.add('on'); asstRender();
+  if (first) asstAsk(first);
+}
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-asgo]'); if (g) { asstGo(g.dataset.asgo); return; }
+  const q = e.target.closest('[data-asq]'); if (q) { if ($('asstSheet').classList.contains('on')) asstAsk(q.dataset.asq); else openAsst(q.dataset.asq); }
+});
+document.addEventListener('submit', e => {
+  const f = e.target.closest('[data-asform]'); if (!f) return; e.preventDefault();
+  const inp = f.querySelector('.asin'), v = inp.value.trim(); if (!v) return; inp.value = '';
+  if ($('asstSheet').classList.contains('on')) asstAsk(v); else openAsst(v);
+});
+$('asstFab').addEventListener('click', () => openAsst());
+// 🎤 voice commands: the phone's own speech recognition (Thai), then the same parser as typing
+const SPEECH_IN = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+if (SPEECH_IN) $('asstMic').hidden = false;
+let asstRec = null;
+document.addEventListener('click', e => {
+  const b = e.target.closest('.asmic'); if (!b) return; e.preventDefault();
+  if (asstRec) { try { asstRec.stop(); } catch (er) {} return; }
+  const f = b.closest('form'), inp = f.querySelector('.asin');
+  try { asstRec = new SPEECH_IN(); } catch (er) { toast('เครื่องนี้ใช้คำสั่งเสียงไม่ได้ — กดไมค์บนคีย์บอร์ดแทน'); return; }
+  try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (er) {}
+  asstRec.lang = 'th-TH'; asstRec.interimResults = true; asstRec.maxAlternatives = 1; asstRec.continuous = false;
+  let said = '', failed = false; const before = inp.placeholder;
+  b.classList.add('on'); inp.value = ''; inp.placeholder = '🎤 กำลังฟัง… พูดได้เลย';
+  asstRec.onresult = ev => { said = [...ev.results].map(r => r[0].transcript).join(''); inp.value = said; };
+  asstRec.onerror = ev => { failed = true;
+    toast(ev.error === 'not-allowed' || ev.error === 'service-not-allowed' ? '🎤 ยังไม่ได้อนุญาตไมโครโฟน — อนุญาตในการตั้งค่าเบราว์เซอร์ หรือกดไมค์บนคีย์บอร์ดแทน'
+      : ev.error === 'network' ? '🎤 คำสั่งเสียงต้องต่ออินเทอร์เน็ต' : ev.error === 'no-speech' ? '🎤 ไม่ได้ยินเสียง ลองใหม่อีกครั้ง' : '🎤 ฟังไม่สำเร็จ — ลองใหม่ หรือกดไมค์บนคีย์บอร์ดแทน', 4000); };
+  asstRec.onend = () => { b.classList.remove('on'); inp.placeholder = before; asstRec = null;
+    if (!failed && said.trim()) { inp.value = ''; if ($('asstSheet').classList.contains('on')) asstAsk(said); else openAsst(said); } };
+  try { asstRec.start(); } catch (er) { b.classList.remove('on'); inp.placeholder = before; asstRec = null; toast('🎤 เริ่มฟังไม่ได้ ลองใหม่อีกครั้ง'); }
+});
+$('asstClose').addEventListener('click', () => $('asstSheet').classList.remove('on'));
+$('asstSheet').addEventListener('click', e => { if (e.target === $('asstSheet')) $('asstSheet').classList.remove('on'); });
+
+/* ---- ผู้ช่วยฝึก: answers simple content questions from what is in the app (vocab + questions + Thai explanations) ---- */
+const ASK_STRONG = /คืออะไร|แปลว่า|หมายถึง|หมายความว่า|อ่านว่า|ภาษาญี่ปุ่น|ญี่ปุ่นว่า|ภาษาไทย|เรียกว่า|ทำไม|อธิบาย|ใช้ทำอะไร|ใช้ทำ|คืออัน|ต่างกัน/;
+const ASK_WEAK = /กี่|เท่าไหร่|เท่าไร|ยังไง|อย่างไร|ไหม|มั้ย|\?|？/;
+const JP_CH = /[぀-ヿ一-鿿]/;
+const CODE_IN = /(?:^|[^฀-๿])(ล2|[ทปล])-?\s?(\d{1,3})(?!\d)/;
+const ASK_STOP = ['ภาษาญี่ปุ่นว่าอะไร', 'ญี่ปุ่นว่าอะไร', 'ภาษาญี่ปุ่นเรียกว่าอะไร', 'เรียกว่าอะไร', 'แปลว่าอะไร', 'หมายถึงอะไร', 'หมายความว่าอะไร', 'อ่านว่าอะไร', 'ใช้ทำอะไร', 'คืออะไร',
+  'ภาษาญี่ปุ่น', 'ภาษาไทย', 'แปลว่า', 'หมายถึง', 'อ่านว่า', 'เรียกว่า', 'อธิบาย', 'ทำไม', 'หน่อย', 'ครับ', 'ค่ะ', 'คะ', 'จ้า', 'ไหม', 'มั้ย', 'ยังไง', 'อย่างไร', 'เท่าไหร่', 'เท่าไร',
+  'อะไร', 'คือ', 'เรื่อง', 'ช่วย', 'บอก', 'ถาม', 'อยากรู้', 'ต้อง', 'กี่'];
+const ASK_STOPW = new Set(['ว่า', 'ที่', 'ของ', 'ใน', 'และ', 'หรือ', 'กับ', 'ได้', 'มี', 'เป็น', 'จะ', 'ให้', 'ไป', 'มา', 'นี้', 'นั้น', 'แล้ว', 'การ', 'ความ', 'ข้อ', 'ใช้', 'ทำ']);
+let askIdx = null;
+const plainX = h => plain(String(h || '')).replace(/[​‌⁠]/g, '');
+const ASK_SYN = { 'ฮีทสโตรก': 'ลมแดด', 'ฮีตสโตรก': 'ลมแดด', 'โรคลมร้อน': 'ลมแดด', 'แบ็คโฮ': 'แบคโฮ', 'ฟอร์คลิฟท์': 'โฟล์คลิฟท์', 'หมวกนิรภัย': 'หมวกนิรภัย', 'เซฟตี้เบลท์': 'เข็มขัดนิรภัย', 'ฮาร์เนส': 'เข็มขัดนิรภัยแบบเต็มตัว' };
+function askIndex() {
+  if (askIdx) return askIdx;
+  const voc = VOCAB.map(v => ({ v, t: v.t || '', r: v.r || '', th: plainX(v.th) }));
+  const read = new Map();                                   // kanji word → reading, from every furigana in the questions
+  const addR = h => String(h || '').replace(/<ruby>(.*?)<rt>(.*?)<\/rt><\/ruby>/g, (m, k, r) => { if (!read.has(k)) read.set(k, r); return m; });
+  const qs = QUESTIONS.map((q, i) => { addR(q.stem); q.opts.forEach(addR);
+    return { i, stem: plainX(q.stem), ans: plainX(q.opts[q.ans - 1]), oth: q.opts.filter((o, j) => j + 1 !== q.ans).map(plainX).join(' '),
+      main: [q.sth, q.ath, q.th].map(plainX).join(' '), othTh: (q.oth || []).map(plainX).join(' ') }; });
+  voc.forEach(v => { if (v.r && !read.has(v.t)) read.set(v.t, v.r); });
+  // rarity of Thai words: common words (ป้องกัน, งาน …) count less than rare ones (นั่งร้าน …)
+  const docs = voc.map(v => v.th).concat(qs.map(q => q.main)), N = docs.length;
+  return (askIdx = { voc, qs, read, docs, N, idf: new Map() });
+}
+function askIdf(w) {
+  const K_ = askIndex(); if (K_.idf.has(w)) return K_.idf.get(w);
+  const df = K_.docs.reduce((a, d) => a + (d.includes(w) ? 1 : 0), 0), v = df ? Math.log(K_.N / df) : 0;
+  K_.idf.set(w, v); return v;
+}
+function askWords(t) {
+  Object.keys(ASK_SYN).forEach(k => { if (t.includes(k)) t = t.split(k).join(ASK_SYN[k]); });
+  let th = t.replace(/[぀-ヿ一-鿿ー・]+/g, ' ');
+  ASK_STOP.forEach(w => { th = th.split(w).join(' '); });
+  th = th.replace(/[?？!！"“”'(),.:;、。]/g, ' ').replace(/\s+/g, ' ').trim();
+  let words = [];
+  try { words = [...new Intl.Segmenter('th', { granularity: 'word' }).segment(th)].filter(s => s.isWordLike).map(s => s.segment.trim()); }
+  catch (e) { words = th.split(' '); }
+  words = [...new Set(words.filter(w => w.length >= 2 && !ASK_STOPW.has(w)))];
+  const phrase = th.replace(/\s+/g, '');
+  return { phrase: phrase.length >= 2 ? phrase : '', words, jp: (t.match(/[぀-ヿ一-鿿ー・A-Za-z0-9]*[぀-ヿ一-鿿ー][぀-ヿ一-鿿ー・A-Za-z0-9]*/g) || []).filter(w => w.length >= 2 || /[一-鿿]/.test(w)).concat((t.match(/\b[A-Za-z][A-Za-z0-9]{1,9}\b/g) || []).filter(w => !/^(help|ok)$/i.test(w))) };
+}
+function askSearch(t) {
+  const K_ = askIndex(), q = askWords(t);
+  if (!q.phrase && !q.words.length && !q.jp.length) return null;
+  const wIdf = q.words.map(w => askIdf(w)), wTot = wIdf.reduce((a, b) => a + b, 0) || 1;
+  const cover = s => q.words.reduce((a, w, k) => a + (s.includes(w) ? wIdf[k] : 0), 0) / wTot;   // 0..1, rare words weigh more
+  const voc = K_.voc.map(d => {
+    let s = 0;
+    q.jp.forEach(j => { if (d.t === j || d.r === j) s += 10; else if (d.t.length >= 2 && (d.t.includes(j) || j.includes(d.t))) s += 5 - Math.min(2, Math.abs(d.t.length - j.length) / 3); else if (d.r && d.r.includes(j)) s += 3; });
+    if (q.phrase && d.th.includes(q.phrase)) s += 7 + (d.th.indexOf(q.phrase) < 3 ? 2 : 0);
+    else if (q.words.length) { const c = cover(d.th); if (c >= .99) s += 6; else if (c >= .6) s += 4 * c; }
+    return { d, s };
+  }).filter(x => x.s >= 4).sort((a, b) => b.s - a.s || a.d.t.length - b.d.t.length);
+  const qs = K_.qs.map(d => {
+    let s = 0;
+    q.jp.forEach(j => { if (d.ans.includes(j)) s += 5; else if (d.stem.includes(j)) s += 3; else if (d.oth.includes(j)) s += .8; });
+    if (q.phrase && d.main.includes(q.phrase)) s += 4; else if (q.phrase && d.othTh.includes(q.phrase)) s += 1.5;
+    else if (q.words.length) { const c = cover(d.main); if (c >= .99) s += 3.5; else if (c >= .6) s += 3 * c; }
+    return { d, s };
+  }).filter(x => x.s >= 3).sort((a, b) => b.s - a.s);
+  const vTop = voc.length ? voc[0].s : 0, qTop = qs.length ? qs[0].s : 0;
+  const reads = q.jp.map(j => [j, K_.read.get(j)]).filter(x => x[1] && x[1] !== x[0]);
+  return { q, reads, voc: voc.filter(x => x.s >= vTop * .7).slice(0, 4).map(x => x.d), qs: qs.filter(x => x.s >= qTop * .6).map(x => x.d.i) };
+}
+const askRuby = v => v.r ? `<ruby>${esc(v.t)}<rt>${esc(v.r)}</rt></ruby>` : esc(v.t);
+function askQuestionHTML(i, full) {
+  const q = QUESTIONS[i], snip = plainX(q.ath || q.th || '').slice(0, full ? 400 : 120);
+  return `<div class="askq"><span class="qchip">${qCode(q)}</span> <span lang="ja">${esc(plainX(q.stem).slice(0, full ? 300 : 70))}</span>${q.img ? ' 📷' : ''}
+    <div class="askans">✅ <span lang="ja">${q.opts[q.ans - 1]}</span></div>${snip ? `<div class="asmut">${esc(snip)}${snip.length >= (full ? 400 : 120) ? '…' : ''}</div>` : ''}
+    <button class="aschip" data-asopen="${i}">ดูโจทย์และเฉลยเต็ม</button></div>`;
+}
+function askAnswer(t) {
+  const cm = t.match(CODE_IN);
+  if (cm) {
+    const pre = { 'ท': 'g', 'ป': 'j', 'ล': 'l', 'ล2': 'm' }[cm[1]], id = pre + cm[2].padStart(3, '0'), i = QUESTIONS.findIndex(q => q.id === id);
+    if (i < 0) return { html: `ไม่พบข้อ ${esc(cm[1])}-${esc(cm[2])} ในแอป` };
+    return { html: askQuestionHTML(i, true) };
+  }
+  const r = askSearch(t);
+  if (!r || (!r.voc.length && !r.qs.length && !r.reads.length)) return null;
+  let html = r.reads.length ? r.reads.map(([k, rd]) => `<div class="askv">📢 <b lang="ja">${esc(k)}</b> อ่านว่า <b lang="ja">${esc(rd)}</b>${sayBtn(rd, 'ฟังเสียง')}</div>`).join('') : '';
+  const vg = []; r.voc.forEach(v => { const g = vg.find(x => x.t === v.t); if (g) { if (!g.th.includes(v.th)) g.th += ' · ' + v.th; } else vg.push({ t: v.t, r: v.r, th: v.th }); });   // same word in two lists → one line
+  if (vg.length) html += `<div class="askh">📖 คำศัพท์</div>` + vg.map(v => `<div class="askv"><b lang="ja">${askRuby(v)}</b>${sayBtn(v.r || v.t, 'ฟังเสียง')}<div>${esc(v.th)}</div></div>`).join('');
+  if (r.qs.length) html += `<div class="askh">📝 ออกในข้อสอบ ${r.qs.length} ข้อ${r.qs.length > 3 ? ' (แสดง 3 ข้อแรก)' : ''}</div>` + r.qs.slice(0, 3).map(i => askQuestionHTML(i)).join('');
+  html += `<div class="asmut" style="margin-top:6px">ตอบจากคำศัพท์และข้อสอบที่อยู่ในแอป</div>`;
+  const out = { html };
+  if (r.qs.length) {
+    const part = partOf(QUESTIONS[r.qs[0]]), idx = r.qs.filter(i => partOf(QUESTIONS[i]) === part).slice(0, 10);
+    out.start = { part, idx, label: 'เรื่องที่ถาม' };
+  }
+  return out;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-asopen]'); if (!b) return;
+  $('asstSheet').classList.remove('on'); qSheetWord = ''; openQ(+b.dataset.asopen);
+});
 
 /* ================= init ================= */
 applyPrefs();

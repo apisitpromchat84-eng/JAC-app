@@ -64,7 +64,7 @@ dialog::backdrop{ background:rgba(0,0,0,.5) } #dlgBody{ padding:16px 16px 24px }
 <dialog id="dlg"><div id="dlgBody"></div></dialog>
 <script>
 var PART = { gakka: 'ทฤษฎี', jitsugi: 'ปฏิบัติ 土木', life: 'ปฏิบัติ ไลฟ์ไลน์', '': '—' };
-var MODE = { real: 'สอบจำลอง', mini: 'ทดสอบย่อย', all: 'ทำทุกข้อ', wrong: 'ข้อที่เคยผิด', fav: 'ติดดาว', weak: 'จุดอ่อน', review: 'ทบทวน', hot: '🔥 ข้อที่ออก' };
+var MODE = { asst: '🤖 ผู้ช่วยฝึก', real: 'สอบจำลอง', mini: 'ทดสอบย่อย', all: 'ทำทุกข้อ', wrong: 'ข้อที่เคยผิด', fav: 'ติดดาว', weak: 'จุดอ่อน', review: 'ทบทวน', hot: '🔥 ข้อที่ออก' };
 function $(id){ return document.getElementById(id); }
 function pct(s, n){ return n ? Math.round(s / n * 100) + '%' : '—'; }
 function ago(ts, now){ var m = Math.round((now - ts) / 60000); if (m < 1) return 'เมื่อสักครู่'; if (m < 60) return m + ' นาทีที่แล้ว'; var h = Math.round(m / 60); if (h < 24) return h + ' ชม.ที่แล้ว'; return Math.round(h / 24) + ' วันที่แล้ว'; }
