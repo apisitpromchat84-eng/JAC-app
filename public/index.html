@@ -3853,10 +3853,12 @@ $('examClearSet').addEventListener('click', () => { setExamDate(''); if (current
 /* ================= "this question was in my real exam" ================= */
 // EXAM_SEEN = reports collected from users (qid → rounds 'YYYY-MM'); shown to everyone. Personal marks live in jac-seen-v1.
 const EXAM_SEEN = {};
+// owner-confirmed: came up again and again in the real 学科 exam (Oct 2026 list of 36) → always rank S, for everyone
+const EXAM_S = new Set(["g001", "g002", "g003", "g004", "g006", "g008", "g010", "g014", "g020", "g025", "g031", "g033", "g034", "g035", "g036", "g037", "g038", "g039", "g040", "g042", "g044", "g045", "g047", "g054", "g057", "g067", "g068", "g069", "g077", "g080", "g088", "g095", "g100", "g108", "g117", "g122"]);
 const SEEN_KEY = 'jac-seen-v1';
 let seenMine = load(SEEN_KEY, {});
 const seenRounds = id => [...new Set([...(EXAM_SEEN[id] || []), ...(seenMine[id] || [])])].sort();
-const isSeen = id => seenRounds(id).length > 0;
+const isSeen = id => EXAM_S.has(id) || seenRounds(id).length > 0;
 const monthTh = ym => { const [y, m] = ym.split('-').map(Number); return new Date(y, m - 1, 1).toLocaleDateString('th-TH', { month: 'short', year: '2-digit' }); };
 const seenBtn = id => `<button class="seenbtn ${isSeen(id) ? 'on' : ''}" data-seen="${id}" aria-label="ข้อนี้เคยออกสอบจริง" title="ข้อนี้เคยออกสอบจริง">🔥</button>`;
 let seenId = null;
@@ -3871,7 +3873,7 @@ function openSeen(id) {
 }
 function renderSeenRounds() {
   const mine = seenMine[seenId] || [], off = EXAM_SEEN[seenId] || [];
-  $('seenRounds').innerHTML = (off.length ? off.map(r => `<span class="rchip">🔥 ${monthTh(r)} (รายงานจากผู้ใช้ ยังไม่ยืนยัน)</span>`).join('') : '') +
+  $('seenRounds').innerHTML = (EXAM_S.has(seenId) ? '<span class="rchip"><span class="rk rkS sm">S</span> ผู้ดูแลยืนยันว่าออกสอบบ่อย</span>' : '') + (off.length ? off.map(r => `<span class="rchip">🔥 ${monthTh(r)} (รายงานจากผู้ใช้ ยังไม่ยืนยัน)</span>`).join('') : '') +
     (mine.length ? mine.map(r => `<span class="rchip">🔥 ${monthTh(r)}<button data-unseen="${r}" aria-label="ลบ">×</button></span>`).join('')
       : '<span class="small muted th">ยังไม่ได้จดว่าข้อนี้เคยออก</span>');
 }
@@ -3909,9 +3911,9 @@ function hotList() {
   const map = new Map();
   QUESTIONS.forEach((q, i) => {
     if (!inPart(i)) return;
-    const rs = seenRounds(q.id); if (!rs.length) return;
-    const last = rs[rs.length - 1];
-    map.set(i, { i, kind: 'seen', n: rs.length, last, score: rs.length * 10 + Math.max(0, 6 - (cur - ym(last))) });
+    const rs = seenRounds(q.id), conf = EXAM_S.has(q.id); if (!rs.length && !conf) return;
+    const last = rs.length ? rs[rs.length - 1] : '';
+    map.set(i, { i, kind: 'seen', conf, n: conf ? Math.max(3, rs.length) : rs.length, last, score: (conf ? Math.max(3, rs.length) : rs.length) * 10 + (last ? Math.max(0, 6 - (cur - ym(last))) : 0) });
   });
   [...map.values()].forEach(v => SIB[v.i].forEach(j => {
     if (!inPart(j)) return;
@@ -3937,7 +3939,7 @@ function renderHot() {
   const todo = list.filter(o => !o.done).length;
   const rows = (hotOpen ? list : list.slice(0, 5)).map(o => {
     const q = QUESTIONS[o.i];
-    const rk = hotRank(o), badge = `<span class="rk rk${rk}" title="${o.kind === 'seen' ? 'ออก ' + o.n + ' รอบ' : 'เนื้อหาเดียวกับข้อที่ออก'}">${rk}</span>`;
+    const rk = hotRank(o), badge = `<span class="rk rk${rk}" title="${o.conf ? 'ผู้ดูแลยืนยันว่าออกบ่อย' : o.kind === 'seen' ? 'ออก ' + o.n + ' รอบ' : 'เนื้อหาเดียวกับข้อที่ออก'}">${rk}</span>`;
     const mark = o.done ? '<span class="hk ok">✓</span>' : o.wrong ? '<span class="hk ng">✗</span>' : '<span class="hk"></span>';
     return `<button class="hrow" data-hot="${o.i}">${badge}<span class="hc">${qCode(q)}</span><span class="hs">${esc(thShort(q.sth || q.th))}</span>${mark}</button>`;
   }).join('');
@@ -3946,7 +3948,7 @@ function renderHot() {
     <div class="hact"><button class="btn primary" id="hotGo">▶ ฝึกเรียงตามสำคัญ</button>${list.length > 5 ? `<button class="btn" id="hotMore">${hotOpen ? 'ย่อ' : 'ดูทั้งหมด ' + list.length}</button>` : ''}</div>
     <div class="hact">${Object.keys(seenMine).length ? '<button class="btn" id="seenOutBtn">📤 แชร์ไฟล์ให้เพื่อน</button>' : ''}<button class="btn" id="seenIn">📥 รับไฟล์จากเพื่อน</button></div>
     <div class="rklegend">
-      <div><span class="rk rkS">S</span><b>ออกบ่อยมาก</b> เจอในข้อสอบจริง 3 รอบขึ้นไป — ต้องตอบได้ทุกครั้ง</div>
+      <div><span class="rk rkS">S</span><b>ออกบ่อยมาก</b> เจอในข้อสอบจริง 3 รอบขึ้นไป หรือผู้ดูแลยืนยันว่าออกบ่อย — ต้องตอบได้ทุกครั้ง</div>
       <div><span class="rk rkA">A</span><b>ออกซ้ำ</b> เจอ 2 รอบ — มีโอกาสออกอีกสูง</div>
       <div><span class="rk rkB">B</span><b>เคยออก</b> เจอ 1 รอบ</div>
       <div><span class="rk rkC">C</span><b>เนื้อหาเดียวกัน</b> ไม่ได้ออกเอง แต่ถามเรื่องเดียวกับข้อที่ออก (ถามอีกแบบ)</div>
