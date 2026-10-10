@@ -135,6 +135,8 @@ html[data-theme="dark"] .hero .hint{ background:rgba(0,0,0,.3) }
 .catline + .catline{ border-top:2px dashed var(--line) }
 .catline .nm{ width:8.2em; flex:none; font-size:.86rem }
 .miniset{ font-size:.8rem; color:var(--accent-ink); margin-left:4px }
+.avpick{ width:72px; height:72px; border-radius:50%; background:var(--surf2); display:grid; place-items:center; font-size:1.8rem; cursor:pointer; overflow:hidden; flex:none; border:2px dashed var(--line) }
+.avpick img{ width:100%; height:100%; object-fit:cover }
 .minirow{ display:flex; gap:8px; align-items:stretch } .minirow > .btn.row{ flex:1; min-width:0 } .minireset{ flex:none; width:48px; padding:0; font-size:1.2rem; text-align:center }
 .minibar{ display:block; height:5px; border-radius:4px; background:var(--surf2); margin-top:6px; overflow:hidden } .minibar i{ display:block; height:100%; background:#1F9D55; border-radius:4px }
 .catline .nm small{ display:block; font-size:.7rem; color:var(--muted, #888); font-weight:600; margin-top:2px }
@@ -960,7 +962,7 @@ img{ -webkit-user-drag:none; user-drag:none }
       <div class="grid2"><button class="btn center" id="copyMoveBtn" style="text-align:center">📤 คัดลอกรหัสย้ายข้อมูล<span class="sub">ย้ายไปเครื่องอื่นแบบไม่ใช้ไฟล์</span></button>
       <button class="btn center" id="pasteBtn" style="text-align:center">📥 วางรหัสย้ายข้อมูล<span class="sub">รับข้อมูลจากแอปเก่าหรือเครื่องอื่น</span></button></div>
       <div class="undorow" id="undoRow" hidden><button class="btn center" id="undoRestore" style="text-align:center">↩ ย้อนกลับเป็นข้อมูลก่อนกู้คืน<span class="sub" id="undoWhen"></span></button><button class="btn center" id="undoDrop" style="text-align:center;min-width:64px" aria-label="ลบสำเนา">ลบสำเนา</button></div>
-      <div class="small muted th center" style="margin-top:8px">แอปส่งสถิติการใช้งานแบบไม่ระบุตัวตน (จำนวนข้อที่ทำและคะแนน ไม่มีชื่อหรือข้อมูลส่วนตัว)</div>
+      <div class="small muted th center" style="margin-top:8px">แอปส่งจำนวนข้อที่ทำและคะแนนให้ผู้ดูแลกลุ่ม พร้อมชื่อเล่นที่ตั้งไว้: <b id="nickNow">—</b> <button class="btn" id="nickEdit" style="display:inline-block;padding:4px 10px;font-size:.78rem;margin-left:4px">เปลี่ยนชื่อ / รูป</button></div>
       <div class="small muted th center" id="backupNote" hidden>ปุ่มสำรองข้อมูลใช้ได้ในแอปบน Netlify</div>
       <button class="btn center" id="clrWrong" style="text-align:center">ล้างรายการข้อที่เคยผิด</button>
       <button class="btn center" id="clrAll" style="text-align:center">ล้างสถิติทั้งหมด</button>
@@ -1076,6 +1078,20 @@ img{ -webkit-user-drag:none; user-drag:none }
   <div class="actions">
     <button class="btn primary center" id="seenSave" style="text-align:center">🔥 บันทึกว่าเคยออก</button>
     <button class="btn center" id="seenClose" style="text-align:center">ปิด</button>
+  </div>
+</div></div>
+<div class="sheet" id="nickSheet" role="dialog" aria-label="ชื่อเล่น"><div class="panel">
+  <h2 style="margin-top:0">👋 ชื่อเล่นของคุณ</h2>
+  <div class="small muted th">ใช้แสดงให้ผู้ดูแลกลุ่มเห็นความคืบหน้า (จำนวนข้อที่ทำและคะแนน) — ไม่ต้องใช้อีเมลหรือรหัสผ่าน</div>
+  <div style="display:flex;align-items:center;gap:14px;margin:12px 0 0">
+    <label class="avpick" for="avFile"><img id="avImg" alt="" hidden><span id="avPh">📷</span></label>
+    <div class="small muted th">แตะรูปเพื่อเลือกรูปโปรไฟล์ (ไม่บังคับ)<br><button class="btn" id="avDel" type="button" style="padding:4px 10px;font-size:.76rem;margin-top:4px" hidden>ลบรูป</button></div>
+    <input id="avFile" type="file" accept="image/*" hidden>
+  </div>
+  <input id="nickBox" type="text" maxlength="24" placeholder="เช่น นิว, สมชาย" autocomplete="nickname" style="width:100%;margin:12px 0;padding:12px 14px;font:1.05rem var(--thf);border-radius:12px;border:2px solid var(--line);background:var(--surf);color:var(--ink)">
+  <div class="actions">
+    <button class="btn primary center" id="nickSave" style="text-align:center">บันทึก</button>
+    <button class="btn center" id="nickSkip" style="text-align:center">ไว้ทีหลัง</button>
   </div>
 </div></div>
 <div class="sheet" id="pasteSheet" role="dialog" aria-label="วางรหัสย้ายข้อมูล"><div class="panel">
@@ -2672,7 +2688,7 @@ const Site = (() => {
 /* ================= backup / restore ================= */
 const CONF_KEY = 'jac-conf-v1';
 let confBook = load(CONF_KEY, {});
-const BACKUP_KEYS = Object.values(K).concat(['jac-conf-v1', 'jac-mig-id', 'jac-gamexp', 'jac-gbest', 'jac-vmiss', 'jac-zoomseen', 'jac-jigalb', 'jac-jigcur', 'jac-srs-v1', 'jac-qok-v1', 'jac-examdate', 'jac-srs-mig', 'jac-seen-v1', 'jac-mini-v1']);
+const BACKUP_KEYS = Object.values(K).concat(['jac-conf-v1', 'jac-mig-id', 'jac-gamexp', 'jac-gbest', 'jac-vmiss', 'jac-zoomseen', 'jac-jigalb', 'jac-jigcur', 'jac-srs-v1', 'jac-qok-v1', 'jac-examdate', 'jac-srs-mig', 'jac-seen-v1', 'jac-mini-v1', 'jac-nick', 'jac-avatar']);
 if (window.IMGDATA) { $('backupRow').hidden = true; $('backupNote').hidden = false; }   // file download is off in the preview
 $('exportBtn').addEventListener('click', () => {
   const data = { app: 'jac-exam', v: 1, at: new Date().toISOString(), keys: {} };
@@ -3905,16 +3921,45 @@ document.addEventListener('keydown', e => {                       // Ctrl/⌘ + 
 /* ================= anonymous activity (no names, no login) =================
    Each device gets a random id. The app tells the server "this device is open" and sends
    part / mode / score of each finished quiz, so the owner can see on /stats that people are studying. */
-const ACT_DEV = 'jac-anon', ACT_Q = 'jac-actq';
+const ACT_DEV = 'jac-anon', ACT_Q = 'jac-actq', NICK_KEY = 'jac-nick';
+const cleanNick = v => String(v || '').replace(/[<>"'`\\]/g, '').replace(/\s+/g, ' ').trim().slice(0, 24);
+// profile picture: resized to 96×96 on the phone, sent once (and again only when it changes)
+const AV_KEY = 'jac-avatar';
+const avPending = () => load('jac-avsent', 0) === load('jac-avver', 0) ? {} : { avatar: load(AV_KEY, '') };
+function showAv() { const a = load(AV_KEY, ''); $('avImg').hidden = !a; $('avPh').hidden = !!a; if (a) $('avImg').src = a; $('avDel').hidden = !a; }
+$('avFile').addEventListener('change', e => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+  const url = URL.createObjectURL(f), im = new Image();
+  im.onload = () => {
+    const c = document.createElement('canvas'); c.width = c.height = 96; const g = c.getContext('2d');
+    const m = Math.min(im.width, im.height); g.drawImage(im, (im.width - m) / 2, (im.height - m) / 2, m, m, 0, 0, 96, 96);
+    URL.revokeObjectURL(url);
+    save(AV_KEY, c.toDataURL('image/jpeg', .8)); save('jac-avver', Date.now()); showAv(); actSend();
+  };
+  im.onerror = () => { URL.revokeObjectURL(url); toast('เปิดรูปนี้ไม่ได้ ลองรูปอื่น'); };
+  im.src = url;
+});
+$('avDel').addEventListener('click', () => { save(AV_KEY, ''); save('jac-avver', Date.now()); showAv(); actSend(); });
+function showNick() { $('nickNow').textContent = load(NICK_KEY, '') || 'ยังไม่ได้ตั้ง'; }
+function openNick() { showAv(); $('nickBox').value = load(NICK_KEY, ''); $('nickSheet').classList.add('on'); setTimeout(() => $('nickBox').focus(), 150); }
+$('nickSave').addEventListener('click', () => { const v = cleanNick($('nickBox').value); if (!v) { toast('พิมพ์ชื่อเล่นก่อน'); return; } save(NICK_KEY, v); $('nickSheet').classList.remove('on'); showNick(); toast('บันทึกชื่อแล้ว: ' + v); actSend(); });
+$('nickSkip').addEventListener('click', () => { save('jac-nickskip', today()); $('nickSheet').classList.remove('on'); });
+$('nickEdit').addEventListener('click', openNick);
+(() => {                                             // personal link: …/?u=somchai sets the name once
+  const u = new URLSearchParams(location.search).get('u');
+  if (u && cleanNick(u)) { save(NICK_KEY, cleanNick(u)); history.replaceState(null, '', location.pathname + location.hash); }
+})();
 const actOn = /^https?:$/.test(location.protocol) && !window.IMGDATA;
 const actDev = (() => { let d = load(ACT_DEV, ''); if (!/^[a-z0-9]{8,32}$/.test(d)) { d = (Date.now().toString(36) + Math.random().toString(36).slice(2, 12)).slice(0, 20); save(ACT_DEV, d); } return d; })();
 function actSend() {
   if (!actOn || document.hidden && !load(ACT_Q, []).length) return;
   const events = load(ACT_Q, []).slice(0, 20);
-  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify({ dev: actDev, part: prefs.part, events }) })
-    .then(r => { if (r.ok && events.length) save(ACT_Q, load(ACT_Q, []).slice(events.length)); }).catch(() => {});
+  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ dev: actDev, name: load(NICK_KEY, ''), part: prefs.part, events }, avPending())) })
+    .then(r => { if (!r.ok) return; if (events.length) save(ACT_Q, load(ACT_Q, []).slice(events.length)); save('jac-avsent', load('jac-avver', 0)); }).catch(() => {});
 }
 function actEvent(e) { if (!actOn) return; const q = load(ACT_Q, []); q.push(e); save(ACT_Q, q.slice(-100)); actSend(); }
+showNick();
+if (actOn && !load(NICK_KEY, '') && load('jac-nickskip', '') !== today()) setTimeout(openNick, 2500);
 if (actOn) { setTimeout(actSend, 1500); setInterval(() => { if (!document.hidden) actSend(); }, 120000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) actSend(); }); window.addEventListener('online', actSend); }
 

@@ -23,14 +23,18 @@ h2{ font-size:1rem; margin:22px 0 8px } .card{ background:var(--card); border:1p
 table{ width:100%; border-collapse:collapse; font-size:.86rem } th,td{ text-align:left; padding:7px 4px; border-bottom:1px solid var(--line) } th{ color:var(--mute); font-weight:600 } td.n{ text-align:right }
 .pass{ color:var(--ok); font-weight:700 } .hours{ display:grid; grid-template-columns:repeat(24,1fr); gap:2px; align-items:end; height:70px }
 .hours i{ display:block; background:var(--bar2); border-radius:3px 3px 0 0; min-height:2px } .hl{ display:grid; grid-template-columns:repeat(24,1fr); font-size:.6rem; color:var(--mute); text-align:center }
+.nm{ font-weight:700 } .av{ width:30px; height:30px; border-radius:50%; object-fit:cover; display:inline-grid; place-items:center; background:var(--soft); vertical-align:middle; margin-right:8px; font-size:.8rem; font-weight:700 } .muted{ color:var(--mute); font-size:.78rem } .ok{ color:var(--ok); font-weight:700 } .ng{ color:#D9480F; font-weight:700 } .tw{ overflow-x:auto }
 .empty{ color:var(--mute); text-align:center; padding:20px }
 </style>
 </head>
 <body><main>
 <h1>📊 แอป JAC — ความเคลื่อนไหว</h1>
-<div class="sub">นับแบบไม่ระบุตัวตน (1 เครื่อง = 1 คน) · เวลาญี่ปุ่น · อัปเดตเองทุก 30 วินาที</div>
+<div class="sub">ชื่อตามที่แต่ละคนตั้งในแอป (ไม่ตั้ง = ไม่ระบุชื่อ, 1 เครื่อง = 1 คน) · เวลาญี่ปุ่น · อัปเดตเองทุก 30 วินาที</div>
 <div class="live" id="live"><span class="dot"></span><span>กำลังโหลด…</span></div>
+<div id="gate" class="card" style="display:none;margin:14px 0"><b>🔒 ใส่รหัสผ่านเพื่อดูหน้านี้</b><div style="display:flex;gap:8px;margin-top:10px"><input id="key" type="password" style="flex:1;padding:10px 12px;border-radius:10px;border:1px solid var(--line);font:inherit;background:var(--card);color:var(--ink)"><button id="go" style="padding:10px 16px;border-radius:10px;border:none;background:var(--bar);font:inherit;font-weight:700">เปิด</button></div><div id="gmsg" class="sub" style="margin-top:6px"></div></div>
 <div class="kpis" id="kpis"></div>
+<h2>👥 รายชื่อ (ตามชื่อเล่นที่ตั้งในแอป)</h2>
+<div class="card" id="people"></div>
 <h2>14 วันล่าสุด — จำนวนเครื่องที่ทำแบบทดสอบ</h2>
 <div class="card"><div class="chart" id="chart"></div><div class="legend">แท่งสีน้ำเงิน = วันนี้ · ตัวเลขบนแท่ง = จำนวนเครื่อง</div></div>
 <h2>วันนี้แยกตามภาค</h2>
@@ -48,7 +52,21 @@ var MODE = { real: 'สอบจำลอง', mini: 'ทดสอบย่อ�
 function $(id){ return document.getElementById(id); }
 function pct(s, n){ return n ? Math.round(s / n * 100) + '%' : '—'; }
 function ago(ts, now){ var m = Math.round((now - ts) / 60000); if (m < 1) return 'เมื่อสักครู่'; if (m < 60) return m + ' นาทีที่แล้ว'; var h = Math.round(m / 60); if (h < 24) return h + ' ชม.ที่แล้ว'; return Math.round(h / 24) + ' วันที่แล้ว'; }
+function esc(v){ return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
+function pc(v){ return v == null ? '—' : '<span class="' + (v >= 75 ? 'ok' : 'ng') + '">' + v + '%</span>'; }
+function renderPeople(d){
+  var ps = d.people || [];
+  $('people').innerHTML = ps.length ? '<div class="tw"><table><tr><th>ชื่อ</th><th>ล่าสุด</th><th class="n">วันนี้</th><th class="n">7 วัน</th><th class="n">ถูกรวม</th><th class="n">สอบจำลองล่าสุด</th></tr>' + ps.map(function(p){
+    var lm = p.mock_pct != null ? [p.mock_pct, p.mock_part] : null;
+    var on = d.now - p.last < 5 * 60000;
+    return '<tr><td>' + (p.avatar ? '<img class="av" src="' + p.avatar + '" alt="">' : '<span class="av">' + esc((p.name || '?').slice(0, 1)) + '</span>') + '<span class="nm">' + (p.name ? esc(p.name) : '<span class="muted">ไม่ระบุชื่อ</span>') + '</span>' + (on ? ' 🟢' : '') + '</td><td class="muted">' + ago(p.last, d.now) + '</td>' +
+      '<td class="n">' + (p.n_today ? p.n_today + ' ข้อ<br><span class="muted">' + Math.round(p.s_today / p.n_today * 100) + '%</span>' : '<span class="muted">—</span>') + '</td>' +
+      '<td class="n">' + (p.n_7 || '<span class="muted">0</span>') + '</td><td class="n">' + (p.n_all ? pc(Math.round(p.s_all / p.n_all * 100)) : '—') + '</td>' +
+      '<td class="n">' + (lm ? pc(+lm[0]) + '<br><span class="muted">' + (PART[lm[1]] || '') + '</span>' : '—') + '</td></tr>';
+  }).join('') + '</table></div><div class="legend">🟢 = เปิดแอปอยู่ตอนนี้ · คนที่ตั้งชื่อเดียวกันในหลายเครื่องจะรวมเป็นแถวเดียว</div>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
+}
 function render(d){
+  renderPeople(d);
   var liveN = d.live.reduce(function(a, x){ return a + x.c; }, 0);
   $('live').innerHTML = '<span class="dot ' + (liveN ? 'on' : '') + '"></span><span><b>' + liveN + '</b> เครื่องเปิดแอปอยู่ตอนนี้' +
     (liveN ? ' <span class="sub">(' + d.live.map(function(x){ return (PART[x.part] || x.part) + ' ' + x.c; }).join(' · ') + ')</span>' : '') + '<br><span class="sub">นับเครื่องที่ใช้งานใน 5 นาทีล่าสุด</span></span>';
@@ -64,9 +82,17 @@ function render(d){
   var hs = []; for (var h = 0; h < 24; h++) hs.push(0); d.hours.forEach(function(x){ hs[x.h] = x.c; }); var hm = Math.max.apply(null, hs.concat([1]));
   $('hours').innerHTML = hs.map(function(c){ return '<i style="height:' + Math.round(c / hm * 100) + '%" title="' + c + '"></i>'; }).join('');
   $('hl').innerHTML = hs.map(function(c, h){ return '<span>' + (h % 3 ? '' : h) + '</span>'; }).join('');
-  $('recent').innerHTML = d.recent.length ? '<table><tr><th>เวลา</th><th>ภาค</th><th>โหมด</th><th class="n">คะแนน</th></tr>' + d.recent.map(function(r){ return '<tr><td>' + ago(r.ts, d.now) + '</td><td>' + (PART[r.part] || r.part) + '</td><td>' + (MODE[r.mode] || r.mode) + '</td><td class="n">' + r.s + '/' + r.n + ' (' + pct(r.s, r.n) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
+  $('recent').innerHTML = d.recent.length ? '<table><tr><th>เวลา</th><th>ใคร</th><th>ภาค</th><th>โหมด</th><th class="n">คะแนน</th></tr>' + d.recent.map(function(r){ return '<tr><td>' + ago(r.ts, d.now) + '</td><td>' + esc(r.name || 'ไม่ระบุชื่อ') + '</td><td>' + (PART[r.part] || r.part) + '</td><td>' + (MODE[r.mode] || r.mode) + '</td><td class="n">' + r.s + '/' + r.n + ' (' + pct(r.s, r.n) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
 }
-function load(){ fetch('/api/stats', { cache: 'no-store' }).then(function(r){ return r.json(); }).then(render).catch(function(){ $('live').innerHTML = '<span class="dot"></span><span>โหลดข้อมูลไม่ได้ — ลองใหม่อีกครั้ง</span>'; }); }
-load(); setInterval(load, 30000);
+var KEY = ''; try { KEY = localStorage.getItem('jac-statskey') || ''; } catch (e) {}
+function load(){
+  fetch('/api/stats', { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){
+    if (r.status === 401) { $('gate').style.display = 'block'; $('live').style.display = 'none'; if (KEY) $('gmsg').textContent = 'รหัสผ่านไม่ถูกต้อง'; throw 'key'; }
+    return r.json();
+  }).then(function(d){ $('gate').style.display = 'none'; $('live').style.display = ''; render(d); }).catch(function(e){ if (e !== 'key') $('live').innerHTML = '<span class="dot"></span><span>โหลดข้อมูลไม่ได้ — ลองใหม่อีกครั้ง</span>'; });
+}
+$('go').onclick = function(){ KEY = $('key').value.trim(); try { localStorage.setItem('jac-statskey', KEY); } catch (e) {} load(); };
+$('key').onkeydown = function(e){ if (e.key === 'Enter') $('go').click(); };
+load(); setInterval(function(){ if (KEY) load(); }, 30000);
 </script>
 </body></html>
