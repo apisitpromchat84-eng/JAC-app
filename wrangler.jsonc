@@ -1,19 +1,6 @@
 {
-  // แอป JAC — deployed automatically from this repo (Cloudflare Workers Builds)
+  // แอป JAC — static site on Cloudflare Workers (deployed automatically from this repo)
   "name": "jac-app",
-  "main": "worker.js",
   "compatibility_date": "2026-09-01",
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS",
-    // only login / sync / admin go through worker.js; every other file is served directly (free, unlimited)
-    "run_worker_first": ["/api/*", "/auth/*", "/admin", "/admin/*"]
-  },
-  // database for accounts, quiz results and synced progress (created automatically on first deploy)
-  "d1_databases": [{ "binding": "DB", "database_name": "jac-db" }],
-  // keep variables/secrets that were added in the Cloudflare dashboard when this repo deploys
-  "keep_vars": true,
-  // public values (not secret). Secrets (GOOGLE_CLIENT_SECRET, LINE_CHANNEL_SECRET) are set in the Cloudflare dashboard only.
-  "vars": { "GOOGLE_CLIENT_ID": "728948123045-gh448pm0qeuuohd56vutlggp46qe7m2u.apps.googleusercontent.com" },
-  "observability": { "enabled": true }
+  "assets": { "directory": "./public" }
 }

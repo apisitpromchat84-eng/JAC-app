@@ -30,7 +30,7 @@ assert 'QUESTIONS = [' not in out and 'const VOCAB = [' not in out
 if os.path.exists('dist'): shutil.rmtree('dist')
 os.makedirs('dist')
 open('dist/index.html', 'w', encoding='utf-8').write(out)
-for f in ['sw.js', 'manifest.webmanifest', 'netlify.toml', '_headers', 'robots.txt', 'privacy.html', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png']:
+for f in ['sw.js', 'manifest.webmanifest', 'netlify.toml', '_headers', 'robots.txt', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png']:
     shutil.copy(f, 'dist/' + f)
 shutil.copytree('img', 'dist/img')
 print('watermarked', n1 + n2 + n3 + n4, 'entries; data', len(raw) // 1024, 'KB -> scrambled', len(b64) // 1024, 'KB')

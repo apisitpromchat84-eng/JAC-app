@@ -1,6 +1,6 @@
 // the page is network-first (cached as './' — Cloudflare Pages redirects /index.html to /)
 // index.html is network-first, so CACHE only needs a new number when images/icons change
-const CACHE = 'jac-exam-v26';
+const CACHE = 'jac-exam-v27';
 const ASSETS = [
   './', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png',
   './img/s1_q01.jpg',
@@ -124,8 +124,6 @@ self.addEventListener('activate', e => {
 // Result photos are not pre-cached: each one is cached the first time it is shown.
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  const p = new URL(e.request.url).pathname;
-  if (p.startsWith('/api/') || p.startsWith('/auth/') || p === '/admin' || p.startsWith('/admin/')) return;   // login, sync and admin always go to the server
   // The page itself: network first, so a new upload shows up without changing CACHE; cache when offline.
   if (e.request.mode === 'navigate' || e.request.url.endsWith('/index.html')) {
     e.respondWith(fetch(e.request).then(res => {
