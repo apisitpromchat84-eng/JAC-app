@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>แอป JAC — แอดมิน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{ --bg:#F2F3EE; --card:#FBFBF8; --ink:#1E2A26; --mute:#6B7470; --line:#DFE2DA; --accent:#E7A400; --ok:#1F9D55; --ng:#D9480F; --soft:#EEF0EA }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#141816; --card:#1D2320; --ink:#E9EEEA; --mute:#9AA59F; --line:#2E3632; --soft:#252C29 } }
+*{ box-sizing:border-box }
+body{ margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 'IBM Plex Sans Thai', system-ui, sans-serif }
+header{ position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--line); padding:12px 16px }
+header .row{ max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:10px; flex-wrap:wrap }
+h1{ font-size:1.1rem; margin:0; flex:1 } a.back{ color:var(--mute); text-decoration:none; font-size:.9rem }
+main{ max-width:1100px; margin:0 auto; padding:14px 16px 60px }
+.kpis{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:14px }
+.kpi{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px }
+.kpi b{ display:block; font-size:1.6rem; line-height:1.2 } .kpi span{ color:var(--mute); font-size:.82rem }
+.tools{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px }
+.tools input, .tools select{ font:inherit; padding:8px 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink) }
+.tools input{ flex:1; min-width:180px }
+.users{ display:grid; gap:10px }
+.u{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; cursor:pointer; display:grid; grid-template-columns:44px minmax(0,1fr); gap:12px }
+.u:hover{ border-color:var(--accent) }
+.av{ width:44px; height:44px; border-radius:50%; background:var(--soft); object-fit:cover; display:grid; place-items:center; font-weight:700 }
+.u .top{ display:flex; gap:8px; align-items:baseline; flex-wrap:wrap } .u .nm{ font-weight:700 } .u .meta{ color:var(--mute); font-size:.8rem }
+.tag{ font-size:.7rem; padding:1px 8px; border-radius:999px; background:var(--soft); color:var(--mute); font-weight:600 }
+.tag.google{ background:#E8F0FE; color:#1A56C4 } .tag.line{ background:#E3F8E8; color:#06802F }
+.stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:6px 14px; margin-top:8px; font-size:.82rem }
+.stats .k{ color:var(--mute); display:block; font-size:.72rem }
+.pct{ font-weight:700 } .pass{ color:var(--ok) } .fail{ color:var(--ng) }
+.bar{ height:6px; border-radius:4px; background:var(--soft); overflow:hidden; margin-top:3px } .bar i{ display:block; height:100%; background:var(--ok) }
+.empty{ text-align:center; color:var(--mute); padding:40px 10px }
+dialog{ border:none; border-radius:18px; padding:0; width:min(720px, calc(100vw - 24px)); max-height:88vh; background:var(--card); color:var(--ink) }
+dialog::backdrop{ background:rgba(0,0,0,.45) }
+.dlg{ padding:16px 18px 20px } .dlg h2{ margin:0 0 4px; font-size:1.1rem } .close{ float:right; font:inherit; border:none; background:var(--soft); color:var(--ink); border-radius:10px; padding:6px 12px; cursor:pointer }
+table{ width:100%; border-collapse:collapse; font-size:.84rem; margin-top:10px } th, td{ text-align:left; padding:7px 6px; border-bottom:1px solid var(--line) } th{ color:var(--mute); font-weight:600 }
+td.num{ text-align:right; white-space:nowrap }
+.parts{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-top:12px }
+.part{ background:var(--soft); border-radius:12px; padding:10px 12px; font-size:.84rem }
+.err{ background:#FDECEA; color:#9B1C1C; border-radius:12px; padding:12px 14px; margin-bottom:12px }
+</style>
+</head>
+<body>
+<header><div class="row"><h1>🛠 แอป JAC — แอดมิน</h1><a class="back" href="/">← กลับไปที่แอป</a></div></header>
+<main>
+  <div id="err"></div>
+  <div class="kpis" id="kpis"></div>
+  <div class="tools">
+    <input id="q" type="search" placeholder="ค้นหาชื่อ / อีเมล">
+    <select id="sort">
+      <option value="seen">เรียงตาม: เข้าใช้ล่าสุด</option>
+      <option value="acc">เรียงตาม: ตอบถูก % มากสุด</option>
+      <option value="answered">เรียงตาม: ทำข้อสอบมากสุด</option>
+      <option value="week">เรียงตาม: ขยันสุดใน 7 วัน</option>
+      <option value="created">เรียงตาม: สมัครล่าสุด</option>
+    </select>
+  </div>
+  <div class="users" id="users"><div class="empty">กำลังโหลด…</div></div>
+</main>
+<dialog id="dlg"><div class="dlg" id="dlgBody"></div></dialog>
+<script>
+var PART = { gakka: 'ทฤษฎี', jitsugi: 'ปฏิบัติ 土木', life: 'ปฏิบัติ ไลฟ์ไลน์' };
+var MODE = { real: 'สอบจำลอง', mini: 'ทดสอบย่อย', all: 'ทำทุกข้อ', wrong: 'ข้อที่เคยผิด', fav: 'ติดดาว', weak: 'จุดอ่อน', review: 'ทบทวน', hot: '🔥 ข้อที่ออก' };
+var users = [];
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
+function pct(c, n){ return n ? Math.round(c / n * 100) : null; }
+function pctHtml(p){ return p == null ? '—' : '<span class="pct ' + (p >= 75 ? 'pass' : 'fail') + '">' + p + '%</span>'; }
+function ago(ts){
+  if (!ts) return '—';
+  var m = Math.round((Date.now() - ts) / 60000);
+  if (m < 2) return 'เมื่อสักครู่'; if (m < 60) return m + ' นาทีที่แล้ว';
+  var h = Math.round(m / 60); if (h < 24) return h + ' ชม.ที่แล้ว';
+  var d = Math.round(h / 24); if (d < 30) return d + ' วันที่แล้ว';
+  return new Date(ts).toLocaleDateString('th-TH', { day:'numeric', month:'short', year:'2-digit' });
+}
+function dt(ts){ return new Date(ts).toLocaleString('th-TH', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }); }
+function avatar(u){ return u.picture ? '<img class="av" src="' + esc(u.picture) + '" alt="" referrerpolicy="no-referrer">' : '<div class="av">' + esc((u.name || '?').slice(0, 1)) + '</div>'; }
+function mockLine(u){
+  var out = [];
+  Object.keys(u.mocks || {}).forEach(function(p){ var m = u.mocks[p]; out.push(esc(PART[p] || p) + ' ล่าสุด ' + pctHtml(m.last) + ' · ดีสุด ' + pctHtml(m.best) + ' (' + m.count + ' ครั้ง)'); });
+  return out.length ? out.join('<br>') : 'ยังไม่เคยสอบจำลอง';
+}
+function progressLine(u){
+  var s = u.summary; if (!s || !s.parts) return '—';
+  return Object.keys(s.parts).map(function(p){ var x = s.parts[p], w = x.total ? Math.round(x.done / x.total * 100) : 0;
+    return esc(PART[p] || p) + ' ' + x.done + '/' + x.total + '<div class="bar"><i style="width:' + w + '%"></i></div>'; }).join('');
+}
+function render(){
+  var q = $('q').value.trim().toLowerCase(), key = $('sort').value;
+  var list = users.filter(function(u){ return !q || (u.name || '').toLowerCase().indexOf(q) >= 0 || (u.email || '').toLowerCase().indexOf(q) >= 0; });
+  var by = { seen: function(u){ return u.last_seen || 0; }, acc: function(u){ return pct(u.correct, u.answered) || -1; }, answered: function(u){ return u.answered; }, week: function(u){ return u.answered7 || 0; }, created: function(u){ return u.created || 0; } }[key];
+  list.sort(function(a, b){ return by(b) - by(a); });
+  $('users').innerHTML = list.length ? list.map(function(u){
+    return '<div class="u" data-id="' + esc(u.id) + '">' + avatar(u) + '<div>' +
+      '<div class="top"><span class="nm">' + esc(u.name) + '</span><span class="tag ' + esc(u.provider) + '">' + (u.provider === 'line' ? 'LINE' : 'Google') + '</span>' +
+      '<span class="meta">' + esc(u.email || '') + '</span></div>' +
+      '<div class="meta">เข้าใช้ล่าสุด ' + ago(u.last_seen) + ' · สมัคร ' + ago(u.created) + ' · เข้าสู่ระบบ ' + (u.logins || 0) + ' ครั้ง</div>' +
+      '<div class="stats">' +
+        '<div><span class="k">ตอบไปทั้งหมด</span>' + u.answered + ' ข้อ (' + u.quizzes + ' ชุด)</div>' +
+        '<div><span class="k">ตอบถูกรวม</span>' + pctHtml(pct(u.correct, u.answered)) + '</div>' +
+        '<div><span class="k">7 วันล่าสุด</span>' + (u.answered7 || 0) + ' ข้อ</div>' +
+        '<div><span class="k">สอบจำลอง (เกณฑ์ 75%)</span>' + mockLine(u) + '</div>' +
+        '<div><span class="k">เคยตอบถูกแล้ว / ทั้งหมด</span>' + progressLine(u) + '</div>' +
+      '</div></div></div>';
+  }).join('') : '<div class="empty">' + (users.length ? 'ไม่พบผู้ใช้ที่ค้นหา' : 'ยังไม่มีสมาชิก') + '</div>';
+}
+function kpis(){
+  var now = Date.now(), day = 864e5;
+  var a1 = users.filter(function(u){ return now - (u.last_seen || 0) < day; }).length;
+  var a7 = users.filter(function(u){ return now - (u.last_seen || 0) < 7 * day; }).length;
+  var ans = users.reduce(function(a, u){ return a + u.answered; }, 0), cor = users.reduce(function(a, u){ return a + u.correct; }, 0);
+  $('kpis').innerHTML = [['สมาชิกทั้งหมด', users.length], ['เข้าใช้วันนี้', a1], ['เข้าใช้ 7 วัน', a7], ['ข้อที่ตอบรวม', ans.toLocaleString()], ['ตอบถูกเฉลี่ย', (pct(cor, ans) == null ? '—' : pct(cor, ans) + '%')]]
+    .map(function(k){ return '<div class="kpi"><b>' + k[1] + '</b><span>' + k[0] + '</span></div>'; }).join('');
+}
+function load(){
+  fetch('/api/admin/users', { cache: 'no-store' }).then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
+    users = d.users || []; kpis(); render();
+  }).catch(function(e){ $('err').innerHTML = '<div class="err">โหลดข้อมูลไม่ได้ (' + esc(e.message) + ') — ต้องเข้าสู่ระบบด้วยบัญชีแอดมิน</div>'; $('users').innerHTML = ''; });
+}
+function openUser(id){
+  var u = users.find(function(x){ return x.id === id; }); if (!u) return;
+  $('dlgBody').innerHTML = '<button class="close" onclick="document.getElementById(\'dlg\').close()">ปิด</button><h2>' + esc(u.name) + '</h2><div class="meta" style="color:var(--mute)">' + esc(u.email || '') + ' · ' + esc(u.id) + '</div><div class="empty">กำลังโหลด…</div>';
+  $('dlg').showModal();
+  fetch('/api/admin/user?id=' + encodeURIComponent(id), { cache: 'no-store' }).then(function(r){ return r.json(); }).then(function(d){
+    var s = d.summary || {}, parts = s.parts || {};
+    var html = '<button class="close" onclick="document.getElementById(\'dlg\').close()">ปิด</button><h2>' + esc(u.name) + '</h2>' +
+      '<div style="color:var(--mute);font-size:.82rem">' + esc(u.email || '') + ' · ' + esc(u.id) + '<br>ซิงก์ข้อมูลล่าสุด ' + ago(d.synced) + (s.examDate ? ' · วันสอบที่ตั้งไว้ ' + esc(s.examDate) : '') + '</div>';
+    html += '<div class="parts">' + Object.keys(parts).map(function(p){ var x = parts[p];
+      return '<div class="part"><b>' + esc(PART[p] || p) + '</b><br>เคยตอบถูก ' + x.done + '/' + x.total + '<div class="bar"><i style="width:' + (x.total ? Math.round(x.done / x.total * 100) : 0) + '%"></i></div>' +
+        'ตอบถูก ' + pctHtml(x.acc) + (x.wrong != null ? ' · ข้อที่ยังผิดค้าง ' + x.wrong : '') + (x.seen ? ' · 🔥 จดไว้ ' + x.seen : '') + '</div>'; }).join('') + '</div>';
+    html += '<table><thead><tr><th>เวลา</th><th>ภาค</th><th>โหมด</th><th class="num">คะแนน</th><th class="num">%</th></tr></thead><tbody>' +
+      (d.results.length ? d.results.map(function(r){ return '<tr><td>' + dt(r.ts) + '</td><td>' + esc(PART[r.part] || r.part) + '</td><td>' + esc(MODE[r.mode] || r.label || r.mode) + '</td><td class="num">' + r.s + '/' + r.n + '</td><td class="num">' + pctHtml(pct(r.s, r.n)) + '</td></tr>'; }).join('')
+        : '<tr><td colspan="5" class="empty">ยังไม่มีประวัติ</td></tr>') + '</tbody></table>';
+    $('dlgBody').innerHTML = html;
+  });
+}
+$('users').addEventListener('click', function(e){ var el = e.target.closest('[data-id]'); if (el) openUser(el.dataset.id); });
+$('q').addEventListener('input', render); $('sort').addEventListener('change', render);
+$('dlg').addEventListener('click', function(e){ if (e.target === $('dlg')) $('dlg').close(); });
+load(); setInterval(load, 60000);
+</script>
+</body>
+</html>

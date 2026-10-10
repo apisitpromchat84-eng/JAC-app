@@ -135,6 +135,18 @@ html[data-theme="dark"] .hero .hint{ background:rgba(0,0,0,.3) }
 .catline + .catline{ border-top:2px dashed var(--line) }
 .catline .nm{ width:8.2em; flex:none; font-size:.86rem }
 .miniset{ font-size:.8rem; color:var(--accent-ink); margin-left:4px }
+.authgate{ position:fixed; inset:0; z-index:9999; display:grid; place-items:center; padding:20px; background:var(--bg, #F2F3EE); overflow:auto }
+.authgate[hidden]{ display:none }
+.authgate .agcard{ width:min(420px,100%); background:var(--surf, #fff); border-radius:22px; padding:28px 22px; text-align:center; box-shadow:0 6px 0 rgba(0,0,0,.08) }
+.authgate .aglogo{ font-size:3rem; line-height:1 } .authgate h1{ margin:8px 0 4px; font:800 1.5rem var(--thf) } .authgate p{ font:.9rem/1.6 var(--thf); color:var(--mute); margin:0 0 16px }
+.authgate .agbtn{ display:flex; align-items:center; justify-content:center; gap:10px; margin:10px 0; padding:13px 16px; border-radius:14px; font:700 1rem var(--thf); text-decoration:none; border:2px solid var(--line) }
+.authgate .agbtn[hidden]{ display:none } .authgate .agbtn.google{ background:#fff; color:#1f1f1f } .authgate .agbtn.line{ background:#06C755; color:#fff; border-color:#06C755 }
+.authgate .agmsg{ background:#FDECEA; color:#9B1C1C; border-radius:12px; padding:10px 12px; margin-bottom:10px; font:.86rem var(--thf) }
+.authgate .agnote{ font-size:.74rem; margin:14px 0 0 }
+.acct{ display:flex; gap:12px; align-items:center; padding:10px 0 14px; border-bottom:2px dashed var(--line); margin-bottom:6px }
+.acct .av{ width:46px; height:46px; border-radius:50%; object-fit:cover; background:var(--surf2); display:grid; place-items:center; font-weight:800; flex:none }
+.acct .g{ flex:1; min-width:0; font:.86rem/1.45 var(--thf) } .acct .g b{ font-size:1rem } .acct .g small{ display:block; color:var(--mute); overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+.acct .acts{ display:flex; flex-direction:column; gap:6px } .acct .acts .btn{ padding:7px 10px; font-size:.8rem; text-align:center }
 .minirow{ display:flex; gap:8px; align-items:stretch } .minirow > .btn.row{ flex:1; min-width:0 } .minireset{ flex:none; width:48px; padding:0; font-size:1.2rem; text-align:center }
 .minibar{ display:block; height:5px; border-radius:4px; background:var(--surf2); margin-top:6px; overflow:hidden } .minibar i{ display:block; height:100%; background:#1F9D55; border-radius:4px }
 .catline .nm small{ display:block; font-size:.7rem; color:var(--muted, #888); font-weight:600; margin-top:2px }
@@ -1028,9 +1040,21 @@ img{ -webkit-user-drag:none; user-drag:none }
   </div>
 </nav>
 
+<div id="authGate" class="authgate" hidden>
+  <div class="agcard">
+    <div class="aglogo">⛑</div>
+    <h1>แอป JAC</h1>
+    <p class="th">เข้าสู่ระบบเพื่อใช้งาน — ความคืบหน้าจะถูกเก็บไว้ในบัญชี เปลี่ยนเครื่องก็ไม่หาย</p>
+    <div id="agMsg" class="agmsg" hidden></div>
+    <a class="agbtn google" id="agGoogle" href="/auth/google" hidden><svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.3 0-9.7-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>เข้าสู่ระบบด้วย Google</a>
+    <a class="agbtn line" id="agLine" href="/auth/line" hidden><svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#06C755"/><path fill="#fff" d="M24 10c-8.8 0-16 5.7-16 12.8 0 6.3 5.7 11.6 13.4 12.6.5.1 1.2.3 1.4.8.2.4.1 1 .1 1.4l-.2 1.4c-.1.4-.3 1.6 1.4.9 1.7-.7 9.3-5.5 12.7-9.4 2.3-2.6 3.4-5.2 3.4-7.7C40.2 15.7 32.9 10 24 10z"/></svg>เข้าสู่ระบบด้วย LINE</a>
+    <p class="agnote">ใช้ชื่อและรูปโปรไฟล์เพื่อแสดงในแอปเท่านั้น · ผู้ดูแลเห็นคะแนนเพื่อช่วยติดตามความคืบหน้า</p>
+  </div>
+</div>
 <div class="sheet" id="sheet">
   <div class="panel">
     <h2 style="margin-top:0">ตั้งค่า</h2>
+    <div class="acct" id="acctBox" hidden></div>
     <div class="setrow"><span class="g">ฟุริงานะ<span class="small muted th" style="display:block">คำอ่านตัวเล็กเหนือคันจิ</span></span>
       <div class="seg" id="segFuri"><button data-v="on">แสดง</button><button data-v="off">ซ่อน</button></div></div>
     <div class="setrow"><span class="g">ขนาดตัวอักษร</span>
@@ -3288,6 +3312,7 @@ function grade(auto) {
   save(SRS_KEY, srs); save(QOK_KEY, qok); save(CONF_KEY, confBook);
   daily[today()] = (daily[today()] || 0) + layout.length;
   hist.unshift({ d: Date.now(), mode, label: modeLabel, n: layout.length, s: score, part: quizPart });
+  queueResult({ rid: Date.now().toString(36) + Math.random().toString(36).slice(2, 7), ts: Date.now(), part: quizPart, mode, label: modeLabel, n: layout.length, s: score });
   hist = hist.slice(0, 80);
   save(K.wrong, wrongBook); save(K.cat, catStat); save(K.daily, daily); save(K.hist, hist);
 
@@ -5526,10 +5551,122 @@ document.addEventListener('keydown', e => {                       // Ctrl/⌘ + 
   if ((e.ctrlKey || e.metaKey) && ['s', 'p', 'u'].includes(e.key.toLowerCase())) e.preventDefault();
 });
 
+/* ================= account: login (Google / LINE), sync, results for the admin ================= */
+// Works only when served from the site (not the file preview). If the server has no login configured,
+// the app keeps working exactly as before. Progress still lives on this device; the account keeps a copy.
+const ME_KEY = 'jac-me', RQ_KEY = 'jac-rq', SYNC_KEY = 'jac-lastsync';
+const onServer = /^https?:$/.test(location.protocol) && !window.IMGDATA;
+let me = null, authProviders = [];
+const apiFetch = (path, opt = {}) => fetch(path + (path.includes('?') ? '&' : '?') + 't=' + Date.now(), Object.assign({ cache: 'no-store', credentials: 'same-origin' }, opt));
+function askChoice(msg, yes, no) {
+  const y = $('askYes').textContent, n = $('askNo').textContent;
+  $('askYes').textContent = yes; $('askNo').textContent = no;
+  return ask(msg).then(v => { $('askYes').textContent = y; $('askNo').textContent = n; return v; });
+}
+function showGate(msg) {
+  $('agGoogle').hidden = !authProviders.includes('google'); $('agLine').hidden = !authProviders.includes('line');
+  $('agMsg').hidden = !msg; $('agMsg').textContent = msg || '';
+  $('authGate').hidden = false;
+}
+function renderAccount() {
+  const el = $('acctBox');
+  if (!me) { el.hidden = true; el.innerHTML = ''; return; }
+  el.hidden = false;
+  const synced = load(SYNC_KEY, 0);
+  el.innerHTML = (me.picture ? `<img class="av" src="${esc(me.picture)}" alt="" referrerpolicy="no-referrer">` : `<div class="av">${esc((me.name || '?').slice(0, 1))}</div>`) +
+    `<div class="g"><b>${esc(me.name || '')}</b><small>${me.provider === 'line' ? 'LINE' : 'Google'}${me.email ? ' · ' + esc(me.email) : ''}</small>` +
+    `<small>ซิงก์ล่าสุด ${synced ? new Date(synced).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—'}</small><small>ID: ${esc(me.id)}</small></div>` +
+    `<div class="acts">${me.admin ? '<a class="btn primary" href="/admin">🛠 แอดมิน</a>' : ''}<button class="btn" id="logoutBtn">ออกจากระบบ</button></div>`;
+  $('logoutBtn').addEventListener('click', logout);
+}
+function progressSnapshot() { const keys = {}; BACKUP_KEYS.forEach(k => { const v = localStorage.getItem(k); if (v !== null) keys[k] = v; }); return keys; }
+function progressSummary() {
+  const parts = {};
+  Object.keys(PARTS).forEach(p => {
+    const qs = QUESTIONS.filter(q => partOf(q) === p); if (!qs.length) return;
+    const st = PARTS[p].cats.reduce((a, c) => { const v = catStat[c.id] || { c: 0, t: 0 }; return { c: a.c + v.c, t: a.t + v.t }; }, { c: 0, t: 0 });
+    parts[p] = { done: qs.filter(q => qok[q.id]).length, total: qs.length, acc: st.t ? Math.round(st.c / st.t * 100) : null,
+      wrong: qs.filter(q => wrongBook[q.id]).length, seen: qs.filter(q => (seenMine[q.id] || []).length).length };
+  });
+  return { parts, examDate: load('jac-examdate', '') || '', at: Date.now() };
+}
+async function pushProgress(keepalive) {
+  if (!me) return false;
+  try {
+    const r = await apiFetch('/api/progress', { method: 'PUT', headers: { 'content-type': 'application/json' }, keepalive: !!keepalive,
+      body: JSON.stringify({ data: progressSnapshot(), summary: progressSummary() }) });
+    if (!r.ok) return false;
+    const d = await r.json(); save(SYNC_KEY, d.updated || Date.now()); renderAccount(); return true;
+  } catch (e) { return false; }
+}
+let syncTimer = null;
+const syncSoon = () => { if (!me) return; clearTimeout(syncTimer); syncTimer = setTimeout(() => pushProgress(), 2500); };
+function queueResult(r) { if (!onServer) return; const q = load(RQ_KEY, []); q.push(r); save(RQ_KEY, q.slice(-200)); flushResults(); syncSoon(); }
+let flushing = false;
+async function flushResults() {
+  if (!me || flushing) return; const q = load(RQ_KEY, []); if (!q.length) return;
+  flushing = true;
+  try {
+    const batch = q.slice(0, 50);
+    const r = await apiFetch('/api/result', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(batch) });
+    if (r.ok) { const sent = new Set(batch.map(x => x.rid)); save(RQ_KEY, load(RQ_KEY, []).filter(x => !sent.has(x.rid))); }
+  } catch (e) {}
+  flushing = false;
+  if (load(RQ_KEY, []).length && me && navigator.onLine !== false) setTimeout(flushResults, 1500);
+}
+// on login: pull the account copy (another device studied) or push this device's progress
+async function syncOnLogin() {
+  let srv; try { const r = await apiFetch('/api/progress'); if (!r.ok) return; srv = await r.json(); } catch (e) { return; }
+  const last = load(SYNC_KEY, 0), h = load(K.hist, []);
+  const localChanged = !!(h[0] && h[0].d > last), localHas = h.length > 0 || Object.keys(load(K.fav, {})).length > 0;
+  const srvHas = !!(srv.data && Object.keys(srv.data).length);
+  const pull = () => {
+    try { localStorage.setItem(PRE, JSON.stringify({ at: Date.now(), keys: progressSnapshot() })); } catch (e) {}
+    applySnapshot({ keys: srv.data }); save(SYNC_KEY, srv.updated);
+    try { sessionStorage.setItem('jac-restored', '1'); } catch (e) {}
+    location.reload();
+  };
+  if (!srvHas) { pushProgress(); return; }
+  if (srv.updated <= last) { if (localChanged) pushProgress(); return; }      // the account copy is not newer
+  if (!localHas || (last && !localChanged)) { pull(); return; }                // nothing here, or only the other device changed
+  const useAccount = await askChoice('ในบัญชีมีความคืบหน้าจากอีกเครื่อง และเครื่องนี้ก็มีความคืบหน้าของตัวเอง\n\nจะใช้ข้อมูลชุดไหน?\n(ชุดที่ไม่เลือกจะถูกแทนที่ — ถ้าเลือกผิด กด "↩ ย้อนกลับเป็นข้อมูลก่อนกู้คืน" ในหน้าสถิติได้)', 'ใช้ข้อมูลในบัญชี', 'ใช้ข้อมูลเครื่องนี้');
+  if (useAccount) pull(); else pushProgress();
+}
+async function logout() {
+  if (!(await ask('ออกจากระบบ?\nความคืบหน้าจะถูกบันทึกไว้ในบัญชี แล้วล้างออกจากเครื่องนี้'))) return;
+  await flushResults();
+  if (!(await pushProgress())) { toast('บันทึกขึ้นบัญชีไม่สำเร็จ (ไม่มีเน็ต?) — ยังไม่ออกจากระบบ', 4000); return; }
+  try { await apiFetch('/api/logout', { method: 'POST' }); } catch (e) {}
+  BACKUP_KEYS.concat([ME_KEY, SYNC_KEY, RQ_KEY, PRE]).forEach(k => { try { localStorage.removeItem(k); } catch (e) {} });
+  location.replace('/');
+}
+async function authInit() {
+  if (!onServer) return;
+  const params = new URLSearchParams(location.search), err = params.get('login_error'), denied = params.get('admin') === 'denied';
+  if (params.has('login') || err || denied) history.replaceState(null, '', location.pathname + location.hash);
+  let d = null;
+  try { const ctl = new AbortController(); setTimeout(() => ctl.abort(), 8000); const r = await apiFetch('/api/me', { signal: ctl.signal }); if (r.ok) d = await r.json(); } catch (e) {}
+  if (!d) {                                             // offline or server unreachable: keep working with the last known login
+    me = load(ME_KEY, null); renderAccount();
+    if (!me && load('jac-authcfg', false)) { authProviders = load('jac-authprov', []); showGate('ต้องต่ออินเทอร์เน็ตเพื่อเข้าสู่ระบบครั้งแรก'); }
+    return;
+  }
+  save('jac-authcfg', !!d.configured); authProviders = d.providers || []; save('jac-authprov', authProviders);
+  if (!d.configured) { me = null; renderAccount(); return; }
+  if (!d.user) { me = null; localStorage.removeItem(ME_KEY); renderAccount(); showGate(err); return; }
+  me = Object.assign({}, d.user, { admin: !!d.admin }); save(ME_KEY, me);
+  $('authGate').hidden = true; renderAccount();
+  if (denied) toast('หน้าแอดมินเปิดได้เฉพาะบัญชีผู้ดูแล');
+  await syncOnLogin(); flushResults();
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden && me) { clearTimeout(syncTimer); pushProgress(true); } });
+window.addEventListener('online', () => { flushResults(); syncSoon(); });
+
 /* ================= init ================= */
 applyPrefs();
 buildChips();
 go('home');
+authInit();
 offerResume();
 if (sessionStorage.getItem('jac-moved') !== null) {             // arrived from an old upload link
   sessionStorage.removeItem('jac-moved');
