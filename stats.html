@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>แอป JAC — ความเคลื่อนไหว</title>
+<style>
+:root{ --bg:#F2F3EE; --card:#FBFBF8; --ink:#1E2A26; --mute:#6B7470; --line:#DFE2DA; --bar:#E7A400; --bar2:#3B82C4; --ok:#1F9D55; --soft:#EEF0EA }
+@media (prefers-color-scheme: dark){ :root{ --bg:#141816; --card:#1D2320; --ink:#E9EEEA; --mute:#9AA59F; --line:#2E3632; --soft:#252C29 } }
+*{ box-sizing:border-box } body{ margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui, 'Noto Sans Thai', sans-serif }
+main{ max-width:900px; margin:0 auto; padding:16px 16px 50px } h1{ font-size:1.15rem; margin:4px 0 2px } .sub{ color:var(--mute); font-size:.82rem }
+.live{ display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 16px; margin:14px 0 }
+.dot{ width:12px; height:12px; border-radius:50%; background:#B7BDB9; flex:none } .dot.on{ background:#22C55E; box-shadow:0 0 0 0 rgba(34,197,94,.6); animation:p 1.6s infinite }
+@keyframes p{ to{ box-shadow:0 0 0 10px rgba(34,197,94,0) } }
+.live b{ font-size:1.4rem } .kpis{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px }
+.k{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px } .k b{ display:block; font-size:1.6rem; line-height:1.2 } .k span{ color:var(--mute); font-size:.8rem }
+h2{ font-size:1rem; margin:22px 0 8px } .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px }
+.chart{ display:flex; align-items:flex-end; gap:6px; height:150px; padding-top:18px } .col{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; min-width:0 }
+.col .v{ font-size:.68rem; color:var(--mute) } .col i{ display:block; width:100%; max-width:34px; background:var(--bar); border-radius:6px 6px 2px 2px; min-height:2px }
+.col.today i{ background:var(--bar2) } .col .d{ font-size:.66rem; color:var(--mute); margin-top:4px; white-space:nowrap }
+.legend{ font-size:.76rem; color:var(--mute); margin-top:8px }
+table{ width:100%; border-collapse:collapse; font-size:.86rem } th,td{ text-align:left; padding:7px 4px; border-bottom:1px solid var(--line) } th{ color:var(--mute); font-weight:600 } td.n{ text-align:right }
+.pass{ color:var(--ok); font-weight:700 } .hours{ display:grid; grid-template-columns:repeat(24,1fr); gap:2px; align-items:end; height:70px }
+.hours i{ display:block; background:var(--bar2); border-radius:3px 3px 0 0; min-height:2px } .hl{ display:grid; grid-template-columns:repeat(24,1fr); font-size:.6rem; color:var(--mute); text-align:center }
+.empty{ color:var(--mute); text-align:center; padding:20px }
+</style>
+</head>
+<body><main>
+<h1>📊 แอป JAC — ความเคลื่อนไหว</h1>
+<div class="sub">นับแบบไม่ระบุตัวตน (1 เครื่อง = 1 คน) · เวลาญี่ปุ่น · อัปเดตเองทุก 30 วินาที</div>
+<div class="live" id="live"><span class="dot"></span><span>กำลังโหลด…</span></div>
+<div class="kpis" id="kpis"></div>
+<h2>14 วันล่าสุด — จำนวนเครื่องที่ทำแบบทดสอบ</h2>
+<div class="card"><div class="chart" id="chart"></div><div class="legend">แท่งสีน้ำเงิน = วันนี้ · ตัวเลขบนแท่ง = จำนวนเครื่อง</div></div>
+<h2>วันนี้แยกตามภาค</h2>
+<div class="card" id="parts"></div>
+<h2>สอบจำลอง 14 วัน</h2>
+<div class="card" id="mocks"></div>
+<h2>ช่วงเวลาที่ทำบ่อย (7 วัน)</h2>
+<div class="card"><div class="hours" id="hours"></div><div class="hl" id="hl"></div></div>
+<h2>กิจกรรมล่าสุด</h2>
+<div class="card" id="recent"></div>
+</main>
+<script>
+var PART = { gakka: 'ทฤษฎี', jitsugi: 'ปฏิบัติ 土木', life: 'ปฏิบัติ ไลฟ์ไลน์', '': '—' };
+var MODE = { real: 'สอบจำลอง', mini: 'ทดสอบย่อย', all: 'ทำทุกข้อ', wrong: 'ข้อที่เคยผิด', fav: 'ติดดาว', weak: 'จุดอ่อน', review: 'ทบทวน', hot: '🔥 ข้อที่ออก' };
+function $(id){ return document.getElementById(id); }
+function pct(s, n){ return n ? Math.round(s / n * 100) + '%' : '—'; }
+function ago(ts, now){ var m = Math.round((now - ts) / 60000); if (m < 1) return 'เมื่อสักครู่'; if (m < 60) return m + ' นาทีที่แล้ว'; var h = Math.round(m / 60); if (h < 24) return h + ' ชม.ที่แล้ว'; return Math.round(h / 24) + ' วันที่แล้ว'; }
+function render(d){
+  var liveN = d.live.reduce(function(a, x){ return a + x.c; }, 0);
+  $('live').innerHTML = '<span class="dot ' + (liveN ? 'on' : '') + '"></span><span><b>' + liveN + '</b> เครื่องเปิดแอปอยู่ตอนนี้' +
+    (liveN ? ' <span class="sub">(' + d.live.map(function(x){ return (PART[x.part] || x.part) + ' ' + x.c; }).join(' · ') + ')</span>' : '') + '<br><span class="sub">นับเครื่องที่ใช้งานใน 5 นาทีล่าสุด</span></span>';
+  var t = d.t || {};
+  $('kpis').innerHTML = [['เปิดแอปวันนี้', d.opensToday + ' เครื่อง'], ['ทำแบบทดสอบวันนี้', (t.devs || 0) + ' เครื่อง'], ['ชุดที่ทำวันนี้', t.quizzes || 0], ['ข้อที่ตอบวันนี้', t.n || 0], ['ตอบถูกเฉลี่ยวันนี้', pct(t.s, t.n)], ['ผู้ใช้ 7 วัน', d.devs7 + ' เครื่อง']]
+    .map(function(k){ return '<div class="k"><b>' + k[1] + '</b><span>' + k[0] + '</span></div>'; }).join('');
+  var byDay = {}; d.days.forEach(function(x){ byDay[x.day] = x; });
+  var list = []; for (var i = 13; i >= 0; i--) { var day = new Date(d.now + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10); list.push({ day: day, v: byDay[day] ? byDay[day].devs : 0 }); }
+  var max = Math.max.apply(null, list.map(function(x){ return x.v; }).concat([1]));
+  $('chart').innerHTML = list.map(function(x){ return '<div class="col ' + (x.day === d.today ? 'today' : '') + '"><span class="v">' + (x.v || '') + '</span><i style="height:' + Math.round(x.v / max * 100) + '%"></i><span class="d">' + x.day.slice(8) + '/' + +x.day.slice(5, 7) + '</span></div>'; }).join('');
+  $('parts').innerHTML = d.parts.length ? '<table><tr><th>ภาค</th><th class="n">ชุด</th><th class="n">ข้อ</th><th class="n">ถูก</th></tr>' + d.parts.map(function(p){ return '<tr><td>' + (PART[p.part] || p.part) + '</td><td class="n">' + p.quizzes + '</td><td class="n">' + p.n + '</td><td class="n">' + pct(p.s, p.n) + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">วันนี้ยังไม่มีใครทำแบบทดสอบ</div>';
+  $('mocks').innerHTML = d.mocks.length ? '<table><tr><th>ภาค</th><th class="n">ครั้ง</th><th class="n">ผ่าน 75%</th></tr>' + d.mocks.map(function(m){ return '<tr><td>' + (PART[m.part] || m.part) + '</td><td class="n">' + m.c + '</td><td class="n pass">' + m.pass + ' (' + pct(m.pass, m.c) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีการสอบจำลอง</div>';
+  var hs = []; for (var h = 0; h < 24; h++) hs.push(0); d.hours.forEach(function(x){ hs[x.h] = x.c; }); var hm = Math.max.apply(null, hs.concat([1]));
+  $('hours').innerHTML = hs.map(function(c){ return '<i style="height:' + Math.round(c / hm * 100) + '%" title="' + c + '"></i>'; }).join('');
+  $('hl').innerHTML = hs.map(function(c, h){ return '<span>' + (h % 3 ? '' : h) + '</span>'; }).join('');
+  $('recent').innerHTML = d.recent.length ? '<table><tr><th>เวลา</th><th>ภาค</th><th>โหมด</th><th class="n">คะแนน</th></tr>' + d.recent.map(function(r){ return '<tr><td>' + ago(r.ts, d.now) + '</td><td>' + (PART[r.part] || r.part) + '</td><td>' + (MODE[r.mode] || r.mode) + '</td><td class="n">' + r.s + '/' + r.n + ' (' + pct(r.s, r.n) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
+}
+function load(){ fetch('/api/stats', { cache: 'no-store' }).then(function(r){ return r.json(); }).then(render).catch(function(){ $('live').innerHTML = '<span class="dot"></span><span>โหลดข้อมูลไม่ได้ — ลองใหม่อีกครั้ง</span>'; }); }
+load(); setInterval(load, 30000);
+</script>
+</body></html>

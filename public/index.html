@@ -960,6 +960,7 @@ img{ -webkit-user-drag:none; user-drag:none }
       <div class="grid2"><button class="btn center" id="copyMoveBtn" style="text-align:center">📤 คัดลอกรหัสย้ายข้อมูล<span class="sub">ย้ายไปเครื่องอื่นแบบไม่ใช้ไฟล์</span></button>
       <button class="btn center" id="pasteBtn" style="text-align:center">📥 วางรหัสย้ายข้อมูล<span class="sub">รับข้อมูลจากแอปเก่าหรือเครื่องอื่น</span></button></div>
       <div class="undorow" id="undoRow" hidden><button class="btn center" id="undoRestore" style="text-align:center">↩ ย้อนกลับเป็นข้อมูลก่อนกู้คืน<span class="sub" id="undoWhen"></span></button><button class="btn center" id="undoDrop" style="text-align:center;min-width:64px" aria-label="ลบสำเนา">ลบสำเนา</button></div>
+      <div class="small muted th center" style="margin-top:8px">แอปส่งสถิติการใช้งานแบบไม่ระบุตัวตน (จำนวนข้อที่ทำและคะแนน ไม่มีชื่อหรือข้อมูลส่วนตัว)</div>
       <div class="small muted th center" id="backupNote" hidden>ปุ่มสำรองข้อมูลใช้ได้ในแอปบน Netlify</div>
       <button class="btn center" id="clrWrong" style="text-align:center">ล้างรายการข้อที่เคยผิด</button>
       <button class="btn center" id="clrAll" style="text-align:center">ล้างสถิติทั้งหมด</button>
@@ -1662,6 +1663,7 @@ function grade(auto) {
   save(SRS_KEY, srs); save(QOK_KEY, qok); save(CONF_KEY, confBook);
   daily[today()] = (daily[today()] || 0) + layout.length;
   hist.unshift({ d: Date.now(), mode, label: modeLabel, n: layout.length, s: score, part: quizPart });
+  actEvent({ ts: Date.now(), part: quizPart, mode, n: layout.length, s: score });
   hist = hist.slice(0, 80);
   save(K.wrong, wrongBook); save(K.cat, catStat); save(K.daily, daily); save(K.hist, hist);
 
@@ -3899,6 +3901,22 @@ document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.
 document.addEventListener('keydown', e => {                       // Ctrl/⌘ + S, P, U (save, print, view source)
   if ((e.ctrlKey || e.metaKey) && ['s', 'p', 'u'].includes(e.key.toLowerCase())) e.preventDefault();
 });
+
+/* ================= anonymous activity (no names, no login) =================
+   Each device gets a random id. The app tells the server "this device is open" and sends
+   part / mode / score of each finished quiz, so the owner can see on /stats that people are studying. */
+const ACT_DEV = 'jac-anon', ACT_Q = 'jac-actq';
+const actOn = /^https?:$/.test(location.protocol) && !window.IMGDATA;
+const actDev = (() => { let d = load(ACT_DEV, ''); if (!/^[a-z0-9]{8,32}$/.test(d)) { d = (Date.now().toString(36) + Math.random().toString(36).slice(2, 12)).slice(0, 20); save(ACT_DEV, d); } return d; })();
+function actSend() {
+  if (!actOn || document.hidden && !load(ACT_Q, []).length) return;
+  const events = load(ACT_Q, []).slice(0, 20);
+  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify({ dev: actDev, part: prefs.part, events }) })
+    .then(r => { if (r.ok && events.length) save(ACT_Q, load(ACT_Q, []).slice(events.length)); }).catch(() => {});
+}
+function actEvent(e) { if (!actOn) return; const q = load(ACT_Q, []); q.push(e); save(ACT_Q, q.slice(-100)); actSend(); }
+if (actOn) { setTimeout(actSend, 1500); setInterval(() => { if (!document.hidden) actSend(); }, 120000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) actSend(); }); window.addEventListener('online', actSend); }
 
 /* ================= init ================= */
 applyPrefs();

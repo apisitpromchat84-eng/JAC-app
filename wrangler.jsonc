@@ -1,6 +1,13 @@
 {
-  // แอป JAC — static site on Cloudflare Workers (deployed automatically from this repo)
+  // แอป JAC — deployed automatically from this repo (Cloudflare Workers Builds)
   "name": "jac-app",
+  "main": "worker.js",
   "compatibility_date": "2026-09-01",
-  "assets": { "directory": "./public" }
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // only the anonymous activity counter goes through worker.js; every other file is served directly (free, unlimited)
+    "run_worker_first": ["/api/*", "/stats"]
+  },
+  "d1_databases": [{ "binding": "DB", "database_name": "jac-db" }]
 }
