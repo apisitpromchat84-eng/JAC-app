@@ -11,5 +11,7 @@
   },
   // database for accounts, quiz results and synced progress (created automatically on first deploy)
   "d1_databases": [{ "binding": "DB", "database_name": "jac-db" }],
+  // keep variables/secrets that were added in the Cloudflare dashboard when this repo deploys
+  "keep_vars": true,
   "observability": { "enabled": true }
 }
