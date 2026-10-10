@@ -670,6 +670,8 @@ button.aslot{ cursor:pointer }
 .rdstack{ display:flex; height:26px; border-radius:8px; overflow:hidden; margin:6px 0 8px } .rdstack i{ display:grid; place-items:center; color:#fff; font:700 .62rem var(--thf); font-style:normal; border-right:1px solid rgba(255,255,255,.6) }
 .rdrow{ display:grid; grid-template-columns:minmax(0,1.2fr) 1.6fr 44px; gap:8px; align-items:center; font-size:.8rem; padding:4px 0 } .rdbar{ height:10px; border-radius:6px; background:var(--surf2); overflow:hidden } .rdbar i{ display:block; height:100% } .rdrow b{ text-align:right }
 .rdtips{ margin:10px 0 6px; padding:10px 12px; border-radius:12px; background:#FFF7E0; color:#5A4300; font-size:.84rem } html[data-theme="dark"] .rdtips{ background:#3A3214; color:#F5E3A8 }
+.rdcov{ display:block; font-size:.7rem; color:var(--mute) }
+.rdtips .rdgo{ width:auto; display:inline-block }
 .rdtips ul{ margin:4px 0 0; padding-left:18px } .rdtips li{ margin:5px 0 } .rdgo{ display:inline-block; padding:3px 10px; font-size:.74rem; margin-left:4px }
 .say.sayall{ width:auto; padding:0 8px; font-size:.72rem; white-space:nowrap; font-family:var(--thf) }
 .say.osay{ margin-left:auto; min-width:34px; min-height:30px; font-size:.78rem; padding:0 4px; flex:none; align-self:center; opacity:.85 } .opts label{ align-items:center } .aopt .osay{ margin-left:auto }
@@ -3673,7 +3675,7 @@ function renderReady() {
     <div class="small muted">ต้องได้ ${r.need}/${r.meta.n} ข้อ · ความแม่นของการประเมิน: ${r.conf} (ตอบไป ${r.T} ครั้ง)</div>${both}
     <div class="small muted" style="margin-top:10px">สัดส่วนข้อสอบแต่ละหมวด (สี = ความแม่น: เขียว ≥75% · เหลือง 60–74% · แดง &lt;60% · เทา ยังไม่เคยทำ)</div>
     <div class="rdstack">${r.cats.map(c => `<i style="width:${c.w * 100}%;background:${accCol(c.acc)}" title="${c.th}">${c.w > .1 ? Math.round(c.w * 100) + '%' : ''}</i>`).join('')}</div>
-    ${r.cats.map(c => `<div class="rdrow"><span>${c.th}</span><span class="rdbar"><i style="width:${c.acc == null ? 0 : c.acc * 100}%;background:${accCol(c.acc)}"></i></span><b style="color:${accCol(c.acc)}">${c.acc == null ? '—' : Math.round(c.acc * 100) + '%'}</b></div>`).join('')}
+    ${r.cats.map(c => { const qs = QUESTIONS.filter(q => q.cat === c.id), tr = qs.filter(q => triedQ(q.id)).length; return `<div class="rdrow"><span>${c.th}<small class="rdcov">ทำแล้ว ${tr}/${qs.length}${qs.length - tr ? ' · ยังไม่ทำ ' + (qs.length - tr) : ' ✔'}</small></span><span class="rdbar"><i style="width:${c.acc == null ? 0 : c.acc * 100}%;background:${accCol(c.acc)}"></i></span><b style="color:${accCol(c.acc)}">${c.acc == null ? '—' : Math.round(c.acc * 100) + '%'}</b></div>`; }).join('')}
     <div class="rdtips"><b>💡 ควรเรียนเพิ่ม</b><ul>${tips.join('')}</ul></div>
     <div class="small muted">เป็นค่าประมาณจากอัตราตอบถูกในแอป ไม่ใช่การรับประกันผลสอบจริง</div>`;
   el.querySelectorAll('[data-rdcat]').forEach(b => b.addEventListener('click', () => startQuiz(miniPick(b.dataset.rdcat), 'ทดสอบย่อย: ' + catJa(b.dataset.rdcat), 'mini', 0)));
@@ -5606,6 +5608,8 @@ const cleanNick = v => String(v || '').replace(/[<>"'`\\]/g, '').replace(/\s+/g,
 // profile picture: resized to 96×96 on the phone, sent once (and again only when it changes)
 // per-category summary for the owner's /stats page (sent only when it changed)
 let sumSentNow = '';
+// a question counts as "done" once it was answered at least once (right or wrong)
+const triedQ = id => !!(qok[id] || srs[id] || wrongBook[id] || confBook[id]);
 function progSummary() {
   const cats = [];
   Object.keys(PARTS).forEach(p => {
@@ -5613,7 +5617,7 @@ function progSummary() {
     PARTS[p].cats.forEach(c => {
       const qs = all.filter(q => q.cat === c.id); if (!qs.length) return;
       const st = catStat[c.id] || { c: 0, t: 0 };
-      cats.push({ id: c.id, th: c.th, part: p, c: st.c, t: st.t, done: qs.filter(q => qok[q.id]).length, total: qs.length, wrong: qs.filter(q => wrongBook[q.id]).length });
+      cats.push({ id: c.id, th: c.th, part: p, c: st.c, t: st.t, done: qs.filter(q => qok[q.id]).length, tried: qs.filter(q => triedQ(q.id)).length, total: qs.length, wrong: qs.filter(q => wrongBook[q.id]).length });
     });
   });
   const parts = {}; Object.keys(PARTS).forEach(p => { const r = PARTS[p].real; parts[p] = { n: r.n, pass: r.pass, min: r.min }; });
@@ -5656,13 +5660,19 @@ function actSend() {
   if (!actOn || actBusy || document.hidden && !load(ACT_Q, []).length) return;
   actBusy = true; let sentOk = false;
   const events = load(ACT_Q, []).slice(0, 20);
-  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ dev: actDev, name: load(NICK_KEY, ''), part: prefs.part, events }, avPending(), sumPending())) })
-    .then(r => { if (!r.ok) return; sentOk = events.length > 0; if (events.length) save(ACT_Q, load(ACT_Q, []).slice(events.length)); save('jac-avsent', load('jac-avver', 0)); if (sumSentNow) save('jac-sumsent', sumSentNow); }).catch(() => {})
+  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ dev: actDev, name: load(NICK_KEY, ''), part: prefs.part, events, noav: !load(AV_KEY, '') }, avPending(), sumPending())) })
+    .then(r => { if (!r.ok) return; r.json().then(actRestore).catch(() => {}); sentOk = events.length > 0; if (events.length) save(ACT_Q, load(ACT_Q, []).slice(events.length)); save('jac-avsent', load('jac-avver', 0)); if (sumSentNow) save('jac-sumsent', sumSentNow); }).catch(() => {})
     .finally(() => { actBusy = false; if (sentOk && load(ACT_Q, []).length) setTimeout(actSend, 800); });
 }
+function actRestore(d) {                            // the server remembered this device's name / picture
+  if (!d) return;
+  if (d.name && !load(NICK_KEY, '')) { save(NICK_KEY, cleanNick(d.name)); showNick(); if ($('nickSheet').classList.contains('on') && !$('nickBox').value.trim()) $('nickSheet').classList.remove('on'); }
+  if (d.avatar && !load(AV_KEY, '') && /^data:image\//.test(d.avatar)) { save(AV_KEY, d.avatar); save('jac-avver', Date.now()); showAv(); }
+}
+try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}   // ask the browser not to clear our data
 function actEvent(e) { if (!actOn) return; const q = load(ACT_Q, []); q.push(e); save(ACT_Q, q.slice(-100)); actSend(); }
 showNick();
-if (actOn && !load(NICK_KEY, '') && load('jac-nickskip', '') !== today()) setTimeout(openNick, 2500);
+if (actOn && !load(NICK_KEY, '') && load('jac-nickskip', '') !== today()) setTimeout(() => { if (!load(NICK_KEY, '')) openNick(); }, 4000);
 if (actOn) { setTimeout(actSend, 1500); setInterval(() => { if (!document.hidden) actSend(); }, 120000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) actSend(); }); window.addEventListener('online', actSend); }
 

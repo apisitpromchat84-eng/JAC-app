@@ -52,7 +52,16 @@ async function ping(req, env) {
       .bind(ts, jstDay(ts), b.dev, PARTS.includes(x.part) ? x.part : '', String(x.mode || '').slice(0, 12), x.n, x.s, typeof x.rid === 'string' ? x.rid.slice(0, 24) : null));
   });
   await env.DB.batch(stmts);
-  return json({ ok: true });
+  // give a device back what the server already knows (storage cleared, Safari vs home-screen app, a new phone)
+  const out = { ok: true };
+  if (!name) {
+    const r = await env.DB.prepare('SELECT n.name, a.img FROM names n LEFT JOIN avatars a ON a.dev = n.dev WHERE n.dev = ?').bind(b.dev).first();
+    if (r && r.name) { out.name = r.name; if (r.img) out.avatar = r.img; }
+  } else if (b.noav) {
+    const r = await env.DB.prepare('SELECT a.img FROM names n JOIN avatars a ON a.dev = n.dev WHERE LOWER(n.name) = LOWER(?) ORDER BY a.updated DESC LIMIT 1').bind(name).first();
+    if (r && r.img) out.avatar = r.img;
+  }
+  return json(out);
 }
 
 async function stats(env) {
@@ -91,14 +100,24 @@ async function person(env, k) {
   if (!devs.length) return json({ error: 'not found' }, 404);
   const qs = devs.map(() => '?').join(',');
   const now = Date.now();
-  const sum = await env.DB.prepare(`SELECT data, updated FROM summaries WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
+  const sums = (await env.DB.prepare(`SELECT data, updated FROM summaries WHERE dev IN (${qs}) ORDER BY updated DESC`).bind(...devs).all()).results;
+  // one person on several devices (phone + tablet): per category keep the device that practised it most
+  let sum = null;
+  sums.forEach(r => { let d; try { d = JSON.parse(r.data); } catch (e) { return; }
+    if (!sum) { sum = { data: d, updated: r.updated }; return; }
+    const m = {}; sum.data.cats.forEach(c => m[c.part + '|' + c.id] = c);
+    (d.cats || []).forEach(c => { const k = c.part + '|' + c.id, o = m[k];
+      if (!o) { sum.data.cats.push(c); return; }
+      if ((c.t || 0) > (o.t || 0)) { o.c = c.c; o.t = c.t; o.wrong = c.wrong; }
+      o.done = Math.max(o.done || 0, c.done || 0); o.tried = Math.max(o.tried == null ? o.done : o.tried, c.tried == null ? c.done : c.tried); });
+    if (!sum.data.exam && d.exam) sum.data.exam = d.exam; });
   const name = await env.DB.prepare(`SELECT name FROM names WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
   const av = await env.DB.prepare(`SELECT img FROM avatars WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
   const last = await env.DB.prepare(`SELECT MAX(ts) AS ts FROM pings WHERE dev IN (${qs})`).bind(...devs).first();
   const events = (await env.DB.prepare(`SELECT ts, day, part, mode, n, s FROM events WHERE dev IN (${qs}) ORDER BY ts DESC LIMIT 300`).bind(...devs).all()).results;
   const days = (await env.DB.prepare(`SELECT day, SUM(n) AS n, SUM(s) AS s FROM events WHERE dev IN (${qs}) AND day >= ? GROUP BY day`).bind(...devs, jstDay(now - 13 * 864e5)).all()).results;
   return json({ now, today: jstDay(now), k, devices: devs.length, name: name && name.name, avatar: av && av.img, last: last && last.ts,
-    summary: sum ? JSON.parse(sum.data) : null, synced: sum ? sum.updated : 0, events, days });
+    summary: sum ? sum.data : null, synced: sum ? sum.updated : 0, events, days });
 }
 
 export default {
