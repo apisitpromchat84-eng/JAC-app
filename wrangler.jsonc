@@ -13,5 +13,7 @@
   "d1_databases": [{ "binding": "DB", "database_name": "jac-db" }],
   // keep variables/secrets that were added in the Cloudflare dashboard when this repo deploys
   "keep_vars": true,
+  // public values (not secret). Secrets (GOOGLE_CLIENT_SECRET, LINE_CHANNEL_SECRET) are set in the Cloudflare dashboard only.
+  "vars": { "GOOGLE_CLIENT_ID": "728948123045-gh448pm0qeuuohd56vutlggp46qe7m2u.apps.googleusercontent.com" },
   "observability": { "enabled": true }
 }
