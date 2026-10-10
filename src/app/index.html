@@ -665,6 +665,13 @@ button.aslot{ cursor:pointer }
 .btn.review:disabled{ opacity:.6 }
 .say{ border:2px solid var(--line); background:var(--surf); border-radius:10px; cursor:pointer; font-size:.95rem; min-width:40px; min-height:36px; box-shadow:0 3px 0 var(--edge) }
 .say:active{ transform:translateY(2px); box-shadow:0 1px 0 var(--edge) } .say.on{ border-color:var(--go); background:var(--go-soft) }
+.rdtop{ display:flex; gap:18px; flex-wrap:wrap; align-items:flex-end } .rdbig{ font:800 1.9rem/1.1 var(--thf) }
+.rdboth{ margin-top:8px; padding:8px 10px; border-radius:10px; background:var(--surf2); font-size:.86rem }
+.rdstack{ display:flex; height:26px; border-radius:8px; overflow:hidden; margin:6px 0 8px } .rdstack i{ display:grid; place-items:center; color:#fff; font:700 .62rem var(--thf); font-style:normal; border-right:1px solid rgba(255,255,255,.6) }
+.rdrow{ display:grid; grid-template-columns:minmax(0,1.2fr) 1.6fr 44px; gap:8px; align-items:center; font-size:.8rem; padding:4px 0 } .rdbar{ height:10px; border-radius:6px; background:var(--surf2); overflow:hidden } .rdbar i{ display:block; height:100% } .rdrow b{ text-align:right }
+.rdtips{ margin:10px 0 6px; padding:10px 12px; border-radius:12px; background:#FFF7E0; color:#5A4300; font-size:.84rem } html[data-theme="dark"] .rdtips{ background:#3A3214; color:#F5E3A8 }
+.rdtips ul{ margin:4px 0 0; padding-left:18px } .rdtips li{ margin:5px 0 } .rdgo{ display:inline-block; padding:3px 10px; font-size:.74rem; margin-left:4px }
+.say.sayall{ width:auto; padding:0 8px; font-size:.72rem; white-space:nowrap; font-family:var(--thf) }
 .say.osay{ margin-left:auto; min-width:34px; min-height:30px; font-size:.78rem; padding:0 4px; flex:none; align-self:center; opacity:.85 } .opts label{ align-items:center } .aopt .osay{ margin-left:auto }
 .qact{ margin-left:auto; display:flex; align-items:center; gap:2px; flex:none } .qact .star{ margin-left:0 } .qact .say{ min-width:36px; min-height:32px; font-size:.85rem }
 .vitem .say{ margin-left:auto; flex:none } .vitem .say + .kb{ margin-left:0 }
@@ -944,6 +951,8 @@ img{ -webkit-user-drag:none; user-drag:none }
     </div>
     <h2>ผลสอบจำลองล่าสุด (เกณฑ์ 2号)</h2>
     <div class="card bothparts th" id="bothParts"></div>
+    <h2>🎯 โอกาสผ่านและสิ่งที่ควรเรียนเพิ่ม</h2>
+    <div class="card th" id="readyCard"></div>
     <div class="card" style="margin-top:12px">
       <div class="catline"><span class="nm">คำศัพท์ที่จำได้</span><span class="spacer"></span><span class="pc" id="stVocab">0</span></div>
     </div>
@@ -3184,7 +3193,7 @@ function renderQuiz() {
         <input type="radio" name="q${n}" value="${oi + 1}"><span class="num">${j + 1}</span><span>${q.opts[oi]}</span>${optSay(q.opts[oi], j + 1)}</label></li>`).join('');
     const practice = mode !== 'real';
     return `<div class="q" id="qw${pos}">
-      <div class="qmeta"><span>ข้อ ${n}</span><span class="tag code">${qCode(q)}</span><span class="tag">${catJa(q.cat)}</span><span class="tag">${q.src}</span><span class="qact"><button class="pinbtn ${flags[pos] ? 'on' : ''}" data-pin="${pos}" aria-label="ปักหมุดข้อนี้ไว้กลับมาดู" title="ปักหมุดไว้กลับมาดู">📌</button>${seenBtn(q.id)}${sayBtn(toSpeech(q.stem), 'ฟังโจทย์')}${favBtn(q.id)}</span></div>
+      <div class="qmeta"><span>ข้อ ${n}</span><span class="tag code">${qCode(q)}</span><span class="tag">${catJa(q.cat)}</span><span class="tag">${q.src}</span><span class="qact"><button class="pinbtn ${flags[pos] ? 'on' : ''}" data-pin="${pos}" aria-label="ปักหมุดข้อนี้ไว้กลับมาดู" title="ปักหมุดไว้กลับมาดู">📌</button>${seenBtn(q.id)}${sayBtn(toSpeech(q.stem), 'ฟังโจทย์')}${sayAllBtn(q, it.order)}${favBtn(q.id)}</span></div>
       <div class="stem" lang="ja">${q.stem}</div>${practice && isNegQ(q) ? '<div class="negnote">⚠ โจทย์ให้เลือกข้อที่ <b>ไม่ถูกต้อง / ไม่ใช่</b></div>' : ''}${imgTag(q.img, 'qimg')}
       ${practice ? `<div class="conf" data-cpos="${pos}"><span>ก่อนตอบ:</span><button data-c="sure" class="${conf[pos] === 'sure' ? 'on' : ''}">มั่นใจ</button><button data-c="guess" class="${conf[pos] === 'guess' ? 'on' : ''}">ยังเดาอยู่</button></div>` : ''}
       <ul class="opts" lang="ja">${opts}</ul>
@@ -3428,7 +3437,7 @@ function renderBank() {
   $('bankCount').textContent = `${list.length} ข้อ — แตะโจทย์เพื่อดูเฉลย`;
   $('bankList').innerHTML = list.length ? list.map(q => `
     <div class="bankitem">
-      <div class="qmeta"><span class="tag code">${qCode(q)}</span><span class="tag">${catJa(q.cat)}</span><span class="tag">${q.src}</span><span class="qact">${seenBtn(q.id)}${sayBtn(toSpeech(q.stem), 'ฟังโจทย์')}${favBtn(q.id)}</span></div>
+      <div class="qmeta"><span class="tag code">${qCode(q)}</span><span class="tag">${catJa(q.cat)}</span><span class="tag">${q.src}</span><span class="qact">${seenBtn(q.id)}${sayBtn(toSpeech(q.stem), 'ฟังโจทย์')}${sayAllBtn(q)}${favBtn(q.id)}</span></div>
       <div class="q" lang="ja">${q.stem}${imgTag(q.img, 'qimg')}</div>
       <div class="body">
         ${q.opts.map((o, j) => `<div class="optline ${j + 1 === q.ans ? 'ok' : ''}" lang="ja">${j + 1}　${o}</div>`).join('')}
@@ -3501,7 +3510,7 @@ function openQ(i) {
   const opts = q.opts.map((o, j) => `<li class="aopt ${j + 1 === q.ans ? 'ok' : ''}"><span class="an">${j + 1}</span><span class="at">${o}</span>${optSay(o, j + 1)}${j + 1 === q.ans ? '<span class="mk">เฉลย</span>' : ''}</li>`).join('');
   const how = qSheetWord ? wordHow(q, qSheetWord) : '';
   $('qSheetBody').innerHTML = (qSheetWord ? `<div class="vword th">คำศัพท์: <span lang="ja">${esc(qSheetWord)}</span>${how ? `<span class="whow ${how === 'ans' ? 'ans' : ''}">${HOW_TXT[how]}</span>` : ''}</div>` : '') +
-    `<div class="qmeta"><span class="tag code">${qCode(q)}</span><span class="tag">${catJa(q.cat)}</span><span class="tag">${q.src}</span><span class="qact">${seenBtn(q.id)}${sayBtn(toSpeech(q.stem), 'ฟังโจทย์')}${favBtn(q.id)}</span></div>
+    `<div class="qmeta"><span class="tag code">${qCode(q)}</span><span class="tag">${catJa(q.cat)}</span><span class="tag">${q.src}</span><span class="qact">${seenBtn(q.id)}${sayBtn(toSpeech(q.stem), 'ฟังโจทย์')}${sayAllBtn(q)}${favBtn(q.id)}</span></div>
      <div class="astem" lang="ja">${q.stem}</div>${imgTag(q.img, 'qimg')}
      <ul class="aopts" lang="ja">${opts}</ul><div class="thai">${explainHTML(q)}</div>`;
   bindFav($('qSheetBody'));
@@ -3631,8 +3640,47 @@ $('flashKnown').addEventListener('click', () => {
 });
 
 /* ================= record ================= */
+/* readiness: each category's accuracy weighted by its share of the real paper (= share of the bank),
+   blended with the last mock exams, then the chance of reaching the pass mark (binomial) */
+function binomAtLeast(n, k, p) { let t = 0, c = 1; for (let i = 0; i <= n; i++) { if (i > 0) c = c * (n - i + 1) / i; if (i >= k) t += c * Math.pow(p, i) * Math.pow(1 - p, n - i); } return Math.min(1, Math.max(0, t)); }
+function readiness(part) {
+  const all = QUESTIONS.filter(q => partOf(q) === part), meta = PARTS[part].real;
+  const cats = PARTS[part].cats.map(c => { const qs = all.filter(q => q.cat === c.id), st = catStat[c.id] || { c: 0, t: 0 };
+    return { id: c.id, th: c.th, total: qs.length, c: st.c, t: st.t, done: qs.filter(q => qok[q.id]).length }; }).filter(c => c.total);
+  const tot = cats.reduce((a, c) => a + c.total, 0), C = cats.reduce((a, c) => a + c.c, 0), T = cats.reduce((a, c) => a + c.t, 0);
+  const base = T ? C / T : .5; let exp = 0;
+  cats.forEach(c => { c.w = c.total / tot; c.acc = c.t ? c.c / c.t : null; c.est = (c.c + 3 * base) / (c.t + 3); exp += c.w * c.est; });
+  const mocks = hist.filter(x => (x.part || 'gakka') === part && x.mode === 'real').slice(0, 3);
+  const mockAvg = mocks.length ? mocks.reduce((a, m) => a + m.s / m.n, 0) / mocks.length : null;
+  const p = mockAvg != null ? (exp + mockAvg) / 2 : exp, need = Math.ceil(meta.n * meta.pass / 100);
+  const weak = cats.filter(c => c.est < .8).map(c => Object.assign(c, { impact: c.w * (.85 - c.est) + (c.t < 5 ? c.w * .1 : 0) })).sort((a, b) => b.impact - a.impact).slice(0, 3);
+  return { cats, T, p, prob: binomAtLeast(meta.n, need, p), need, meta, mockAvg, weak, conf: T >= 150 ? 'ค่อนข้างแม่น' : T >= 50 ? 'พอประมาณ' : 'ข้อมูลยังน้อย' };
+}
+const accCol = a => a == null ? '#B7BDB9' : a >= .75 ? '#1F9D55' : a >= .6 ? '#E7A400' : '#D9480F';
+function renderReady() {
+  const el = $('readyCard'), r = readiness(prefs.part);
+  if (!r.T) { el.innerHTML = '<div class="small muted">ยังไม่มีข้อมูลในภาคนี้ — ทำ "ทดสอบย่อย" สักหมวด แล้วกลับมาดูโอกาสผ่านที่นี่</div>'; return; }
+  const pr = Math.round(r.prob * 100), col = pr >= 70 ? '#1F9D55' : pr >= 40 ? '#E7A400' : '#D9480F';
+  let both = '';
+  if (prefs.part !== 'gakka') { const g = readiness('gakka'); if (g.T) both = `<div class="rdboth">ผ่านทั้ง 2 ภาค (ทฤษฎี + ${P().ja}) ประมาณ <b>${Math.round(g.prob * r.prob * 100)}%</b></div>`; }
+  else { const tr = readiness(prefs.track || 'jitsugi'); if (tr.T) both = `<div class="rdboth">ผ่านทั้ง 2 ภาค (ทฤษฎี + ${PARTS[prefs.track || 'jitsugi'].ja}) ประมาณ <b>${Math.round(r.prob * tr.prob * 100)}%</b></div>`; }
+  const tips = r.weak.map(c => `<li><b>${c.th}</b> — ${c.t < 5 ? 'แทบยังไม่ได้ฝึก' : 'ถูก ' + Math.round(c.acc * 100) + '%'} · ออกสอบ ~${Math.round(c.w * r.meta.n)} ข้อ <button class="btn rdgo" data-rdcat="${c.id}">ฝึกเลย</button></li>`);
+  if (r.mockAvg == null) tips.push('<li>ยังไม่เคยลอง <b>สอบจำลอง</b> — ลองทำเพื่อดูความพร้อมแบบจับเวลา</li>');
+  if (pr >= 80) tips.push('<li>พร้อมสอบแล้ว ✔ รักษาระดับด้วยการทบทวนข้อที่เคยผิด</li>');
+  el.innerHTML = `<div class="rdtop"><div><div class="small muted">โอกาสผ่านถ้าไปสอบวันนี้</div><div class="rdbig" style="color:${col}">${pr}%</div></div>
+      <div><div class="small muted">คะแนนที่คาด</div><div class="rdbig">${Math.round(r.p * 100)}%</div></div>
+      ${r.mockAvg != null ? `<div><div class="small muted">สอบจำลองล่าสุด</div><div class="rdbig">${Math.round(r.mockAvg * 100)}%</div></div>` : ''}</div>
+    <div class="small muted">ต้องได้ ${r.need}/${r.meta.n} ข้อ · ความแม่นของการประเมิน: ${r.conf} (ตอบไป ${r.T} ครั้ง)</div>${both}
+    <div class="small muted" style="margin-top:10px">สัดส่วนข้อสอบแต่ละหมวด (สี = ความแม่น: เขียว ≥75% · เหลือง 60–74% · แดง &lt;60% · เทา ยังไม่เคยทำ)</div>
+    <div class="rdstack">${r.cats.map(c => `<i style="width:${c.w * 100}%;background:${accCol(c.acc)}" title="${c.th}">${c.w > .1 ? Math.round(c.w * 100) + '%' : ''}</i>`).join('')}</div>
+    ${r.cats.map(c => `<div class="rdrow"><span>${c.th}</span><span class="rdbar"><i style="width:${c.acc == null ? 0 : c.acc * 100}%;background:${accCol(c.acc)}"></i></span><b style="color:${accCol(c.acc)}">${c.acc == null ? '—' : Math.round(c.acc * 100) + '%'}</b></div>`).join('')}
+    <div class="rdtips"><b>💡 ควรเรียนเพิ่ม</b><ul>${tips.join('')}</ul></div>
+    <div class="small muted">เป็นค่าประมาณจากอัตราตอบถูกในแอป ไม่ใช่การรับประกันผลสอบจริง</div>`;
+  el.querySelectorAll('[data-rdcat]').forEach(b => b.addEventListener('click', () => startQuiz(miniPick(b.dataset.rdcat), 'ทดสอบย่อย: ' + catJa(b.dataset.rdcat), 'mini', 0)));
+}
 function renderRecord() {
   $('bothParts').innerHTML = bothPartsHTML();
+  renderReady();
   renderSeenStats();
   renderBackupWhen();
   const h = hist.filter(x => (x.part || 'gakka') === prefs.part);
@@ -5276,6 +5324,9 @@ if (TTS) $('segTts').addEventListener('click', e => { if (e.target.dataset.v) se
 if (TTS) { pickJaVoice(); window.speechSynthesis.addEventListener && window.speechSynthesis.addEventListener('voiceschanged', pickJaVoice); }
 if (TTS) window.speechSynthesis.getVoices();
 // small 🔊 at the end of each answer option (does not select the option)
+// 🔊 ทั้งข้อ: question, then each option with its number, in the order shown on screen
+const NUM_JA = ['いちばん', 'にばん', 'さんばん', 'よんばん'];
+const sayAllBtn = (q, order) => TTS ? `<button class="say sayall" data-say="${esc(toSpeech(q.stem).replace(/[。？?]*$/, '') + '。' + (order || [0, 1, 2, 3]).map((oi, j) => NUM_JA[j] + '、' + toSpeech(q.opts[oi])).join('。') + '。')}" aria-label="อ่านโจทย์และตัวเลือกทั้งหมด">🔊ทั้งข้อ</button>` : '';
 const optSay = (html, n) => TTS ? `<button class="say osay" data-say="${esc(toSpeech(html))}" aria-label="ฟังตัวเลือกที่ ${n}">🔊</button>` : '';
 const sayBtn = (text, label) => TTS ? `<button class="say" data-say="${esc(text)}" aria-label="${label || 'ฟังเสียง'}">🔊</button>` : '';
 document.addEventListener('click', e => { const b = e.target.closest('[data-say]'); if (!b) return; e.stopPropagation(); e.preventDefault(); sayJa(b.dataset.say, b); }, true);
