@@ -665,6 +665,7 @@ button.aslot{ cursor:pointer }
 .btn.review:disabled{ opacity:.6 }
 .say{ border:2px solid var(--line); background:var(--surf); border-radius:10px; cursor:pointer; font-size:.95rem; min-width:40px; min-height:36px; box-shadow:0 3px 0 var(--edge) }
 .say:active{ transform:translateY(2px); box-shadow:0 1px 0 var(--edge) } .say.on{ border-color:var(--go); background:var(--go-soft) }
+.say.osay{ margin-left:auto; min-width:34px; min-height:30px; font-size:.78rem; padding:0 4px; flex:none; align-self:center; opacity:.85 } .opts label{ align-items:center } .aopt .osay{ margin-left:auto }
 .qact{ margin-left:auto; display:flex; align-items:center; gap:2px; flex:none } .qact .star{ margin-left:0 } .qact .say{ min-width:36px; min-height:32px; font-size:.85rem }
 .vitem .say{ margin-left:auto; flex:none } .vitem .say + .kb{ margin-left:0 }
 .saybig{ display:block; margin:8px auto 0; border:2px solid var(--line); background:var(--surf); border-radius:14px; padding:8px 18px; font:500 .9rem var(--thf); color:var(--ink); box-shadow:0 4px 0 var(--edge); cursor:pointer }
@@ -3180,7 +3181,7 @@ function renderQuiz() {
   $('quizList').innerHTML = layout.map((it, pos) => {
     const q = QUESTIONS[it.qi], n = pos + 1;
     const opts = it.order.map((oi, j) => `<li><label data-pos="${pos}" data-val="${oi + 1}">
-        <input type="radio" name="q${n}" value="${oi + 1}"><span class="num">${j + 1}</span><span>${q.opts[oi]}</span></label></li>`).join('');
+        <input type="radio" name="q${n}" value="${oi + 1}"><span class="num">${j + 1}</span><span>${q.opts[oi]}</span>${optSay(q.opts[oi], j + 1)}</label></li>`).join('');
     const practice = mode !== 'real';
     return `<div class="q" id="qw${pos}">
       <div class="qmeta"><span>ข้อ ${n}</span><span class="tag code">${qCode(q)}</span><span class="tag">${catJa(q.cat)}</span><span class="tag">${q.src}</span><span class="qact"><button class="pinbtn ${flags[pos] ? 'on' : ''}" data-pin="${pos}" aria-label="ปักหมุดข้อนี้ไว้กลับมาดู" title="ปักหมุดไว้กลับมาดู">📌</button>${seenBtn(q.id)}${sayBtn(toSpeech(q.stem), 'ฟังโจทย์')}${favBtn(q.id)}</span></div>
@@ -3305,7 +3306,7 @@ function grade(auto) {
   save(SRS_KEY, srs); save(QOK_KEY, qok); save(CONF_KEY, confBook);
   daily[today()] = (daily[today()] || 0) + layout.length;
   hist.unshift({ d: Date.now(), mode, label: modeLabel, n: layout.length, s: score, part: quizPart });
-  actEvent({ ts: Date.now(), part: quizPart, mode, n: layout.length, s: score });
+  actEvent({ ts: Date.now(), rid: Date.now().toString(36) + Math.random().toString(36).slice(2, 8), part: quizPart, mode, n: layout.length, s: score });
   hist = hist.slice(0, 80);
   save(K.wrong, wrongBook); save(K.cat, catStat); save(K.daily, daily); save(K.hist, hist);
 
@@ -3367,7 +3368,7 @@ function renderAnswers() {
       const val = oi + 1, isAns = val === q.ans, isPick = val === picks[pos];
       const cls = isAns ? 'ok' : (isPick ? 'ng' : '');
       const mk = isAns ? '<span class="mk">เฉลย</span>' : (isPick ? '<span class="mk">คุณเลือก</span>' : '');
-      return `<li class="aopt ${cls}"><span class="an">${j + 1}</span><span class="at">${q.opts[oi]}</span>${mk}</li>`;
+      return `<li class="aopt ${cls}"><span class="an">${j + 1}</span><span class="at">${q.opts[oi]}</span>${optSay(q.opts[oi], j + 1)}${mk}</li>`;
     }).join('');
     const ctag = confTag(conf[pos], ok);
     const head = `<div class="hd"><span class="ic">${ok ? '○' : '×'}</span><span>ข้อ ${pos + 1}・${qCode(q)}・${catJa(q.cat)}・${q.src}${ctag}</span></div>
@@ -3497,7 +3498,7 @@ function linkList(v) {
 let qSheetWord = '';
 function openQ(i) {
   const q = QUESTIONS[i];
-  const opts = q.opts.map((o, j) => `<li class="aopt ${j + 1 === q.ans ? 'ok' : ''}"><span class="an">${j + 1}</span><span class="at">${o}</span>${j + 1 === q.ans ? '<span class="mk">เฉลย</span>' : ''}</li>`).join('');
+  const opts = q.opts.map((o, j) => `<li class="aopt ${j + 1 === q.ans ? 'ok' : ''}"><span class="an">${j + 1}</span><span class="at">${o}</span>${optSay(o, j + 1)}${j + 1 === q.ans ? '<span class="mk">เฉลย</span>' : ''}</li>`).join('');
   const how = qSheetWord ? wordHow(q, qSheetWord) : '';
   $('qSheetBody').innerHTML = (qSheetWord ? `<div class="vword th">คำศัพท์: <span lang="ja">${esc(qSheetWord)}</span>${how ? `<span class="whow ${how === 'ans' ? 'ans' : ''}">${HOW_TXT[how]}</span>` : ''}</div>` : '') +
     `<div class="qmeta"><span class="tag code">${qCode(q)}</span><span class="tag">${catJa(q.cat)}</span><span class="tag">${q.src}</span><span class="qact">${seenBtn(q.id)}${sayBtn(toSpeech(q.stem), 'ฟังโจทย์')}${favBtn(q.id)}</span></div>
@@ -5274,6 +5275,8 @@ function sayJa(text, btn) {
 if (TTS) $('segTts').addEventListener('click', e => { if (e.target.dataset.v) setTimeout(() => sayJa('写真の建設機械の名称は何ですか。', null), 0); });
 if (TTS) { pickJaVoice(); window.speechSynthesis.addEventListener && window.speechSynthesis.addEventListener('voiceschanged', pickJaVoice); }
 if (TTS) window.speechSynthesis.getVoices();
+// small 🔊 at the end of each answer option (does not select the option)
+const optSay = (html, n) => TTS ? `<button class="say osay" data-say="${esc(toSpeech(html))}" aria-label="ฟังตัวเลือกที่ ${n}">🔊</button>` : '';
 const sayBtn = (text, label) => TTS ? `<button class="say" data-say="${esc(text)}" aria-label="${label || 'ฟังเสียง'}">🔊</button>` : '';
 document.addEventListener('click', e => { const b = e.target.closest('[data-say]'); if (!b) return; e.stopPropagation(); e.preventDefault(); sayJa(b.dataset.say, b); }, true);
 $('flashSay').addEventListener('click', e => { e.stopPropagation(); const v = flashList[flashPos]; if (v) sayJa(v.r || toKana(v.t), $('flashSay')); });
@@ -5550,6 +5553,26 @@ document.addEventListener('keydown', e => {                       // Ctrl/⌘ + 
 const ACT_DEV = 'jac-anon', ACT_Q = 'jac-actq', NICK_KEY = 'jac-nick';
 const cleanNick = v => String(v || '').replace(/[<>"'`\\]/g, '').replace(/\s+/g, ' ').trim().slice(0, 24);
 // profile picture: resized to 96×96 on the phone, sent once (and again only when it changes)
+// per-category summary for the owner's /stats page (sent only when it changed)
+let sumSentNow = '';
+function progSummary() {
+  const cats = [];
+  Object.keys(PARTS).forEach(p => {
+    const all = QUESTIONS.filter(q => partOf(q) === p);
+    PARTS[p].cats.forEach(c => {
+      const qs = all.filter(q => q.cat === c.id); if (!qs.length) return;
+      const st = catStat[c.id] || { c: 0, t: 0 };
+      cats.push({ id: c.id, th: c.th, part: p, c: st.c, t: st.t, done: qs.filter(q => qok[q.id]).length, total: qs.length, wrong: qs.filter(q => wrongBook[q.id]).length });
+    });
+  });
+  const parts = {}; Object.keys(PARTS).forEach(p => { const r = PARTS[p].real; parts[p] = { n: r.n, pass: r.pass, min: r.min }; });
+  return { cats, parts, exam: load('jac-examdate', '') || '', lset: prefs.lset || 'all' };
+}
+function sumPending() {
+  const sm = progSummary(), str = JSON.stringify(sm);
+  if (str === load('jac-sumsent', '')) { sumSentNow = ''; return {}; }
+  sumSentNow = str; return { summary: sm };
+}
 const AV_KEY = 'jac-avatar';
 const avPending = () => load('jac-avsent', 0) === load('jac-avver', 0) ? {} : { avatar: load(AV_KEY, '') };
 function showAv() { const a = load(AV_KEY, ''); $('avImg').hidden = !a; $('avPh').hidden = !!a; if (a) $('avImg').src = a; $('avDel').hidden = !a; }
@@ -5577,11 +5600,14 @@ $('nickEdit').addEventListener('click', openNick);
 })();
 const actOn = /^https?:$/.test(location.protocol) && !window.IMGDATA;
 const actDev = (() => { let d = load(ACT_DEV, ''); if (!/^[a-z0-9]{8,32}$/.test(d)) { d = (Date.now().toString(36) + Math.random().toString(36).slice(2, 12)).slice(0, 20); save(ACT_DEV, d); } return d; })();
+let actBusy = false;
 function actSend() {
-  if (!actOn || document.hidden && !load(ACT_Q, []).length) return;
+  if (!actOn || actBusy || document.hidden && !load(ACT_Q, []).length) return;
+  actBusy = true; let sentOk = false;
   const events = load(ACT_Q, []).slice(0, 20);
-  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ dev: actDev, name: load(NICK_KEY, ''), part: prefs.part, events }, avPending())) })
-    .then(r => { if (!r.ok) return; if (events.length) save(ACT_Q, load(ACT_Q, []).slice(events.length)); save('jac-avsent', load('jac-avver', 0)); }).catch(() => {});
+  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ dev: actDev, name: load(NICK_KEY, ''), part: prefs.part, events }, avPending(), sumPending())) })
+    .then(r => { if (!r.ok) return; sentOk = events.length > 0; if (events.length) save(ACT_Q, load(ACT_Q, []).slice(events.length)); save('jac-avsent', load('jac-avver', 0)); if (sumSentNow) save('jac-sumsent', sumSentNow); }).catch(() => {})
+    .finally(() => { actBusy = false; if (sentOk && load(ACT_Q, []).length) setTimeout(actSend, 800); });
 }
 function actEvent(e) { if (!actOn) return; const q = load(ACT_Q, []); q.push(e); save(ACT_Q, q.slice(-100)); actSend(); }
 showNick();

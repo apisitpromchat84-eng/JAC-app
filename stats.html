@@ -24,6 +24,18 @@ table{ width:100%; border-collapse:collapse; font-size:.86rem } th,td{ text-alig
 .pass{ color:var(--ok); font-weight:700 } .hours{ display:grid; grid-template-columns:repeat(24,1fr); gap:2px; align-items:end; height:70px }
 .hours i{ display:block; background:var(--bar2); border-radius:3px 3px 0 0; min-height:2px } .hl{ display:grid; grid-template-columns:repeat(24,1fr); font-size:.6rem; color:var(--mute); text-align:center }
 .nm{ font-weight:700 } .av{ width:30px; height:30px; border-radius:50%; object-fit:cover; display:inline-grid; place-items:center; background:var(--soft); vertical-align:middle; margin-right:8px; font-size:.8rem; font-weight:700 } .muted{ color:var(--mute); font-size:.78rem } .ok{ color:var(--ok); font-weight:700 } .ng{ color:#D9480F; font-weight:700 } .tw{ overflow-x:auto }
+.prow{ cursor:pointer } .prow:hover td{ background:var(--soft) }
+dialog{ border:none; border-radius:18px; padding:0; width:min(760px, calc(100vw - 16px)); max-height:92vh; background:var(--bg); color:var(--ink) }
+dialog::backdrop{ background:rgba(0,0,0,.5) } #dlgBody{ padding:16px 16px 24px }
+.dh{ display:flex; align-items:center; gap:12px; margin-bottom:10px } .dh .av{ width:54px; height:54px; font-size:1.2rem } .dh h3{ margin:0; font-size:1.15rem } .x{ margin-left:auto; border:none; background:var(--soft); color:var(--ink); border-radius:10px; padding:8px 14px; font:inherit; cursor:pointer }
+.pass-card{ border-radius:14px; padding:12px 14px; margin:10px 0; background:var(--card); border:1px solid var(--line) }
+.pbig{ font-size:2rem; font-weight:800; line-height:1.1 } .pbar{ height:10px; border-radius:6px; background:var(--soft); overflow:hidden; margin:6px 0 } .pbar i{ display:block; height:100% }
+.stack{ display:flex; height:30px; border-radius:8px; overflow:hidden; margin:6px 0 4px; border:1px solid var(--line) } .stack i{ display:grid; place-items:center; font-size:.62rem; color:#fff; font-style:normal; font-weight:700; overflow:hidden; white-space:nowrap; border-right:1px solid rgba(255,255,255,.6) }
+.crow{ display:grid; grid-template-columns:minmax(0,1.3fr) 2fr 58px; gap:8px; align-items:center; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.82rem }
+.crow .b{ height:12px; border-radius:6px; background:var(--soft); position:relative; overflow:hidden } .crow .b i{ position:absolute; left:0; top:0; bottom:0; border-radius:6px } .crow .b u{ position:absolute; left:0; bottom:0; height:3px; background:#1E2A26; opacity:.55; text-decoration:none }
+.crow .r{ text-align:right; font-weight:700 } .cs{ color:var(--mute); font-size:.72rem }
+.advice{ background:#FFF7E0; color:#5A4300; border-radius:12px; padding:10px 12px; font-size:.86rem; line-height:1.6 } @media (prefers-color-scheme: dark){ .advice{ background:#3A3214; color:#F5E3A8 } }
+.advice li{ margin:3px 0 } .mini{ display:flex; align-items:flex-end; gap:4px; height:70px } .mini i{ flex:1; background:var(--bar2); border-radius:4px 4px 0 0; min-height:2px }
 .empty{ color:var(--mute); text-align:center; padding:20px }
 </style>
 </head>
@@ -46,6 +58,7 @@ table{ width:100%; border-collapse:collapse; font-size:.86rem } th,td{ text-alig
 <h2>กิจกรรมล่าสุด</h2>
 <div class="card" id="recent"></div>
 </main>
+<dialog id="dlg"><div id="dlgBody"></div></dialog>
 <script>
 var PART = { gakka: 'ทฤษฎี', jitsugi: 'ปฏิบัติ 土木', life: 'ปฏิบัติ ไลฟ์ไลน์', '': '—' };
 var MODE = { real: 'สอบจำลอง', mini: 'ทดสอบย่อย', all: 'ทำทุกข้อ', wrong: 'ข้อที่เคยผิด', fav: 'ติดดาว', weak: 'จุดอ่อน', review: 'ทบทวน', hot: '🔥 ข้อที่ออก' };
@@ -59,11 +72,11 @@ function renderPeople(d){
   $('people').innerHTML = ps.length ? '<div class="tw"><table><tr><th>ชื่อ</th><th>ล่าสุด</th><th class="n">วันนี้</th><th class="n">7 วัน</th><th class="n">ถูกรวม</th><th class="n">สอบจำลองล่าสุด</th></tr>' + ps.map(function(p){
     var lm = p.mock_pct != null ? [p.mock_pct, p.mock_part] : null;
     var on = d.now - p.last < 5 * 60000;
-    return '<tr><td>' + (p.avatar ? '<img class="av" src="' + p.avatar + '" alt="">' : '<span class="av">' + esc((p.name || '?').slice(0, 1)) + '</span>') + '<span class="nm">' + (p.name ? esc(p.name) : '<span class="muted">ไม่ระบุชื่อ</span>') + '</span>' + (on ? ' 🟢' : '') + '</td><td class="muted">' + ago(p.last, d.now) + '</td>' +
+    return '<tr class="prow" data-k="' + esc(p.k) + '"><td>' + (p.avatar ? '<img class="av" src="' + p.avatar + '" alt="">' : '<span class="av">' + esc((p.name || '?').slice(0, 1)) + '</span>') + '<span class="nm">' + (p.name ? esc(p.name) : '<span class="muted">ไม่ระบุชื่อ</span>') + '</span>' + (on ? ' 🟢' : '') + '</td><td class="muted">' + ago(p.last, d.now) + '</td>' +
       '<td class="n">' + (p.n_today ? p.n_today + ' ข้อ<br><span class="muted">' + Math.round(p.s_today / p.n_today * 100) + '%</span>' : '<span class="muted">—</span>') + '</td>' +
       '<td class="n">' + (p.n_7 || '<span class="muted">0</span>') + '</td><td class="n">' + (p.n_all ? pc(Math.round(p.s_all / p.n_all * 100)) : '—') + '</td>' +
       '<td class="n">' + (lm ? pc(+lm[0]) + '<br><span class="muted">' + (PART[lm[1]] || '') + '</span>' : '—') + '</td></tr>';
-  }).join('') + '</table></div><div class="legend">🟢 = เปิดแอปอยู่ตอนนี้ · คนที่ตั้งชื่อเดียวกันในหลายเครื่องจะรวมเป็นแถวเดียว</div>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
+  }).join('') + '</table></div><div class="legend">👆 แตะที่ชื่อเพื่อดูสถิติรายหมวด โอกาสผ่าน และคำแนะนำ · 🟢 = เปิดแอปอยู่ตอนนี้ · คนที่ตั้งชื่อเดียวกันในหลายเครื่องจะรวมเป็นแถวเดียว</div>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
 }
 function render(d){
   renderPeople(d);
@@ -84,6 +97,81 @@ function render(d){
   $('hl').innerHTML = hs.map(function(c, h){ return '<span>' + (h % 3 ? '' : h) + '</span>'; }).join('');
   $('recent').innerHTML = d.recent.length ? '<table><tr><th>เวลา</th><th>ใคร</th><th>ภาค</th><th>โหมด</th><th class="n">คะแนน</th></tr>' + d.recent.map(function(r){ return '<tr><td>' + ago(r.ts, d.now) + '</td><td>' + esc(r.name || 'ไม่ระบุชื่อ') + '</td><td>' + (PART[r.part] || r.part) + '</td><td>' + (MODE[r.mode] || r.mode) + '</td><td class="n">' + r.s + '/' + r.n + ' (' + pct(r.s, r.n) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
 }
+var CAT_COLORS = ['#2F7D5B','#3B82C4','#E7A400','#C2410C','#7C3AED','#0E7490','#BE185D','#4D7C0F','#9A3412','#1D4ED8'];
+function accColor(a){ return a == null ? '#B7BDB9' : a >= .75 ? '#1F9D55' : a >= .6 ? '#E7A400' : '#D9480F'; }
+function binomAtLeast(n, k, p){ var t = 0, c = 1; for (var i = 0; i <= n; i++) { if (i > 0) c = c * (n - i + 1) / i; if (i >= k) t += c * Math.pow(p, i) * Math.pow(1 - p, n - i); } return Math.min(1, Math.max(0, t)); }
+// estimate for one part: each category weighted by its share of the bank (= its share of the real paper)
+function analysePart(cats, meta, mocks){
+  var tot = cats.reduce(function(a, c){ return a + c.total; }, 0), C = 0, T = 0;
+  cats.forEach(function(c){ C += c.c; T += c.t; });
+  var base = T ? C / T : .5, exp = 0;
+  cats.forEach(function(c){ c.w = c.total / tot; c.acc = c.t ? c.c / c.t : null; c.est = (c.c + 3 * base) / (c.t + 3); exp += c.w * c.est; });
+  var mockAvg = mocks.length ? mocks.slice(0, 3).reduce(function(a, m){ return a + m.s / m.n; }, 0) / Math.min(3, mocks.length) : null;
+  var p = mockAvg != null ? (exp + mockAvg) / 2 : exp;                       // blend with the latest mock exams when there are some
+  var need = Math.ceil(meta.n * meta.pass / 100), prob = binomAtLeast(meta.n, need, p);
+  var answered = T, done = cats.reduce(function(a, c){ return a + c.done; }, 0);
+  var conf = answered >= 150 ? 'ค่อนข้างแม่น' : answered >= 50 ? 'พอประมาณ' : 'ข้อมูลยังน้อย';
+  var weak = cats.filter(function(c){ return c.est < .8; }).map(function(c){ c.impact = c.w * (.85 - c.est) + (c.t < 5 ? c.w * .1 : 0); return c; }).sort(function(a, b){ return b.impact - a.impact; }).slice(0, 3);
+  return { tot: tot, exp: exp, p: p, prob: prob, need: need, mockAvg: mockAvg, answered: answered, done: done, conf: conf, weak: weak, acc: T ? C / T : null };
+}
+var PNAME = { gakka: 'ทฤษฎี (学科)', jitsugi: 'ปฏิบัติ 土木', life: 'ปฏิบัติ ไลฟ์ไลน์' };
+function partHtml(part, cats, meta, mocks){
+  var a = analysePart(cats, meta, mocks), pr = Math.round(a.prob * 100);
+  if (!a.answered) return { html: '<div class="pass-card"><b>' + PNAME[part] + '</b> <span class="cs">— ยังไม่เคยทำข้อสอบภาคนี้</span></div>', prob: null, answered: 0 };
+  var col = pr >= 70 ? '#1F9D55' : pr >= 40 ? '#E7A400' : '#D9480F';
+  var h = '<div class="pass-card"><b>' + PNAME[part] + '</b> <span class="cs">(' + meta.n + ' ข้อ · ผ่าน ' + meta.pass + '% = ' + a.need + ' ข้อ)</span>';
+  h += '<div style="display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-top:6px"><div><div class="cs">โอกาสผ่านถ้าไปสอบวันนี้</div><div class="pbig" style="color:' + col + '">' + (a.answered ? pr + '%' : '—') + '</div></div>' +
+       '<div><div class="cs">คะแนนที่คาด</div><div class="pbig">' + Math.round(a.p * 100) + '%</div></div>' +
+       (a.mockAvg != null ? '<div><div class="cs">สอบจำลองล่าสุด (เฉลี่ย ≤3 ครั้ง)</div><div class="pbig">' + Math.round(a.mockAvg * 100) + '%</div></div>' : '') + '</div>';
+  h += '<div class="pbar"><i style="width:' + pr + '%;background:' + col + '"></i></div><div class="cs">ความแม่นของการประเมิน: ' + a.conf + ' (ตอบไป ' + a.answered + ' ครั้ง · เคยถูกแล้ว ' + a.done + '/' + a.tot + ' ข้อ)</div>';
+  // proportion of the paper, coloured by how well each part is known
+  h += '<div style="margin-top:10px" class="cs">สัดส่วนข้อสอบแต่ละหมวด (สี = ความแม่น: เขียว ≥75% · เหลือง 60–74% · แดง &lt;60% · เทา ยังไม่เคยทำ)</div><div class="stack">' +
+       cats.map(function(c){ return '<i title="' + esc(c.th) + ' ' + Math.round(c.w * 100) + '%" style="width:' + (c.w * 100) + '%;background:' + accColor(c.acc) + '">' + (c.w > .09 ? Math.round(c.w * 100) + '%' : '') + '</i>'; }).join('') + '</div>';
+  h += cats.map(function(c){ return '<div class="crow"><div>' + esc(c.th) + '<div class="cs">ออกสอบ ~' + Math.round(c.w * meta.n * 10) / 10 + ' ข้อ (' + Math.round(c.w * 100) + '%)</div></div>' +
+       '<div><div class="b"><i style="width:' + (c.acc == null ? 0 : c.acc * 100) + '%;background:' + accColor(c.acc) + '"></i><u style="width:' + (c.done / c.total * 100) + '%"></u></div><div class="cs">ตอบ ' + c.t + ' ครั้ง · เคยถูก ' + c.done + '/' + c.total + (c.wrong ? ' · ผิดค้าง ' + c.wrong : '') + '</div></div>' +
+       '<div class="r" style="color:' + accColor(c.acc) + '">' + (c.acc == null ? '—' : Math.round(c.acc * 100) + '%') + '</div></div>'; }).join('');
+  h += '<div class="cs" style="margin-top:4px">แถบสี = % ตอบถูก · เส้นดำใต้แถบ = สัดส่วนข้อที่เคยตอบถูกแล้ว</div>';
+  // advice
+  var tips = [];
+  if (!a.answered) tips.push('ยังไม่เคยทำข้อสอบภาคนี้เลย — เริ่มจาก "ทดสอบย่อย" ทีละหมวด');
+  a.weak.forEach(function(c){ tips.push('<b>' + esc(c.th) + '</b> — ' + (c.t < 5 ? 'แทบยังไม่ได้ฝึก (ออกสอบ ~' + Math.round(c.w * meta.n) + ' ข้อ)' : 'ถูก ' + Math.round(c.acc * 100) + '% ยังไม่ถึง 75%') + (c.total - c.done > 0 ? ' · เหลือข้อที่ยังไม่เคยถูก ' + (c.total - c.done) + ' ข้อ' : '')); });
+  if (a.answered && a.mockAvg == null) tips.push('ยังไม่เคยลอง <b>สอบจำลอง</b> ภาคนี้ — ควรทำเพื่อดูความพร้อมจริงแบบจับเวลา');
+  if (a.answered && pr >= 80) tips.push('พร้อมสอบแล้ว ✔ รักษาระดับด้วยการทบทวนข้อที่เคยผิด');
+  h += '<div class="advice" style="margin-top:10px"><b>💡 คำแนะนำ</b><ul style="margin:4px 0 0;padding-left:18px">' + tips.map(function(t){ return '<li>' + t + '</li>'; }).join('') + '</ul></div></div>';
+  return { html: h, prob: a.answered ? a.prob : null, answered: a.answered };
+}
+function openPerson(k){
+  $('dlgBody').innerHTML = '<div class="empty">กำลังโหลด…</div>'; $('dlg').showModal();
+  fetch('/api/person?k=' + encodeURIComponent(k), { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){ return r.json(); }).then(function(d){
+    var h = '<div class="dh">' + (d.avatar ? '<img class="av" src="' + d.avatar + '">' : '<span class="av">' + esc((d.name || '?').slice(0, 1)) + '</span>') +
+      '<div><h3>' + esc(d.name || 'ไม่ระบุชื่อ') + '</h3><div class="cs">เข้าใช้ล่าสุด ' + ago(d.last, d.now) + ' · ' + d.devices + ' เครื่อง' + (d.summary && d.summary.exam ? ' · วันสอบ ' + esc(d.summary.exam) : '') + '</div></div><button class="x" onclick="document.getElementById(\'dlg\').close()">ปิด</button></div>';
+    // 14-day activity
+    var byDay = {}; d.days.forEach(function(x){ byDay[x.day] = x.n; }); var arr = [];
+    for (var i = 13; i >= 0; i--) arr.push(byDay[new Date(d.now + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10)] || 0);
+    var mx = Math.max.apply(null, arr.concat([1])), act = arr.filter(Boolean).length;
+    h += '<div class="pass-card"><b>ความขยัน 14 วัน</b> <span class="cs">ทำ ' + act + ' จาก 14 วัน · รวม ' + arr.reduce(function(a, b){ return a + b; }, 0) + ' ข้อ</span><div class="mini" style="margin-top:8px">' + arr.map(function(v){ return '<i style="height:' + Math.round(v / mx * 100) + '%" title="' + v + '"></i>'; }).join('') + '</div></div>';
+    if (!d.summary) { h += '<div class="empty">ยังไม่มีข้อมูลหมวด — เครื่องนี้ต้องเปิดแอปเวอร์ชันใหม่ก่อน</div>'; }
+    else {
+      var res = {};
+      ['gakka', 'jitsugi', 'life'].forEach(function(p){
+        var cats = d.summary.cats.filter(function(c){ return c.part === p; }); if (!cats.length) return;
+        var mocks = d.events.filter(function(e){ return e.part === p && e.mode === 'real'; });
+        res[p] = partHtml(p, cats, d.summary.parts[p] || { n: 25, pass: 75 }, mocks);
+      });
+      // the real exam needs 学科 + one 実技 track; use the track this person studies more
+      var tr = (res.life && (!res.jitsugi || res.life.answered > res.jitsugi.answered)) ? 'life' : 'jitsugi';
+      if (res.gakka && res[tr] && res.gakka.prob != null && res[tr].prob != null) {
+        var both = Math.round(res.gakka.prob * res[tr].prob * 100);
+        h += '<div class="pass-card"><b>🎯 โอกาสผ่านทั้ง 2 ภาค (ทฤษฎี + ' + PNAME[tr] + ')</b><div class="pbig" style="color:' + (both >= 70 ? '#1F9D55' : both >= 40 ? '#E7A400' : '#D9480F') + '">' + both + '%</div><div class="cs">ต้องได้ 75% ขึ้นไปทั้งสองภาค · ประเมินจากอัตราตอบถูกแต่ละหมวดตามสัดส่วนข้อสอบจริง และผลสอบจำลองล่าสุด — เป็นค่าประมาณ ไม่ใช่การรับประกัน</div></div>';
+      }
+      ['gakka', 'jitsugi', 'life'].forEach(function(p){ if (res[p]) h += res[p].html; });
+    }
+    h += '<h2>ประวัติล่าสุด</h2><div class="card">' + (d.events.length ? '<table><tr><th>เวลา</th><th>ภาค</th><th>โหมด</th><th class="n">คะแนน</th></tr>' + d.events.slice(0, 40).map(function(e){ return '<tr><td>' + ago(e.ts, d.now) + '</td><td>' + (PART[e.part] || e.part) + '</td><td>' + (MODE[e.mode] || e.mode) + '</td><td class="n">' + e.s + '/' + e.n + ' (' + pc(Math.round(e.s / e.n * 100)) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มี</div>') + '</div>';
+    $('dlgBody').innerHTML = h;
+  }).catch(function(){ $('dlgBody').innerHTML = '<div class="empty">โหลดไม่ได้</div>'; });
+}
+document.addEventListener('click', function(e){ var r = e.target.closest('.prow'); if (r) openPerson(r.dataset.k); });
+$('dlg').addEventListener('click', function(e){ if (e.target === $('dlg')) $('dlg').close(); });
 var KEY = ''; try { KEY = localStorage.getItem('jac-statskey') || ''; } catch (e) {}
 function load(){
   fetch('/api/stats', { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){

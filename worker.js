@@ -9,13 +9,20 @@ const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS pings (dev TEXT PRIMARY KEY, ts INTEGER, part TEXT)`,
   `CREATE TABLE IF NOT EXISTS opens (day TEXT, dev TEXT, PRIMARY KEY (day, dev))`,
   `CREATE TABLE IF NOT EXISTS names (dev TEXT PRIMARY KEY, name TEXT, updated INTEGER)`,
-  `CREATE TABLE IF NOT EXISTS avatars (dev TEXT PRIMARY KEY, img TEXT, updated INTEGER)`
+  `CREATE TABLE IF NOT EXISTS avatars (dev TEXT PRIMARY KEY, img TEXT, updated INTEGER)`,
+  `CREATE TABLE IF NOT EXISTS summaries (dev TEXT PRIMARY KEY, data TEXT, updated INTEGER)`
 ];
 // password for /stats (only its SHA-256 is stored here)
 const STATS_KEY_SHA256 = 'd38ac90ed5baac73579f69da615e0fe79b865be8ddf0bdde5599e23d8ed5d99b';
 const sha256 = async t => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)))].map(b => b.toString(16).padStart(2, '0')).join('');
 let ready = false;
-async function ensure(db) { if (ready) return; for (const q of SCHEMA) await db.prepare(q).run(); ready = true; }
+async function ensure(db) {
+  if (ready) return;
+  for (const q of SCHEMA) await db.prepare(q).run();
+  try { await db.prepare('ALTER TABLE events ADD COLUMN rid TEXT').run(); } catch (e) {}      // older databases
+  await db.prepare('CREATE UNIQUE INDEX IF NOT EXISTS events_rid ON events (dev, rid)').run();
+  ready = true;
+}
 
 const json = (d, status = 200) => new Response(JSON.stringify(d), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
 const jstDay = ts => new Date(ts + 9 * 3600e3).toISOString().slice(0, 10);          // day boundary in Japan time
@@ -34,13 +41,15 @@ async function ping(req, env) {
   if (typeof b.avatar === 'string' && /^data:image\/(jpeg|webp|png);base64,[A-Za-z0-9+/=]+$/.test(b.avatar) && b.avatar.length < 40000)
     stmts.push(env.DB.prepare('INSERT INTO avatars (dev, img, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET img = excluded.img, updated = excluded.updated').bind(b.dev, b.avatar, now));
   if (b.avatar === '') stmts.push(env.DB.prepare('DELETE FROM avatars WHERE dev = ?').bind(b.dev));
+  if (b.summary && typeof b.summary === 'object') { const t = JSON.stringify(b.summary); if (t.length < 20000)
+    stmts.push(env.DB.prepare('INSERT INTO summaries (dev, data, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET data = excluded.data, updated = excluded.updated').bind(b.dev, t, now)); }
   if (name) stmts.push(env.DB.prepare('INSERT INTO names (dev, name, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET name = excluded.name, updated = excluded.updated').bind(b.dev, name, now));
   const ev = Array.isArray(b.events) ? b.events.slice(0, 20) : [];
   ev.forEach(x => {
     if (!x || !Number.isInteger(x.n) || x.n < 1 || x.n > 500 || !Number.isInteger(x.s) || x.s < 0 || x.s > x.n) return;
     const ts = Math.min(Number(x.ts) || now, now);
-    stmts.push(env.DB.prepare('INSERT INTO events (ts, day, dev, part, mode, n, s) VALUES (?, ?, ?, ?, ?, ?, ?)')
-      .bind(ts, jstDay(ts), b.dev, PARTS.includes(x.part) ? x.part : '', String(x.mode || '').slice(0, 12), x.n, x.s));
+    stmts.push(env.DB.prepare('INSERT OR IGNORE INTO events (ts, day, dev, part, mode, n, s, rid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
+      .bind(ts, jstDay(ts), b.dev, PARTS.includes(x.part) ? x.part : '', String(x.mode || '').slice(0, 12), x.n, x.s, typeof x.rid === 'string' ? x.rid.slice(0, 24) : null));
   });
   await env.DB.batch(stmts);
   return json({ ok: true });
@@ -75,6 +84,23 @@ async function stats(env) {
   return json({ now, today, live, t, opensToday: opensToday.c, days, opens, parts, mocks, hours, recent: recentNamed, devs7: devs7.c, people });
 }
 
+// one person (all devices that share the nickname)
+async function person(env, k) {
+  const KEY = "COALESCE(LOWER(n.name), 'dev:' || d.dev)";
+  const devs = (await env.DB.prepare(`SELECT d.dev FROM (SELECT dev FROM pings UNION SELECT dev FROM events) d LEFT JOIN names n ON n.dev = d.dev WHERE ${KEY} = ?`).bind(k).all()).results.map(r => r.dev);
+  if (!devs.length) return json({ error: 'not found' }, 404);
+  const qs = devs.map(() => '?').join(',');
+  const now = Date.now();
+  const sum = await env.DB.prepare(`SELECT data, updated FROM summaries WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
+  const name = await env.DB.prepare(`SELECT name FROM names WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
+  const av = await env.DB.prepare(`SELECT img FROM avatars WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
+  const last = await env.DB.prepare(`SELECT MAX(ts) AS ts FROM pings WHERE dev IN (${qs})`).bind(...devs).first();
+  const events = (await env.DB.prepare(`SELECT ts, day, part, mode, n, s FROM events WHERE dev IN (${qs}) ORDER BY ts DESC LIMIT 300`).bind(...devs).all()).results;
+  const days = (await env.DB.prepare(`SELECT day, SUM(n) AS n, SUM(s) AS s FROM events WHERE dev IN (${qs}) AND day >= ? GROUP BY day`).bind(...devs, jstDay(now - 13 * 864e5)).all()).results;
+  return json({ now, today: jstDay(now), k, devices: devs.length, name: name && name.name, avatar: av && av.img, last: last && last.ts,
+    summary: sum ? JSON.parse(sum.data) : null, synced: sum ? sum.updated : 0, events, days });
+}
+
 export default {
   async fetch(req, env) {
     const path = new URL(req.url).pathname;
@@ -85,6 +111,10 @@ export default {
     try {
       await ensure(env.DB);
       if (path === '/api/ping' && req.method === 'POST') return await ping(req, env);
+      if (path === '/api/person') {
+        if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);
+        return await person(env, new URL(req.url).searchParams.get('k') || '');
+      }
       if (path === '/api/stats') {
         if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);
         return await stats(env);
