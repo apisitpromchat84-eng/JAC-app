@@ -193,6 +193,36 @@ details.fold[open] > summary{ margin-bottom:8px }
 .dangerhd{ margin:16px 0 6px; color:#C0262D; font-weight:800; font-size:.85rem }
 .sethd{ margin:18px 0 2px; font-weight:800; font-size:.86rem; color:var(--mute); letter-spacing:.02em } .sethd:first-of-type{ margin-top:6px }
 .vmore{ width:100%; margin:12px 0; text-align:center }
+.rz-v{ display:inline-block; font:700 .8rem var(--thf); padding:3px 10px; border-radius:999px; margin-bottom:4px }
+.rz-v.ok{ background:rgba(30,158,106,.13); color:#1E9E6A } .rz-v.mid{ background:rgba(217,154,0,.15); color:#A87700 } .rz-v.low{ background:rgba(214,69,69,.12); color:#D64545 }
+.rz-score{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap } .rz-score b{ font:800 2.6rem/1 var(--thf); font-variant-numeric:tabular-nums } .rz-score span{ color:var(--mute); font-size:.84rem }
+.rz-ruler{ position:relative; height:60px; margin:14px 0 4px }
+.rz-track{ position:absolute; left:0; right:0; top:20px; height:12px; border-radius:6px; background:var(--surf2); overflow:hidden } .rz-track i{ position:absolute; left:0; top:0; bottom:0; border-radius:6px }
+.rz-track i.ok, .rz-bar i.ok, .rz-dot.ok{ background:#1E9E6A } .rz-track i.mid, .rz-bar i.mid, .rz-dot.mid{ background:#D99A00 } .rz-track i.low, .rz-bar i.low, .rz-dot.low{ background:#D64545 }
+.rz-ticks{ position:absolute; left:0; right:0; top:36px; height:7px; background:repeating-linear-gradient(90deg, var(--mute) 0 1px, transparent 1px 10%); opacity:.5 }
+.rz-tl{ position:absolute; top:43px; transform:translateX(-50%); font-size:.66rem; color:var(--mute) }
+.rz-pass{ position:absolute; top:9px; bottom:18px; width:3px; margin-left:-1.5px; border-radius:2px; background:#F5B800 }
+.rz-passlb{ position:absolute; top:-9px; transform:translateX(-50%); font:700 .7rem var(--thf); color:#A87700; white-space:nowrap } html[data-theme="dark"] .rz-passlb{ color:#F5B800 }
+.rz-mk{ position:absolute; top:15px; width:22px; height:22px; margin-left:-11px; border-radius:50%; background:var(--surf); border:4px solid #1E9E6A } .rz-mk.mid{ border-color:#D99A00 } .rz-mk.low{ border-color:#D64545 }
+.rz-mock{ position:absolute; top:22px; margin-left:-6px; border:6px solid transparent; border-bottom:8px solid var(--mute) }
+.rz-legend{ display:flex; gap:12px; flex-wrap:wrap; font-size:.74rem; color:var(--mute) } .rz-dot{ display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px } .rz-dot.mock{ background:var(--mute); border-radius:2px } .rz-dot.pass{ background:#F5B800; border-radius:2px }
+.rz-both{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:12px; padding:10px 12px; border-radius:12px; background:var(--surf2); font-size:.82rem } .rz-both b{ font-size:1.2rem }
+.rz-facts{ display:grid; grid-template-columns:repeat(3,1fr); margin:14px 0 4px; border:2px solid var(--line); border-radius:14px }
+.rz-facts div{ padding:10px 12px } .rz-facts div + div{ border-left:2px solid var(--line) } .rz-facts b{ display:block; font-size:1.15rem; font-variant-numeric:tabular-nums } .rz-facts span{ font-size:.72rem; color:var(--mute) }
+.rz-h{ font-weight:800; font-size:.92rem; margin:18px 0 6px } .rz-h small{ font-weight:500; color:var(--mute); font-size:.74rem; margin-left:6px }
+.rz-todo{ list-style:none; margin:0; padding:0; border:2px solid var(--line); border-radius:14px }
+.rz-todo li{ display:flex; align-items:center; gap:10px; padding:10px 12px; border-top:2px solid var(--line) } .rz-todo li:first-child{ border-top:0 }
+.rz-k{ flex:none; width:22px; height:22px; border-radius:50%; background:#F5B800; color:#1D2B3A; display:grid; place-items:center; font-weight:800; font-size:.75rem }
+.rz-tt{ flex:1; min-width:0; font-size:.86rem } .rz-tt small{ display:block; color:var(--mute); font-size:.74rem }
+.rz-go{ flex:none; border:2px solid var(--line); background:var(--surf); color:var(--ink); border-radius:10px; padding:6px 12px; font:700 .78rem var(--thf); cursor:pointer }
+.rz-cats{ border:2px solid var(--line); border-radius:14px }
+.rz-cat{ display:grid; grid-template-columns:minmax(0,1fr) 44px; gap:4px 10px; padding:10px 12px; border-top:2px solid var(--line) } .rz-cat:first-child{ border-top:0 }
+.rz-nm{ font-weight:700; font-size:.86rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis } .rz-pc{ text-align:right; font-weight:800; font-size:.9rem; color:var(--mute) }
+.rz-pc.ok{ color:#1E9E6A } .rz-pc.mid{ color:#C08600 } .rz-pc.low{ color:#D64545 }
+.rz-bar{ grid-column:1 / -1; position:relative; height:7px; border-radius:4px; background:var(--surf2) } .rz-bar i{ position:absolute; left:0; top:0; bottom:0; border-radius:4px }
+.rz-bar u{ position:absolute; top:-3px; bottom:-3px; width:2px; background:#F5B800; text-decoration:none }
+.rz-meta{ grid-column:1 / -1; font-size:.74rem; color:var(--mute) } .rz-meta em{ font-style:normal; color:#D64545; font-weight:700 }
+.rz-fine{ font-size:.72rem; color:var(--mute); margin-top:10px }
 .asmic.on{ background:#E5484D; color:#fff; border-color:#E5484D; animation:asPulse 1s infinite }
 @keyframes asPulse{ 50%{ box-shadow:0 0 0 6px rgba(229,72,77,.25) } }
 .aschips{ display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 } .aschip{ border:2px solid var(--line); background:var(--surf); color:var(--ink); border-radius:999px; padding:6px 11px; font:600 .8rem var(--thf); cursor:pointer }
@@ -1017,7 +1047,7 @@ img{ -webkit-user-drag:none; user-drag:none }
       <div class="catline"><span class="nm">ตอบถูกรวม</span><span class="spacer"></span><span class="pc" id="stRate">—</span></div>
       <div class="catline"><span class="nm">สอบจำลองสูงสุด</span><span class="spacer"></span><span class="pc" id="stBest">—</span></div>
     </div>
-    <h2>🎯 โอกาสผ่านและสิ่งที่ควรเรียนเพิ่ม</h2>
+    <h2>ความพร้อมสอบ</h2>
     <div class="card th" id="readyCard"></div>
     <details class="fold" open><summary>📝 ผลสอบจำลองล่าสุด (เกณฑ์ 2号)</summary><div class="card bothparts th" id="bothParts"></div></details>
     <details class="fold"><summary>📊 อัตราตอบถูกแต่ละหมวด</summary><div class="card" id="catStat"></div></details>
@@ -3768,23 +3798,30 @@ function readiness(part) {
 const accCol = a => a == null ? '#B7BDB9' : a >= .75 ? '#1F9D55' : a >= .6 ? '#E7A400' : '#D9480F';
 function renderReady() {
   const el = $('readyCard'), r = readiness(prefs.part);
-  if (!r.T) { el.innerHTML = '<div class="small muted">ยังไม่มีข้อมูลในภาคนี้ — ทำ "ทดสอบย่อย" สักหมวด แล้วกลับมาดูโอกาสผ่านที่นี่</div>'; return; }
-  const pr = Math.round(r.prob * 100), col = pr >= 70 ? '#1F9D55' : pr >= 40 ? '#E7A400' : '#D9480F';
+  if (!r.T) { el.innerHTML = '<div class="small muted">ยังไม่มีข้อมูลในภาคนี้ — ทำ "ทดสอบย่อย" สักหมวด แล้วกลับมาดูความพร้อมที่นี่</div>'; return; }
+  const pr = Math.round(r.prob * 100), sc = Math.round(r.p * 100), lv = pr >= 70 ? 'ok' : pr >= 40 ? 'mid' : 'low';
+  const vtxt = { ok: 'พร้อมสอบ', mid: 'ใกล้แล้ว', low: 'ยังไม่พร้อม' }[lv], pass = r.meta.pass;
   let both = '';
-  if (prefs.part !== 'gakka') { const g = readiness('gakka'); if (g.T) both = `<div class="rdboth">ผ่านทั้ง 2 ภาค (ทฤษฎี + ${P().ja}) ประมาณ <b>${Math.round(g.prob * r.prob * 100)}%</b></div>`; }
-  else { const tr = readiness(prefs.track || 'jitsugi'); if (tr.T) both = `<div class="rdboth">ผ่านทั้ง 2 ภาค (ทฤษฎี + ${PARTS[prefs.track || 'jitsugi'].ja}) ประมาณ <b>${Math.round(r.prob * tr.prob * 100)}%</b></div>`; }
-  const tips = r.weak.map(c => `<li><b>${c.th}</b> — ${c.t < 5 ? 'แทบยังไม่ได้ฝึก' : 'ถูก ' + Math.round(c.acc * 100) + '%'} · ออกสอบ ~${Math.round(c.w * r.meta.n)} ข้อ <button class="btn rdgo" data-rdcat="${c.id}">ฝึกเลย</button></li>`);
-  if (r.mockAvg == null) tips.push('<li>ยังไม่เคยลอง <b>สอบจำลอง</b> — ลองทำเพื่อดูความพร้อมแบบจับเวลา</li>');
-  if (pr >= 80) tips.push('<li>พร้อมสอบแล้ว ✔ รักษาระดับด้วยการทบทวนข้อที่เคยผิด</li>');
-  el.innerHTML = `<div class="rdtop"><div><div class="small muted">โอกาสผ่านถ้าไปสอบวันนี้</div><div class="rdbig" style="color:${col}">${pr}%</div></div>
-      <div><div class="small muted">คะแนนที่คาด</div><div class="rdbig">${Math.round(r.p * 100)}%</div></div>
-      ${r.mockAvg != null ? `<div><div class="small muted">สอบจำลองล่าสุด</div><div class="rdbig">${Math.round(r.mockAvg * 100)}%</div></div>` : ''}</div>
-    <div class="small muted">ต้องได้ ${r.need}/${r.meta.n} ข้อ · ความแม่นของการประเมิน: ${r.conf} (ตอบไป ${r.T} ครั้ง)</div>${both}
-    <div class="small muted" style="margin-top:10px">สัดส่วนข้อสอบแต่ละหมวด (สี = ความแม่น: เขียว ≥75% · เหลือง 60–74% · แดง &lt;60% · เทา ยังไม่เคยทำ)</div>
-    <div class="rdstack">${r.cats.map(c => `<i style="width:${c.w * 100}%;background:${accCol(c.acc)}" title="${c.th}">${c.w > .1 ? Math.round(c.w * 100) + '%' : ''}</i>`).join('')}</div>
-    ${r.cats.map(c => { const qs = QUESTIONS.filter(q => q.cat === c.id), tr = qs.filter(q => triedQ(q.id)).length; return `<div class="rdrow"><span>${c.th}<small class="rdcov">ทำแล้ว ${tr}/${qs.length}${qs.length - tr ? ' · ยังไม่ทำ ' + (qs.length - tr) : ' ✔'}</small></span><span class="rdbar"><i style="width:${c.acc == null ? 0 : c.acc * 100}%;background:${accCol(c.acc)}"></i></span><b style="color:${accCol(c.acc)}">${c.acc == null ? '—' : Math.round(c.acc * 100) + '%'}</b></div>`; }).join('')}
-    <div class="rdtips"><b>💡 ควรเรียนเพิ่ม</b><ul>${tips.join('')}</ul></div>
-    <div class="small muted">เป็นค่าประมาณจากอัตราตอบถูกในแอป ไม่ใช่การรับประกันผลสอบจริง</div>`;
+  const other = prefs.part !== 'gakka' ? ['gakka', P().ja] : [prefs.track || 'jitsugi', PARTS[prefs.track || 'jitsugi'].ja];
+  { const o = readiness(other[0]); if (o.T) { const bp = Math.round(o.prob * r.prob * 100); both = `<div class="rz-both"><span>ผ่านทั้ง 2 ภาค (ทฤษฎี + ${prefs.part !== 'gakka' ? P().ja : other[1]})</span><b>${bp}%</b></div>`; } }
+  const tried = r.cats.reduce((a, c) => a + QUESTIONS.filter(q => q.cat === c.id && triedQ(q.id)).length, 0), total = r.cats.reduce((a, c) => a + c.total, 0);
+  const tips = r.weak.map(c => `<li><span class="rz-k">!</span><span class="rz-tt"><b>${c.th}</b><small>${c.t < 5 ? 'แทบยังไม่ได้ฝึก' : 'ถูก ' + Math.round(c.acc * 100) + '%'} · ออกสอบราว ${Math.round(c.w * r.meta.n)} ข้อ</small></span><button class="rz-go" data-rdcat="${c.id}">ฝึกเลย</button></li>`);
+  if (r.mockAvg == null) tips.push('<li><span class="rz-k">!</span><span class="rz-tt"><b>ยังไม่เคยสอบจำลอง</b><small>ลองแบบจับเวลาเหมือนสอบจริง</small></span></li>');
+  const cats = r.cats.slice().sort((x, y) => (x.acc == null ? -1 : x.acc) - (y.acc == null ? -1 : y.acc));
+  el.innerHTML = `<span class="rz-v ${lv}">${vtxt}</span>
+    <div class="rz-score"><b>${sc}%</b><span>คะแนนที่คาด · โอกาสผ่าน ${pr}%</span></div>
+    <div class="rz-ruler"><div class="rz-track"><i class="${lv}" style="width:${sc}%"></i></div><div class="rz-ticks"></div>
+      ${[0, 25, 50, 100].map(x => `<span class="rz-tl" style="left:${x}%">${x}</span>`).join('')}
+      <span class="rz-pass" style="left:${pass}%"></span><span class="rz-passlb" style="left:${pass}%">ผ่าน ${pass}%</span>
+      <span class="rz-mk ${lv}" style="left:${sc}%"></span>${r.mockAvg != null ? `<span class="rz-mock" style="left:${Math.round(r.mockAvg * 100)}%"></span>` : ''}</div>
+    <div class="rz-legend"><span><i class="rz-dot ${lv}"></i>คะแนนที่คาด</span>${r.mockAvg != null ? `<span><i class="rz-dot mock"></i>สอบจำลอง ${Math.round(r.mockAvg * 100)}%</span>` : ''}<span><i class="rz-dot pass"></i>ต้องได้ ${r.need}/${r.meta.n} ข้อ</span></div>
+    ${both}
+    <div class="rz-facts"><div><b>${tried}/${total}</b><span>ข้อที่ทำแล้ว</span></div><div><b>${r.T}</b><span>ครั้งที่ตอบ</span></div><div><b>${r.mockAvg != null ? Math.round(r.mockAvg * 100) + '%' : '—'}</b><span>สอบจำลอง</span></div></div>
+    ${tips.length ? `<div class="rz-h">ควรฝึกต่อ</div><ul class="rz-todo">${tips.join('')}</ul>` : '<div class="rz-h">พร้อมสอบแล้ว — รักษาระดับด้วยการทบทวนข้อที่เคยผิด</div>'}
+    <div class="rz-h">แต่ละหมวด <small>เส้นเหลือง = ${pass}%</small></div>
+    <div class="rz-cats">${cats.map(c => { const qs = QUESTIONS.filter(q => q.cat === c.id), tr = qs.filter(q => triedQ(q.id)).length, ac = c.acc == null ? null : Math.round(c.acc * 100), k = ac == null ? '' : ac >= 75 ? 'ok' : ac >= 60 ? 'mid' : 'low';
+      return `<div class="rz-cat"><span class="rz-nm">${c.th}</span><span class="rz-pc ${k}">${ac == null ? '—' : ac + '%'}</span><span class="rz-bar"><i class="${k}" style="width:${ac || 0}%"></i><u style="left:${pass}%"></u></span><span class="rz-meta">ทำแล้ว ${tr}/${qs.length}${qs.length - tr ? ` · <em>ยังไม่ทำ ${qs.length - tr}</em>` : ''}</span></div>`; }).join('')}</div>
+    <div class="rz-fine">${r.conf} (ตอบ ${r.T} ครั้ง) · เป็นค่าประมาณ ไม่ใช่การรับประกันผลสอบจริง</div>`;
   el.querySelectorAll('[data-rdcat]').forEach(b => b.addEventListener('click', () => startQuiz(miniPick(b.dataset.rdcat), 'ทดสอบย่อย: ' + catJa(b.dataset.rdcat), 'mini', 0)));
 }
 function renderRecord() {
@@ -6340,6 +6377,7 @@ $('qtSheet').addEventListener('click', e => { if (e.target === $('qtSheet')) $('
 /* ================= 📢 มีอะไรใหม่: after an update, show the guide pictures once before studying ================= */
 // add a new entry (newest first) with each update; pictures live in img/whatsnew/<id>/0.webp … n.webp
 const WHATS_NEW = [
+  { id: '2026-10-12d', n: 1, title: 'ความพร้อมสอบโฉมใหม่ (แท็บสถิติ)' },
   { id: '2026-10-12c', n: 1, title: 'ไอคอนใหม่ 🇹🇭' },
   { id: '2026-10-12b', n: 4, title: 'อัปเดต 12 ต.ค. (2) — เมนู ☰ · หน้าแรกกระชับ · สถิติพับได้' },
   { id: '2026-10-12', n: 5, title: 'อัปเดต 12 ต.ค. — ตัวช่วยอ่านโจทย์ · คำตั้งคำถาม · เกมโจทย์ถามอะไร?' }
