@@ -4712,16 +4712,20 @@ $('qtSheet').addEventListener('click', e => { if (e.target === $('qtSheet')) $('
 /* ================= 📢 มีอะไรใหม่: after an update, show the guide pictures once before studying ================= */
 // add a new entry (newest first) with each update; pictures live in img/whatsnew/<id>/0.webp … n.webp
 const WHATS_NEW = [
+  { id: '2026-10-12c', n: 1, title: 'ไอคอนใหม่ 🇹🇭' },
   { id: '2026-10-12b', n: 4, title: 'อัปเดต 12 ต.ค. (2) — เมนู ☰ · หน้าแรกกระชับ · สถิติพับได้' },
   { id: '2026-10-12', n: 5, title: 'อัปเดต 12 ต.ค. — ตัวช่วยอ่านโจทย์ · คำตั้งคำถาม · เกมโจทย์ถามอะไร?' }
 ];
 const WN_KEY = 'jac-wn-seen';
 let wnOpenNow = false;
+// pictures of every update this person has not seen yet (newest first; a brand-new user gets the latest two)
+function wnUnseen() { const k = WHATS_NEW.findIndex(e => e.id === load(WN_KEY, '')); return k < 0 ? WHATS_NEW.slice(0, 2) : WHATS_NEW.slice(0, k); }
 function wnShow(entry) {
-  const e = entry || WHATS_NEW[0]; if (!e) return;
+  const list = entry ? [].concat(entry) : wnUnseen(); if (!list.length) return;
+  const pics = list.flatMap(e => Array.from({ length: e.n }, (_, i) => ({ src: `img/whatsnew/${e.id}/${i}.webp`, alt: `${e.title} (${i + 1}/${e.n})` })));
   wnOpenNow = true;
-  $('wnTrack').innerHTML = Array.from({ length: e.n }, (_, i) => `<img src="img/whatsnew/${e.id}/${i}.webp" alt="${esc(e.title)} (${i + 1}/${e.n})" ${i ? 'loading="lazy"' : ''}>`).join('');
-  $('wnDots').innerHTML = Array.from({ length: e.n }, (_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('');
+  $('wnTrack').innerHTML = pics.map((p, i) => `<img src="${p.src}" alt="${esc(p.alt)}" ${i ? 'loading="lazy"' : ''}>`).join('');
+  $('wnDots').innerHTML = pics.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('');
   $('wnSheet').hidden = false; $('wnTrack').scrollLeft = 0; wnUpdate();
 }
 const wnPos = () => Math.round($('wnTrack').scrollLeft / Math.max(1, $('wnTrack').clientWidth));
