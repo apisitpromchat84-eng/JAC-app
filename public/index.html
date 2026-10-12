@@ -175,6 +175,24 @@ ruby.gm rb, ruby.gm{ text-decoration:underline dotted 2px; text-decoration-color
 .wnx{ position:absolute; top:-6px; right:-4px; z-index:2; width:40px; height:40px; border-radius:50%; border:none; background:#fff; font-size:1.1rem; font-weight:800; box-shadow:0 3px 10px rgba(0,0,0,.25); cursor:pointer }
 .wndots{ display:flex; justify-content:center; gap:7px } .wndots i{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.45) } .wndots i.on{ background:#F5B800; width:22px; border-radius:6px }
 .wnnav{ display:grid; grid-template-columns:1fr 1.4fr; gap:8px } .wnnav .btn{ text-align:center; width:100%; margin:0 }
+.daycard .exam{ display:grid; gap:8px; padding-bottom:12px; margin-bottom:10px; border-bottom:2px dashed var(--line) }
+.quick4{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0 }
+.qtile{ display:grid; justify-items:start; gap:2px; text-align:left; padding:12px; border-radius:16px; border:2px solid var(--line); background:var(--surf); color:var(--ink); box-shadow:0 4px 0 var(--line); font:600 .8rem var(--thf); cursor:pointer; min-height:92px }
+.qtile .qi{ font-size:1.35rem } .qtile b{ font-size:.95rem } .qtile .qn{ color:var(--mute) } .qtile .qs{ display:none }
+.qtile.hot{ background:var(--accent); border-color:var(--accent-edge); box-shadow:0 4px 0 var(--accent-edge); color:#1D2B3A } .qtile.hot .qn{ color:#5A4300 }
+.aslink{ border:none; background:none; color:var(--mute); font:600 .78rem var(--thf); padding:4px 0 0; cursor:pointer }
+.rkwrap{ margin-top:8px } .rkwrap summary{ cursor:pointer; color:var(--mute); font:600 .8rem var(--thf); list-style:none; padding:4px 0 } .rkwrap summary::-webkit-details-marker{ display:none }
+details.fold{ margin:10px 0 } details.fold > summary{ cursor:pointer; list-style:none; font:800 1rem var(--thf); padding:12px 14px; border-radius:14px; background:var(--surf); border:2px solid var(--line) }
+details.fold > summary::-webkit-details-marker{ display:none } details.fold > summary::after{ content:'▾'; float:right; color:var(--mute) } details.fold[open] > summary::after{ content:'▴' }
+details.fold[open] > summary{ margin-bottom:8px }
+.datago{ margin-top:14px }
+.mhead{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px } .mhead b{ font-size:1.15rem } .mhead .btn{ width:auto; padding:8px 14px; margin:0 }
+.mitem{ display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px 10px; border:none; border-bottom:1px dashed var(--line); background:none; color:var(--ink); font:700 .95rem var(--thf); cursor:pointer }
+.mitem .mxi{ width:38px; height:38px; flex:none; border-radius:12px; background:var(--surf2); display:grid; place-items:center; font-size:1.2rem } .mitem .mxt{ flex:1; min-width:0 } .mitem small{ display:block; font-weight:500; color:var(--mute); font-size:.76rem }
+.mitem .mxa{ color:var(--mute) } .mgroup{ margin:14px 0 2px; font:800 .8rem var(--thf); color:var(--mute) }
+.dangerhd{ margin:16px 0 6px; color:#C0262D; font-weight:800; font-size:.85rem }
+.sethd{ margin:18px 0 2px; font-weight:800; font-size:.86rem; color:var(--mute); letter-spacing:.02em } .sethd:first-of-type{ margin-top:6px }
+.vmore{ width:100%; margin:12px 0; text-align:center }
 .asmic.on{ background:#E5484D; color:#fff; border-color:#E5484D; animation:asPulse 1s infinite }
 @keyframes asPulse{ 50%{ box-shadow:0 0 0 6px rgba(229,72,77,.25) } }
 .aschips{ display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 } .aschip{ border:2px solid var(--line); background:var(--surf); color:var(--ink); border-radius:999px; padding:6px 11px; font:600 .8rem var(--thf); cursor:pointer }
@@ -715,7 +733,7 @@ button.aslot{ cursor:pointer }
 .exb.link{ border:none; box-shadow:none; background:none; color:var(--mute); padding:4px 6px; text-decoration:underline }
 .datein{ font:inherit; font-size:.9rem; padding:8px 10px; border-radius:12px; border:2px solid var(--line); background:var(--surf); color:var(--ink) }
 .btn.review{ border-color:#7B4DFF; box-shadow:0 5px 0 #5530C8 } .btn.review .pill{ background:#7B4DFF; color:#fff }
-.btn.review:disabled{ opacity:.6 }
+.btn.review:disabled{ opacity:.6 } .qtile:disabled{ opacity:.55 }
 .say{ border:2px solid var(--line); background:var(--surf); border-radius:10px; cursor:pointer; font-size:.95rem; min-width:40px; min-height:36px; box-shadow:0 3px 0 var(--edge) }
 .say:active{ transform:translateY(2px); box-shadow:0 1px 0 var(--edge) } .say.on{ border-color:var(--go); background:var(--go-soft) }
 .rdtop{ display:flex; gap:18px; flex-wrap:wrap; align-items:flex-end } .rdbig{ font:800 1.9rem/1.1 var(--thf) }
@@ -851,7 +869,7 @@ img{ -webkit-user-drag:none; user-drag:none }
     <span class="spacer"></span>
     <div class="seg partseg" id="segPart"><button data-v="gakka">ทฤษฎี</button><button data-v="prac">ปฏิบัติ</button></div>
     <button class="iconbtn" id="furiBtn" title="ฟุริงานะ (คำอ่านเหนือคันจิ)" aria-label="แสดง/ซ่อนฟุริงานะ">あ</button>
-    <button class="iconbtn" id="setBtn" title="ตั้งค่า" aria-label="ตั้งค่า">⚙</button>
+    <button class="iconbtn" id="setBtn" title="เมนู" aria-label="เมนู">☰</button>
   </div>
 </header>
 
@@ -864,7 +882,7 @@ img{ -webkit-user-drag:none; user-drag:none }
       <span class="small">แอปที่อยู่นี้จะไม่อัปเดตอีก ย้ายไปแอปใหม่ได้เลย ความคืบหน้าไปด้วยทั้งหมด</span>
       <ol><li>กดปุ่ม <b style="display:inline">ย้ายไปแอปใหม่</b> ด้านล่าง</li>
         <li>หน้าแอปใหม่เปิดขึ้น → กดแชร์ › <b style="display:inline">เพิ่มไปยังหน้าจอโฮม</b></li>
-        <li>เปิดไอคอนใหม่ ถ้ายังไม่เห็นความคืบหน้า ไปที่แท็บสถิติ › <b style="display:inline">📥 วางรหัสย้ายข้อมูล</b> (ระบบคัดลอกรหัสไว้ให้แล้ว)</li>
+        <li>เปิดไอคอนใหม่ ถ้ายังไม่เห็นความคืบหน้า ไปที่เมนู ☰ › ข้อมูลของฉัน › <b style="display:inline">📥 วางรหัสย้ายข้อมูล</b> (ระบบคัดลอกรหัสไว้ให้แล้ว)</li>
         <li>ใช้ได้แล้ว ค่อยลบไอคอนเก่าทิ้ง</li></ol>
       <button class="btn primary" id="moveGo">ย้ายไปแอปใหม่ (พาข้อมูลไปด้วย)</button>
       <button class="btn" id="moveCopy">คัดลอกรหัสย้ายข้อมูลอีกครั้ง</button>
@@ -880,29 +898,20 @@ img{ -webkit-user-drag:none; user-drag:none }
     </div>
     <div class="card notice th" id="homeNotice" role="status" hidden></div>
 
-    <h2>การเรียนวันนี้</h2>
-    <div class="card exam" id="examCard"></div>
-    <div class="card">
-      <div class="today"><span class="n" id="todayN">0</span><span class="lbl">ข้อ ／ ทำต่อเนื่อง <b id="streak">0</b> วัน</span></div>
+    <div class="card daycard">
+      <div class="exam" id="examCard"></div>
+      <div class="today"><span class="n" id="todayN">0</span><span class="lbl">ข้อวันนี้ ／ ทำต่อเนื่อง <b id="streak">0</b> วัน</span></div>
       <div class="week" id="week"></div>
     </div>
-
-    <h2>เริ่มฝึกเลย</h2>
     <div class="card asstcard th" id="asstCard"></div>
-    <div style="height:10px"></div>
-    <button class="btn row review" id="goReview"><span class="ico3d">🔁</span><span class="g">ทบทวนวันนี้<span class="sub" id="reviewSub"></span></span><span class="pill" id="reviewN">0 ข้อ</span></button>
-    <div style="height:10px"></div>
-    <button class="btn primary row" id="goWeak"><span class="ico3d">🎯</span><span class="g">ฝึกจุดอ่อน<span class="sub">รวมข้อที่ผิดบ่อยและหมวดที่อ่อนที่สุด</span></span><span class="pill" id="weakN">15 ข้อ</span></button>
-    <div style="height:10px"></div>
-    <div class="card hotcard" id="hotCard"></div>
-    <div style="height:10px"></div>
-    <div class="grid2">
-      <button class="btn" id="goWrong">ข้อที่เคยผิด<span class="sub">ทั้งหมด <b id="wrongN">0</b> ข้อ</span></button>
-      <button class="btn" id="goFav">★ ข้อที่ติดดาว<span class="sub">ทั้งหมด <b id="favN">0</b> ข้อ</span></button>
+    <div class="quick4">
+      <button class="qtile" id="goReview"><span class="qi">🔁</span><b>ทบทวน</b><span class="qn" id="reviewN">0 ข้อ</span><span class="qs" id="reviewSub"></span></button>
+      <button class="qtile hot" id="goWeak"><span class="qi">🎯</span><b>ฝึกจุดอ่อน</b><span class="qn">15 ข้อ</span></button>
+      <button class="qtile" id="goWrong"><span class="qi">❌</span><b>ข้อที่เคยผิด</b><span class="qn"><b id="wrongN">0</b> ข้อ</span></button>
+      <button class="qtile" id="goFav"><span class="qi">★</span><b>ติดดาว</b><span class="qn"><b id="favN">0</b> ข้อ</span></button>
     </div>
+    <div class="card hotcard" id="hotCard"></div>
 
-    <h2>อัตราตอบถูกแต่ละหมวด</h2>
-    <div class="card" id="catStat"></div>
   </section>
 
   <!-- ===== PRACTICE ===== -->
@@ -1008,34 +1017,13 @@ img{ -webkit-user-drag:none; user-drag:none }
       <div class="catline"><span class="nm">ตอบถูกรวม</span><span class="spacer"></span><span class="pc" id="stRate">—</span></div>
       <div class="catline"><span class="nm">สอบจำลองสูงสุด</span><span class="spacer"></span><span class="pc" id="stBest">—</span></div>
     </div>
-    <h2>ผลสอบจำลองล่าสุด (เกณฑ์ 2号)</h2>
-    <div class="card bothparts th" id="bothParts"></div>
     <h2>🎯 โอกาสผ่านและสิ่งที่ควรเรียนเพิ่ม</h2>
     <div class="card th" id="readyCard"></div>
-    <div class="card" style="margin-top:12px">
-      <div class="catline"><span class="nm">คำศัพท์ที่จำได้</span><span class="spacer"></span><span class="pc" id="stVocab">0</span></div>
-    </div>
-    <h2>🔥 ข้อที่เคยออกสอบจริง</h2>
-    <div class="card seencard" id="seenStats"></div>
-    <h2>ประวัติ</h2>
-    <div id="histList"></div>
-    <div class="actions">
-      <div class="grid2" id="backupRow">
-        <button class="btn center" id="exportBtn" style="text-align:center">สำรองข้อมูล<span class="sub">บันทึกเป็นไฟล์</span></button>
-        <button class="btn center" id="importBtn" style="text-align:center">กู้คืนข้อมูล<span class="sub">นำเข้าไฟล์สำรอง</span></button>
-      </div>
-      <input type="file" id="importFile" accept="application/json,.json" hidden>
-      <input type="file" id="seenFile" accept="application/json,.json" hidden>
-      <div class="small muted th center" id="backupWhen" style="margin:-2px 0 4px"></div>
-      <div class="small muted th center" style="margin:-4px 0 4px">ความคืบหน้าเก็บในเครื่องนี้เท่านั้น (ไม่มีบัญชีออนไลน์) — ย้ายเครื่องได้ด้วยไฟล์สำรอง</div>
-      <div class="grid2"><button class="btn center" id="copyMoveBtn" style="text-align:center">📤 คัดลอกรหัสย้ายข้อมูล<span class="sub">ย้ายไปเครื่องอื่นแบบไม่ใช้ไฟล์</span></button>
-      <button class="btn center" id="pasteBtn" style="text-align:center">📥 วางรหัสย้ายข้อมูล<span class="sub">รับข้อมูลจากแอปเก่าหรือเครื่องอื่น</span></button></div>
-      <div class="undorow" id="undoRow" hidden><button class="btn center" id="undoRestore" style="text-align:center">↩ ย้อนกลับเป็นข้อมูลก่อนกู้คืน<span class="sub" id="undoWhen"></span></button><button class="btn center" id="undoDrop" style="text-align:center;min-width:64px" aria-label="ลบสำเนา">ลบสำเนา</button></div>
-      <div class="small muted th center" style="margin-top:8px">แอปส่งจำนวนข้อที่ทำและคะแนนให้ผู้ดูแลกลุ่ม พร้อมชื่อเล่นที่ตั้งไว้: <b id="nickNow">—</b> <button class="btn" id="nickEdit" style="display:inline-block;padding:4px 10px;font-size:.78rem;margin-left:4px">เปลี่ยนชื่อ / รูป</button></div>
-      <div class="small muted th center" id="backupNote" hidden>ปุ่มสำรองข้อมูลใช้ได้ในแอปบน Netlify</div>
-      <button class="btn center" id="clrWrong" style="text-align:center">ล้างรายการข้อที่เคยผิด</button>
-      <button class="btn center" id="clrAll" style="text-align:center">ล้างสถิติทั้งหมด</button>
-    </div>
+    <details class="fold" open><summary>📝 ผลสอบจำลองล่าสุด (เกณฑ์ 2号)</summary><div class="card bothparts th" id="bothParts"></div></details>
+    <details class="fold"><summary>📊 อัตราตอบถูกแต่ละหมวด</summary><div class="card" id="catStat"></div></details>
+    <details class="fold"><summary>🔥 ข้อที่เคยออกสอบจริง</summary><div class="card seencard" id="seenStats"></div></details>
+    <details class="fold"><summary>🕘 ประวัติ · คำศัพท์ที่จำได้</summary><div class="card" style="margin-bottom:10px"><div class="catline"><span class="nm">คำศัพท์ที่จำได้</span><span class="spacer"></span><span class="pc" id="stVocab">0</span></div></div><div id="histList"></div></details>
+    <button class="btn row datago" id="goData"><span class="ico3d">💾</span><span class="g">ข้อมูลของฉัน<span class="sub">สำรอง · กู้คืน · ย้ายเครื่อง · ล้างสถิติ</span></span><span class="pill">›</span></button>
   </section>
 
   <!-- ===== GAMES HUB ===== -->
@@ -1092,6 +1080,38 @@ img{ -webkit-user-drag:none; user-drag:none }
 <div class="gamebg" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <div class="sheet" id="qtSheet" role="dialog" aria-label="เกมโจทย์ถามอะไร"><div class="panel th"><div class="ashd"><span class="asav">🎯</span><div style="flex:1"><b>โจทย์ถามอะไร?</b><div class="small muted">ฝึกอ่านโจทย์ให้รู้ว่าต้องหาอะไร</div></div><button class="btn" id="qtClose">ปิด</button></div><div id="qtBody"></div></div></div>
+<div class="sheet" id="menuSheet" role="dialog" aria-label="เมนู"><div class="panel th">
+  <div class="mhead"><b>เมนู</b><button class="btn" id="menuClose">ปิด</button></div>
+  <button class="mitem" data-m="nick"><span class="mxi">👤</span><span class="mxt">ชื่อเล่น / รูปโปรไฟล์<small id="menuNick"></small></span><span class="mxa">›</span></button>
+  <button class="mitem" data-m="data"><span class="mxi">💾</span><span class="mxt">ข้อมูลของฉัน<small>สำรอง · กู้คืน · ย้ายเครื่อง · ล้างสถิติ</small></span><span class="mxa">›</span></button>
+  <button class="mitem" data-m="seenout"><span class="mxi">📤</span><span class="mxt">แชร์ไฟล์ข้อสอบจริง 🔥 ให้เพื่อน<small>ข้อที่คุณจดว่าออกสอบ</small></span><span class="mxa">›</span></button>
+  <button class="mitem" data-m="seenin"><span class="mxi">📥</span><span class="mxt">รับไฟล์ข้อสอบจริง 🔥 จากเพื่อน<small>รวมเข้ากับของคุณ ข้อมูลเดิมไม่หาย</small></span><span class="mxa">›</span></button>
+  <div class="mgroup">📢 มีอะไรใหม่ / วิธีใช้</div>
+  <div id="menuNews"></div>
+  <button class="mitem" data-m="settings"><span class="mxi">⚙</span><span class="mxt">ตั้งค่า<small>การแสดงผล · การฝึก · เสียง</small></span><span class="mxa">›</span></button>
+</div></div>
+<div class="sheet" id="dataSheet" role="dialog" aria-label="ข้อมูลของฉัน"><div class="panel th">
+  <div class="mhead"><b>💾 ข้อมูลของฉัน</b><button class="btn" id="dataClose">ปิด</button></div>
+  <div class="small muted" style="margin-bottom:8px">ความคืบหน้าทั้งหมดเก็บในเครื่องนี้ — สำรองไว้เป็นระยะ ถ้าเปลี่ยนเครื่องหรือเครื่องลบข้อมูลจะได้กู้คืนได้</div>
+    <div class="actions">
+      <div class="grid2" id="backupRow">
+        <button class="btn center" id="exportBtn" style="text-align:center">สำรองข้อมูล<span class="sub">บันทึกเป็นไฟล์</span></button>
+        <button class="btn center" id="importBtn" style="text-align:center">กู้คืนข้อมูล<span class="sub">นำเข้าไฟล์สำรอง</span></button>
+      </div>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+      <input type="file" id="seenFile" accept="application/json,.json" hidden>
+      <div class="small muted th center" id="backupWhen" style="margin:-2px 0 4px"></div>
+      <div class="small muted th center" style="margin:-4px 0 4px">ความคืบหน้าเก็บในเครื่องนี้เท่านั้น (ไม่มีบัญชีออนไลน์) — ย้ายเครื่องได้ด้วยไฟล์สำรอง</div>
+      <div class="grid2"><button class="btn center" id="copyMoveBtn" style="text-align:center">📤 คัดลอกรหัสย้ายข้อมูล<span class="sub">ย้ายไปเครื่องอื่นแบบไม่ใช้ไฟล์</span></button>
+      <button class="btn center" id="pasteBtn" style="text-align:center">📥 วางรหัสย้ายข้อมูล<span class="sub">รับข้อมูลจากแอปเก่าหรือเครื่องอื่น</span></button></div>
+      <div class="undorow" id="undoRow" hidden><button class="btn center" id="undoRestore" style="text-align:center">↩ ย้อนกลับเป็นข้อมูลก่อนกู้คืน<span class="sub" id="undoWhen"></span></button><button class="btn center" id="undoDrop" style="text-align:center;min-width:64px" aria-label="ลบสำเนา">ลบสำเนา</button></div>
+      <div class="small muted th center" style="margin-top:8px">แอปส่งจำนวนข้อที่ทำและคะแนนให้ผู้ดูแลกลุ่ม พร้อมชื่อเล่นที่ตั้งไว้: <b id="nickNow">—</b> <button class="btn" id="nickEdit" style="display:inline-block;padding:4px 10px;font-size:.78rem;margin-left:4px">เปลี่ยนชื่อ / รูป</button></div>
+      <div class="small muted th center" id="backupNote" hidden>ปุ่มสำรองข้อมูลใช้ได้ในแอปบน Netlify</div>
+      <div class="dangerhd th">⚠ ล้างข้อมูล (ย้อนกลับไม่ได้)</div>
+      <button class="btn center" id="clrWrong" style="text-align:center">ล้างรายการข้อที่เคยผิด</button>
+      <button class="btn center" id="clrAll" style="text-align:center">ล้างสถิติทั้งหมด</button>
+    </div>
+</div></div>
 <div class="wnsheet" id="wnSheet" role="dialog" aria-label="มีอะไรใหม่" hidden><div class="wnbox">
   <button class="wnx" id="wnX" aria-label="ปิด">✕</button>
   <div class="wntrack" id="wnTrack"></div>
@@ -1136,8 +1156,6 @@ img{ -webkit-user-drag:none; user-drag:none }
       <div class="seg" id="segSound"><button data-v="on">เปิด</button><button data-v="off">ปิด</button></div></div>
     <div class="setrow"><span class="g">ความเร็วเสียงอ่าน 🔊<span class="small muted th" style="display:block">เสียงชัดขึ้นถ้าโหลดเสียง Kyoko (คุณภาพสูง) ใน ตั้งค่า › การช่วยการเข้าถึง › เนื้อหาที่พูด › เสียง › ญี่ปุ่น</span></span>
       <div class="seg" id="segTts"><button data-v="slow">ช้า</button><button data-v="mid">กลาง</button><button data-v="norm">ปกติ</button></div></div>
-    <div class="setrow"><span class="g">📢 มีอะไรใหม่<span class="small muted th" style="display:block">ดูรูปแนะนำการอัปเดตล่าสุดอีกครั้ง</span></span>
-      <button class="btn" id="wnAgain" style="width:auto">เปิดดู</button></div>
     <div class="setrow"><span class="g">ตัวช่วยอ่านโจทย์<span class="small muted th" style="display:block">ขีดเส้นใต้คำตั้งคำถามในโจทย์ (เช่น <span lang="ja">として</span>・<ruby>以上<rt>いじょう</rt></ruby>) แตะแล้วขึ้นความหมาย · ไม่แสดงตอนสอบจำลอง</span></span>
       <div class="seg" id="segGram"><button data-v="on">เปิด</button><button data-v="off">ปิด</button></div></div>
     <div class="setrow" id="voiceRow" hidden><span class="g">เสียงผู้อ่าน 🔊<span class="small muted th" style="display:block" id="voiceHint">เลือกเสียงที่ฟังชัดที่สุด · เสียงที่มีคำว่า (ปรับปรุง)/Enhanced/Premium ชัดกว่าเสียงพื้นฐานมาก</span></span>
@@ -1369,7 +1387,7 @@ document.querySelectorAll('[data-lset]').forEach(el => el.addEventListener('clic
   prefs.lset = b.dataset.v; applyPrefs(); onPartChange();
 }));
 $('furiBtn').addEventListener('click', () => { prefs.furi = prefs.furi === 'on' ? 'off' : 'on'; applyPrefs(); });
-$('setBtn').addEventListener('click', () => $('sheet').classList.add('on'));
+$('setBtn').addEventListener('click', openMenu);
 $('closeSheet').addEventListener('click', () => $('sheet').classList.remove('on'));
 $('sheet').addEventListener('click', e => { if (e.target.id === 'sheet') $('sheet').classList.remove('on'); });
 
@@ -2031,16 +2049,19 @@ function vocabFiltered() {
   return vocabPart().filter(v => (vocabCat === 'all' || v.cat === vocabCat) &&
     (!kw || (v.t + v.r + v.th).toLowerCase().includes(kw)));
 }
+let vocabLimit = 40, vocabKey = '';
 function renderVocab() {
   $('vocabTitle').textContent = 'คำศัพท์　' + P().ja;
   const list = vocabFiltered();
   const pics = list.filter(v => v.img).length;
   $('modePhoto').style.display = pics ? '' : 'none';
   $('vocabCount').textContent = `${list.length} คำ — จำได้แล้ว ${list.filter(v => known[v.t]).length} คำ` + (pics ? ` ・ มีรูป ${pics} คำ` : '');
-  $('vocabList').innerHTML = `<div class="vlegend">ป้ายข้อสอบ: <b class="ok">✓ ท-000</b> = คำนี้เป็นคำตอบ · ปกติ = อยู่ในโจทย์ · สีจาง = เป็นตัวหลอก · เส้นประ = อยู่ในคำอธิบาย</div>` + list.map(v => `<div class="vitem ${known[v.t] ? 'known' : ''}">
+  const vkey = vocabCat + '|' + $('vocabSearch').value + '|' + prefs.part; if (vkey !== vocabKey) { vocabKey = vkey; vocabLimit = 40; }
+  $('vocabList').innerHTML = `<div class="vlegend">ป้ายข้อสอบ: <b class="ok">✓ ท-000</b> = คำนี้เป็นคำตอบ · ปกติ = อยู่ในโจทย์ · สีจาง = เป็นตัวหลอก · เส้นประ = อยู่ในคำอธิบาย</div>` + list.slice(0, vocabLimit).map(v => `<div class="vitem ${known[v.t] ? 'known' : ''}">
       ${v.img ? `<img class="vthumb" src="${IMG(v.img)}" alt="" loading="lazy">` : ''}
       <span class="t" lang="ja">${rubyTerm(v.t, v.r)}</span><span class="m">${v.th}<span class="vlinks">${linkChips(v, 6)}</span></span>
-      ${sayBtn(v.r || toKana(v.t))}<button class="kb" data-k="${v.t}">${known[v.t] ? '✓' : '○'}</button></div>`).join('');
+      ${sayBtn(v.r || toKana(v.t))}<button class="kb" data-k="${v.t}">${known[v.t] ? '✓' : '○'}</button></div>`).join('') + (list.length > vocabLimit ? `<button class="btn center vmore" id="vocabMore">แสดงเพิ่ม (เหลืออีก ${list.length - vocabLimit} คำ)</button>` : '');
+  if ($('vocabMore')) $('vocabMore').addEventListener('click', () => { const y = scrollY; vocabLimit += 60; renderVocab(); scrollTo(0, y); });
   $('vocabList').querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
     const t = b.dataset.k; if (known[t]) delete known[t]; else known[t] = 1;
     save(K.known, known); renderVocab();
@@ -2216,7 +2237,7 @@ function gradingFx(results) {
     const step = (total - 500) / results.length;
     let i = 0, c = 0;
     const tm = setInterval(() => {
-      if (i >= results.length) { clearInterval(tm); return; }
+      if (i >= results.length || !cells[i] || !cells[i].isConnected) { clearInterval(tm); return; }
       cells[i].classList.add(results[i] ? 'ok' : 'ng');
       if (results[i]) $('gCount').textContent = ++c;
       i++;
@@ -2924,7 +2945,7 @@ if (NEW_HOME && /\.netlify\.app$/i.test(location.hostname)) {
     location.href = link;
   });
   $('moveCopy').addEventListener('click', async () => {
-    toast(await copyText(moveCode(NEW_HOME)) ? 'คัดลอกรหัสแล้ว — เปิดแอปใหม่ › แท็บสถิติ › 📥 วางรหัสย้ายข้อมูล' : 'คัดลอกไม่สำเร็จ — ใช้ปุ่มสำรองข้อมูล (ไฟล์) ในแท็บสถิติแทน', 6000);
+    toast(await copyText(moveCode(NEW_HOME)) ? 'คัดลอกรหัสแล้ว — เปิดแอปใหม่ › เมนู ☰ › ข้อมูลของฉัน › 📥 วางรหัสย้ายข้อมูล' : 'คัดลอกไม่สำเร็จ — ใช้ปุ่มสำรองข้อมูล (ไฟล์) ในแท็บสถิติแทน', 6000);
   });
 }
 function renderUndo() {
@@ -2946,7 +2967,7 @@ $('undoDrop').addEventListener('click', async () => {
 });
 renderUndo();
 (() => { let f = null; try { f = sessionStorage.getItem('jac-restored'); sessionStorage.removeItem('jac-restored'); } catch (e) {}
-  if (f === '1') setTimeout(() => toast('กู้คืนข้อมูลแล้ว — ถ้าต้องการย้อนกลับ ไปที่แท็บสถิติ › ↩ ย้อนกลับ', 6000), 900);
+  if (f === '1') setTimeout(() => toast('กู้คืนข้อมูลแล้ว — ถ้าต้องการย้อนกลับ ไปที่เมนู ☰ › ข้อมูลของฉัน › ↩ ย้อนกลับ', 6000), 900);
   if (f === 'undo') setTimeout(() => toast('ย้อนกลับเป็นข้อมูลก่อนกู้คืนแล้ว', 4000), 900);
 })();
 
@@ -3306,7 +3327,7 @@ function zoomRound() {
   img.style.transformOrigin = `${25 + Math.random() * 50}% ${25 + Math.random() * 50}%`;
   img.style.transform = `scale(6) rotate(${(Math.random() - .5) * 20}deg)`;
   let started = false;
-  $('zOpts').innerHTML = opts.map(o => `<button class="mt" data-t="${esc(o.t)}" lang="ja">${rubyTerm(o.t, o.r)}</button>`).join('');
+  $('zOpts').innerHTML = opts.map(o => `<button class="mxt" data-t="${esc(o.t)}" lang="ja">${rubyTerm(o.t, o.r)}</button>`).join('');
   S.locked = false;
   const begin = () => {
     if (started || !G || G.key !== 'zoom') return; started = true;
@@ -3435,7 +3456,7 @@ function startTower() {
 function towerNext() {
   const S = G.tw; S.q = towerQuestion(S); S.locked = false;
   $('tAsk').textContent = S.q.ask; $('tPrompt').innerHTML = S.q.prompt; $('tPrompt').className = 'prompt ' + S.q.promptCls;
-  $('tOpts').innerHTML = S.q.opts.map(o => `<button class="mt" data-t="${esc(o.t)}">${S.q.show(o)}</button>`).join('');
+  $('tOpts').innerHTML = S.q.opts.map(o => `<button class="mxt" data-t="${esc(o.t)}">${S.q.show(o)}</button>`).join('');
 }
 function towerFit() {                     // keep the top floors in view as the tower grows
   const st = $('tStack'), sc = $('tScene'), over = st.scrollHeight - (sc.clientHeight - 80);
@@ -3588,7 +3609,7 @@ function jigStat() {
 function jigNext() {
   const S = G.jg; S.q = towerQuestion(S); S.locked = false;
   $('tAsk').textContent = S.q.ask; $('tPrompt').innerHTML = S.q.prompt; $('tPrompt').className = 'prompt ' + S.q.promptCls;
-  $('tOpts').innerHTML = S.q.opts.map(o => `<button class="mt" data-t="${esc(o.t)}">${S.q.show(o)}</button>`).join('');
+  $('tOpts').innerHTML = S.q.opts.map(o => `<button class="mxt" data-t="${esc(o.t)}">${S.q.show(o)}</button>`).join('');
 }
 function jigAnswer(btn) {
   const S = G.jg; if (!S || S.locked) return; S.locked = true;
@@ -3989,7 +4010,7 @@ function renderHot() {
     return;
   }
   const todo = list.filter(o => !o.done).length;
-  const rows = (hotOpen ? list : list.slice(0, 5)).map(o => {
+  const rows = (hotOpen ? list : list.slice(0, 3)).map(o => {
     const q = QUESTIONS[o.i];
     const rk = hotRank(o), badge = `<span class="rk rk${rk}" title="${o.conf ? 'ผู้ดูแลยืนยันว่าออกบ่อย' : o.kind === 'seen' ? 'ออก ' + o.n + ' รอบ' : 'เนื้อหาเดียวกับข้อที่ออก'}">${rk}</span>`;
     const mark = o.done ? '<span class="hk ok">✓</span>' : o.wrong ? '<span class="hk ng">✗</span>' : '<span class="hk"></span>';
@@ -3997,15 +4018,14 @@ function renderHot() {
   }).join('');
   el.innerHTML = `<div class="hhead"><span class="ico3d">🔥</span><span class="g">ข้อที่ออกสอบจริง<span class="sub">${['S', 'A', 'B', 'C'].map(r => { const k = list.filter(o => hotRank(o) === r).length; return k ? `<span class="rk rk${r} sm">${r}</span> ${k}` : ''; }).filter(Boolean).join('　')} · ยังไม่แม่น ${todo} ข้อ</span></span><span class="hpill">${list.length} ข้อ</span></div>
     ${rows}
-    <div class="hact"><button class="btn primary" id="hotGo">▶ ฝึกเรียงตามสำคัญ</button>${list.length > 5 ? `<button class="btn" id="hotMore">${hotOpen ? 'ย่อ' : 'ดูทั้งหมด ' + list.length}</button>` : ''}</div>
-    <div class="hact">${Object.keys(seenMine).length ? '<button class="btn" id="seenOutBtn">📤 แชร์ไฟล์ให้เพื่อน</button>' : ''}<button class="btn" id="seenIn">📥 รับไฟล์จากเพื่อน</button></div>
-    <div class="rklegend">
+    <div class="hact"><button class="btn primary" id="hotGo">▶ ฝึกเรียงตามสำคัญ</button>${list.length > 3 ? `<button class="btn" id="hotMore">${hotOpen ? 'ย่อ' : 'ดูทั้งหมด ' + list.length}</button>` : ''}</div>
+    <details class="rkwrap"><summary>ⓘ แรงค์ S · A · B · C คืออะไร</summary><div class="rklegend">
       <div><span class="rk rkS">S</span><b>ออกบ่อยมาก</b> เจอในข้อสอบจริง 3 รอบขึ้นไป หรือผู้ดูแลยืนยันว่าออกบ่อย — ต้องตอบได้ทุกครั้ง</div>
       <div><span class="rk rkA">A</span><b>ออกซ้ำ</b> เจอ 2 รอบ — มีโอกาสออกอีกสูง</div>
       <div><span class="rk rkB">B</span><b>เคยออก</b> เจอ 1 รอบ</div>
       <div><span class="rk rkC">C</span><b>เนื้อหาเดียวกัน</b> ไม่ได้ออกเอง แต่ถามเรื่องเดียวกับข้อที่ออก (ถามอีกแบบ)</div>
-      <div class="hnote">นับจากรอบสอบที่จดไว้ (ของคุณ + ที่รับจากเพื่อน) · แรงค์เดียวกัน: ข้อที่ออกรอบล่าสุดขึ้นก่อน แล้วตามด้วยข้อที่ยังไม่เคยตอบถูก · ✓ เคยตอบถูก ✗ เคยผิด</div>
-    </div>`;
+      <div class="hnote">นับจากรอบสอบที่จดไว้ (ของคุณ + ที่รับจากเพื่อน) · แรงค์เดียวกัน: ข้อที่ออกรอบล่าสุดขึ้นก่อน แล้วตามด้วยข้อที่ยังไม่เคยตอบถูก · ✓ เคยตอบถูก ✗ เคยผิด · แชร์/รับไฟล์ได้ที่เมนู ☰</div>
+    </div></details>`;
 }
 $('hotCard').addEventListener('click', e => {
   const r = e.target.closest('[data-hot]'); if (r) { openQ(+r.dataset.hot); return; }
@@ -4317,7 +4337,8 @@ function renderAsstCard() {
   el.innerHTML = `<div class="ashd"><span class="asav">🤖</span><div><b>ผู้ช่วยฝึก</b><div class="small muted">${txt}</div></div></div>
     <button class="btn primary asgo" data-asq="${esc(q)}">▶ ${esc(q)}</button>
     <form class="asform" data-asform><input class="asin" placeholder="วันนี้อยากทำอะไร เช่น ข้อที่ยังไม่ทำ 15 ข้อ" maxlength="120" enterkeyhint="send">${SPEECH_IN ? '<button type="button" class="btn asmic" aria-label="พูดสั่งด้วยเสียง">🎤</button>' : ''}<button class="btn" aria-label="ส่ง">➤</button></form>
-    <div class="aschips">${ASST_CHIPS.slice(0, 4).map(([l, q]) => `<button class="aschip" data-asq="${esc(q)}">${l}</button>`).join('')}</div>`;
+    <button class="aslink" id="asstMore" type="button">ดูคำสั่งทั้งหมด ›</button>`;
+  $('asstMore').addEventListener('click', () => openAsst());
 }
 function openAsst(first) {
   if (!asstLog.length) asstLog.push({ html: 'สวัสดีครับ วันนี้อยากฝึกแบบไหน? กดปุ่มด้านล่าง หรือพิมพ์/พูดบอกได้เลย เช่น <b>"ข้อที่ยังไม่ทำ 15 ข้อ หมวดความปลอดภัย"</b><br>หรือถามศัพท์ก็ได้ เช่น <b>"玉掛け คืออะไร"</b>' });
@@ -4691,6 +4712,7 @@ $('qtSheet').addEventListener('click', e => { if (e.target === $('qtSheet')) $('
 /* ================= 📢 มีอะไรใหม่: after an update, show the guide pictures once before studying ================= */
 // add a new entry (newest first) with each update; pictures live in img/whatsnew/<id>/0.webp … n.webp
 const WHATS_NEW = [
+  { id: '2026-10-12b', n: 4, title: 'อัปเดต 12 ต.ค. (2) — เมนู ☰ · หน้าแรกกระชับ · สถิติพับได้' },
   { id: '2026-10-12', n: 5, title: 'อัปเดต 12 ต.ค. — ตัวช่วยอ่านโจทย์ · คำตั้งคำถาม · เกมโจทย์ถามอะไร?' }
 ];
 const WN_KEY = 'jac-wn-seen';
@@ -4718,7 +4740,38 @@ $('wnNext').addEventListener('click', () => { const n = $('wnTrack').children.le
 $('wnPrev').addEventListener('click', () => { const p = wnPos(); $('wnTrack').scrollTo({ left: Math.max(0, p - 1) * $('wnTrack').clientWidth, behavior: 'smooth' }); });
 $('wnX').addEventListener('click', wnClose);
 $('wnSheet').addEventListener('click', e => { if (e.target === $('wnSheet')) wnClose(); });
-$('wnAgain').addEventListener('click', () => { $('sheet').classList.remove('on'); wnShow(); });
+
+
+
+/* ================= ☰ menu: everything that is not studying lives here ================= */
+const closeSheets = () => document.querySelectorAll('.sheet.on').forEach(x => x.classList.remove('on'));
+function openMenu() {
+  $('menuNick').textContent = load(NICK_KEY, '') ? 'ตอนนี้: ' + load(NICK_KEY, '') : 'ยังไม่ได้ตั้ง';
+  $('menuNews').innerHTML = WHATS_NEW.map((e, i) => `<button class="mitem" data-wn="${i}"><span class="mxi">${i ? '📄' : '📢'}</span><span class="mxt">${esc(e.title)}${i ? '' : '<small>ล่าสุด</small>'}</span><span class="mxa">›</span></button>`).join('');
+  $('menuSheet').classList.add('on');
+}
+$('menuSheet').addEventListener('click', e => {
+  if (e.target === $('menuSheet') || e.target.closest('#menuClose')) { $('menuSheet').classList.remove('on'); return; }
+  const w = e.target.closest('[data-wn]'); if (w) { closeSheets(); wnShow(WHATS_NEW[+w.dataset.wn]); return; }
+  const m = e.target.closest('[data-m]'); if (!m) return;
+  const k = m.dataset.m; closeSheets();
+  if (k === 'nick') openNick();
+  else if (k === 'data') openData();
+  else if (k === 'seenout') { if (Object.keys(seenMine).length) shareSeenFile(); else toast('ยังไม่ได้จดข้อที่ออกสอบ — กดปุ่ม 🔥 ที่โจทย์ก่อน', 3500); }
+  else if (k === 'seenin') $('seenFile').click();
+  else if (k === 'settings') $('sheet').classList.add('on');
+});
+function openData() { if (typeof renderBackupWhen === 'function') renderBackupWhen(); $('dataSheet').classList.add('on'); }
+$('dataSheet').addEventListener('click', e => { if (e.target === $('dataSheet') || e.target.closest('#dataClose')) $('dataSheet').classList.remove('on'); });
+$('goData').addEventListener('click', openData);
+
+(() => {   // settings: group rows under headings
+  const panel = $('sheet').querySelector('.panel'), anchor = panel.querySelector('.actions');
+  [['การแสดงผล', ['segFuri', 'segFs', 'segTheme']], ['การฝึก', ['segView', 'segInstant', 'segShuf', 'segGram', 'examDateSet']], ['เสียง', ['segSound', 'segTts', 'voiceSel']]].forEach(([title, ids]) => {
+    const h = document.createElement('div'); h.className = 'sethd th'; h.textContent = title; panel.insertBefore(h, anchor);
+    ids.forEach(id => { const r = $(id) && $(id).closest('.setrow'); if (r) panel.insertBefore(r, anchor); });
+  });
+})();
 
 /* ================= init ================= */
 applyPrefs();

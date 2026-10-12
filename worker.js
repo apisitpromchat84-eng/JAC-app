@@ -44,7 +44,9 @@ async function ping(req, env) {
   if (b.summary && typeof b.summary === 'object') { const t = JSON.stringify(b.summary); if (t.length < 20000)
     stmts.push(env.DB.prepare('INSERT INTO summaries (dev, data, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET data = excluded.data, updated = excluded.updated').bind(b.dev, t, now)); }
   if (name) stmts.push(env.DB.prepare('INSERT INTO names (dev, name, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET name = excluded.name, updated = excluded.updated').bind(b.dev, name, now));
-  const ev = Array.isArray(b.events) ? b.events.slice(0, 20) : [];
+  let ev = Array.isArray(b.events) ? b.events.slice(0, 20) : [];
+  // at most 300 results per device per day: real study never gets near this, a spam loop would
+  if (ev.length) { const c = await env.DB.prepare('SELECT COUNT(*) AS n FROM events WHERE dev = ? AND day = ?').bind(b.dev, jstDay(now)).first(); if (c && c.n >= 300) ev = []; }
   ev.forEach(x => {
     if (!x || !Number.isInteger(x.n) || x.n < 1 || x.n > 500 || !Number.isInteger(x.s) || x.s < 0 || x.s > x.n) return;
     const ts = Math.min(Number(x.ts) || now, now);
