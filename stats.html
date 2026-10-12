@@ -4,195 +4,253 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>แอป JAC — ความเคลื่อนไหว</title>
+<title>แอป JAC — ติดตามการเรียน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{ --bg:#F2F3EE; --card:#FBFBF8; --ink:#1E2A26; --mute:#6B7470; --line:#DFE2DA; --bar:#E7A400; --bar2:#3B82C4; --ok:#1F9D55; --soft:#EEF0EA }
-@media (prefers-color-scheme: dark){ :root{ --bg:#141816; --card:#1D2320; --ink:#E9EEEA; --mute:#9AA59F; --line:#2E3632; --soft:#252C29 } }
-*{ box-sizing:border-box } body{ margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui, 'Noto Sans Thai', sans-serif }
-main{ max-width:900px; margin:0 auto; padding:16px 16px 50px } h1{ font-size:1.15rem; margin:4px 0 2px } .sub{ color:var(--mute); font-size:.82rem }
-.live{ display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 16px; margin:14px 0 }
-.dot{ width:12px; height:12px; border-radius:50%; background:#B7BDB9; flex:none } .dot.on{ background:#22C55E; box-shadow:0 0 0 0 rgba(34,197,94,.6); animation:p 1.6s infinite }
-@keyframes p{ to{ box-shadow:0 0 0 10px rgba(34,197,94,0) } }
-.live b{ font-size:1.4rem } .kpis{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px }
-.k{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px } .k b{ display:block; font-size:1.6rem; line-height:1.2 } .k span{ color:var(--mute); font-size:.8rem }
-h2{ font-size:1rem; margin:22px 0 8px } .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px }
-.chart{ display:flex; align-items:flex-end; gap:6px; height:150px; padding-top:18px } .col{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; min-width:0 }
-.col .v{ font-size:.68rem; color:var(--mute) } .col i{ display:block; width:100%; max-width:34px; background:var(--bar); border-radius:6px 6px 2px 2px; min-height:2px }
-.col.today i{ background:var(--bar2) } .col .d{ font-size:.66rem; color:var(--mute); margin-top:4px; white-space:nowrap }
-.legend{ font-size:.76rem; color:var(--mute); margin-top:8px }
-table{ width:100%; border-collapse:collapse; font-size:.86rem } th,td{ text-align:left; padding:7px 4px; border-bottom:1px solid var(--line) } th{ color:var(--mute); font-weight:600 } td.n{ text-align:right }
-.pass{ color:var(--ok); font-weight:700 } .hours{ display:grid; grid-template-columns:repeat(24,1fr); gap:2px; align-items:end; height:70px }
-.hours i{ display:block; background:var(--bar2); border-radius:3px 3px 0 0; min-height:2px } .hl{ display:grid; grid-template-columns:repeat(24,1fr); font-size:.6rem; color:var(--mute); text-align:center }
-.nm{ font-weight:700 } .av{ width:30px; height:30px; border-radius:50%; object-fit:cover; display:inline-grid; place-items:center; background:var(--soft); vertical-align:middle; margin-right:8px; font-size:.8rem; font-weight:700 } .muted{ color:var(--mute); font-size:.78rem } .ok{ color:var(--ok); font-weight:700 } .ng{ color:#D9480F; font-weight:700 } .tw{ overflow-x:auto }
-.prow{ cursor:pointer } .prow:hover td{ background:var(--soft) }
-dialog{ border:none; border-radius:18px; padding:0; width:min(760px, calc(100vw - 16px)); max-height:92vh; background:var(--bg); color:var(--ink) }
-dialog::backdrop{ background:rgba(0,0,0,.5) } #dlgBody{ padding:16px 16px 24px }
-.dh{ display:flex; align-items:center; gap:12px; margin-bottom:10px } .dh .av{ width:54px; height:54px; font-size:1.2rem } .dh h3{ margin:0; font-size:1.15rem } .x{ margin-left:auto; border:none; background:var(--soft); color:var(--ink); border-radius:10px; padding:8px 14px; font:inherit; cursor:pointer }
-.pass-card{ border-radius:14px; padding:12px 14px; margin:10px 0; background:var(--card); border:1px solid var(--line) }
-.pbig{ font-size:2rem; font-weight:800; line-height:1.1 } .pbar{ height:10px; border-radius:6px; background:var(--soft); overflow:hidden; margin:6px 0 } .pbar i{ display:block; height:100% }
-.stack{ display:flex; height:30px; border-radius:8px; overflow:hidden; margin:6px 0 4px; border:1px solid var(--line) } .stack i{ display:grid; place-items:center; font-size:.62rem; color:#fff; font-style:normal; font-weight:700; overflow:hidden; white-space:nowrap; border-right:1px solid rgba(255,255,255,.6) }
-.crow{ display:grid; grid-template-columns:minmax(0,1.3fr) 2fr 58px; gap:8px; align-items:center; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.82rem }
-.crow .b{ height:12px; border-radius:6px; background:var(--soft); position:relative; overflow:hidden } .crow .b i{ position:absolute; left:0; top:0; bottom:0; border-radius:6px } .crow .b u{ position:absolute; left:0; bottom:0; height:3px; background:#1E2A26; opacity:.55; text-decoration:none }
-.cov{ display:flex; height:8px; border-radius:5px; overflow:hidden; background:var(--soft); margin-top:4px } .cov i{ display:block; height:100% }
-.covbig{ display:flex; height:16px; border-radius:8px; overflow:hidden; background:var(--soft); margin:6px 0 2px } .covbig i{ display:block; height:100% }
-.lg{ display:inline-block; width:10px; height:10px; border-radius:3px; vertical-align:-1px; margin:0 3px 0 8px }
-.crow .r{ text-align:right; font-weight:700 } .cs{ color:var(--mute); font-size:.72rem }
-.advice{ background:#FFF7E0; color:#5A4300; border-radius:12px; padding:10px 12px; font-size:.86rem; line-height:1.6 } @media (prefers-color-scheme: dark){ .advice{ background:#3A3214; color:#F5E3A8 } }
-.advice li{ margin:3px 0 } .mini{ display:flex; align-items:flex-end; gap:4px; height:70px } .mini i{ flex:1; background:var(--bar2); border-radius:4px 4px 0 0; min-height:2px }
-.empty{ color:var(--mute); text-align:center; padding:20px }
+/* One quiet page; the only loud thing is the readiness ruler with its yellow pass line. */
+:root{ --bg:#F6F7F5; --surf:#FFFFFF; --ink:#17202B; --mute:#6A7480; --faint:#9AA3AD; --line:#E6E9EC; --track:#EEF0F2;
+  --pass:#F5B800; --ok:#1E9E6A; --mid:#D99A00; --low:#D64545; --none:#C9CFD5; --r:14px }
+@media (prefers-color-scheme: dark){ :root{ --bg:#0F1419; --surf:#171D24; --ink:#E8ECF0; --mute:#97A2AE; --faint:#6B7682; --line:#262E37; --track:#222A33; --none:#3A444F } }
+*{ box-sizing:border-box } html{ -webkit-text-size-adjust:100% }
+body{ margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 'Anuphan', system-ui, sans-serif; font-variant-numeric:tabular-nums }
+main{ max-width:720px; margin:0 auto; padding:20px 16px 64px }
+button{ font:inherit; color:inherit }
+.head{ display:flex; align-items:center; justify-content:space-between; gap:12px }
+h1{ font-size:22px; font-weight:700; margin:0; letter-spacing:-.01em }
+.livechip{ display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:var(--surf); border:1px solid var(--line); font-size:13px; color:var(--mute); white-space:nowrap }
+.dot{ width:8px; height:8px; border-radius:50%; background:var(--none) } .dot.on{ background:var(--ok); box-shadow:0 0 0 0 rgba(30,158,106,.5); animation:p 1.8s infinite }
+@keyframes p{ to{ box-shadow:0 0 0 8px rgba(30,158,106,0) } } @media (prefers-reduced-motion:reduce){ .dot.on{ animation:none } }
+.note{ color:var(--mute); font-size:13px; margin:6px 0 0 }
+/* today: three numbers in one strip */
+.today{ display:grid; grid-template-columns:repeat(3,1fr); margin:0 0 8px; background:var(--surf); border:1px solid var(--line); border-radius:var(--r) }
+.today div{ padding:14px 16px } .today div + div{ border-left:1px solid var(--line) }
+.today b{ display:block; font-size:28px; font-weight:700; line-height:1.15 } .today span{ font-size:13px; color:var(--mute); white-space:nowrap } .today small{ font-size:12px; color:var(--faint); font-weight:500 }
+.subline{ font-size:13px; color:var(--mute); margin:0 2px 26px }
+h2{ font-size:15px; font-weight:700; margin:28px 0 10px; display:flex; justify-content:space-between; align-items:baseline } h2 small{ font-weight:500; color:var(--mute); font-size:13px }
+.panel{ background:var(--surf); border:1px solid var(--line); border-radius:var(--r) }
+/* people */
+.prow{ display:grid; grid-template-columns:40px minmax(0,1fr) auto auto 14px; gap:12px; align-items:center; width:100%; padding:12px 14px; border:0; background:none; text-align:left; cursor:pointer; border-top:1px solid var(--line) }
+.prow:first-child{ border-top:0 } .prow:hover{ background:var(--track) } .prow:focus-visible{ outline:2px solid var(--pass); outline-offset:-2px; border-radius:var(--r) }
+.av{ width:40px; height:40px; border-radius:50%; object-fit:cover; background:var(--track); display:grid; place-items:center; font-weight:700; color:var(--mute); font-size:15px }
+.pn{ min-width:0 } .pn b{ display:block; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis } .pn span{ font-size:12.5px; color:var(--mute) }
+.pn .on{ color:var(--ok); font-weight:600 }
+.pt{ text-align:right; font-size:13px; color:var(--mute); line-height:1.3 } .pt b{ display:block; color:var(--ink); font-size:15px; font-weight:600 }
+.chip{ min-width:52px; text-align:center; font-size:13px; font-weight:700; padding:4px 8px; border-radius:8px; background:var(--track); color:var(--mute) }
+.chip.ok{ background:rgba(30,158,106,.12); color:var(--ok) } .chip.mid{ background:rgba(217,154,0,.14); color:#A87700 } .chip.low{ background:rgba(214,69,69,.12); color:var(--low) }
+@media (prefers-color-scheme: dark){ .chip.mid{ color:#F0B93A } }
+.chev{ color:var(--faint) }
+.more{ display:block; width:100%; padding:12px; border:0; border-top:1px solid var(--line); background:none; color:var(--mute); font-size:13px; cursor:pointer }
+/* 14 days */
+.bars{ display:grid; grid-template-columns:repeat(14,1fr); gap:6px; align-items:end; height:120px; padding:16px 16px 0 }
+.bars div{ display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%; gap:4px } .bars i{ display:block; width:100%; max-width:22px; border-radius:5px; background:var(--none); min-height:3px }
+.bars i.v{ background:var(--ink) } .bars .t i.v{ background:var(--pass) } .bars em{ font-style:normal; font-size:11px; color:var(--mute) }
+.days{ display:grid; grid-template-columns:repeat(14,1fr); gap:6px; padding:6px 16px 14px; font-size:11px; color:var(--faint); text-align:center } .days .t{ color:var(--ink); font-weight:700 }
+details.extra{ margin-top:28px } details.extra > summary{ cursor:pointer; list-style:none; font-weight:700; font-size:15px; padding:4px 0 } details.extra > summary::-webkit-details-marker{ display:none }
+details.extra > summary::after{ content:' ＋'; color:var(--mute) } details.extra[open] > summary::after{ content:' －' }
+table{ width:100%; border-collapse:collapse; font-size:14px } th,td{ text-align:left; padding:10px 14px; border-top:1px solid var(--line) } tr:first-child th{ border-top:0 } th{ color:var(--mute); font-weight:500; font-size:13px } td.n,th.n{ text-align:right }
+.hours{ display:grid; grid-template-columns:repeat(24,1fr); gap:3px; align-items:end; height:64px; padding:14px 14px 0 } .hours i{ display:block; background:var(--ink); opacity:.85; border-radius:3px 3px 0 0; min-height:2px }
+.hl{ display:grid; grid-template-columns:repeat(24,1fr); font-size:10.5px; color:var(--faint); text-align:center; padding:4px 14px 12px }
+.empty{ color:var(--mute); text-align:center; padding:22px; font-size:14px }
+#gate{ padding:18px; margin:22px 0 } #gate input{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font:inherit; margin:10px 0 }
+.btn{ border:0; border-radius:10px; padding:11px 18px; background:var(--ink); color:var(--surf); font-weight:600; cursor:pointer }
+
+/* ---------- person sheet ---------- */
+dialog{ border:0; padding:0; margin:auto 0 0; width:100%; max-width:100%; max-height:94vh; border-radius:20px 20px 0 0; background:var(--bg); color:var(--ink) }
+@media (min-width:760px){ dialog{ margin:auto; width:720px; border-radius:20px } }
+dialog::backdrop{ background:rgba(10,15,20,.55) }
+.dhead{ position:sticky; top:0; z-index:2; display:flex; align-items:center; gap:12px; padding:16px; background:var(--bg); border-bottom:1px solid var(--line) }
+.dhead .av{ width:48px; height:48px; font-size:18px } .dhead h3{ margin:0; font-size:18px; font-weight:700 } .dhead p{ margin:0; font-size:13px; color:var(--mute) }
+.close{ margin-left:auto; border:1px solid var(--line); background:var(--surf); border-radius:10px; padding:8px 14px; cursor:pointer }
+.dbody{ padding:16px 16px 32px }
+.tabs{ display:flex; gap:6px; padding:4px; background:var(--track); border-radius:12px; margin-bottom:18px }
+.tabs button{ flex:1; border:0; background:none; padding:9px 6px; border-radius:9px; font-size:14px; color:var(--mute); cursor:pointer; white-space:nowrap }
+.tabs button.on{ background:var(--surf); color:var(--ink); font-weight:700; box-shadow:0 1px 2px rgba(0,0,0,.08) }
+.verdict{ font-size:13px; font-weight:700; display:inline-block; padding:3px 10px; border-radius:999px; margin-bottom:6px }
+.verdict.ok{ background:rgba(30,158,106,.12); color:var(--ok) } .verdict.mid{ background:rgba(217,154,0,.14); color:#A87700 } .verdict.low{ background:rgba(214,69,69,.12); color:var(--low) }
+.score{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap } .score b{ font-size:48px; font-weight:700; line-height:1 } .score span{ color:var(--mute); font-size:14px }
+/* the ruler: 0–100 with ticks, the pass line at 75 */
+.ruler{ position:relative; height:64px; margin:18px 0 6px }
+.ruler .track{ position:absolute; left:0; right:0; top:22px; height:12px; border-radius:6px; background:var(--track); overflow:hidden }
+.ruler .fill{ position:absolute; left:0; top:0; bottom:0; border-radius:6px }
+.ruler .ticks{ position:absolute; left:0; right:0; top:38px; height:8px; background:repeating-linear-gradient(90deg, var(--faint) 0 1px, transparent 1px 10%) }
+.ruler .tl{ position:absolute; top:46px; font-size:11px; color:var(--faint); transform:translateX(-50%) }
+.ruler .passln{ position:absolute; top:10px; bottom:16px; width:3px; margin-left:-1.5px; background:var(--pass); border-radius:2px }
+.ruler .passlb{ position:absolute; top:-8px; transform:translateX(-50%); font-size:11.5px; font-weight:700; color:#A87700; white-space:nowrap } @media (prefers-color-scheme: dark){ .ruler .passlb{ color:var(--pass) } }
+.ruler .mk{ position:absolute; top:17px; width:22px; height:22px; margin-left:-11px; border-radius:50%; background:var(--surf); border:4px solid var(--ink) }
+.ruler .mock{ position:absolute; top:36px; width:0; height:0; margin-left:-6px; border:6px solid transparent; border-bottom:8px solid var(--mute); top:24px }
+.legend{ display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--mute) } .legend i{ display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:-1px }
+.facts{ display:grid; grid-template-columns:repeat(3,1fr); margin:20px 0; background:var(--surf); border:1px solid var(--line); border-radius:var(--r) }
+.facts div{ padding:12px 14px } .facts div + div{ border-left:1px solid var(--line) } .facts b{ display:block; font-size:20px; font-weight:700 } .facts span{ font-size:12.5px; color:var(--mute) }
+.cat{ display:grid; grid-template-columns:minmax(0,1fr) 46px; gap:4px 12px; padding:12px 14px; border-top:1px solid var(--line) } .cat:first-child{ border-top:0 }
+.cat .nm{ font-weight:600; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis } .cat .pc{ text-align:right; font-weight:700; font-size:15px }
+.cat .bar{ grid-column:1 / -1; position:relative; height:8px; border-radius:4px; background:var(--track) } .cat .bar i{ position:absolute; left:0; top:0; bottom:0; border-radius:4px }
+.cat .bar u{ position:absolute; top:-3px; bottom:-3px; left:75%; width:2px; background:var(--pass); text-decoration:none }
+.cat .meta{ grid-column:1 / -1; font-size:12.5px; color:var(--mute) } .cat .meta .todo{ color:var(--low); font-weight:600 }
+.todo-list{ margin:0; padding:0; list-style:none } .todo-list li{ display:flex; gap:12px; padding:12px 14px; border-top:1px solid var(--line); font-size:14px } .todo-list li:first-child{ border-top:0 }
+.todo-list .k{ flex:none; width:22px; height:22px; border-radius:50%; background:var(--pass); color:#17202B; font-size:12px; font-weight:700; display:grid; place-items:center; margin-top:1px }
+.track14{ display:grid; grid-template-columns:repeat(14,1fr); gap:4px; padding:14px } .track14 i{ height:28px; border-radius:5px; background:var(--track) }
+.track14 i.l1{ background:rgba(30,158,106,.35) } .track14 i.l2{ background:rgba(30,158,106,.65) } .track14 i.l3{ background:var(--ok) }
+.both{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px; margin-bottom:18px; background:var(--surf); border:1px solid var(--line); border-radius:var(--r) }
+.both b{ font-size:24px } .both span{ font-size:13px; color:var(--mute) }
+.fine{ font-size:12px; color:var(--faint); margin-top:10px }
 </style>
 </head>
 <body><main>
-<h1>📊 แอป JAC — ความเคลื่อนไหว</h1>
-<div class="sub">ชื่อตามที่แต่ละคนตั้งในแอป (คนที่ไม่ตั้งชื่อ: นับจากเครือข่าย + รุ่นมือถือ ถือเป็นคนเดียวกัน — เป็นค่าประมาณ) · เวลาญี่ปุ่น · อัปเดตเองทุก 30 วินาที</div>
-<div class="live" id="live"><span class="dot"></span><span>กำลังโหลด…</span></div>
-<div id="gate" class="card" style="display:none;margin:14px 0"><b>🔒 ใส่รหัสผ่านเพื่อดูหน้านี้</b><div style="display:flex;gap:8px;margin-top:10px"><input id="key" type="password" style="flex:1;padding:10px 12px;border-radius:10px;border:1px solid var(--line);font:inherit;background:var(--card);color:var(--ink)"><button id="go" style="padding:10px 16px;border-radius:10px;border:none;background:var(--bar);font:inherit;font-weight:700">เปิด</button></div><div id="gmsg" class="sub" style="margin-top:6px"></div></div>
-<div class="kpis" id="kpis"></div>
-<h2>👥 รายชื่อ (ตามชื่อเล่นที่ตั้งในแอป)</h2>
-<div class="card" id="people"></div>
-<h2>14 วันล่าสุด — จำนวนคนที่ทำแบบทดสอบ</h2>
-<div class="card"><div class="chart" id="chart"></div><div class="legend">แท่งสีน้ำเงิน = วันนี้ · ตัวเลขบนแท่ง = จำนวนคน</div></div>
-<h2>วันนี้แยกตามภาค</h2>
-<div class="card" id="parts"></div>
-<h2>สอบจำลอง 14 วัน</h2>
-<div class="card" id="mocks"></div>
-<h2>ช่วงเวลาที่ทำบ่อย (7 วัน)</h2>
-<div class="card"><div class="hours" id="hours"></div><div class="hl" id="hl"></div></div>
-<h2>กิจกรรมล่าสุด</h2>
-<div class="card" id="recent"></div>
+<div class="head"><h1>ติดตามการเรียน</h1><span class="livechip" id="live"><span class="dot"></span>กำลังโหลด</span></div>
+<p class="note">แอป JAC · เวลาญี่ปุ่น · อัปเดตเองทุก 30 วินาที</p>
+<div id="gate" class="panel" style="display:none"><b>ใส่รหัสผ่านเพื่อดูหน้านี้</b><input id="key" type="password" autocomplete="current-password"><button class="btn" id="go">เปิด</button><div id="gmsg" class="note"></div></div>
+<div id="dash" hidden>
+  <h2 style="margin-top:22px">วันนี้</h2>
+  <div class="today" id="kpis"></div>
+  <div class="subline" id="kpisub"></div>
+  <h2>คนที่ใช้แอป <small id="pcount"></small></h2>
+  <div class="panel" id="people"></div>
+  <h2>คนที่ทำแบบทดสอบ 14 วัน <small>สีเหลือง = วันนี้</small></h2>
+  <div class="panel"><div class="bars" id="chart"></div><div class="days" id="chartd"></div></div>
+  <details class="extra"><summary>รายละเอียดเพิ่มเติม</summary>
+    <h2>วันนี้แยกตามภาค</h2><div class="panel" id="parts"></div>
+    <h2>สอบจำลอง 14 วัน</h2><div class="panel" id="mocks"></div>
+    <h2>ช่วงเวลาที่ทำบ่อย <small>7 วัน</small></h2><div class="panel"><div class="hours" id="hours"></div><div class="hl" id="hl"></div></div>
+    <h2>กิจกรรมล่าสุด</h2><div class="panel" id="recent"></div>
+    <p class="fine">คนที่ไม่ตั้งชื่อเล่น นับจากเครือข่ายและรุ่นมือถือ — มือถือเครื่องเดียวกันที่เปิดหลายเบราว์เซอร์นับเป็น 1 คน ตัวเลขจึงเป็นค่าประมาณ</p>
+  </details>
+</div>
 </main>
 <dialog id="dlg"><div id="dlgBody"></div></dialog>
 <script>
 var PART = { gakka: 'ทฤษฎี', jitsugi: 'ปฏิบัติ 土木', life: 'ปฏิบัติ ไลฟ์ไลน์', '': '—' };
-var MODE = { asst: '🤖 ผู้ช่วยฝึก', real: 'สอบจำลอง', mini: 'ทดสอบย่อย', all: 'ทำทุกข้อ', wrong: 'ข้อที่เคยผิด', fav: 'ติดดาว', weak: 'จุดอ่อน', review: 'ทบทวน', hot: '🔥 ข้อที่ออก' };
+var PTAB = { gakka: 'ทฤษฎี', jitsugi: '土木', life: 'ไลฟ์ไลน์' };
+var MODE = { asst: 'ผู้ช่วยฝึก', real: 'สอบจำลอง', mini: 'ทดสอบย่อย', all: 'ทำทุกข้อ', wrong: 'ข้อที่เคยผิด', fav: 'ติดดาว', weak: 'จุดอ่อน', review: 'ทบทวน', hot: 'ข้อที่ออกสอบ' };
 function $(id){ return document.getElementById(id); }
 function pct(s, n){ return n ? Math.round(s / n * 100) + '%' : '—'; }
 function ago(ts, now){ var m = Math.round((now - ts) / 60000); if (m < 1) return 'เมื่อสักครู่'; if (m < 60) return m + ' นาทีที่แล้ว'; var h = Math.round(m / 60); if (h < 24) return h + ' ชม.ที่แล้ว'; return Math.round(h / 24) + ' วันที่แล้ว'; }
 function esc(v){ return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
-function pc(v){ return v == null ? '—' : '<span class="' + (v >= 75 ? 'ok' : 'ng') + '">' + v + '%</span>'; }
+function lvl(v){ return v == null ? '' : v >= 75 ? 'ok' : v >= 60 ? 'mid' : 'low'; }
+function avatar(src, name){ return src ? '<img class="av" src="' + src + '" alt="">' : '<span class="av">' + esc((name || '?').slice(0, 1)) + '</span>'; }
+var showAll = false, last = null;
+
 function renderPeople(d){
   var ps = d.people || [];
-  $('people').innerHTML = ps.length ? '<div class="tw"><table><tr><th>ชื่อ</th><th>ล่าสุด</th><th class="n">วันนี้</th><th class="n">7 วัน</th><th class="n">ถูกรวม</th><th class="n">สอบจำลองล่าสุด</th></tr>' + ps.map(function(p){
-    var lm = p.mock_pct != null ? [p.mock_pct, p.mock_part] : null;
-    var on = d.now - p.last < 5 * 60000;
-    return '<tr class="prow" data-k="' + esc(p.k) + '"><td>' + (p.avatar ? '<img class="av" src="' + p.avatar + '" alt="">' : '<span class="av">' + esc((p.name || '?').slice(0, 1)) + '</span>') + '<span class="nm">' + (p.name ? esc(p.name) : '<span class="muted">ไม่ระบุชื่อ</span>') + '</span>' + (on ? ' 🟢' : '') + '</td><td class="muted">' + ago(p.last, d.now) + '</td>' +
-      '<td class="n">' + (p.n_today ? p.n_today + ' ข้อ<br><span class="muted">' + Math.round(p.s_today / p.n_today * 100) + '%</span>' : '<span class="muted">—</span>') + '</td>' +
-      '<td class="n">' + (p.n_7 || '<span class="muted">0</span>') + '</td><td class="n">' + (p.n_all ? pc(Math.round(p.s_all / p.n_all * 100)) : '—') + '</td>' +
-      '<td class="n">' + (lm ? pc(+lm[0]) + '<br><span class="muted">' + (PART[lm[1]] || '') + '</span>' : '—') + '</td></tr>';
-  }).join('') + '</table></div><div class="legend">👆 แตะที่ชื่อเพื่อดูสถิติรายหมวด โอกาสผ่าน และคำแนะนำ · 🟢 = เปิดแอปอยู่ตอนนี้ · คนที่ตั้งชื่อเดียวกันในหลายเครื่องจะรวมเป็นแถวเดียว</div>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
+  // people who never answered anything and set no name are folded away
+  var main = ps.filter(function(p){ return p.name || p.n_all; }), rest = ps.length - main.length;
+  var list = showAll ? ps : main;
+  $('pcount').textContent = main.length + ' คน' + (rest ? ' · ไม่ระบุชื่อที่ยังไม่ได้ทำ ' + rest : '');
+  $('people').innerHTML = (list.length ? list.map(function(p){
+    var on = d.now - p.last < 5 * 60000, acc = p.n_all ? Math.round(p.s_all / p.n_all * 100) : null;
+    return '<button class="prow" data-k="' + esc(p.k) + '">' + avatar(p.avatar, p.name) +
+      '<span class="pn"><b>' + (p.name ? esc(p.name) : 'ไม่ระบุชื่อ') + '</b><span>' + (on ? '<span class="on">กำลังใช้อยู่</span>' : ago(p.last, d.now)) + (p.devices > 1 ? ' · ' + p.devices + ' เครื่อง' : '') + '</span></span>' +
+      '<span class="pt"><b>' + (p.n_today || 0) + '</b>ข้อวันนี้</span>' +
+      '<span class="chip ' + lvl(acc) + '" title="ตอบถูกรวม">' + (acc == null ? '—' : acc + '%') + '</span><span class="chev">›</span></button>';
+  }).join('') : '<div class="empty">ยังไม่มีใครใช้แอป</div>') +
+    (rest ? '<button class="more" id="showAll">' + (showAll ? 'ซ่อนคนที่ไม่ระบุชื่อและยังไม่ได้ทำ' : 'แสดงทั้งหมด (+' + rest + ')') + '</button>' : '');
 }
 function render(d){
-  renderPeople(d);
+  last = d; $('dash').hidden = false;
   var liveN = d.live.reduce(function(a, x){ return a + x.c; }, 0);
-  $('live').innerHTML = '<span class="dot ' + (liveN ? 'on' : '') + '"></span><span><b>' + liveN + '</b> คนเปิดแอปอยู่ตอนนี้' +
-    (liveN ? ' <span class="sub">(' + d.live.map(function(x){ return (PART[x.part] || x.part) + ' ' + x.c; }).join(' · ') + ')</span>' : '') + '<br><span class="sub">นับคนที่ใช้งานใน 5 นาทีล่าสุด</span></span>';
+  $('live').innerHTML = '<span class="dot ' + (liveN ? 'on' : '') + '"></span>' + (liveN ? liveN + ' คนกำลังใช้' : 'ไม่มีใครใช้อยู่');
   var t = d.t || {};
-  $('kpis').innerHTML = [['เปิดแอปวันนี้', d.opensToday + ' คน' + (d.devicesToday > d.opensToday ? ' <small>(' + d.devicesToday + ' เครื่อง)</small>' : '')], ['ทำแบบทดสอบวันนี้', (t.devs || 0) + ' คน'], ['ชุดที่ทำวันนี้', t.quizzes || 0], ['ข้อที่ตอบวันนี้', t.n || 0], ['ตอบถูกเฉลี่ยวันนี้', pct(t.s, t.n)], ['ผู้ใช้ 7 วัน', d.devs7 + ' คน']]
-    .map(function(k){ return '<div class="k"><b>' + k[1] + '</b><span>' + k[0] + '</span></div>'; }).join('');
+  $('kpis').innerHTML = '<div><b>' + d.opensToday + '</b><span>คนเปิดแอป</span></div><div><b>' + (t.devs || 0) + '</b><span>คนทำข้อสอบ</span></div><div><b>' + (t.n || 0) + '</b><span>ข้อที่ตอบ</span></div>';
+  $('kpisub').textContent = 'ตอบถูก ' + pct(t.s, t.n) + ' · ' + (t.quizzes || 0) + ' ชุด · ผู้ใช้ 7 วัน ' + d.devs7 + ' คน' + (d.devicesToday > d.opensToday ? ' · จาก ' + d.devicesToday + ' เครื่อง' : '');
+  renderPeople(d);
   var byDay = {}; d.days.forEach(function(x){ byDay[x.day] = x; });
   var list = []; for (var i = 13; i >= 0; i--) { var day = new Date(d.now + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10); list.push({ day: day, v: byDay[day] ? byDay[day].devs : 0 }); }
   var max = Math.max.apply(null, list.map(function(x){ return x.v; }).concat([1]));
-  $('chart').innerHTML = list.map(function(x){ return '<div class="col ' + (x.day === d.today ? 'today' : '') + '"><span class="v">' + (x.v || '') + '</span><i style="height:' + Math.round(x.v / max * 100) + '%"></i><span class="d">' + +x.day.slice(8) + '</span></div>'; }).join('');
+  $('chart').innerHTML = list.map(function(x){ return '<div class="' + (x.day === d.today ? 't' : '') + '"><em>' + (x.v || '') + '</em><i class="' + (x.v ? 'v' : '') + '" style="height:' + Math.max(3, Math.round(x.v / max * 86)) + 'px"></i></div>'; }).join('');
+  $('chartd').innerHTML = list.map(function(x){ return '<span class="' + (x.day === d.today ? 't' : '') + '">' + +x.day.slice(8) + '</span>'; }).join('');
   $('parts').innerHTML = d.parts.length ? '<table><tr><th>ภาค</th><th class="n">ชุด</th><th class="n">ข้อ</th><th class="n">ถูก</th></tr>' + d.parts.map(function(p){ return '<tr><td>' + (PART[p.part] || p.part) + '</td><td class="n">' + p.quizzes + '</td><td class="n">' + p.n + '</td><td class="n">' + pct(p.s, p.n) + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">วันนี้ยังไม่มีใครทำแบบทดสอบ</div>';
-  $('mocks').innerHTML = d.mocks.length ? '<table><tr><th>ภาค</th><th class="n">ครั้ง</th><th class="n">ผ่าน 75%</th></tr>' + d.mocks.map(function(m){ return '<tr><td>' + (PART[m.part] || m.part) + '</td><td class="n">' + m.c + '</td><td class="n pass">' + m.pass + ' (' + pct(m.pass, m.c) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีการสอบจำลอง</div>';
+  $('mocks').innerHTML = d.mocks.length ? '<table><tr><th>ภาค</th><th class="n">ครั้ง</th><th class="n">ผ่าน 75%</th></tr>' + d.mocks.map(function(m){ return '<tr><td>' + (PART[m.part] || m.part) + '</td><td class="n">' + m.c + '</td><td class="n">' + m.pass + ' (' + pct(m.pass, m.c) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีการสอบจำลอง</div>';
   var hs = []; for (var h = 0; h < 24; h++) hs.push(0); d.hours.forEach(function(x){ hs[x.h] = x.c; }); var hm = Math.max.apply(null, hs.concat([1]));
   $('hours').innerHTML = hs.map(function(c){ return '<i style="height:' + Math.round(c / hm * 100) + '%" title="' + c + '"></i>'; }).join('');
   $('hl').innerHTML = hs.map(function(c, h){ return '<span>' + (h % 3 ? '' : h) + '</span>'; }).join('');
-  $('recent').innerHTML = d.recent.length ? '<table><tr><th>เวลา</th><th>ใคร</th><th>ภาค</th><th>โหมด</th><th class="n">คะแนน</th></tr>' + d.recent.map(function(r){ return '<tr><td>' + ago(r.ts, d.now) + '</td><td>' + esc(r.name || 'ไม่ระบุชื่อ') + '</td><td>' + (PART[r.part] || r.part) + '</td><td>' + (MODE[r.mode] || r.mode) + '</td><td class="n">' + r.s + '/' + r.n + ' (' + pct(r.s, r.n) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
+  $('recent').innerHTML = d.recent.length ? '<table><tr><th>เวลา</th><th>ใคร</th><th>ทำอะไร</th><th class="n">คะแนน</th></tr>' + d.recent.map(function(r){ return '<tr><td>' + ago(r.ts, d.now) + '</td><td>' + esc(r.name || 'ไม่ระบุชื่อ') + '</td><td>' + (PART[r.part] || r.part) + ' · ' + (MODE[r.mode] || r.mode) + '</td><td class="n">' + r.s + '/' + r.n + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
 }
-var CAT_COLORS = ['#2F7D5B','#3B82C4','#E7A400','#C2410C','#7C3AED','#0E7490','#BE185D','#4D7C0F','#9A3412','#1D4ED8'];
-function accColor(a){ return a == null ? '#B7BDB9' : a >= .75 ? '#1F9D55' : a >= .6 ? '#E7A400' : '#D9480F'; }
+
+/* ---------- readiness estimate (same maths as in the app) ---------- */
 function binomAtLeast(n, k, p){ var t = 0, c = 1; for (var i = 0; i <= n; i++) { if (i > 0) c = c * (n - i + 1) / i; if (i >= k) t += c * Math.pow(p, i) * Math.pow(1 - p, n - i); } return Math.min(1, Math.max(0, t)); }
-// estimate for one part: each category weighted by its share of the bank (= its share of the real paper)
 function analysePart(cats, meta, mocks){
   var tot = cats.reduce(function(a, c){ return a + c.total; }, 0), C = 0, T = 0;
-  cats.forEach(function(c){ C += c.c; T += c.t; });
+  cats.forEach(function(c){ C += c.c; T += c.t; if (c.tried == null) c.tried = Math.max(c.done, c.done + c.wrong); });
   var base = T ? C / T : .5, exp = 0;
   cats.forEach(function(c){ c.w = c.total / tot; c.acc = c.t ? c.c / c.t : null; c.est = (c.c + 3 * base) / (c.t + 3); exp += c.w * c.est; });
   var mockAvg = mocks.length ? mocks.slice(0, 3).reduce(function(a, m){ return a + m.s / m.n; }, 0) / Math.min(3, mocks.length) : null;
-  var p = mockAvg != null ? (exp + mockAvg) / 2 : exp;                       // blend with the latest mock exams when there are some
+  var p = mockAvg != null ? (exp + mockAvg) / 2 : exp;
   var need = Math.ceil(meta.n * meta.pass / 100), prob = binomAtLeast(meta.n, need, p);
-  var answered = T, done = cats.reduce(function(a, c){ return a + c.done; }, 0);
-  cats.forEach(function(c){ if (c.tried == null) c.tried = Math.max(c.done, c.done + c.wrong); });
-  var tried = cats.reduce(function(a, c){ return a + c.tried; }, 0);
-  var conf = answered >= 150 ? 'ค่อนข้างแม่น' : answered >= 50 ? 'พอประมาณ' : 'ข้อมูลยังน้อย';
   var weak = cats.filter(function(c){ return c.est < .8; }).map(function(c){ c.impact = c.w * (.85 - c.est) + (c.t < 5 ? c.w * .1 : 0); return c; }).sort(function(a, b){ return b.impact - a.impact; }).slice(0, 3);
-  return { tot: tot, exp: exp, p: p, prob: prob, need: need, mockAvg: mockAvg, answered: answered, done: done, tried: tried, conf: conf, weak: weak, acc: T ? C / T : null };
+  return { tot: tot, p: p, prob: prob, need: need, mockAvg: mockAvg, answered: T,
+    done: cats.reduce(function(a, c){ return a + c.done; }, 0), tried: cats.reduce(function(a, c){ return a + c.tried; }, 0), weak: weak,
+    conf: T >= 150 ? 'ข้อมูลพอ' : T >= 50 ? 'ข้อมูลพอประมาณ' : 'ข้อมูลยังน้อย' };
 }
-var PNAME = { gakka: 'ทฤษฎี (学科)', jitsugi: 'ปฏิบัติ 土木', life: 'ปฏิบัติ ไลฟ์ไลน์' };
-function partHtml(part, cats, meta, mocks){
-  var a = analysePart(cats, meta, mocks), pr = Math.round(a.prob * 100);
-  if (!a.answered) return { html: '<div class="pass-card"><b>' + PNAME[part] + '</b> <span class="cs">— ยังไม่เคยทำข้อสอบภาคนี้</span></div>', prob: null, answered: 0 };
-  var col = pr >= 70 ? '#1F9D55' : pr >= 40 ? '#E7A400' : '#D9480F';
-  var h = '<div class="pass-card"><b>' + PNAME[part] + '</b> <span class="cs">(' + meta.n + ' ข้อ · ผ่าน ' + meta.pass + '% = ' + a.need + ' ข้อ)</span>';
-  h += '<div style="display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-top:6px"><div><div class="cs">โอกาสผ่านถ้าไปสอบวันนี้</div><div class="pbig" style="color:' + col + '">' + (a.answered ? pr + '%' : '—') + '</div></div>' +
-       '<div><div class="cs">คะแนนที่คาด</div><div class="pbig">' + Math.round(a.p * 100) + '%</div></div>' +
-       (a.mockAvg != null ? '<div><div class="cs">สอบจำลองล่าสุด (เฉลี่ย ≤3 ครั้ง)</div><div class="pbig">' + Math.round(a.mockAvg * 100) + '%</div></div>' : '') + '</div>';
-  h += '<div class="pbar"><i style="width:' + pr + '%;background:' + col + '"></i></div><div class="cs">ความแม่นของการประเมิน: ' + a.conf + ' (ตอบไป ' + a.answered + ' ครั้ง · เคยถูกแล้ว ' + a.done + '/' + a.tot + ' ข้อ)</div>';
-  // how much of the question bank was done: right at least once / tried but not yet right / not yet tried
-  var nd = a.tot - a.tried, cv = function(x){ return (x / a.tot * 100) + '%'; };
-  h += '<div style="margin-top:10px"><b>📚 ทำแล้ว ' + a.tried + '/' + a.tot + ' ข้อ</b> <span class="cs">· ยังไม่ได้ทำ ' + nd + ' ข้อ (' + Math.round(nd / a.tot * 100) + '%)</span></div>' +
-       '<div class="covbig"><i style="width:' + cv(a.done) + ';background:#1F9D55"></i><i style="width:' + cv(a.tried - a.done) + ';background:#E7A400"></i></div>' +
-       '<div class="cs"><span class="lg" style="background:#1F9D55;margin-left:0"></span>เคยตอบถูก ' + a.done + '<span class="lg" style="background:#E7A400"></span>ทำแล้วแต่ยังไม่เคยถูก ' + (a.tried - a.done) + '<span class="lg" style="background:var(--soft);border:1px solid var(--line)"></span>ยังไม่ได้ทำ ' + nd + '</div>';
-  // proportion of the paper, coloured by how well each part is known
-  h += '<div style="margin-top:10px" class="cs">สัดส่วนข้อสอบแต่ละหมวด (สี = ความแม่น: เขียว ≥75% · เหลือง 60–74% · แดง &lt;60% · เทา ยังไม่เคยทำ)</div><div class="stack">' +
-       cats.map(function(c){ return '<i title="' + esc(c.th) + ' ' + Math.round(c.w * 100) + '%" style="width:' + (c.w * 100) + '%;background:' + accColor(c.acc) + '">' + (c.w > .09 ? Math.round(c.w * 100) + '%' : '') + '</i>'; }).join('') + '</div>';
-  h += cats.map(function(c){ return '<div class="crow"><div>' + esc(c.th) + '<div class="cs">ออกสอบ ~' + Math.round(c.w * meta.n * 10) / 10 + ' ข้อ (' + Math.round(c.w * 100) + '%)</div></div>' +
-       '<div><div class="b"><i style="width:' + (c.acc == null ? 0 : c.acc * 100) + '%;background:' + accColor(c.acc) + '"></i></div>' +
-       '<div class="cov" title="เขียว = เคยถูก · เหลือง = ทำแล้วยังไม่ถูก · เทา = ยังไม่ได้ทำ"><i style="width:' + (c.done / c.total * 100) + '%;background:#1F9D55"></i><i style="width:' + ((c.tried - c.done) / c.total * 100) + '%;background:#E7A400"></i></div>' +
-       '<div class="cs">ทำแล้ว ' + c.tried + '/' + c.total + (c.total - c.tried ? ' · <b style="color:#D9480F">ยังไม่ทำ ' + (c.total - c.tried) + '</b>' : ' ✔ ครบ') + ' · ตอบ ' + c.t + ' ครั้ง' + (c.wrong ? ' · ผิดค้าง ' + c.wrong : '') + '</div></div>' +
-       '<div class="r" style="color:' + accColor(c.acc) + '">' + (c.acc == null ? '—' : Math.round(c.acc * 100) + '%') + '</div></div>'; }).join('');
-  h += '<div class="cs" style="margin-top:4px">แถบบน = % ตอบถูก · แถบล่าง = ข้อที่ทำแล้ว (เขียว เคยถูก · เหลือง ยังไม่ถูก · เทา ยังไม่ได้ทำ)</div>';
-  // advice
-  var tips = [];
-  if (!a.answered) tips.push('ยังไม่เคยทำข้อสอบภาคนี้เลย — เริ่มจาก "ทดสอบย่อย" ทีละหมวด');
-  a.weak.forEach(function(c){ tips.push('<b>' + esc(c.th) + '</b> — ' + (c.t < 5 ? 'แทบยังไม่ได้ฝึก (ออกสอบ ~' + Math.round(c.w * meta.n) + ' ข้อ)' : 'ถูก ' + Math.round(c.acc * 100) + '% ยังไม่ถึง 75%') + (c.total - c.done > 0 ? ' · เหลือข้อที่ยังไม่เคยถูก ' + (c.total - c.done) + ' ข้อ' : '')); });
-  if (a.answered && a.mockAvg == null) tips.push('ยังไม่เคยลอง <b>สอบจำลอง</b> ภาคนี้ — ควรทำเพื่อดูความพร้อมจริงแบบจับเวลา');
-  if (a.answered && pr >= 80) tips.push('พร้อมสอบแล้ว ✔ รักษาระดับด้วยการทบทวนข้อที่เคยผิด');
-  h += '<div class="advice" style="margin-top:10px"><b>💡 คำแนะนำ</b><ul style="margin:4px 0 0;padding-left:18px">' + tips.map(function(t){ return '<li>' + t + '</li>'; }).join('') + '</ul></div></div>';
-  return { html: h, prob: a.answered ? a.prob : null, answered: a.answered };
+function verdict(pr){ return pr >= 70 ? ['ok', 'พร้อมสอบ'] : pr >= 40 ? ['mid', 'ใกล้แล้ว'] : ['low', 'ยังไม่พร้อม']; }
+function partView(part, cats, meta, mocks){
+  var a = analysePart(cats, meta, mocks);
+  if (!a.answered) return '<div class="empty">ยังไม่เคยทำข้อสอบภาคนี้</div>';
+  var pr = Math.round(a.prob * 100), sc = Math.round(a.p * 100), v = verdict(pr), col = v[0] === 'ok' ? 'var(--ok)' : v[0] === 'mid' ? 'var(--mid)' : 'var(--low)';
+  var h = '<span class="verdict ' + v[0] + '">' + v[1] + '</span>' +
+    '<div class="score"><b>' + sc + '%</b><span>คะแนนที่คาด · โอกาสผ่าน ' + pr + '%</span></div>' +
+    '<div class="ruler"><div class="track"><span class="fill" style="width:' + sc + '%;background:' + col + '"></span></div><div class="ticks"></div>' +
+    [0, 25, 50, 100].map(function(x){ return '<span class="tl" style="left:' + x + '%">' + x + '</span>'; }).join('') +
+    '<span class="passln" style="left:' + meta.pass + '%"></span><span class="passlb" style="left:' + meta.pass + '%">ผ่าน ' + meta.pass + '%</span>' +
+    '<span class="mk" style="left:' + sc + '%;border-color:' + col + '"></span>' +
+    (a.mockAvg != null ? '<span class="mock" style="left:' + Math.round(a.mockAvg * 100) + '%" title="สอบจำลอง"></span>' : '') + '</div>' +
+    '<div class="legend"><span><i style="background:' + col + '"></i>คะแนนที่คาด</span>' + (a.mockAvg != null ? '<span><i style="background:var(--mute);border-radius:2px"></i>สอบจำลองเฉลี่ย ' + Math.round(a.mockAvg * 100) + '%</span>' : '') + '<span><i style="background:var(--pass);border-radius:2px"></i>เกณฑ์ผ่าน ' + a.need + '/' + meta.n + ' ข้อ</span></div>';
+  h += '<div class="facts"><div><b>' + a.tried + '/' + a.tot + '</b><span>ข้อที่ทำแล้ว</span></div><div><b>' + a.answered + '</b><span>ครั้งที่ตอบ</span></div><div><b>' + (a.mockAvg != null ? Math.round(a.mockAvg * 100) + '%' : '—') + '</b><span>สอบจำลอง</span></div></div>';
+  var tips = a.weak.map(function(c){ return '<li><span class="k">!</span><span><b>' + esc(c.th) + '</b> — ' + (c.t < 5 ? 'แทบยังไม่ได้ฝึก' : 'ถูก ' + Math.round(c.acc * 100) + '%') + ', ออกสอบราว ' + Math.round(c.w * meta.n) + ' ข้อ' + (c.total - c.tried > 0 ? ', ยังไม่ทำ ' + (c.total - c.tried) + ' ข้อ' : '') + '</span></li>'; });
+  if (a.mockAvg == null) tips.push('<li><span class="k">!</span><span>ยังไม่เคย<b>สอบจำลอง</b>ภาคนี้ — ควรลองแบบจับเวลา</span></li>');
+  if (tips.length) h += '<h2>ควรฝึกต่อ</h2><ul class="panel todo-list">' + tips.join('') + '</ul>';
+  h += '<h2>แต่ละหมวด <small>เส้นเหลือง = 75%</small></h2><div class="panel">' + cats.slice().sort(function(x, y){ return (x.acc == null ? -1 : x.acc) - (y.acc == null ? -1 : y.acc); }).map(function(c){
+    var ac = c.acc == null ? null : Math.round(c.acc * 100), k = lvl(ac), cc = k === 'ok' ? 'var(--ok)' : k === 'mid' ? 'var(--mid)' : k === 'low' ? 'var(--low)' : 'var(--none)', left = c.total - c.tried;
+    return '<div class="cat"><span class="nm">' + esc(c.th) + '</span><span class="pc" style="color:' + cc + '">' + (ac == null ? '—' : ac + '%') + '</span>' +
+      '<span class="bar"><i style="width:' + (ac || 0) + '%;background:' + cc + '"></i><u></u></span>' +
+      '<span class="meta">ทำแล้ว ' + c.tried + '/' + c.total + (left ? ' · <span class="todo">ยังไม่ทำ ' + left + '</span>' : '') + ' · ออกสอบราว ' + Math.round(c.w * meta.n * 10) / 10 + ' ข้อ</span></div>';
+  }).join('') + '</div><p class="fine">เรียงจากหมวดที่อ่อนที่สุด · ' + a.conf + ' (ตอบ ' + a.answered + ' ครั้ง) · เป็นค่าประมาณจากอัตราตอบถูก ไม่ใช่การรับประกัน</p>';
+  return h;
 }
+var dp = null, dpTab = '';
 function openPerson(k){
   $('dlgBody').innerHTML = '<div class="empty">กำลังโหลด…</div>'; $('dlg').showModal();
-  fetch('/api/person?k=' + encodeURIComponent(k), { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){ return r.json(); }).then(function(d){
-    var h = '<div class="dh">' + (d.avatar ? '<img class="av" src="' + d.avatar + '">' : '<span class="av">' + esc((d.name || '?').slice(0, 1)) + '</span>') +
-      '<div><h3>' + esc(d.name || 'ไม่ระบุชื่อ') + '</h3><div class="cs">เข้าใช้ล่าสุด ' + ago(d.last, d.now) + ' · ' + d.devices + ' เครื่อง' + (d.summary && d.summary.exam ? ' · วันสอบ ' + esc(d.summary.exam) : '') + '</div></div><button class="x" onclick="document.getElementById(\'dlg\').close()">ปิด</button></div>';
-    // 14-day activity
-    var byDay = {}; d.days.forEach(function(x){ byDay[x.day] = x.n; }); var arr = [];
-    for (var i = 13; i >= 0; i--) arr.push(byDay[new Date(d.now + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10)] || 0);
-    var mx = Math.max.apply(null, arr.concat([1])), act = arr.filter(Boolean).length;
-    h += '<div class="pass-card"><b>ความขยัน 14 วัน</b> <span class="cs">ทำ ' + act + ' จาก 14 วัน · รวม ' + arr.reduce(function(a, b){ return a + b; }, 0) + ' ข้อ</span><div class="mini" style="margin-top:8px">' + arr.map(function(v){ return '<i style="height:' + Math.round(v / mx * 100) + '%" title="' + v + '"></i>'; }).join('') + '</div></div>';
-    if (!d.summary) { h += '<div class="empty">ยังไม่มีข้อมูลหมวด — เครื่องนี้ต้องเปิดแอปเวอร์ชันใหม่ก่อน</div>'; }
-    else {
-      var res = {};
-      ['gakka', 'jitsugi', 'life'].forEach(function(p){
-        var cats = d.summary.cats.filter(function(c){ return c.part === p; }); if (!cats.length) return;
-        var mocks = d.events.filter(function(e){ return e.part === p && e.mode === 'real'; });
-        res[p] = partHtml(p, cats, d.summary.parts[p] || { n: 25, pass: 75 }, mocks);
-      });
-      // the real exam needs 学科 + one 実技 track; use the track this person studies more
-      var tr = (res.life && (!res.jitsugi || res.life.answered > res.jitsugi.answered)) ? 'life' : 'jitsugi';
-      if (res.gakka && res[tr] && res.gakka.prob != null && res[tr].prob != null) {
-        var both = Math.round(res.gakka.prob * res[tr].prob * 100);
-        h += '<div class="pass-card"><b>🎯 โอกาสผ่านทั้ง 2 ภาค (ทฤษฎี + ' + PNAME[tr] + ')</b><div class="pbig" style="color:' + (both >= 70 ? '#1F9D55' : both >= 40 ? '#E7A400' : '#D9480F') + '">' + both + '%</div><div class="cs">ต้องได้ 75% ขึ้นไปทั้งสองภาค · ประเมินจากอัตราตอบถูกแต่ละหมวดตามสัดส่วนข้อสอบจริง และผลสอบจำลองล่าสุด — เป็นค่าประมาณ ไม่ใช่การรับประกัน</div></div>';
-      }
-      ['gakka', 'jitsugi', 'life'].forEach(function(p){ if (res[p]) h += res[p].html; });
-    }
-    h += '<h2>ประวัติล่าสุด</h2><div class="card">' + (d.events.length ? '<table><tr><th>เวลา</th><th>ภาค</th><th>โหมด</th><th class="n">คะแนน</th></tr>' + d.events.slice(0, 40).map(function(e){ return '<tr><td>' + ago(e.ts, d.now) + '</td><td>' + (PART[e.part] || e.part) + '</td><td>' + (MODE[e.mode] || e.mode) + '</td><td class="n">' + e.s + '/' + e.n + ' (' + pc(Math.round(e.s / e.n * 100)) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มี</div>') + '</div>';
-    $('dlgBody').innerHTML = h;
-  }).catch(function(){ $('dlgBody').innerHTML = '<div class="empty">โหลดไม่ได้</div>'; });
+  fetch('/api/person?k=' + encodeURIComponent(k), { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){ return r.json(); }).then(function(d){ dp = d; dpTab = ''; drawPerson(); })
+    .catch(function(){ $('dlgBody').innerHTML = '<div class="empty">โหลดไม่ได้ — ลองใหม่อีกครั้ง</div>'; });
 }
-document.addEventListener('click', function(e){ var r = e.target.closest('.prow'); if (r) openPerson(r.dataset.k); });
+function drawPerson(){
+  var d = dp, s = d.summary;
+  var parts = s ? ['gakka', 'jitsugi', 'life'].filter(function(p){ return s.cats.some(function(c){ return c.part === p && c.t; }); }) : [];
+  if (!dpTab) dpTab = parts[0] || '';
+  var h = '<div class="dhead">' + avatar(d.avatar, d.name) + '<div><h3>' + esc(d.name || 'ไม่ระบุชื่อ') + '</h3><p>ใช้ล่าสุด ' + ago(d.last, d.now) + (d.devices > 1 ? ' · ' + d.devices + ' เครื่อง' : '') + (s && s.exam ? ' · สอบ ' + esc(s.exam) : '') + '</p></div><button class="close" id="dlgClose">ปิด</button></div><div class="dbody">';
+  // both parts are needed on exam day: 学科 + the 実技 track studied more
+  if (s && parts.length) {
+    var res = {};
+    parts.forEach(function(p){ var a = analysePart(s.cats.filter(function(c){ return c.part === p; }), s.parts[p] || { n: 25, pass: 75 }, d.events.filter(function(e){ return e.part === p && e.mode === 'real'; })); res[p] = a; });
+    var tr = res.life && (!res.jitsugi || res.life.answered > res.jitsugi.answered) ? 'life' : 'jitsugi';
+    if (res.gakka && res[tr]) { var both = Math.round(res.gakka.prob * res[tr].prob * 100), vb = verdict(both);
+      h += '<div class="both"><div><span>โอกาสผ่านทั้ง 2 ภาค (ทฤษฎี + ' + PTAB[tr] + ')</span><br><b>' + both + '%</b></div><span class="verdict ' + vb[0] + '">' + vb[1] + '</span></div>'; }
+    if (parts.length > 1) h += '<div class="tabs">' + parts.map(function(p){ return '<button data-tab="' + p + '" class="' + (p === dpTab ? 'on' : '') + '">' + PTAB[p] + '</button>'; }).join('') + '</div>';
+    h += partView(dpTab, s.cats.filter(function(c){ return c.part === dpTab; }), s.parts[dpTab] || { n: 25, pass: 75 }, d.events.filter(function(e){ return e.part === dpTab && e.mode === 'real'; }));
+  } else h += '<div class="empty">ยังไม่มีข้อมูลรายหมวด — ต้องเปิดแอปเวอร์ชันใหม่และทำแบบทดสอบก่อน</div>';
+  // 14 days as a row of squares
+  var byDay = {}; d.days.forEach(function(x){ byDay[x.day] = x.n; }); var arr = [];
+  for (var i = 13; i >= 0; i--) arr.push(byDay[new Date(d.now + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10)] || 0);
+  var act = arr.filter(Boolean).length;
+  h += '<h2>14 วันที่ผ่านมา <small>ทำ ' + act + ' จาก 14 วัน · ' + arr.reduce(function(a, b){ return a + b; }, 0) + ' ข้อ</small></h2><div class="panel track14">' + arr.map(function(v){ return '<i class="' + (v ? v >= 40 ? 'l3' : v >= 15 ? 'l2' : 'l1' : '') + '" title="' + v + ' ข้อ"></i>'; }).join('') + '</div>';
+  h += '<details class="extra"><summary>ประวัติล่าสุด</summary><div class="panel" style="margin-top:10px">' + (d.events.length ? '<table><tr><th>เวลา</th><th>ทำอะไร</th><th class="n">คะแนน</th></tr>' + d.events.slice(0, 40).map(function(e){ return '<tr><td>' + ago(e.ts, d.now) + '</td><td>' + (PART[e.part] || e.part) + ' · ' + (MODE[e.mode] || e.mode) + '</td><td class="n">' + e.s + '/' + e.n + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มี</div>') + '</div></details></div>';
+  $('dlgBody').innerHTML = h;
+}
+document.addEventListener('click', function(e){
+  var r = e.target.closest('.prow'); if (r) { openPerson(r.dataset.k); return; }
+  var t = e.target.closest('[data-tab]'); if (t) { dpTab = t.dataset.tab; var y = $('dlg').scrollTop; drawPerson(); $('dlg').scrollTop = y; return; }
+  if (e.target.closest('#dlgClose')) { $('dlg').close(); return; }
+  if (e.target.closest('#showAll')) { showAll = !showAll; renderPeople(last); }
+});
 $('dlg').addEventListener('click', function(e){ if (e.target === $('dlg')) $('dlg').close(); });
 var KEY = ''; try { KEY = localStorage.getItem('jac-statskey') || ''; } catch (e) {}
 function load(){
   fetch('/api/stats', { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){
-    if (r.status === 401) { $('gate').style.display = 'block'; $('live').style.display = 'none'; if (KEY) $('gmsg').textContent = 'รหัสผ่านไม่ถูกต้อง'; throw 'key'; }
+    if (r.status === 401) { $('gate').style.display = 'block'; $('dash').hidden = true; $('live').innerHTML = '<span class="dot"></span>ล็อกอยู่'; if (KEY) $('gmsg').textContent = 'รหัสผ่านไม่ถูกต้อง'; throw 'key'; }
     return r.json();
-  }).then(function(d){ $('gate').style.display = 'none'; $('live').style.display = ''; render(d); }).catch(function(e){ if (e !== 'key') $('live').innerHTML = '<span class="dot"></span><span>โหลดข้อมูลไม่ได้ — ลองใหม่อีกครั้ง</span>'; });
+  }).then(function(d){ $('gate').style.display = 'none'; render(d); }).catch(function(e){ if (e !== 'key') $('live').innerHTML = '<span class="dot"></span>โหลดไม่ได้'; });
 }
 $('go').onclick = function(){ KEY = $('key').value.trim(); try { localStorage.setItem('jac-statskey', KEY); } catch (e) {} load(); };
 $('key').onkeydown = function(e){ if (e.key === 'Enter') $('go').click(); };
-load(); setInterval(function(){ if (KEY) load(); }, 30000);
+load(); setInterval(function(){ if (KEY && !$('dlg').open) load(); }, 30000);
 </script>
 </body></html>
