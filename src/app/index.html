@@ -137,7 +137,7 @@ html[data-theme="dark"] .hero .hint{ background:rgba(0,0,0,.3) }
 .miniset{ font-size:.8rem; color:var(--accent-ink); margin-left:4px }
 .avpick{ width:72px; height:72px; border-radius:50%; background:var(--surf2); display:grid; place-items:center; font-size:1.8rem; cursor:pointer; overflow:hidden; flex:none; border:2px dashed var(--line) }
 .avpick img{ width:100%; height:100%; object-fit:cover }
-.asstcard .ashd, .asstpanel .ashd{ display:flex; gap:10px; align-items:center; margin-bottom:10px }
+.asstcard .ashd, .asstpanel .ashd, #qtSheet .ashd{ display:flex; gap:10px; align-items:center; margin-bottom:10px }
 .asav{ width:38px; height:38px; flex:none; border-radius:12px; background:var(--accent); display:grid; place-items:center; font-size:1.25rem; box-shadow:0 3px 0 var(--accent-edge) }
 .asstcard .asgo{ width:100%; text-align:center; margin-bottom:8px }
 .asform{ display:flex; gap:6px; margin:6px 0 } .asin{ flex:1; min-width:0; padding:11px 12px; border-radius:12px; border:2px solid var(--line); background:var(--surf); color:var(--ink); font:inherit; font-size:16px }
@@ -148,6 +148,24 @@ html[data-theme="dark"] .hero .hint{ background:rgba(0,0,0,.3) }
 .askv{ padding:6px 0; border-bottom:1px dashed var(--line) } .askv b{ font-size:1.05rem } .askv .say{ margin-left:6px; vertical-align:middle }
 .askq{ padding:7px 0; border-bottom:1px dashed var(--line); font-size:.86rem } .askq .qchip{ display:inline-block; background:var(--surf2); border-radius:6px; padding:0 6px; font-weight:700; font-size:.76rem }
 .askans{ margin:3px 0; font-weight:600 } .askq .aschip{ margin-top:5px; font-size:.74rem; padding:4px 10px }
+.gm{ background:none; color:inherit; text-decoration:underline dotted 2px; text-decoration-color:#3B82C4; text-underline-offset:4px; cursor:help; border-radius:3px }
+ruby.gm rb, ruby.gm{ text-decoration:underline dotted 2px; text-decoration-color:#3B82C4; text-underline-offset:4px }
+.stem .neg, .astem .neg, .bankitem > .q .neg{ cursor:help }
+.nogram .gm, .nogram ruby.gm{ text-decoration:none; cursor:auto }
+.gtip{ position:fixed; z-index:80; background:#1D2B3A; color:#fff; padding:8px 11px; border-radius:12px; font-size:.86rem; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.25); opacity:0; pointer-events:none; transition:opacity .15s }
+.gtip.on{ opacity:1; pointer-events:auto } .gtip rt{ color:#cfd8e0 } .gtip .say{ margin-left:4px; vertical-align:middle } .gtip .small{ color:#FFB4B4; margin-top:3px }
+.gramtab{ width:100%; margin-top:8px; text-align:center } .gramtab .sub{ display:block; text-align:center }
+.ghowto{ background:var(--surf); border:2px solid var(--accent); border-radius:14px; padding:10px 12px; margin:12px 0 6px; font-size:.86rem } .ghowto ol{ margin:4px 0 8px; padding-left:20px } .ghowto .btn{ display:inline-block; width:auto; margin:4px 4px 0 0; padding:8px 12px }
+.gh{ margin:14px 0 4px; font-size:.95rem } .gh small{ display:block; font-weight:400; color:var(--mute); font-size:.76rem } .gh.neg{ color:#C0262D }
+.gitem{ display:grid; grid-template-columns:auto auto 1fr; gap:4px 8px; align-items:center; padding:7px 0; border-bottom:1px dashed var(--line) }
+.gitem .gt{ font-weight:800; font-size:1.05rem } .gitem .gm2{ font-size:.86rem } .gitem .gm2.neg{ color:#C0262D; font-weight:700 }
+.gitem .gex{ grid-column:1 / -1; justify-self:start; border:none; background:none; color:var(--mute); font:600 .74rem var(--thf); padding:0; cursor:pointer }
+.gparts{ display:grid; grid-template-columns:repeat(2,1fr); gap:4px 12px; font-size:.84rem } .gparts b{ display:inline-block; min-width:30px; font-size:1.05rem }
+.qtprog{ color:var(--mute); font-size:.8rem } .qtq{ font-weight:800; margin:4px 0 6px } .qtstem{ font-size:1.05rem; background:var(--surf); border:2px solid var(--line); border-radius:12px; padding:10px 12px; margin-bottom:10px }
+.qtopts{ display:grid; gap:6px } .qtopt{ text-align:left } .qtopt.right{ background:#DCF5E6; border-color:#1F9D55 } .qtopt.wrong{ background:#FDECEA; border-color:#D9480F }
+.qtfb{ margin-top:8px; font-size:.88rem } .qtfb .ok{ color:#1F9D55 } .qtfb .ng{ color:#D9480F } .qtnext{ display:block; width:100%; margin-top:8px; text-align:center }
+.qtend{ text-align:center; padding:10px 0 } .qtbig{ font:800 2.4rem var(--thf); margin:6px 0 } .qtend .btn{ display:inline-block; width:auto; margin:10px 4px 0 }
+#qtSheet .panel{ max-height:90vh; overflow:auto }
 .asmic.on{ background:#E5484D; color:#fff; border-color:#E5484D; animation:asPulse 1s infinite }
 @keyframes asPulse{ 50%{ box-shadow:0 0 0 6px rgba(229,72,77,.25) } }
 .aschips{ display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 } .aschip{ border:2px solid var(--line); background:var(--surf); color:var(--ink); border-radius:999px; padding:6px 11px; font:600 .8rem var(--thf); cursor:pointer }
@@ -947,6 +965,8 @@ img{ -webkit-user-drag:none; user-drag:none }
       <button class="btn center" id="modeFlash" style="text-align:center">บัตรคำ</button>
       <button class="btn center" id="modePhoto" style="text-align:center">ทายจากรูป</button>
     </div>
+    <button class="btn center gramtab" id="modeGram">📘 คำตั้งคำถาม <span class="sub">คำที่ใช้ในโจทย์ทุกข้อ เช่น <ruby>選<rt>えら</rt></ruby>べ・<ruby>誤<rt>あやま</rt></ruby>っている — รู้คำพวกนี้ อ่านโจทย์ออก</span></button>
+    <div id="gramWrap" style="display:none"><div id="gramList"></div></div>
     <div id="vocabListWrap">
       <input class="search th" id="vocabSearch" placeholder="ค้นหาคำศัพท์ คำอ่าน หรือคำแปล" style="margin-top:12px">
       <div class="chips" id="vocabChips"></div>
@@ -1015,6 +1035,7 @@ img{ -webkit-user-drag:none; user-drag:none }
       <button class="gcard3d" data-game="match"><span class="gc-ico">⚡</span><span class="gc-t">จับคู่สายฟ้า</span><span class="gc-s">จับคู่คำญี่ปุ่นกับคำแปลให้ได้มากที่สุดใน 60 วินาที ถูกติดกันได้คอมโบ</span><span class="gc-best" id="best-match"></span></button>
       <button class="gcard3d" data-game="zoom"><span class="gc-ico">🔍</span><span class="gc-t">ซูมรูปทายของ</span><span class="gc-s">10 รูป ภาพเริ่มซูมใกล้แล้วค่อย ๆ ถอยออก ตอบยิ่งเร็วยิ่งได้คะแนน</span><span class="gc-best" id="best-zoom"></span></button>
       <button class="gcard3d" data-game="memory"><span class="gc-ico">🃏</span><span class="gc-t">เปิดไพ่จับคู่</span><span class="gc-s">ไม่จับเวลา · เปิดไพ่หาคำญี่ปุ่นกับคำแปลที่เป็นคู่กัน ยิ่งเปิดน้อยยิ่งเก่ง</span><span class="gc-best" id="best-memory"></span></button>
+      <button class="gcard3d" data-game="qtype"><span class="gc-ico">🎯</span><span class="gc-t">โจทย์ถามอะไร?</span><span class="gc-s">10 ข้อ · อ่านโจทย์แล้วบอกว่าให้หาข้อถูก ข้อผิด เติมคำ หรือถามชื่อ</span><span class="gc-best" id="best-qtype"></span></button>
       <button class="gcard3d" data-game="tower"><span class="gc-ico">🏗️</span><span class="gc-t">สร้างตึก</span><span class="gc-s">ไม่จับเวลา · ตอบถูกได้ตึกเพิ่ม 1 ชั้น ผิดได้ 3 ครั้ง สร้างให้ถึง 20 ชั้น</span><span class="gc-best" id="best-tower"></span></button>
     </div>
   </section>
@@ -1058,6 +1079,7 @@ img{ -webkit-user-drag:none; user-drag:none }
 </main>
 <div class="gamebg" aria-hidden="true"><i></i><i></i><i></i></div>
 
+<div class="sheet" id="qtSheet" role="dialog" aria-label="เกมโจทย์ถามอะไร"><div class="panel th"><div class="ashd"><span class="asav">🎯</span><div style="flex:1"><b>โจทย์ถามอะไร?</b><div class="small muted">ฝึกอ่านโจทย์ให้รู้ว่าต้องหาอะไร</div></div><button class="btn" id="qtClose">ปิด</button></div><div id="qtBody"></div></div></div>
 <button class="asfab" id="asstFab" aria-label="ผู้ช่วยฝึก">🤖</button>
 <div class="sheet" id="asstSheet" role="dialog" aria-label="ผู้ช่วยฝึก"><div class="panel asstpanel th">
   <div class="ashd"><span class="asav">🤖</span><div style="flex:1"><b>ผู้ช่วยฝึก</b><div class="small muted">พิมพ์ หรือกด 🎤 แล้วพูดว่าวันนี้อยากทำข้อแบบไหน</div></div><button class="btn" id="asstClose">ปิด</button></div>
@@ -1096,6 +1118,8 @@ img{ -webkit-user-drag:none; user-drag:none }
       <div class="seg" id="segSound"><button data-v="on">เปิด</button><button data-v="off">ปิด</button></div></div>
     <div class="setrow"><span class="g">ความเร็วเสียงอ่าน 🔊<span class="small muted th" style="display:block">เสียงชัดขึ้นถ้าโหลดเสียง Kyoko (คุณภาพสูง) ใน ตั้งค่า › การช่วยการเข้าถึง › เนื้อหาที่พูด › เสียง › ญี่ปุ่น</span></span>
       <div class="seg" id="segTts"><button data-v="slow">ช้า</button><button data-v="mid">กลาง</button><button data-v="norm">ปกติ</button></div></div>
+    <div class="setrow"><span class="g">ตัวช่วยอ่านโจทย์<span class="small muted th" style="display:block">ขีดเส้นใต้คำตั้งคำถามในโจทย์ (เช่น <span lang="ja">として</span>・<ruby>以上<rt>いじょう</rt></ruby>) แตะแล้วขึ้นความหมาย · ไม่แสดงตอนสอบจำลอง</span></span>
+      <div class="seg" id="segGram"><button data-v="on">เปิด</button><button data-v="off">ปิด</button></div></div>
     <div class="setrow" id="voiceRow" hidden><span class="g">เสียงผู้อ่าน 🔊<span class="small muted th" style="display:block" id="voiceHint">เลือกเสียงที่ฟังชัดที่สุด · เสียงที่มีคำว่า (ปรับปรุง)/Enhanced/Premium ชัดกว่าเสียงพื้นฐานมาก</span></span>
       <span class="ex-edit"><select id="voiceSel" class="datein"></select><button class="exb ok" id="voiceTest">ลองฟัง</button></span></div>
     <div class="actions"><button class="btn primary center" id="closeSheet" style="text-align:center">ปิด</button></div>
@@ -2891,7 +2915,7 @@ let favs      = load(K.fav, {});
 let known     = load(K.known, {});
 let daily     = load(K.daily, {});
 const savedPrefs = load(K.prefs, null);
-let prefs     = Object.assign({ furi:'on', fs:'m', theme:(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), instant:'off', shuf:'on', part:'gakka', track:'jitsugi', lset:'all', sound:'on', view:'one', tts:'slow' }, savedPrefs || {});
+let prefs     = Object.assign({ furi:'on', fs:'m', theme:(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), instant:'off', shuf:'on', part:'gakka', track:'jitsugi', lset:'all', sound:'on', view:'one', tts:'slow', gram:'on' }, savedPrefs || {});
 if (!PARTS[prefs.part]) prefs.part = 'gakka';
 if (prefs.part !== 'gakka') prefs.track = prefs.part;
 
@@ -2918,7 +2942,7 @@ const IMG = p => { const D = window.IMGDATA; if (!D || !p) return p; return D[p]
 const imgTag = (src, cls) => src ? `<img class="${cls}" src="${IMG(src)}" alt="" loading="lazy">` : '';
 
 /* ================= prefs ================= */
-const SEGS = [['segFuri','furi'],['segFs','fs'],['segTheme','theme'],['segInstant','instant'],['segShuf','shuf'],['segPart','part'],['segSound','sound'],['segView','view'],['segTts','tts']];
+const SEGS = [['segFuri','furi'],['segFs','fs'],['segTheme','theme'],['segInstant','instant'],['segShuf','shuf'],['segPart','part'],['segSound','sound'],['segView','view'],['segTts','tts'],['segGram','gram']];
 function applyPrefs() {
   document.documentElement.dataset.theme = prefs.theme;
   document.documentElement.dataset.fs = prefs.fs;
@@ -2927,6 +2951,7 @@ function applyPrefs() {
   document.querySelector('meta[name=theme-color]').setAttribute('content', prefs.theme === 'dark' ? '#131A21' : '#E6E9E3');
   SEGS.forEach(([sid, key]) => $(sid).querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === prefs[key] || (key === 'part' && b.dataset.v === 'prac' && prefs.part !== 'gakka'))));
   document.body.dataset.part = prefs.part;
+  document.documentElement.classList.toggle('nogram', prefs.gram === 'off');
   document.querySelectorAll('[data-track] button').forEach(b => b.classList.toggle('on', b.dataset.v === prefs.part));
   document.querySelectorAll('[data-lset] button').forEach(b => b.classList.toggle('on', b.dataset.v === (prefs.lset || 'all')));
   save(K.prefs, prefs);
@@ -2939,6 +2964,7 @@ SEGS.forEach(([sid, key]) => $(sid).addEventListener('click', e => {
   prefs[key] = v; if (key === 'part' && v !== 'gakka') prefs.track = v; applyPrefs();
   if (key === 'part' && changed) onPartChange();
   if (key === 'view' && changed && current === 'quiz') applyView();
+  if (key === 'gram' && changed && v === 'on') { if (current === 'quiz') { if (mode !== 'real') gramMark($('quizList')); } else if (current === 'result') gramMark($('answers')); else if (current === 'bank') gramMark($('bankList')); }
 }));
 document.querySelectorAll('[data-track]').forEach(el => el.addEventListener('click', e => {
   const v = e.target.closest('button') && e.target.closest('button').dataset.v; if (!v || v === prefs.part) return;
@@ -3239,7 +3265,7 @@ function renderQuiz() {
   }).join('');
   $('quizList').querySelectorAll('label[data-pos]').forEach(l => l.addEventListener('click', () => choose(+l.dataset.pos, +l.dataset.val)));
   bindFav($('quizList'));
-  if (mode !== 'real') markNeg($('quizList'));
+  if (mode !== 'real') { markNeg($('quizList')); gramMark($('quizList')); }
   updateProgress();
   $('quizMsg').textContent = '';
   applyView();
@@ -3431,7 +3457,7 @@ function renderAnswers() {
       <details class="more"><summary class="th">ดูตัวเลือกทั้งหมดและคำอธิบาย</summary><ul class="aopts" lang="ja">${opts}</ul><div class="thai">${explainHTML(q)}</div></details></div>`;
   }).join('');
   $('answers').innerHTML = out.trim() ? out : '<div class="empty">ถูกทุกข้อ 🎉</div>';
-  markNeg($('answers'));
+  markNeg($('answers')); gramMark($('answers'));
 }
 $('retryWrongBtn').addEventListener('click', () => {
   const w = layout.filter((it, p) => picks[p] !== QUESTIONS[it.qi].ans).map(it => it.qi);
@@ -3481,7 +3507,7 @@ function renderBank() {
         <div class="thai" style="font-family:var(--thf);font-size:.86rem;color:var(--mute);margin-top:8px">${explainHTML(q)}</div>
       </div>
     </div>`).join('') : '<div class="empty">ไม่พบข้อที่ตรงกับคำค้น</div>';
-  markNeg($('bankList'));
+  markNeg($('bankList')); gramMark($('bankList'));
   $('bankList').querySelectorAll('.q').forEach(el => el.addEventListener('click', () =>
     el.parentElement.querySelector('.body').classList.toggle('open')));
   bindFav($('bankList'));
@@ -3551,7 +3577,7 @@ function openQ(i) {
      <div class="astem" lang="ja">${q.stem}</div>${imgTag(q.img, 'qimg')}
      <ul class="aopts" lang="ja">${opts}</ul><div class="thai">${explainHTML(q)}</div>`;
   bindFav($('qSheetBody'));
-  markNeg($('qSheetBody'));
+  markNeg($('qSheetBody')); gramMark($('qSheetBody'));
   if (qSheetWord) $('qSheetBody').querySelectorAll('.astem, .aopts .at, .thai').forEach(el => highlightWord(el, qSheetWord));
   $('qSheet').classList.add('on'); $('qSheet').querySelector('.panel').scrollTop = 0;
   const first = $('qSheetBody').querySelector('.hl'); if (first) setTimeout(() => first.scrollIntoView({ block: 'center', behavior: 'smooth' }), 250);
@@ -3635,13 +3661,18 @@ function startFlash(photoOnly) {
   const vmiss = load('jac-vmiss', {}); flashList.sort((a, b) => (vmiss[b.t] ? 1 : 0) - (vmiss[a.t] ? 1 : 0));   // missed in games first
   if (!flashList.length) flashList = shuffle(base);
   flashPos = 0;
-  $('vocabListWrap').style.display = 'none'; $('flashWrap').style.display = 'block';
-  ['modeList','modeFlash','modePhoto'].forEach(id => $(id).classList.toggle('primary', id === (photoOnly ? 'modePhoto' : 'modeFlash')));
+  $('vocabListWrap').style.display = 'none'; $('gramWrap').style.display = 'none'; $('flashWrap').style.display = 'block';
+  ['modeList','modeFlash','modePhoto','modeGram'].forEach(id => $(id).classList.toggle('primary', id === (photoOnly ? 'modePhoto' : 'modeFlash')));
   showFlash();
 }
 $('modeList').addEventListener('click', () => {
-  $('vocabListWrap').style.display = 'block'; $('flashWrap').style.display = 'none';
-  ['modeList','modeFlash','modePhoto'].forEach(id => $(id).classList.toggle('primary', id === 'modeList'));
+  $('vocabListWrap').style.display = 'block'; $('flashWrap').style.display = 'none'; $('gramWrap').style.display = 'none';
+  ['modeList','modeFlash','modePhoto','modeGram'].forEach(id => $(id).classList.toggle('primary', id === 'modeList'));
+});
+$('modeGram').addEventListener('click', () => {
+  $('vocabListWrap').style.display = 'none'; $('flashWrap').style.display = 'none'; $('gramWrap').style.display = 'block';
+  ['modeList','modeFlash','modePhoto','modeGram'].forEach(id => $(id).classList.toggle('primary', id === 'modeGram'));
+  renderGram();
 });
 $('modeFlash').addEventListener('click', () => startFlash(false));
 $('modePhoto').addEventListener('click', () => startFlash(true));
@@ -3649,7 +3680,7 @@ function showFlash() {
   const v = flashList[flashPos];
   if (!v) { $('flashLinks').hidden = true; $('flashCard').classList.remove('flipped'); $('flashFront').textContent = 'จบชุดแล้ว'; $('flashBack').textContent = ''; $('flashHint').textContent = ''; $('flashCount').textContent = 'จบชุดแล้ว — กดโหมดอีกครั้งเพื่อเริ่มใหม่'; return; }
   flashOpen = false;
-  const term = `<span lang="ja">${rubyTerm(v.t, v.r)}</span>`;
+  const term = `<span lang="ja">${v.gh || rubyTerm(v.t, v.r)}</span>`;
   if (flashPhoto && v.img) {
     $('flashFront').innerHTML = `<img src="${IMG(v.img)}" alt=""><div class="small muted th" style="margin-top:6px">นี่คืออะไร?</div>`;
     $('flashBack').innerHTML = `<div class="bterm">${term}</div><div>${v.th}</div>`;
@@ -3657,7 +3688,7 @@ function showFlash() {
     $('flashFront').innerHTML = term;
     $('flashBack').innerHTML = `<div class="bterm">${term}</div><div>${v.th}</div>`;
   }
-  $('flashLinks').innerHTML = linkList(v); $('flashLinks').hidden = true;
+  $('flashLinks').innerHTML = v.gram ? '' : linkList(v); $('flashLinks').hidden = true;
   const fc = $('flashCard'); fc.classList.add('instant'); fc.classList.remove('flipped'); void fc.offsetWidth; fc.classList.remove('instant');
   $('flashHint').textContent = flashPhoto ? 'แตะการ์ดเพื่อดูชื่อ' : 'แตะการ์ดเพื่อดูคำแปล';
   $('flashSay').hidden = !TTS;
@@ -5291,11 +5322,12 @@ function renderGames() {
   $('best-match').innerHTML = best.match ? `<b>สถิติ ${best.match} คะแนน</b>` : 'ยังไม่เคยเล่น';
   $('best-zoom').innerHTML = best.zoom ? `<b>สถิติ ${best.zoom} คะแนน</b>` : 'ยังไม่เคยเล่น';
   $('best-memory').innerHTML = best.memory ? `<b>สถิติ ${best.memory / 10}%</b>` : 'ยังไม่เคยเล่น';
+  $('best-qtype').innerHTML = best.qtype != null ? `<b>สถิติ ${best.qtype}/10</b>` : 'ยังไม่เคยเล่น';
   $('best-tower').innerHTML = best.tower ? `<b>สูงสุด ${best.tower} ชั้น</b>` : 'ยังไม่เคยเล่น';
   { const n = jigCount(), R = JIG_RANKS[jigRank(n)]; $('best-jigsaw').innerHTML = `<b>${R.ico} ${R.name}</b> อัลบั้ม ${n}/${JIG_IMGS.length} รูป`; }
 }
 document.querySelectorAll('.gcard3d').forEach(c => {
-  c.addEventListener('click', () => c.dataset.game === 'jigsaw' ? go('album') : openGame(c.dataset.game));
+  c.addEventListener('click', () => c.dataset.game === 'jigsaw' ? go('album') : c.dataset.game === 'qtype' ? openQType() : openGame(c.dataset.game));
   if (REDUCED) return;
   c.addEventListener('pointermove', e => {
     const r = c.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
@@ -6030,6 +6062,236 @@ document.addEventListener('click', e => {
   const b = e.target.closest('[data-asopen]'); if (!b) return;
   $('asstSheet').classList.remove('on'); qSheetWord = ''; openQ(+b.dataset.asopen);
 });
+
+/* ================= คำตั้งคำถาม: the words every question is built from ================= */
+// Used three ways: underlined in each question (tap = meaning), a list + flashcards in the vocab tab, and the "โจทย์ถามอะไร?" game.
+const GRAM_GROUPS = [
+  ['A', 'คำสั่งท้ายโจทย์', 'บอกว่าต้องตอบอะไร — อ่านท้ายประโยคก่อนเสมอ'],
+  ['B', '⭕ หาอันที่ถูก', ''],
+  ['C', '❌ หาอันที่ผิด — ระวัง!', 'มีคำปฏิเสธ = ต้องเลือกข้อที่ผิด'],
+  ['D', 'หัวข้อที่โจทย์ถาม', 'คำหน้า で / として / について คือเรื่องที่ถาม'],
+  ['E', 'รูปภาพ / ช่องว่าง', ''],
+  ['F', 'เงื่อนไข · เวลา · เหตุผล', ''],
+  ['G', 'กฎ · ข้อบังคับ · ระดับ', ''],
+  ['H', 'ตัวเลข', 'สำคัญมากในข้อกฎหมาย/ความปลอดภัย'],
+  ['I', 'รูปกริยาที่เจอบ่อย', '']
+];
+// [group, key, regex on the plain question text, term (html), reading for speech, Thai meaning, underline in questions?]
+const GRAM = [
+  ['A', 'erabe', /選びなさい|選べ|選んでください/, `${R('選','えら')}びなさい / ${R('選','えら')}べ`, 'えらびなさい、えらべ', 'จงเลือก', 1],
+  ['A', 'dore', /どれですか|どれか|どれ/, 'どれですか / どれか', 'どれですか、どれか', 'ข้อไหน / อันไหน', 1],
+  ['A', 'nandesuka', /何ですか|なんですか/, `${R('何','なん')}ですか`, 'なんですか', 'คืออะไร', 1],
+  ['A', 'nantoiu', /何と言いますか|何といいますか|なんといいますか|何という|何と言う/, `${R('何','なん')}と${R('言','い')}いますか`, 'なんといいますか', 'เรียกว่าอะไร (ถามชื่อ)', 1],
+  ['A', 'naniwo', /何をしていますか|何をして/, `${R('何','なに')}をしていますか`, 'なにをしていますか', 'กำลังทำอะไร', 1],
+  ['A', 'dono', /どの(?=[一-鿿゠-ヿ])/, 'どの〜', 'どの', '〜ไหน', 1],
+  ['A', 'dare', /誰|だれ/, R('誰','だれ'), 'だれ', 'ใคร', 1],
+  ['A', 'tsugi', /次のうち/, `${R('次','つぎ')}のうち`, 'つぎのうち', 'จากตัวเลือกต่อไปนี้', 1],
+  ['B', 'tadashii', /正しいもの|正しい説明|正しい/, `${R('正','ただ')}しいもの`, 'ただしいもの', 'อันที่ถูก', 1],
+  ['B', 'tekisetsu', /適切な(?!い)/, `${R('適切','てきせつ')}なもの`, 'てきせつなもの', 'อันที่เหมาะสม', 1],
+  ['B', 'fusawashii', /ふさわしい/, 'ふさわしいもの', 'ふさわしいもの', 'อันที่เหมาะ / เข้ากัน', 1],
+  ['C', 'tadashikunai', /正しくない/, `${R('正','ただ')}しくないもの`, 'ただしくないもの', 'อันที่ไม่ถูก ⚠', 0],
+  ['C', 'ayamatte', /誤っている|誤り/, `${R('誤','あやま')}っているもの`, 'あやまっているもの', 'อันที่ผิด ⚠', 0],
+  ['C', 'machigai', /間違っている|間違い/, `${R('間違','まちが')}い / ${R('間違','まちが')}っているもの`, 'まちがい、まちがっているもの', 'อันที่ผิด ⚠', 0],
+  ['C', 'futekisetsu', /適切でない|不適切/, `${R('適切','てきせつ')}でないもの / ${R('不適切','ふてきせつ')}`, 'てきせつでないもの、ふてきせつ', 'อันที่ไม่เหมาะสม ⚠', 0],
+  ['C', 'atehamaranai', /当てはまらない/, `${R('当','あ')}てはまらないもの`, 'あてはまらないもの', 'อันที่ไม่ตรง / ไม่เข้าข่าย ⚠', 0],
+  ['C', 'fukumarenai', /含まれない|含まない/, `${R('含','ふく')}まれない / ${R('含','ふく')}まない`, 'ふくまれない、ふくまない', 'ไม่รวมอยู่ / ไม่ได้เป็นส่วนของ ⚠', 0],
+  ['C', 'denai', /でないもの|ではない/, '〜でないもの / 〜ではない', 'でないもの、ではない', 'ไม่ใช่〜 ⚠', 0],
+  ['C', 'shitewaikenai', /てはいけない|てはいけません/, '〜てはいけない', 'てはいけない', 'ห้าม〜 (ห้ามทำ) ⚠', 1],
+  ['C', 'igai', /以外/, R('以外','いがい'), 'いがい', 'นอกจาก / ยกเว้น', 1],
+  ['D', 'setsumei', /説明/, `〜の${R('説明','せつめい')}`, 'せつめい', 'คำอธิบายเรื่อง〜', 1],
+  ['D', 'toshite', /として/, '〜として', 'として', 'ในฐานะ〜 / ที่เป็น〜', 1],
+  ['D', 'nitsuite', /について/, '〜について', 'について', 'เกี่ยวกับ〜', 1],
+  ['D', 'nikansuru', /に関する/, `〜に${R('関','かん')}する`, 'にかんする', 'เกี่ยวกับ〜', 1],
+  ['D', 'niokeru', /における/, '〜における', 'における', 'ใน〜 (ในเรื่อง/สถานที่)', 1],
+  ['D', 'youto', /用途/, R('用途','ようと'), 'ようと', 'การใช้งาน / ใช้ทำอะไร', 1],
+  ['D', 'meisho', /名称|名前/, `${R('名称','めいしょう')} / ${R('名前','なまえ')}`, 'めいしょう、なまえ', 'ชื่อ', 1],
+  ['D', 'mokuteki', /目的/, R('目的','もくてき'), 'もくてき', 'จุดประสงค์', 1],
+  ['D', 'yakuwari', /役割/, R('役割','やくわり'), 'やくわり', 'บทบาท / หน้าที่', 1],
+  ['D', 'houhou', /方法/, R('方法','ほうほう'), 'ほうほう', 'วิธี', 1],
+  ['D', 'taisaku', /対策/, R('対策','たいさく'), 'たいさく', 'มาตรการ / วิธีป้องกัน', 1],
+  ['D', 'genin', /原因/, R('原因','げんいん'), 'げんいん', 'สาเหตุ', 1],
+  ['D', 'imi', /意味/, R('意味','いみ'), 'いみ', 'ความหมาย', 1],
+  ['D', 'tejun', /手順/, R('手順','てじゅん'), 'てじゅん', 'ขั้นตอน', 1],
+  ['E', 'shashin', /写真/, `${R('写真','しゃしん')}の〜`, 'しゃしんの', '〜ในรูปถ่าย', 1],
+  ['E', 'zu', /(?<![一-鿿])図(?=の|は|で)/, `${R('図','ず')}の〜`, 'ずの', '〜ในแผนภาพ', 1],
+  ['E', 'kakko', /（[\s　]*）/, '（　）', 'かっこ', 'ช่องว่าง: เลือกคำที่ใส่แล้วประโยคถูก', 0],
+  ['F', 'baai', /場合/, `〜${R('場合','ばあい')}`, 'ばあい', 'กรณีที่〜 / ถ้า〜', 1],
+  ['F', 'toki', /とき/, '〜とき', 'とき', 'เมื่อ〜 / ตอนที่〜', 1],
+  ['F', 'sai', /際/, `〜の${R('際','さい')}`, 'のさい', 'ตอน〜 / ขณะ〜', 1],
+  ['F', 'mae', /(?<!手)前に/, `〜${R('前','まえ')}に`, 'まえに', 'ก่อน〜', 1],
+  ['F', 'ato', /(?<!前)後に|(?<!前)後の|終了後/, `〜${R('後','あと')} / 〜${R('後','ご')}`, 'あと、ご', 'หลัง〜', 1],
+  ['F', 'tame', /ため/, '〜ため(に)', 'ために', 'เพื่อ〜 / เพราะ〜', 1],
+  ['F', 'youni', /ように/, '〜ように', 'ように', 'ให้〜 / เพื่อให้〜 / เหมือน〜', 1],
+  ['F', 'niyotte', /によって|による/, '〜によって / 〜による', 'によって、による', 'โดย〜 / เพราะ〜 / ตาม〜', 1],
+  ['F', 'goto', /ごと(?=に)/, '〜ごと(に)', 'ごとに', 'ทุกๆ〜', 1],
+  ['G', 'hitsuyou', /必要/, `${R('必要','ひつよう')}がある`, 'ひつようがある', 'จำเป็นต้อง', 1],
+  ['G', 'nakereba', /なければならない|なければ/, '〜なければならない', 'なければならない', 'ต้อง〜', 1],
+  ['G', 'dekiru', /ことができ/, '〜ことができる', 'ことができる', '〜ได้ (ทำได้)', 1],
+  ['G', 'beki', /べき/, '〜べき', 'べき', 'ควร〜', 1],
+  ['G', 'gimu', /義務付けられ|義務/, `${R('義務付','ぎむづ')}けられている`, 'ぎむづけられている', 'กฎหมายบังคับให้ต้อง〜', 1],
+  ['G', 'sadame', /定められ/, `${R('定','さだ')}められている`, 'さだめられている', 'มีกำหนดไว้ (ในกฎ/กฎหมาย)', 1],
+  ['G', 'kanarazu', /必ず/, `${R('必','かなら')}ず`, 'かならず', 'ต้อง / ทุกครั้ง', 1],
+  ['G', 'omoni', /主に/, `${R('主','おも')}に`, 'おもに', 'ส่วนใหญ่ / หลักๆ', 1],
+  ['G', 'mottomo', /最も|一番/, `${R('最','もっと')}も / ${R('一番','いちばん')}`, 'もっとも、いちばん', '〜ที่สุด', 1],
+  ['H', 'ijou', /以上/, R('以上','いじょう'), 'いじょう', '〜ขึ้นไป (รวมตัวเลขนั้น)', 1],
+  ['H', 'ika', /以下/, R('以下','いか'), 'いか', '〜ลงมา (รวมตัวเลขนั้น)', 1],
+  ['H', 'koeru', /超える|超え/, `${R('超','こ')}える`, 'こえる', 'เกิน〜 (ไม่รวมตัวเลขนั้น)', 1],
+  ['H', 'miman', /未満/, R('未満','みまん'), 'みまん', 'น้อยกว่า〜 (ไม่รวมตัวเลขนั้น)', 1],
+  ['I', 'rareru', /られている|られる|使われ|含まれる/, '〜られる / 〜される', 'られる、される', 'ถูก〜 (รูปถูกกระทำ)', 1],
+  ['I', 'saseru', /させる/, '〜させる', 'させる', 'ทำให้〜 / ให้〜ทำ', 1],
+  ['I', 'okonau', /行う|行い|行っ/, `${R('行','おこな')}う`, 'おこなう', 'ทำ / ดำเนินการ', 1],
+  ['I', 'shiyou', /使用/, `${R('使用','しよう')}する`, 'しようする', 'ใช้', 1]
+].map(([g, key, re, ja, say, th, ul]) => ({ g, key, re, ja, say, th, ul: !!ul }));
+const GRAM_BY = Object.fromEntries(GRAM.map(x => [x.key, x]));
+const GRAM_PARTICLES = [['は', 'หัวเรื่อง (〜นั้น)'], ['の', 'ของ'], ['を', 'กรรม (ทำ〜)'], ['に', 'ที่ / ไปยัง / ให้'], ['で', 'ที่ / ด้วย / ใน'], ['が', 'ประธาน'],
+  ['と', 'กับ / ว่า'], ['や', '〜และ〜 (ยกตัวอย่าง)'], ['から', 'จาก'], ['まで', 'ถึง'], ['も', '〜ก็'], ['か', 'ไหม / หรือ']];
+
+// 1) underline the question words inside a rendered question (tap one → its meaning)
+function gramMark(root) {
+  if (prefs.gram === 'off') return;
+  root.querySelectorAll('.stem, .astem, .bankitem > .q').forEach(el => {
+    if (el.dataset.gm) return; el.dataset.gm = '1';
+    const { nodes, txt } = textNodes(el);
+    const hits = [];
+    GRAM.forEach(x => {
+      if (!x.ul) return;
+      const re = new RegExp(x.re.source, 'g'); let m;
+      while ((m = re.exec(txt))) { if (!m[0]) { re.lastIndex++; continue; } hits.push([m.index, m.index + m[0].length, x.key]); }
+    });
+    hits.sort((a, b) => a[0] - b[0] || (b[1] - b[0]) - (a[1] - a[0]));
+    const keep = []; let end = -1;
+    hits.forEach(h => { if (h[0] >= end) { keep.push(h); end = h[1]; } });
+    if (!keep.length) return;
+    for (let k = nodes.length - 1; k >= 0; k--) {
+      const { n: node, at } = nodes[k], nEnd = at + node.nodeValue.length;
+      if (node.parentNode.closest('.neg')) continue;                 // already marked red as a "find the wrong one" word
+      for (let h = keep.length - 1; h >= 0; h--) {
+        const a = Math.max(keep[h][0], at), b = Math.min(keep[h][1], nEnd);
+        if (a >= b) continue;
+        const rb = node.parentNode.closest('ruby');
+        if (rb) { if (!rb.classList.contains('gm')) { rb.classList.add('gm'); rb.dataset.g = keep[h][2]; } continue; }
+        const mid = node.splitText(a - at); mid.splitText(b - a);
+        const m = document.createElement('mark'); m.className = 'gm'; m.dataset.g = keep[h][2];
+        mid.parentNode.insertBefore(m, mid); m.appendChild(mid);
+      }
+    }
+  });
+}
+// tap a word: a small bubble with the meaning (stays out of the way of choosing an answer)
+let gramTipEl = null;
+function gramTip(target, html) {
+  if (!gramTipEl) { gramTipEl = document.createElement('div'); gramTipEl.className = 'gtip th'; document.body.appendChild(gramTipEl); }
+  gramTipEl.innerHTML = html; gramTipEl.classList.add('on');
+  const r = target.getBoundingClientRect(), w = Math.min(300, innerWidth - 24);
+  gramTipEl.style.width = 'auto'; gramTipEl.style.maxWidth = w + 'px';
+  const tw = gramTipEl.offsetWidth, th = gramTipEl.offsetHeight;
+  let x = Math.min(innerWidth - tw - 12, Math.max(12, r.left + r.width / 2 - tw / 2)), y = r.top - th - 8;
+  if (y < 8) y = r.bottom + 8;
+  gramTipEl.style.left = x + 'px'; gramTipEl.style.top = y + 'px';
+  clearTimeout(gramTip.t); gramTip.t = setTimeout(() => gramTipEl.classList.remove('on'), 4000);
+}
+const gramTipHTML = x => `<b lang="ja">${x.ja}</b> = ${x.th}${TTS ? ` <button class="say" data-say="${esc(x.say)}" aria-label="ฟังเสียง">🔊</button>` : ''}`;
+document.addEventListener('click', e => {
+  if (prefs.gram === 'off') return;
+  const g = e.target.closest('.gm[data-g]');
+  const n = !g && e.target.closest('.stem .neg, .astem .neg, .bankitem > .q .neg');
+  if (!g && !n) { if (gramTipEl && !e.target.closest('.gtip')) gramTipEl.classList.remove('on'); return; }
+  e.stopPropagation(); e.preventDefault();
+  if (g) { gramTip(g, gramTipHTML(GRAM_BY[g.dataset.g])); return; }
+  const stem = plain((n.closest('.stem, .astem, .q') || n).innerHTML), x = GRAM.find(y => y.g === 'C' && y.re.test(stem));
+  gramTip(n, x ? gramTipHTML(x) + '<div class="small">⚠ โจทย์ให้เลือก<b>ข้อที่ผิด / ไม่ถูกต้อง</b></div>' : '⚠ คำปฏิเสธ — โจทย์ให้เลือก<b>ข้อที่ผิด / ไม่ถูกต้อง</b>');
+}, true);
+addEventListener('scroll', () => { if (gramTipEl) gramTipEl.classList.remove('on'); }, { passive: true });
+
+// 2) the list + flashcards in the vocab tab
+let gramIdx = null;
+function gramExamples() {          // per word: how many questions use it, and the shortest one as an example
+  if (gramIdx) return gramIdx;
+  const P_ = QUESTIONS.map((q, i) => ({ i, t: plain(q.stem).replace(/[​‌⁠]/g, '') }));
+  gramIdx = {};
+  GRAM.forEach(x => { const hit = P_.filter(p => x.re.test(p.t)).sort((a, b) => a.t.length - b.t.length); gramIdx[x.key] = { n: hit.length, ex: hit[0] ? hit[0].i : -1 }; });
+  return gramIdx;
+}
+function renderGram() {
+  const ix = gramExamples();
+  $('gramList').innerHTML = `<div class="ghowto th"><b>อ่านโจทย์ยาวๆ ให้เร็ว 3 ขั้น</b><ol><li>ดูท้ายประโยค — <span lang="ja">${R('選','えら')}べ / どれですか</span> บอกว่าต้องเลือก</li><li>หาอันถูกหรืออันผิด — มี <span lang="ja">ない・${R('誤','あやま')}・${R('間違','まちが')}</span> = เลือก<b>ข้อที่ผิด</b></li><li>หาเรื่องที่ถาม — คำหน้า <span lang="ja">で・として・について</span></li></ol>
+    <button class="btn primary" id="gramFlash">🃏 ท่องเป็นบัตรคำ (${GRAM.filter(x => ix[x.key].n).length} คำ)</button> <button class="btn" id="gramGame">🎯 เกม "โจทย์ถามอะไร?"</button></div>` +
+    GRAM_GROUPS.map(([g, title, note]) => {
+      const rows = GRAM.filter(x => x.g === g && ix[x.key].n); if (!rows.length) return '';
+      return `<h3 class="gh ${g === 'C' ? 'neg' : ''}">${title}${note ? `<small>${note}</small>` : ''}</h3>` + rows.map(x => {
+        const e = ix[x.key];
+        return `<div class="gitem"><span class="gt" lang="ja">${x.ja}</span>${sayBtn(x.say, 'ฟังเสียง')}<span class="gm2 ${g === 'C' ? 'neg' : ''}">${x.th}</span>` +
+          `<button class="gex" data-qi="${e.ex}" title="ดูโจทย์ตัวอย่าง">ใช้ใน ${e.n} ข้อ · ดูตัวอย่าง ›</button></div>`;
+      }).join('');
+    }).join('') +
+    `<h3 class="gh">คำช่วย (เจอในทุกโจทย์)</h3><div class="gparts">${GRAM_PARTICLES.map(([p, t]) => `<div><b lang="ja">${p}</b> ${t}</div>`).join('')}</div>`;
+}
+function startGramFlash() {
+  const ix = gramExamples();
+  flashList = shuffle(GRAM.filter(x => ix[x.key].n).map(x => ({ t: 'gram:' + x.key, r: x.say, th: x.th, gh: x.ja, gram: 1 })).filter(v => !known[v.t]));
+  if (!flashList.length) flashList = shuffle(GRAM.map(x => ({ t: 'gram:' + x.key, r: x.say, th: x.th, gh: x.ja, gram: 1 })));
+  flashPos = 0; flashPhoto = false;
+  $('vocabListWrap').style.display = 'none'; $('gramWrap').style.display = 'none'; $('flashWrap').style.display = 'block';
+  ['modeList', 'modeFlash', 'modePhoto', 'modeGram'].forEach(id => $(id).classList.toggle('primary', id === 'modeGram'));
+  showFlash();
+}
+
+// 3) game: what does this question ask for?  (read the question, not the answer)
+const QT_KINDS = [
+  ['neg', '❌ หาข้อที่ผิด / ไม่ถูกต้อง'], ['blank', '✏️ เติมคำในช่องว่าง（　）'], ['name', '🏷 ถามชื่อเรียกของสิ่งนั้น'], ['ok', '⭕ หาข้อที่ถูก / เหมาะสม']
+];
+function qtKind(q) {
+  const t = plain(q.stem);
+  if (isNegQ(q)) return 'neg';
+  if (/（[\s　]*）/.test(t)) return 'blank';
+  if (/何と言|何とい|なんとい|何という|名称|名前/.test(t)) return 'name';
+  if (/正しい|適切な|ふさわしい/.test(t)) return 'ok';
+  return '';
+}
+let qt = null;
+function openQType() {
+  const all = pool().map(i => ({ i, k: qtKind(QUESTIONS[i]) })).filter(x => x.k);
+  const by = {}; all.forEach(x => (by[x.k] = by[x.k] || []).push(x));
+  let pick = []; QT_KINDS.forEach(([k]) => { pick = pick.concat(shuffle(by[k] || []).slice(0, 3)); });
+  pick = shuffle(pick.concat(shuffle(all.filter(x => !pick.includes(x))).slice(0, Math.max(0, 10 - pick.length)))).slice(0, 10);
+  qt = { list: pick, pos: 0, score: 0 };
+  $('qtSheet').classList.add('on'); qtShow();
+}
+function qtShow() {
+  const it = qt.list[qt.pos];
+  if (!it) {
+    const best = load(GBEST, {}); if (!best.qtype || qt.score > best.qtype) { best.qtype = qt.score; save(GBEST, best); }
+    $('qtBody').innerHTML = `<div class="qtend"><div class="qtbig">${qt.score}/${qt.list.length}</div><div class="th">${qt.score >= 9 ? 'อ่านโจทย์ออกแล้ว 🎉' : qt.score >= 6 ? 'ดีมาก — ทบทวนคำในแท็บคำศัพท์ › คำตั้งคำถาม' : 'ลองดูคำตั้งคำถามอีกรอบ แล้วเล่นใหม่'}</div>
+      <button class="btn primary" id="qtAgain">เล่นอีกรอบ</button> <button class="btn" id="qtClose2">ปิด</button></div>`;
+    if (current === 'games') renderGames(); return;
+  }
+  const q = QUESTIONS[it.i];
+  $('qtBody').innerHTML = `<div class="qtprog th">ข้อ ${qt.pos + 1}/${qt.list.length} · ถูก ${qt.score}</div>
+    <div class="qtq th">โจทย์นี้ให้หาอะไร? <span class="small muted">(ไม่ต้องรู้คำตอบ แค่อ่านโจทย์)</span></div>
+    <div class="stem qtstem" lang="ja">${q.stem}</div>
+    <div class="qtopts">${QT_KINDS.map(([k, l]) => `<button class="btn qtopt" data-qt="${k}">${l}</button>`).join('')}</div><div class="qtfb th" id="qtFb"></div>`;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-qt]');
+  if (b && qt && !b.disabled) {
+    const it = qt.list[qt.pos], ok = b.dataset.qt === it.k;
+    if (ok) qt.score++;
+    $('qtBody').querySelectorAll('[data-qt]').forEach(x => { x.disabled = true; x.classList.toggle('right', x.dataset.qt === it.k); if (x === b && !ok) x.classList.add('wrong'); });
+    const stem = $('qtBody').querySelector('.qtstem'), q = QUESTIONS[it.i];
+    highlightRe(stem, NEG_RE, 'neg'); const keepPref = prefs.gram; prefs.gram = 'on'; gramMark($('qtBody')); prefs.gram = keepPref;
+    const t = plain(q.stem), clue = GRAM.find(x => (it.k === 'neg' ? x.g === 'C' : it.k === 'blank' ? x.key === 'kakko' : it.k === 'name' ? /nantoiu|meisho/.test(x.key) : /tadashii|tekisetsu|fusawashii/.test(x.key)) && x.re.test(t));
+    $('qtFb').innerHTML = (ok ? '<b class="ok">○ ถูกต้อง</b>' : '<b class="ng">× ยังไม่ใช่</b>') + (clue ? ` — ดูคำว่า <b lang="ja">${clue.ja}</b> = ${clue.th}` : '') +
+      `<button class="btn primary qtnext" id="qtNext">${qt.pos + 1 < qt.list.length ? 'ข้อต่อไป ›' : 'ดูผล'}</button>`;
+    buzz(ok ? 12 : [20, 40, 20]); try { ok ? SFX.ok(1) : SFX.ng(); } catch (er) {}
+    return;
+  }
+  if (e.target.closest('#qtNext')) { qt.pos++; qtShow(); return; }
+  if (e.target.closest('#qtAgain')) { openQType(); return; }
+  if (e.target.closest('#qtClose, #qtClose2')) { $('qtSheet').classList.remove('on'); return; }
+  if (e.target.closest('#gramFlash')) { startGramFlash(); return; }
+  if (e.target.closest('#gramGame')) { openQType(); return; }
+});
+$('qtSheet').addEventListener('click', e => { if (e.target === $('qtSheet')) $('qtSheet').classList.remove('on'); });
 
 /* ================= init ================= */
 applyPrefs();
