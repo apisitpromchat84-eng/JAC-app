@@ -5537,7 +5537,7 @@ const SEEN_KEY = 'jac-seen-v1';
 let seenMine = load(SEEN_KEY, {});
 const seenRounds = id => [...new Set([...(EXAM_SEEN[id] || []), ...(seenMine[id] || [])])].sort();
 const isSeen = id => EXAM_S.has(id) || seenRounds(id).length > 0;
-const monthTh = ym => { const [y, m] = ym.split('-').map(Number); return new Date(y, m - 1, 1).toLocaleDateString('th-TH', { month: 'short', year: '2-digit' }); };
+const monthTh = ym => { if (!ym) return '—'; const [y, m] = ym.split('-').map(Number); return new Date(y, m - 1, 1).toLocaleDateString('th-TH', { month: 'short', year: '2-digit' }); };
 const seenBtn = id => `<button class="seenbtn ${isSeen(id) ? 'on' : ''}" data-seen="${id}" aria-label="ข้อนี้เคยออกสอบจริง" title="ข้อนี้เคยออกสอบจริง">🔥</button>`;
 let seenId = null;
 function openSeen(id) {
@@ -5699,7 +5699,7 @@ function renderSeenStats() {
   }).filter(r => r.all).sort((a, b) => b.n - a.n || b.all - a.all);
   const max = Math.max(1, ...rows.map(r => r.n));
   const rounds = [...new Set(ids.flatMap(q => seenRounds(q.id)))].sort();
-  el.innerHTML = `<div class="shead">เคยออกสอบจริง <b>${ids.length}</b> ข้อ (${P().ja}) · รอบล่าสุด ${monthTh(rounds[rounds.length - 1])}</div>` +
+  el.innerHTML = `<div class="shead">เคยออกสอบจริง <b>${ids.length}</b> ข้อ (${P().ja})${rounds.length ? ' · รอบล่าสุด ' + monthTh(rounds[rounds.length - 1]) : ' · ผู้ดูแลยืนยัน'}</div>` +
     rows.map(r => `<div class="sline"><span>${r.c.th}</span><span class="bar"><i style="width:${Math.round(r.n / max * 100)}%"></i></span><span class="n">${r.n} ข้อ</span></div>`).join('') +
     `<div class="snote">หมวดที่แถบยาว = ออกบ่อย ควรทบทวนก่อน${offN ? ` · รวมรายงานจากผู้ใช้คนอื่น ${offN} ข้อ (ยังไม่ได้ยืนยันกับข้อสอบจริง)` : ''}</div>` +
     (mineN ? `<div class="actions" style="margin-top:10px"><button class="btn center" id="seenShare" style="text-align:center">📤 ส่งรายการที่จดให้ผู้พัฒนา<span class="sub">เพื่อใส่ป้าย 🔥 ให้ทุกคนเห็นในเวอร์ชันถัดไป</span></button></div><div id="seenOut"></div>` : '');
