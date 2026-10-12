@@ -166,6 +166,15 @@ ruby.gm rb, ruby.gm{ text-decoration:underline dotted 2px; text-decoration-color
 .qtfb{ margin-top:8px; font-size:.88rem } .qtfb .ok{ color:#1F9D55 } .qtfb .ng{ color:#D9480F } .qtnext{ display:block; width:100%; margin-top:8px; text-align:center }
 .qtend{ text-align:center; padding:10px 0 } .qtbig{ font:800 2.4rem var(--thf); margin:6px 0 } .qtend .btn{ display:inline-block; width:auto; margin:10px 4px 0 }
 #qtSheet .panel{ max-height:90vh; overflow:auto }
+.wnsheet{ position:fixed; inset:0; z-index:90; background:rgba(10,16,22,.72); display:grid; place-items:center; padding:12px }
+.wnsheet[hidden]{ display:none }
+.wnbox{ position:relative; width:min(460px,100%); max-height:100%; display:flex; flex-direction:column; gap:8px }
+.wntrack{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; border-radius:18px; background:#F2F3EE; scrollbar-width:none; -webkit-overflow-scrolling:touch }
+.wntrack::-webkit-scrollbar{ display:none }
+.wntrack img{ flex:none; width:100%; aspect-ratio:4/5; object-fit:contain; scroll-snap-align:center; max-height:calc(100vh - 150px); background:#F2F3EE }
+.wnx{ position:absolute; top:-6px; right:-4px; z-index:2; width:40px; height:40px; border-radius:50%; border:none; background:#fff; font-size:1.1rem; font-weight:800; box-shadow:0 3px 10px rgba(0,0,0,.25); cursor:pointer }
+.wndots{ display:flex; justify-content:center; gap:7px } .wndots i{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.45) } .wndots i.on{ background:#F5B800; width:22px; border-radius:6px }
+.wnnav{ display:grid; grid-template-columns:1fr 1.4fr; gap:8px } .wnnav .btn{ text-align:center; width:100%; margin:0 }
 .asmic.on{ background:#E5484D; color:#fff; border-color:#E5484D; animation:asPulse 1s infinite }
 @keyframes asPulse{ 50%{ box-shadow:0 0 0 6px rgba(229,72,77,.25) } }
 .aschips{ display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 } .aschip{ border:2px solid var(--line); background:var(--surf); color:var(--ink); border-radius:999px; padding:6px 11px; font:600 .8rem var(--thf); cursor:pointer }
@@ -1080,6 +1089,12 @@ img{ -webkit-user-drag:none; user-drag:none }
 <div class="gamebg" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <div class="sheet" id="qtSheet" role="dialog" aria-label="เกมโจทย์ถามอะไร"><div class="panel th"><div class="ashd"><span class="asav">🎯</span><div style="flex:1"><b>โจทย์ถามอะไร?</b><div class="small muted">ฝึกอ่านโจทย์ให้รู้ว่าต้องหาอะไร</div></div><button class="btn" id="qtClose">ปิด</button></div><div id="qtBody"></div></div></div>
+<div class="wnsheet" id="wnSheet" role="dialog" aria-label="มีอะไรใหม่" hidden><div class="wnbox">
+  <button class="wnx" id="wnX" aria-label="ปิด">✕</button>
+  <div class="wntrack" id="wnTrack"></div>
+  <div class="wndots" id="wnDots"></div>
+  <div class="wnnav"><button class="btn" id="wnPrev">‹ ก่อนหน้า</button><button class="btn primary" id="wnNext">ถัดไป ›</button></div>
+</div></div>
 <button class="asfab" id="asstFab" aria-label="ผู้ช่วยฝึก">🤖</button>
 <div class="sheet" id="asstSheet" role="dialog" aria-label="ผู้ช่วยฝึก"><div class="panel asstpanel th">
   <div class="ashd"><span class="asav">🤖</span><div style="flex:1"><b>ผู้ช่วยฝึก</b><div class="small muted">พิมพ์ หรือกด 🎤 แล้วพูดว่าวันนี้อยากทำข้อแบบไหน</div></div><button class="btn" id="asstClose">ปิด</button></div>
@@ -1118,6 +1133,8 @@ img{ -webkit-user-drag:none; user-drag:none }
       <div class="seg" id="segSound"><button data-v="on">เปิด</button><button data-v="off">ปิด</button></div></div>
     <div class="setrow"><span class="g">ความเร็วเสียงอ่าน 🔊<span class="small muted th" style="display:block">เสียงชัดขึ้นถ้าโหลดเสียง Kyoko (คุณภาพสูง) ใน ตั้งค่า › การช่วยการเข้าถึง › เนื้อหาที่พูด › เสียง › ญี่ปุ่น</span></span>
       <div class="seg" id="segTts"><button data-v="slow">ช้า</button><button data-v="mid">กลาง</button><button data-v="norm">ปกติ</button></div></div>
+    <div class="setrow"><span class="g">📢 มีอะไรใหม่<span class="small muted th" style="display:block">ดูรูปแนะนำการอัปเดตล่าสุดอีกครั้ง</span></span>
+      <button class="btn" id="wnAgain" style="width:auto">เปิดดู</button></div>
     <div class="setrow"><span class="g">ตัวช่วยอ่านโจทย์<span class="small muted th" style="display:block">ขีดเส้นใต้คำตั้งคำถามในโจทย์ (เช่น <span lang="ja">として</span>・<ruby>以上<rt>いじょう</rt></ruby>) แตะแล้วขึ้นความหมาย · ไม่แสดงตอนสอบจำลอง</span></span>
       <div class="seg" id="segGram"><button data-v="on">เปิด</button><button data-v="off">ปิด</button></div></div>
     <div class="setrow" id="voiceRow" hidden><span class="g">เสียงผู้อ่าน 🔊<span class="small muted th" style="display:block" id="voiceHint">เลือกเสียงที่ฟังชัดที่สุด · เสียงที่มีคำว่า (ปรับปรุง)/Enhanced/Premium ชัดกว่าเสียงพื้นฐานมาก</span></span>
@@ -4148,7 +4165,7 @@ function actRestore(d) {                            // the server remembered thi
 try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}   // ask the browser not to clear our data
 function actEvent(e) { if (!actOn) return; const q = load(ACT_Q, []); q.push(e); save(ACT_Q, q.slice(-100)); actSend(); }
 showNick();
-if (actOn && !load(NICK_KEY, '') && load('jac-nickskip', '') !== today()) setTimeout(() => { if (!load(NICK_KEY, '')) openNick(); }, 4000);
+if (actOn && !load(NICK_KEY, '') && load('jac-nickskip', '') !== today()) setTimeout(() => { if (!load(NICK_KEY, '') && !wnOpenNow) openNick(); }, 4000);
 if (actOn) { setTimeout(actSend, 1500); setInterval(() => { if (!document.hidden) actSend(); }, 120000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) actSend(); }); window.addEventListener('online', actSend); }
 
@@ -4667,10 +4684,44 @@ document.addEventListener('click', e => {
 });
 $('qtSheet').addEventListener('click', e => { if (e.target === $('qtSheet')) $('qtSheet').classList.remove('on'); });
 
+
+/* ================= 📢 มีอะไรใหม่: after an update, show the guide pictures once before studying ================= */
+// add a new entry (newest first) with each update; pictures live in img/whatsnew/<id>/0.webp … n.webp
+const WHATS_NEW = [
+  { id: '2026-10-12', n: 5, title: 'อัปเดต 12 ต.ค. — ตัวช่วยอ่านโจทย์ · คำตั้งคำถาม · เกมโจทย์ถามอะไร?' }
+];
+const WN_KEY = 'jac-wn-seen';
+let wnOpenNow = false;
+function wnShow(entry) {
+  const e = entry || WHATS_NEW[0]; if (!e) return;
+  wnOpenNow = true;
+  $('wnTrack').innerHTML = Array.from({ length: e.n }, (_, i) => `<img src="img/whatsnew/${e.id}/${i}.webp" alt="${esc(e.title)} (${i + 1}/${e.n})" ${i ? 'loading="lazy"' : ''}>`).join('');
+  $('wnDots').innerHTML = Array.from({ length: e.n }, (_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('');
+  $('wnSheet').hidden = false; $('wnTrack').scrollLeft = 0; wnUpdate();
+}
+const wnPos = () => Math.round($('wnTrack').scrollLeft / Math.max(1, $('wnTrack').clientWidth));
+function wnUpdate() {
+  const n = $('wnTrack').children.length, p = wnPos();
+  [...$('wnDots').children].forEach((d, i) => d.classList.toggle('on', i === p));
+  $('wnPrev').disabled = p === 0;
+  $('wnNext').textContent = p >= n - 1 ? 'เข้าใจแล้ว ✓' : 'ถัดไป ›';
+}
+function wnClose() {
+  $('wnSheet').hidden = true; wnOpenNow = false; save(WN_KEY, WHATS_NEW[0].id);
+  if (actOn && !load(NICK_KEY, '') && load('jac-nickskip', '') !== today()) setTimeout(() => { if (!load(NICK_KEY, '')) openNick(); }, 600);
+}
+$('wnTrack').addEventListener('scroll', () => { clearTimeout(wnUpdate.t); wnUpdate.t = setTimeout(wnUpdate, 60); }, { passive: true });
+$('wnNext').addEventListener('click', () => { const n = $('wnTrack').children.length, p = wnPos(); if (p >= n - 1) wnClose(); else $('wnTrack').scrollTo({ left: (p + 1) * $('wnTrack').clientWidth, behavior: 'smooth' }); });
+$('wnPrev').addEventListener('click', () => { const p = wnPos(); $('wnTrack').scrollTo({ left: Math.max(0, p - 1) * $('wnTrack').clientWidth, behavior: 'smooth' }); });
+$('wnX').addEventListener('click', wnClose);
+$('wnSheet').addEventListener('click', e => { if (e.target === $('wnSheet')) wnClose(); });
+$('wnAgain').addEventListener('click', () => { $('sheet').classList.remove('on'); wnShow(); });
+
 /* ================= init ================= */
 applyPrefs();
 buildChips();
 go('home');
+if (WHATS_NEW[0] && load(WN_KEY, '') !== WHATS_NEW[0].id && !/[?&]nowhatsnew/.test(location.search)) setTimeout(() => { if (current === 'home') wnShow(); }, 700);
 offerResume();
 if (sessionStorage.getItem('jac-moved') !== null) {             // arrived from an old upload link
   sessionStorage.removeItem('jac-moved');
