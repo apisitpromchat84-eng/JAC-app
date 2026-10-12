@@ -44,14 +44,14 @@ dialog::backdrop{ background:rgba(0,0,0,.5) } #dlgBody{ padding:16px 16px 24px }
 </head>
 <body><main>
 <h1>📊 แอป JAC — ความเคลื่อนไหว</h1>
-<div class="sub">ชื่อตามที่แต่ละคนตั้งในแอป (ไม่ตั้ง = ไม่ระบุชื่อ, 1 เครื่อง = 1 คน) · เวลาญี่ปุ่น · อัปเดตเองทุก 30 วินาที</div>
+<div class="sub">ชื่อตามที่แต่ละคนตั้งในแอป (คนที่ไม่ตั้งชื่อ: นับจากเครือข่าย + รุ่นมือถือ ถือเป็นคนเดียวกัน — เป็นค่าประมาณ) · เวลาญี่ปุ่น · อัปเดตเองทุก 30 วินาที</div>
 <div class="live" id="live"><span class="dot"></span><span>กำลังโหลด…</span></div>
 <div id="gate" class="card" style="display:none;margin:14px 0"><b>🔒 ใส่รหัสผ่านเพื่อดูหน้านี้</b><div style="display:flex;gap:8px;margin-top:10px"><input id="key" type="password" style="flex:1;padding:10px 12px;border-radius:10px;border:1px solid var(--line);font:inherit;background:var(--card);color:var(--ink)"><button id="go" style="padding:10px 16px;border-radius:10px;border:none;background:var(--bar);font:inherit;font-weight:700">เปิด</button></div><div id="gmsg" class="sub" style="margin-top:6px"></div></div>
 <div class="kpis" id="kpis"></div>
 <h2>👥 รายชื่อ (ตามชื่อเล่นที่ตั้งในแอป)</h2>
 <div class="card" id="people"></div>
-<h2>14 วันล่าสุด — จำนวนเครื่องที่ทำแบบทดสอบ</h2>
-<div class="card"><div class="chart" id="chart"></div><div class="legend">แท่งสีน้ำเงิน = วันนี้ · ตัวเลขบนแท่ง = จำนวนเครื่อง</div></div>
+<h2>14 วันล่าสุด — จำนวนคนที่ทำแบบทดสอบ</h2>
+<div class="card"><div class="chart" id="chart"></div><div class="legend">แท่งสีน้ำเงิน = วันนี้ · ตัวเลขบนแท่ง = จำนวนคน</div></div>
 <h2>วันนี้แยกตามภาค</h2>
 <div class="card" id="parts"></div>
 <h2>สอบจำลอง 14 วัน</h2>
@@ -84,10 +84,10 @@ function renderPeople(d){
 function render(d){
   renderPeople(d);
   var liveN = d.live.reduce(function(a, x){ return a + x.c; }, 0);
-  $('live').innerHTML = '<span class="dot ' + (liveN ? 'on' : '') + '"></span><span><b>' + liveN + '</b> เครื่องเปิดแอปอยู่ตอนนี้' +
-    (liveN ? ' <span class="sub">(' + d.live.map(function(x){ return (PART[x.part] || x.part) + ' ' + x.c; }).join(' · ') + ')</span>' : '') + '<br><span class="sub">นับเครื่องที่ใช้งานใน 5 นาทีล่าสุด</span></span>';
+  $('live').innerHTML = '<span class="dot ' + (liveN ? 'on' : '') + '"></span><span><b>' + liveN + '</b> คนเปิดแอปอยู่ตอนนี้' +
+    (liveN ? ' <span class="sub">(' + d.live.map(function(x){ return (PART[x.part] || x.part) + ' ' + x.c; }).join(' · ') + ')</span>' : '') + '<br><span class="sub">นับคนที่ใช้งานใน 5 นาทีล่าสุด</span></span>';
   var t = d.t || {};
-  $('kpis').innerHTML = [['เปิดแอปวันนี้', d.opensToday + ' เครื่อง'], ['ทำแบบทดสอบวันนี้', (t.devs || 0) + ' เครื่อง'], ['ชุดที่ทำวันนี้', t.quizzes || 0], ['ข้อที่ตอบวันนี้', t.n || 0], ['ตอบถูกเฉลี่ยวันนี้', pct(t.s, t.n)], ['ผู้ใช้ 7 วัน', d.devs7 + ' เครื่อง']]
+  $('kpis').innerHTML = [['เปิดแอปวันนี้', d.opensToday + ' คน' + (d.devicesToday > d.opensToday ? ' <small>(' + d.devicesToday + ' เครื่อง)</small>' : '')], ['ทำแบบทดสอบวันนี้', (t.devs || 0) + ' คน'], ['ชุดที่ทำวันนี้', t.quizzes || 0], ['ข้อที่ตอบวันนี้', t.n || 0], ['ตอบถูกเฉลี่ยวันนี้', pct(t.s, t.n)], ['ผู้ใช้ 7 วัน', d.devs7 + ' คน']]
     .map(function(k){ return '<div class="k"><b>' + k[1] + '</b><span>' + k[0] + '</span></div>'; }).join('');
   var byDay = {}; d.days.forEach(function(x){ byDay[x.day] = x; });
   var list = []; for (var i = 13; i >= 0; i--) { var day = new Date(d.now + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10); list.push({ day: day, v: byDay[day] ? byDay[day].devs : 0 }); }

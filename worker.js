@@ -10,7 +10,11 @@ const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS opens (day TEXT, dev TEXT, PRIMARY KEY (day, dev))`,
   `CREATE TABLE IF NOT EXISTS names (dev TEXT PRIMARY KEY, name TEXT, updated INTEGER)`,
   `CREATE TABLE IF NOT EXISTS avatars (dev TEXT PRIMARY KEY, img TEXT, updated INTEGER)`,
-  `CREATE TABLE IF NOT EXISTS summaries (dev TEXT PRIMARY KEY, data TEXT, updated INTEGER)`
+  `CREATE TABLE IF NOT EXISTS summaries (dev TEXT PRIMARY KEY, data TEXT, updated INTEGER)`,
+  // who = which person a device probably belongs to: the nickname if set, otherwise a fingerprint
+  // (hash of network address + phone type + screen) so Safari, the home-screen app and the LINE browser
+  // of one phone count as one person. Only the hash is stored, never the address itself.
+  `CREATE TABLE IF NOT EXISTS who (dev TEXT PRIMARY KEY, fp TEXT, pkey TEXT, updated INTEGER)`
 ];
 // password for /stats (only its SHA-256 is stored here)
 const STATS_KEY_SHA256 = 'd38ac90ed5baac73579f69da615e0fe79b865be8ddf0bdde5599e23d8ed5d99b';
@@ -21,6 +25,7 @@ async function ensure(db) {
   for (const q of SCHEMA) await db.prepare(q).run();
   try { await db.prepare('ALTER TABLE events ADD COLUMN rid TEXT').run(); } catch (e) {}      // older databases
   await db.prepare('CREATE UNIQUE INDEX IF NOT EXISTS events_rid ON events (dev, rid)').run();
+  await db.prepare("INSERT OR IGNORE INTO who (dev, pkey, updated) SELECT dev, 'n:' || LOWER(name), updated FROM names").run();
   ready = true;
 }
 
@@ -28,6 +33,14 @@ const json = (d, status = 200) => new Response(JSON.stringify(d), { status, head
 const jstDay = ts => new Date(ts + 9 * 3600e3).toISOString().slice(0, 10);          // day boundary in Japan time
 const devOk = d => typeof d === 'string' && /^[a-z0-9]{8,32}$/.test(d);
 const PARTS = ['gakka', 'jitsugi', 'life'];
+const FP_SALT = 'jac-who-2026';
+function phoneType(ua) {           // "iPhone iOS 18", "Android 14 SM-S911B", … (browser left out on purpose)
+  ua = String(ua || '');
+  let m = ua.match(/(iPhone|iPad|iPod).*?OS (\d+)/); if (m) return m[1] + ' iOS ' + m[2];
+  m = ua.match(/Android (\d+)[^;)]*;\s*([^;)]+?)(?:\s+Build|\))/); if (m) return 'Android ' + m[1] + ' ' + m[2].replace(/\s*wv$/, '');
+  if (/Macintosh/.test(ua)) return 'Mac'; if (/Windows/.test(ua)) return 'Windows';
+  return ua.slice(0, 40);
+}
 
 async function ping(req, env) {
   let b; try { b = await req.json(); } catch (e) { return json({ ok: false }, 400); }
@@ -44,6 +57,13 @@ async function ping(req, env) {
   if (b.summary && typeof b.summary === 'object') { const t = JSON.stringify(b.summary); if (t.length < 20000)
     stmts.push(env.DB.prepare('INSERT INTO summaries (dev, data, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET data = excluded.data, updated = excluded.updated').bind(b.dev, t, now)); }
   if (name) stmts.push(env.DB.prepare('INSERT INTO names (dev, name, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET name = excluded.name, updated = excluded.updated').bind(b.dev, name, now));
+  {
+    const ip = req.headers.get('cf-connecting-ip') || '', scr = String(b.scr || '').slice(0, 24);
+    const fp = (await sha256(FP_SALT + '|' + ip + '|' + phoneType(req.headers.get('user-agent')) + '|' + scr)).slice(0, 16);
+    let pkey = name ? 'n:' + name.toLowerCase() : '';
+    if (!pkey) { const r = await env.DB.prepare('SELECT name FROM names WHERE dev = ?').bind(b.dev).first(); pkey = r && r.name ? 'n:' + r.name.toLowerCase() : 'fp:' + fp; }
+    stmts.push(env.DB.prepare('INSERT INTO who (dev, fp, pkey, updated) VALUES (?, ?, ?, ?) ON CONFLICT(dev) DO UPDATE SET fp = excluded.fp, pkey = excluded.pkey, updated = excluded.updated').bind(b.dev, fp, pkey, now));
+  }
   let ev = Array.isArray(b.events) ? b.events.slice(0, 20) : [];
   // at most 300 results per device per day: real study never gets near this, a spam loop would
   if (ev.length) { const c = await env.DB.prepare('SELECT COUNT(*) AS n FROM events WHERE dev = ? AND day = ?').bind(b.dev, jstDay(now)).first(); if (c && c.n >= 300) ev = []; }
@@ -70,35 +90,35 @@ async function stats(env) {
   const now = Date.now(), today = jstDay(now), from = jstDay(now - 13 * 864e5);
   const one = (q, ...a) => env.DB.prepare(q).bind(...a).first();
   const all = async (q, ...a) => (await env.DB.prepare(q).bind(...a).all()).results;
-  const live = await all('SELECT part, COUNT(*) AS c FROM pings WHERE ts > ? GROUP BY part', now - 5 * 60e3);
-  const t = await one('SELECT COUNT(DISTINCT dev) AS devs, COUNT(*) AS quizzes, COALESCE(SUM(n),0) AS n, COALESCE(SUM(s),0) AS s FROM events WHERE day = ?', today);
-  const opensToday = await one('SELECT COUNT(*) AS c FROM opens WHERE day = ?', today);
-  const days = await all(`SELECT day, COUNT(DISTINCT dev) AS devs, COUNT(*) AS quizzes, SUM(n) AS n, SUM(s) AS s FROM events WHERE day >= ? GROUP BY day`, from);
-  const opens = await all('SELECT day, COUNT(*) AS c FROM opens WHERE day >= ? GROUP BY day', from);
+  const live = await all(`SELECT p.part AS part, COUNT(DISTINCT COALESCE(w.pkey, 'dev:' || p.dev)) AS c FROM pings p LEFT JOIN who w ON w.dev = p.dev WHERE p.ts > ? GROUP BY p.part`, now - 5 * 60e3);
+  const t = await one(`SELECT COUNT(DISTINCT COALESCE(w.pkey, 'dev:' || e.dev)) AS devs, COUNT(*) AS quizzes, COALESCE(SUM(e.n),0) AS n, COALESCE(SUM(e.s),0) AS s FROM events e LEFT JOIN who w ON w.dev = e.dev WHERE e.day = ?`, today);
+  const opensToday = await one(`SELECT COUNT(DISTINCT COALESCE(w.pkey, 'dev:' || o.dev)) AS c, COUNT(*) AS devices FROM opens o LEFT JOIN who w ON w.dev = o.dev WHERE o.day = ?`, today);
+  const days = await all(`SELECT e.day AS day, COUNT(DISTINCT COALESCE(w.pkey, 'dev:' || e.dev)) AS devs, COUNT(*) AS quizzes, SUM(e.n) AS n, SUM(e.s) AS s FROM events e LEFT JOIN who w ON w.dev = e.dev WHERE e.day >= ? GROUP BY e.day`, from);
+  const opens = await all(`SELECT o.day AS day, COUNT(DISTINCT COALESCE(w.pkey, 'dev:' || o.dev)) AS c FROM opens o LEFT JOIN who w ON w.dev = o.dev WHERE o.day >= ? GROUP BY o.day`, from);
   const parts = await all('SELECT part, COUNT(*) AS quizzes, SUM(n) AS n, SUM(s) AS s FROM events WHERE day = ? GROUP BY part', today);
   const mocks = await all(`SELECT part, COUNT(*) AS c, SUM(CASE WHEN s * 100 >= n * 75 THEN 1 ELSE 0 END) AS pass FROM events WHERE mode = 'real' AND day >= ? GROUP BY part`, from);
   const hours = await all(`SELECT CAST(((ts / 3600000) + 9) % 24 AS INTEGER) AS h, COUNT(*) AS c FROM events WHERE day >= ? GROUP BY h`, jstDay(now - 6 * 864e5));
   const recent = await all('SELECT ts, part, mode, n, s FROM events ORDER BY ts DESC LIMIT 25');
-  const devs7 = await one('SELECT COUNT(DISTINCT dev) AS c FROM opens WHERE day >= ?', jstDay(now - 6 * 864e5));
+  const devs7 = await one(`SELECT COUNT(DISTINCT COALESCE(w.pkey, 'dev:' || o.dev)) AS c FROM opens o LEFT JOIN who w ON w.dev = o.dev WHERE o.day >= ?`, jstDay(now - 6 * 864e5));
   // people: devices with the same nickname are merged
-  const people = await all(`SELECT COALESCE(LOWER(n.name), 'dev:' || p.dev) AS k, MAX(n.name) AS name, MAX(p.ts) AS last, MAX(p.part) AS part,
-      (SELECT COALESCE(SUM(e.n),0) FROM events e LEFT JOIN names n2 ON n2.dev = e.dev WHERE COALESCE(LOWER(n2.name), 'dev:' || e.dev) = COALESCE(LOWER(n.name), 'dev:' || p.dev) AND e.day = ?) AS n_today,
-      (SELECT COALESCE(SUM(e.s),0) FROM events e LEFT JOIN names n2 ON n2.dev = e.dev WHERE COALESCE(LOWER(n2.name), 'dev:' || e.dev) = COALESCE(LOWER(n.name), 'dev:' || p.dev) AND e.day = ?) AS s_today,
-      (SELECT COALESCE(SUM(e.n),0) FROM events e LEFT JOIN names n2 ON n2.dev = e.dev WHERE COALESCE(LOWER(n2.name), 'dev:' || e.dev) = COALESCE(LOWER(n.name), 'dev:' || p.dev) AND e.day >= ?) AS n_7,
-      (SELECT COALESCE(SUM(e.n),0) FROM events e LEFT JOIN names n2 ON n2.dev = e.dev WHERE COALESCE(LOWER(n2.name), 'dev:' || e.dev) = COALESCE(LOWER(n.name), 'dev:' || p.dev)) AS n_all,
-      (SELECT COALESCE(SUM(e.s),0) FROM events e LEFT JOIN names n2 ON n2.dev = e.dev WHERE COALESCE(LOWER(n2.name), 'dev:' || e.dev) = COALESCE(LOWER(n.name), 'dev:' || p.dev)) AS s_all,
-      (SELECT e.s * 100 / e.n FROM events e LEFT JOIN names n2 ON n2.dev = e.dev WHERE COALESCE(LOWER(n2.name), 'dev:' || e.dev) = COALESCE(LOWER(n.name), 'dev:' || p.dev) AND e.mode = 'real' ORDER BY e.ts DESC LIMIT 1) AS mock_pct,
-      (SELECT e.part FROM events e LEFT JOIN names n2 ON n2.dev = e.dev WHERE COALESCE(LOWER(n2.name), 'dev:' || e.dev) = COALESCE(LOWER(n.name), 'dev:' || p.dev) AND e.mode = 'real' ORDER BY e.ts DESC LIMIT 1) AS mock_part,
-      (SELECT a.img FROM avatars a LEFT JOIN names n3 ON n3.dev = a.dev WHERE COALESCE(LOWER(n3.name), 'dev:' || a.dev) = COALESCE(LOWER(n.name), 'dev:' || p.dev) ORDER BY a.updated DESC LIMIT 1) AS avatar
-    FROM pings p LEFT JOIN names n ON n.dev = p.dev GROUP BY k ORDER BY last DESC LIMIT 300`, today, today, jstDay(now - 6 * 864e5));
+  const people = await all(`SELECT COALESCE(w.pkey, 'dev:' || p.dev) AS k, MAX(n.name) AS name, COUNT(DISTINCT p.dev) AS devices, MAX(p.ts) AS last, MAX(p.part) AS part,
+      (SELECT COALESCE(SUM(e.n),0) FROM events e LEFT JOIN who w2 ON w2.dev = e.dev WHERE COALESCE(w2.pkey, 'dev:' || e.dev) = COALESCE(w.pkey, 'dev:' || p.dev) AND e.day = ?) AS n_today,
+      (SELECT COALESCE(SUM(e.s),0) FROM events e LEFT JOIN who w2 ON w2.dev = e.dev WHERE COALESCE(w2.pkey, 'dev:' || e.dev) = COALESCE(w.pkey, 'dev:' || p.dev) AND e.day = ?) AS s_today,
+      (SELECT COALESCE(SUM(e.n),0) FROM events e LEFT JOIN who w2 ON w2.dev = e.dev WHERE COALESCE(w2.pkey, 'dev:' || e.dev) = COALESCE(w.pkey, 'dev:' || p.dev) AND e.day >= ?) AS n_7,
+      (SELECT COALESCE(SUM(e.n),0) FROM events e LEFT JOIN who w2 ON w2.dev = e.dev WHERE COALESCE(w2.pkey, 'dev:' || e.dev) = COALESCE(w.pkey, 'dev:' || p.dev)) AS n_all,
+      (SELECT COALESCE(SUM(e.s),0) FROM events e LEFT JOIN who w2 ON w2.dev = e.dev WHERE COALESCE(w2.pkey, 'dev:' || e.dev) = COALESCE(w.pkey, 'dev:' || p.dev)) AS s_all,
+      (SELECT e.s * 100 / e.n FROM events e LEFT JOIN who w2 ON w2.dev = e.dev WHERE COALESCE(w2.pkey, 'dev:' || e.dev) = COALESCE(w.pkey, 'dev:' || p.dev) AND e.mode = 'real' ORDER BY e.ts DESC LIMIT 1) AS mock_pct,
+      (SELECT e.part FROM events e LEFT JOIN who w2 ON w2.dev = e.dev WHERE COALESCE(w2.pkey, 'dev:' || e.dev) = COALESCE(w.pkey, 'dev:' || p.dev) AND e.mode = 'real' ORDER BY e.ts DESC LIMIT 1) AS mock_part,
+      (SELECT a.img FROM avatars a LEFT JOIN who w3 ON w3.dev = a.dev WHERE COALESCE(w3.pkey, 'dev:' || a.dev) = COALESCE(w.pkey, 'dev:' || p.dev) ORDER BY a.updated DESC LIMIT 1) AS avatar
+    FROM pings p LEFT JOIN names n ON n.dev = p.dev LEFT JOIN who w ON w.dev = p.dev GROUP BY k ORDER BY last DESC LIMIT 300`, today, today, jstDay(now - 6 * 864e5));
   const recentNamed = await all('SELECT e.ts, e.part, e.mode, e.n, e.s, n.name FROM events e LEFT JOIN names n ON n.dev = e.dev ORDER BY e.ts DESC LIMIT 25');
-  return json({ now, today, live, t, opensToday: opensToday.c, days, opens, parts, mocks, hours, recent: recentNamed, devs7: devs7.c, people });
+  return json({ now, today, live, t, opensToday: opensToday.c, devicesToday: opensToday.devices, days, opens, parts, mocks, hours, recent: recentNamed, devs7: devs7.c, people });
 }
 
 // one person (all devices that share the nickname)
 async function person(env, k) {
-  const KEY = "COALESCE(LOWER(n.name), 'dev:' || d.dev)";
-  const devs = (await env.DB.prepare(`SELECT d.dev FROM (SELECT dev FROM pings UNION SELECT dev FROM events) d LEFT JOIN names n ON n.dev = d.dev WHERE ${KEY} = ?`).bind(k).all()).results.map(r => r.dev);
+  const KEY = "COALESCE(w.pkey, 'dev:' || d.dev)";
+  const devs = (await env.DB.prepare(`SELECT d.dev FROM (SELECT dev FROM pings UNION SELECT dev FROM events) d LEFT JOIN who w ON w.dev = d.dev WHERE ${KEY} = ?`).bind(k).all()).results.map(r => r.dev);
   if (!devs.length) return json({ error: 'not found' }, 404);
   const qs = devs.map(() => '?').join(',');
   const now = Date.now();

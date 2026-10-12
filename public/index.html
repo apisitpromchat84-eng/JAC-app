@@ -4169,14 +4169,16 @@ $('nickEdit').addEventListener('click', openNick);
   const u = new URLSearchParams(location.search).get('u');
   if (u && cleanNick(u)) { save(NICK_KEY, cleanNick(u)); history.replaceState(null, '', location.pathname + location.hash); }
 })();
-const actOn = /^https?:$/.test(location.protocol) && !window.IMGDATA;
+// the owner can stop a device from being counted: open the app once with ?notrack=1 (and ?notrack=0 to undo)
+(() => { const m = location.search.match(/[?&]notrack=([01])/); if (m) { save('jac-notrack', m[1] === '1'); toast(m[1] === '1' ? 'เครื่องนี้จะไม่ถูกนับในหน้าติดตามแล้ว' : 'เครื่องนี้กลับมานับในหน้าติดตามแล้ว', 3500); history.replaceState(null, '', location.pathname + location.hash); } })();
+const actOn = /^https?:$/.test(location.protocol) && !window.IMGDATA && !load('jac-notrack', false);
 const actDev = (() => { let d = load(ACT_DEV, ''); if (!/^[a-z0-9]{8,32}$/.test(d)) { d = (Date.now().toString(36) + Math.random().toString(36).slice(2, 12)).slice(0, 20); save(ACT_DEV, d); } return d; })();
 let actBusy = false;
 function actSend() {
   if (!actOn || actBusy || document.hidden && !load(ACT_Q, []).length) return;
   actBusy = true; let sentOk = false;
   const events = load(ACT_Q, []).slice(0, 20);
-  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ dev: actDev, name: load(NICK_KEY, ''), part: prefs.part, events, noav: !load(AV_KEY, '') }, avPending(), sumPending())) })
+  fetch('/api/ping', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ dev: actDev, name: load(NICK_KEY, ''), part: prefs.part, events, noav: !load(AV_KEY, ''), scr: screen.width + 'x' + screen.height + '@' + (window.devicePixelRatio || 1) }, avPending(), sumPending())) })
     .then(r => { if (!r.ok) return; r.json().then(actRestore).catch(() => {}); sentOk = events.length > 0; if (events.length) save(ACT_Q, load(ACT_Q, []).slice(events.length)); save('jac-avsent', load('jac-avver', 0)); if (sumSentNow) save('jac-sumsent', sumSentNow); }).catch(() => {})
     .finally(() => { actBusy = false; if (sentOk && load(ACT_Q, []).length) setTimeout(actSend, 800); });
 }
