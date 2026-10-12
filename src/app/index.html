@@ -888,10 +888,18 @@ body{ -webkit-user-select:none; user-select:none; -webkit-touch-callout:none }
 input, textarea{ -webkit-user-select:text; user-select:text }
 img{ -webkit-user-drag:none; user-drag:none }
 @media print{ body *{ display:none !important } body::after{ content:'© แอป JAC — เนื้อหาสงวนลิขสิทธิ์ ไม่อนุญาตให้พิมพ์หรือคัดลอก'; display:block; padding:40px; font-size:18px } }
+/* name watermark over every screen (so a screenshot shows whose phone it came from) + privacy cover */
+#wmLayer{ position:fixed; inset:0; z-index:9998; pointer-events:none; background-image:var(--wm-l); background-size:250px 170px }
+html[data-theme="dark"] #wmLayer{ background-image:var(--wm-d) }
+#shield{ position:fixed; inset:0; z-index:10000; display:none; background:var(--bg); align-items:center; justify-content:center; flex-direction:column; gap:10px; font:700 1.1rem var(--thf); color:var(--mute) }
+#shield b{ font-size:2.6rem }
+html.shield #shield{ display:flex }
+@media print{ #wmLayer, #shield{ display:none !important } }
 .copyr{ text-align:center; font-size:.72rem; color:var(--mute); margin:18px 0 4px; line-height:1.6 }
 </style>
 </head>
 <body>
+<div id="wmLayer" aria-hidden="true"></div><div id="shield" aria-hidden="true"><b>🔒</b>แอป JAC</div>
 
 <header>
   <div class="hbar">
@@ -5823,7 +5831,7 @@ $('avFile').addEventListener('change', e => {
   im.src = url;
 });
 $('avDel').addEventListener('click', () => { save(AV_KEY, ''); save('jac-avver', Date.now()); showAv(); actSend(); });
-function showNick() { $('nickNow').textContent = load(NICK_KEY, '') || 'ยังไม่ได้ตั้ง'; }
+function showNick() { $('nickNow').textContent = load(NICK_KEY, '') || 'ยังไม่ได้ตั้ง'; wmPaint(); }
 function openNick() { showAv(); $('nickBox').value = load(NICK_KEY, ''); $('nickSheet').classList.add('on'); setTimeout(() => $('nickBox').focus(), 150); }
 $('nickSave').addEventListener('click', () => { const v = cleanNick($('nickBox').value); if (!v) { toast('พิมพ์ชื่อเล่นก่อน'); return; } save(NICK_KEY, v); $('nickSheet').classList.remove('on'); showNick(); toast('บันทึกชื่อแล้ว: ' + v); actSend(); });
 $('nickSkip').addEventListener('click', () => { save('jac-nickskip', today()); $('nickSheet').classList.remove('on'); });
@@ -5856,6 +5864,43 @@ showNick();
 if (actOn && !load(NICK_KEY, '') && load('jac-nickskip', '') !== today()) setTimeout(() => { if (!load(NICK_KEY, '') && !wnOpenNow) openNick(); }, 4000);
 if (actOn) { setTimeout(actSend, 1500); setInterval(() => { if (!document.hidden) actSend(); }, 120000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) actSend(); }); window.addEventListener('online', actSend); }
+
+/* ================= screen protection =================
+   A web page cannot make screenshots black (only native apps can), so instead:
+   1) every screen carries a faint name + device code + date, so a shared screenshot shows whose it is
+   2) the app is covered when it goes to the background (app switcher preview) or loses focus
+   3) PrintScreen / Mac screenshot keys on a computer flash the cover and replace the clipboard */
+function wmPaint() {
+  const el = document.getElementById('wmLayer'); if (!el) return;
+  const nick = (load('jac-nick', '') || '').replace(/[<>&"]/g, '');
+  const code = 'ID ' + String(load('jac-anon', '') || '').slice(-6).toUpperCase();
+  const d = new Date(), date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+  const l1 = nick ? `${nick} · ${code}` : code, l2 = `แอป JAC · ${date}`;
+  const svg = c => 'url("data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="250" height="170"><g transform="rotate(-24 125 85)" fill="${c}" font-family="sans-serif" font-weight="700" text-anchor="middle">` +
+    `<text x="125" y="80" font-size="15">${l1}</text><text x="125" y="100" font-size="12">${l2}</text></g></svg>`) + '")';
+  el.style.setProperty('--wm-l', svg('rgba(29,43,58,.085)'));
+  el.style.setProperty('--wm-d', svg('rgba(255,255,255,.07)'));
+}
+wmPaint(); setInterval(wmPaint, 600000);            // keeps the date right if the app stays open past midnight
+const shieldOn = () => document.documentElement.classList.add('shield');
+const shieldOff = () => { if (!document.hidden) document.documentElement.classList.remove('shield'); };
+document.addEventListener('visibilitychange', () => document.hidden ? shieldOn() : shieldOff());
+window.addEventListener('pagehide', shieldOn); window.addEventListener('pageshow', shieldOff);
+window.addEventListener('blur', shieldOn); window.addEventListener('focus', shieldOff);
+document.addEventListener('pointerdown', shieldOff, true);
+let shieldT = 0;
+function shieldFlash() { shieldOn(); clearTimeout(shieldT); shieldT = setTimeout(shieldOff, 1500); }
+document.addEventListener('keyup', e => {
+  if (e.key === 'PrintScreen') { shieldFlash(); try { navigator.clipboard.writeText(COPY_NOTE).catch(() => {}); } catch (x) {} }
+});
+document.addEventListener('keydown', e => {
+  const k = (e.key || '').toLowerCase();
+  if (e.key === 'PrintScreen' || (e.metaKey && e.shiftKey && ['3', '4', '5', 's'].includes(k))) shieldFlash();
+  if (e.key === 'F12' || ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i', 'j', 'c'].includes(k)) || ((e.ctrlKey || e.metaKey) && e.altKey && ['i', 'j', 'u'].includes(k))) e.preventDefault();
+  if ((e.ctrlKey || e.metaKey) && k === 'a' && !isField(e.target)) e.preventDefault();
+});
+document.addEventListener('selectstart', e => { if (!isField(e.target)) e.preventDefault(); });
 
 /* ================= 🤖 ผู้ช่วยฝึก: type what you want to practise, the app builds the set ================= */
 // Works offline and costs nothing: it only reads this device's progress (done / wrong / unsure / due / 🔥).
@@ -6377,6 +6422,7 @@ $('qtSheet').addEventListener('click', e => { if (e.target === $('qtSheet')) $('
 /* ================= 📢 มีอะไรใหม่: after an update, show the guide pictures once before studying ================= */
 // add a new entry (newest first) with each update; pictures live in img/whatsnew/<id>/0.webp … n.webp
 const WHATS_NEW = [
+  { id: '2026-10-13', n: 1, title: 'ปกป้องเนื้อหาในแอป 🔒' },
   { id: '2026-10-12d', n: 1, title: 'ความพร้อมสอบโฉมใหม่ (แท็บสถิติ)' },
   { id: '2026-10-12c', n: 1, title: 'ไอคอนใหม่ 🇹🇭' },
   { id: '2026-10-12b', n: 4, title: 'อัปเดต 12 ต.ค. (2) — เมนู ☰ · หน้าแรกกระชับ · สถิติพับได้' },
