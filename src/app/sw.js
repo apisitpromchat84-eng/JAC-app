@@ -1,6 +1,6 @@
 // the page is network-first (cached as './' — Cloudflare Pages redirects /index.html to /)
 // index.html is network-first, so CACHE only needs a new number when images/icons change
-const CACHE = 'jac-exam-v50';
+const CACHE = 'jac-exam-v51';
 const ASSETS = [
   './', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png',
   './img/s1_q01.jpg',
@@ -126,12 +126,22 @@ self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   const p = new URL(e.request.url).pathname;
   if (p.startsWith('/api/') || p === '/stats') return;   // activity counter always goes to the server
-  // The page itself: network first, so a new upload shows up without changing CACHE; cache when offline.
+  // The page itself: network first, so a new upload shows up without changing CACHE.
+  // Weak signal (underground, inside a pipe): if the network has not answered in 3 s, open the saved copy now;
+  // the download keeps going in the background and refreshes the saved copy for next time.
   if (e.request.mode === 'navigate' || e.request.url.endsWith('/index.html')) {
-    e.respondWith(fetch(e.request).then(res => {
+    const net = fetch(e.request).then(res => {
       if (res.ok && !res.redirected) { const copy = res.clone(); caches.open(CACHE).then(c => c.put('./', copy)).catch(() => {}); }
       return res;
-    }).catch(() => caches.match('./')));
+    });
+    e.waitUntil(net.catch(() => {}));
+    e.respondWith(new Promise(resolve => {
+      let done = false;
+      const fin = r => { if (!done && r) { done = true; resolve(r); } };
+      const t = setTimeout(() => caches.match('./').then(fin), 3000);
+      net.then(r => { clearTimeout(t); fin(r); })
+        .catch(() => { clearTimeout(t); caches.match('./').then(hit => hit ? fin(hit) : fin(Response.error())); });
+    }));
     return;
   }
   e.respondWith(caches.match(e.request).then(hit => hit || fetch(e.request).then(res => {

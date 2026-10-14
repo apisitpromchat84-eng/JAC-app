@@ -1,0 +1,37 @@
+# tools/ — tests and helpers for แอป JAC
+
+Kept here so a new chat/session does not have to rewrite them. Nothing in this folder is deployed (only `public/` is).
+
+Paths assume the app source is at `/home/claude/build` (copy `src/app` there) and this repo at `/home/claude/repo`.
+Chromium path: `/opt/pw-browsers/chromium-1194/chrome-linux/chrome` (edit if different).
+
+## Before every deploy
+```
+cd /home/claude/build && python3 pack.py          # builds dist/
+python3 /home/claude/repo/tools/t_smoke.py        # every tab, sheet and mode; must print OK twice
+```
+Then bump `CACHE` in `sw.js`, add a `WHATS_NEW` entry + guide image, copy `dist` to `public/`, commit, push.
+
+## Tests
+| file | checks |
+|---|---|
+| t_smoke.py | opens every tab / sheet / mode in all parts, fresh and with data — any page error fails |
+| t_audit.py | question data: answer in range, translations present, duplicate stems |
+| t_slow.py | weak signal: page answers after 10 s, app must still open in ~3 s from the saved copy |
+| t_split.py | privacy cover: phone/iPad only on leaving the app, computer also on lost focus |
+| t_shield.py | privacy cover + PrintScreen flash, screenshots to `shield/` |
+| t_mini.py | ทดสอบย่อย progress (ทำแล้ว / มั่นใจ+ถูก) |
+| t_gram.py, t_rz.py, t_wn2.py | grammar helper, readiness card, what's-new popup |
+| t_asst.py, t_kb.py, t_kbeval.py | assistant commands and knowledge search accuracy |
+
+## Guide images (every user-visible update)
+`python3 guide_render.py <folder with guide.html> <version id> <name1,name2>`
+→ 1080×1350 PNG for LINE in the folder + `img/whatsnew/<id>/<i>.webp` for the app.
+Start from `guides/template_phone.html` (steps + phone screenshot) or `guides/template_wide.html` (steps + wide crop); put the screenshot next to it.
+
+## Mock server for /stats
+`mockserver/server2.mjs` imitates the worker + D1 locally; `seed.mjs` fills demo data;
+`t_people.mjs` checks people counting (needs `STATS_KEY` env var = the stats password; never commit the password).
+
+## Grammar PDF
+`make_gram_pdf.py` + `gram_items.py` → jac_question_grammar.pdf

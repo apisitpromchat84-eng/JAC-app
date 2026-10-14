@@ -5873,7 +5873,9 @@ const shieldOn = () => document.documentElement.classList.add('shield');
 const shieldOff = () => { if (!document.hidden) document.documentElement.classList.remove('shield'); };
 document.addEventListener('visibilitychange', () => document.hidden ? shieldOn() : shieldOff());
 window.addEventListener('pagehide', shieldOn); window.addEventListener('pageshow', shieldOff);
-window.addEventListener('blur', shieldOn); window.addEventListener('focus', shieldOff);
+// "lost focus" only means "left the app" on a computer; on a phone / iPad it also fires in split screen
+// (tapping LINE next to the app), so there the cover is shown only when the app really goes to the background
+if (!navigator.maxTouchPoints) { window.addEventListener('blur', shieldOn); window.addEventListener('focus', shieldOff); }
 document.addEventListener('pointerdown', shieldOff, true);
 let shieldT = 0;
 function shieldFlash() { shieldOn(); clearTimeout(shieldT); shieldT = setTimeout(shieldOff, 1500); }
@@ -6408,6 +6410,7 @@ $('qtSheet').addEventListener('click', e => { if (e.target === $('qtSheet')) $('
 /* ================= 📢 มีอะไรใหม่: after an update, show the guide pictures once before studying ================= */
 // add a new entry (newest first) with each update; pictures live in img/whatsnew/<id>/0.webp … n.webp
 const WHATS_NEW = [
+  { id: '2026-10-14', n: 1, title: 'เปิดเร็วขึ้นตอนสัญญาณอ่อน · iPad แบ่งจอ' },
   { id: '2026-10-13b', n: 1, title: 'ทดสอบย่อย: นับข้อที่ทำแล้ว' },
   { id: '2026-10-13', n: 1, title: 'ปกป้องเนื้อหาในแอป 🔒' },
   { id: '2026-10-12d', n: 1, title: 'ความพร้อมสอบโฉมใหม่ (แท็บสถิติ)' },
