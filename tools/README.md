@@ -30,8 +30,14 @@ Then bump `CACHE` in `sw.js`, add a `WHATS_NEW` entry + guide image, copy `dist`
 Start from `guides/template_phone.html` (steps + phone screenshot) or `guides/template_wide.html` (steps + wide crop); put the screenshot next to it.
 
 ## Mock server for /stats
-`mockserver/server2.mjs` imitates the worker + D1 locally; `seed.mjs` fills demo data;
+`mockserver/server2.mjs` imitates the worker + D1 locally (copy `worker.js` and `stats_page.js` from the repo root into mockserver/ first, then `node server2.mjs`); `seed.mjs` fills demo data;
 `t_people.mjs` checks people counting (needs `STATS_KEY` env var = the stats password; never commit the password).
 
 ## Grammar PDF
 `make_gram_pdf.py` + `gram_items.py` → jac_question_grammar.pdf
+
+## Sync + explainer tests (need the mock server running on :8790)
+| file | checks |
+|---|---|
+| t_sync.py | device A turns ☁️ sync on → fresh device B with the same nickname is offered the pull and pulls → B studies → A is told B is newer and pulls → wrong PIN on device C is refused |
+| t_confhelp.py | มั่นใจ / ยังเดาอยู่ explainer: open on the first practice quiz, ? toggles, "เข้าใจแล้ว" closes for good |

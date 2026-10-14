@@ -14,7 +14,9 @@ const SCHEMA = [
   // who = which person a device probably belongs to: the nickname if set, otherwise a fingerprint
   // (hash of network address + phone type + screen) so Safari, the home-screen app and the LINE browser
   // of one phone count as one person. Only the hash is stored, never the address itself.
-  `CREATE TABLE IF NOT EXISTS who (dev TEXT PRIMARY KEY, fp TEXT, pkey TEXT, updated INTEGER)`
+  `CREATE TABLE IF NOT EXISTS who (dev TEXT PRIMARY KEY, fp TEXT, pkey TEXT, updated INTEGER)`,
+  // cloud copy of a person's progress (opt-in): nickname + 4-digit PIN; only a hash of the PIN is stored
+  `CREATE TABLE IF NOT EXISTS sync (nk TEXT PRIMARY KEY, pinh TEXT, data TEXT, updated INTEGER, dev TEXT, fails INTEGER DEFAULT 0, lock INTEGER DEFAULT 0)`
 ];
 // password for /stats (only its SHA-256 is stored here)
 const STATS_KEY_SHA256 = 'd38ac90ed5baac73579f69da615e0fe79b865be8ddf0bdde5599e23d8ed5d99b';
@@ -142,6 +144,47 @@ async function person(env, k) {
     summary: sum ? sum.data : null, synced: sum ? sum.updated : 0, events, days });
 }
 
+/* ---------- progress sync (nickname + PIN) ----------
+   op 'check' {name}                 → { exists }            (no PIN: lets a new phone offer "pull your progress")
+   op 'head'  {name,pin}             → { updated, dev }
+   op 'load'  {name,pin}             → { data, updated }
+   op 'save'  {name,pin,dev,base,data,force} → { updated } | 409 { updated } when another device saved since `base`
+   5 wrong PINs → that name is locked for 15 minutes. */
+const SYNC_MAX = 1500000;
+async function sync(req, env) {
+  let b; try { b = await req.json(); } catch (e) { return json({ ok: false }, 400); }
+  const name = String(b.name || '').replace(/[<>"'`\\]/g, '').replace(/\s+/g, ' ').trim().slice(0, 24);
+  const nk = name.toLowerCase(), now = Date.now();
+  if (!nk) return json({ error: 'name' }, 400);
+  const row = await env.DB.prepare('SELECT pinh, updated, dev, fails, lock FROM sync WHERE nk = ?').bind(nk).first();
+  if (b.op === 'check') return json({ exists: !!row, updated: row ? row.updated : 0 });
+  if (!/^\d{4}$/.test(String(b.pin || ''))) return json({ error: 'pin' }, 400);
+  const pinh = await sha256('jac-sync|' + nk + '|' + b.pin);
+  if (row && row.lock > now) return json({ error: 'locked', until: row.lock }, 429);
+  if (row && row.pinh !== pinh) {
+    const f = (row.fails || 0) + 1;
+    await env.DB.prepare('UPDATE sync SET fails = ?, lock = ? WHERE nk = ?').bind(f >= 5 ? 0 : f, f >= 5 ? now + 15 * 60e3 : 0, nk).run();
+    return json({ error: 'wrongpin', left: f >= 5 ? 0 : 5 - f }, 403);
+  }
+  if (row && row.fails) await env.DB.prepare('UPDATE sync SET fails = 0 WHERE nk = ?').bind(nk).run();
+  if (b.op === 'head') return json({ exists: !!row, updated: row ? row.updated : 0, same: !!row && row.dev === b.dev });
+  if (b.op === 'load') {
+    if (!row) return json({ error: 'none' }, 404);
+    const r = await env.DB.prepare('SELECT data, updated FROM sync WHERE nk = ?').bind(nk).first();
+    return json({ data: r.data, updated: r.updated });
+  }
+  if (b.op === 'save') {
+    if (!devOk(b.dev) || typeof b.data !== 'string' || b.data.length > SYNC_MAX) return json({ error: 'data' }, 400);
+    let d; try { d = JSON.parse(b.data); } catch (e) { return json({ error: 'data' }, 400); }
+    if (!d || d.app !== 'jac-exam' || !d.keys || typeof d.keys !== 'object') return json({ error: 'data' }, 400);
+    if (row && !b.force && row.updated !== Number(b.base) && row.dev !== b.dev) return json({ error: 'newer', updated: row.updated }, 409);
+    await env.DB.prepare('INSERT INTO sync (nk, pinh, data, updated, dev) VALUES (?, ?, ?, ?, ?) ON CONFLICT(nk) DO UPDATE SET data = excluded.data, updated = excluded.updated, dev = excluded.dev')
+      .bind(nk, pinh, b.data, now, b.dev).run();
+    return json({ updated: now, created: !row });
+  }
+  return json({ error: 'op' }, 400);
+}
+
 export default {
   async fetch(req, env) {
     const path = new URL(req.url).pathname;
@@ -152,6 +195,7 @@ export default {
     try {
       await ensure(env.DB);
       if (path === '/api/ping' && req.method === 'POST') return await ping(req, env);
+      if (path === '/api/sync' && req.method === 'POST') return await sync(req, env);
       if (path === '/api/person') {
         if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);
         return await person(env, new URL(req.url).searchParams.get('k') || '');
