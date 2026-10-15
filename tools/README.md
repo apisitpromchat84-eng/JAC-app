@@ -44,3 +44,4 @@ Start from `guides/template_phone.html` (steps + phone screenshot) or `guides/te
 
 ## Trap-grammar handout
 `make_trap_pdf.py` (+ `rawq.json`, `trap_stats.json`) → jac_trap_grammar.html, print to PDF. Negative / extreme grammar in "choose the WRONG one" questions.
+`make_trap_all_pdf.py` (+ `neg_all.json`) → every "choose the WRONG one" question (84): A = answer has trap grammar (26), B = wrong by content (58).
