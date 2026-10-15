@@ -141,7 +141,7 @@ function pct(s, n){ return n ? Math.round(s / n * 100) + '%' : '—'; }
 function ago(ts, now){ var m = Math.round((now - ts) / 60000); if (m < 1) return 'เมื่อสักครู่'; if (m < 60) return m + ' นาทีที่แล้ว'; var h = Math.round(m / 60); if (h < 24) return h + ' ชม.ที่แล้ว'; return Math.round(h / 24) + ' วันที่แล้ว'; }
 function esc(v){ return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
 function lvl(v){ return v == null ? '' : v >= 75 ? 'ok' : v >= 60 ? 'mid' : 'low'; }
-function avatar(src, name){ return src ? '<img class="av" src="' + src + '" alt="">' : '<span class="av">' + esc((name || '?').slice(0, 1)) + '</span>'; }
+function avatar(src, name){ return src ? '<img class="av" src="' + esc(src) + '" alt="">' : '<span class="av">' + esc((name || '?').slice(0, 1)) + '</span>'; }
 var showAll = false, last = null;
 
 /* ---------- monthly summary ---------- */
@@ -237,12 +237,12 @@ function render(d){
   var max = Math.max.apply(null, list.map(function(x){ return x.v; }).concat([1]));
   $('chart').innerHTML = list.map(function(x){ return '<div class="' + (x.day === d.today ? 't' : '') + '"><em>' + (x.v || '') + '</em><i class="' + (x.v ? 'v' : '') + '" style="height:' + Math.max(3, Math.round(x.v / max * 86)) + 'px"></i></div>'; }).join('');
   $('chartd').innerHTML = list.map(function(x){ return '<span class="' + (x.day === d.today ? 't' : '') + '">' + +x.day.slice(8) + '</span>'; }).join('');
-  $('parts').innerHTML = d.parts.length ? '<table><tr><th>ภาค</th><th class="n">ชุด</th><th class="n">ข้อ</th><th class="n">ถูก</th></tr>' + d.parts.map(function(p){ return '<tr><td>' + (PART[p.part] || p.part) + '</td><td class="n">' + p.quizzes + '</td><td class="n">' + p.n + '</td><td class="n">' + pct(p.s, p.n) + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">วันนี้ยังไม่มีใครทำแบบทดสอบ</div>';
-  $('mocks').innerHTML = d.mocks.length ? '<table><tr><th>ภาค</th><th class="n">ครั้ง</th><th class="n">ผ่าน 75%</th></tr>' + d.mocks.map(function(m){ return '<tr><td>' + (PART[m.part] || m.part) + '</td><td class="n">' + m.c + '</td><td class="n">' + m.pass + ' (' + pct(m.pass, m.c) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีการสอบจำลอง</div>';
+  $('parts').innerHTML = d.parts.length ? '<table><tr><th>ภาค</th><th class="n">ชุด</th><th class="n">ข้อ</th><th class="n">ถูก</th></tr>' + d.parts.map(function(p){ return '<tr><td>' + (PART[p.part] || esc(p.part)) + '</td><td class="n">' + p.quizzes + '</td><td class="n">' + p.n + '</td><td class="n">' + pct(p.s, p.n) + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">วันนี้ยังไม่มีใครทำแบบทดสอบ</div>';
+  $('mocks').innerHTML = d.mocks.length ? '<table><tr><th>ภาค</th><th class="n">ครั้ง</th><th class="n">ผ่าน 75%</th></tr>' + d.mocks.map(function(m){ return '<tr><td>' + (PART[m.part] || esc(m.part)) + '</td><td class="n">' + m.c + '</td><td class="n">' + m.pass + ' (' + pct(m.pass, m.c) + ')</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีการสอบจำลอง</div>';
   var hs = []; for (var h = 0; h < 24; h++) hs.push(0); d.hours.forEach(function(x){ hs[x.h] = x.c; }); var hm = Math.max.apply(null, hs.concat([1]));
   $('hours').innerHTML = hs.map(function(c){ return '<i style="height:' + Math.round(c / hm * 100) + '%" title="' + c + '"></i>'; }).join('');
   $('hl').innerHTML = hs.map(function(c, h){ return '<span>' + (h % 3 ? '' : h) + '</span>'; }).join('');
-  $('recent').innerHTML = d.recent.length ? '<table><tr><th>เวลา</th><th>ใคร</th><th>ทำอะไร</th><th class="n">คะแนน</th></tr>' + d.recent.map(function(r){ return '<tr><td>' + ago(r.ts, d.now) + '</td><td>' + esc(r.name || 'ไม่ระบุชื่อ') + '</td><td>' + (PART[r.part] || r.part) + ' · ' + (MODE[r.mode] || r.mode) + '</td><td class="n">' + r.s + '/' + r.n + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
+  $('recent').innerHTML = d.recent.length ? '<table><tr><th>เวลา</th><th>ใคร</th><th>ทำอะไร</th><th class="n">คะแนน</th></tr>' + d.recent.map(function(r){ return '<tr><td>' + ago(r.ts, d.now) + '</td><td>' + esc(r.name || 'ไม่ระบุชื่อ') + '</td><td>' + (PART[r.part] || esc(r.part)) + ' · ' + (MODE[r.mode] || esc(r.mode)) + '</td><td class="n">' + r.s + '/' + r.n + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มีข้อมูล</div>';
 }
 
 /* ---------- readiness estimate (same maths as in the app) ---------- */
@@ -313,7 +313,7 @@ function drawPerson(){
   for (var i = 13; i >= 0; i--) arr.push(byDay[new Date(d.now + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10)] || 0);
   var act = arr.filter(Boolean).length;
   h += '<h2>14 วันที่ผ่านมา <small>ทำ ' + act + ' จาก 14 วัน · ' + arr.reduce(function(a, b){ return a + b; }, 0) + ' ข้อ</small></h2><div class="panel track14">' + arr.map(function(v){ return '<i class="' + (v ? v >= 40 ? 'l3' : v >= 15 ? 'l2' : 'l1' : '') + '" title="' + v + ' ข้อ"></i>'; }).join('') + '</div>';
-  h += '<details class="extra"><summary>ประวัติล่าสุด</summary><div class="panel" style="margin-top:10px">' + (d.events.length ? '<table><tr><th>เวลา</th><th>ทำอะไร</th><th class="n">คะแนน</th></tr>' + d.events.slice(0, 40).map(function(e){ return '<tr><td>' + ago(e.ts, d.now) + '</td><td>' + (PART[e.part] || e.part) + ' · ' + (MODE[e.mode] || e.mode) + '</td><td class="n">' + e.s + '/' + e.n + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มี</div>') + '</div></details></div>';
+  h += '<details class="extra"><summary>ประวัติล่าสุด</summary><div class="panel" style="margin-top:10px">' + (d.events.length ? '<table><tr><th>เวลา</th><th>ทำอะไร</th><th class="n">คะแนน</th></tr>' + d.events.slice(0, 40).map(function(e){ return '<tr><td>' + ago(e.ts, d.now) + '</td><td>' + (PART[e.part] || esc(e.part)) + ' · ' + (MODE[e.mode] || esc(e.mode)) + '</td><td class="n">' + e.s + '/' + e.n + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">ยังไม่มี</div>') + '</div></details></div>';
   $('dlgBody').innerHTML = h;
 }
 document.addEventListener('click', function(e){
@@ -328,6 +328,7 @@ $('dlg').addEventListener('click', function(e){ if (e.target === $('dlg')) $('dl
 var KEY = ''; try { KEY = localStorage.getItem('jac-statskey') || ''; } catch (e) {}
 function load(){
   fetch('/api/stats', { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){
+    if (r.status === 429) { $('gate').style.display = 'block'; $('dash').hidden = true; $('gmsg').textContent = 'ใส่รหัสผิดหลายครั้ง — รอ 1 ชั่วโมงแล้วลองใหม่'; throw 'key'; }
     if (r.status === 401) { $('gate').style.display = 'block'; $('dash').hidden = true; $('live').innerHTML = '<span class="dot"></span>ล็อกอยู่'; if (KEY) $('gmsg').textContent = 'รหัสผ่านไม่ถูกต้อง'; throw 'key'; }
     return r.json();
   }).then(function(d){ $('gate').style.display = 'none'; render(d); if (!mData) loadMonthly(''); }).catch(function(e){ if (e !== 'key') $('live').innerHTML = '<span class="dot"></span>โหลดไม่ได้'; });

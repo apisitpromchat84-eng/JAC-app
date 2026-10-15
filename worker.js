@@ -18,11 +18,29 @@ const SCHEMA = [
   // per-category snapshot kept once per month (the last one sent in that month), for month-to-month comparison
   `CREATE TABLE IF NOT EXISTS monthly (dev TEXT, month TEXT, data TEXT, updated INTEGER, PRIMARY KEY (dev, month))`,
   // cloud copy of a person's progress (opt-in): nickname + 4-digit PIN; only a hash of the PIN is stored
-  `CREATE TABLE IF NOT EXISTS sync (nk TEXT PRIMARY KEY, pinh TEXT, data TEXT, updated INTEGER, dev TEXT, fails INTEGER DEFAULT 0, lock INTEGER DEFAULT 0)`
+  `CREATE TABLE IF NOT EXISTS sync (nk TEXT PRIMARY KEY, pinh TEXT, data TEXT, updated INTEGER, dev TEXT, fails INTEGER DEFAULT 0, lock INTEGER DEFAULT 0)`,
+  // per-network counters (key = hash of the network address + what is being counted), reset after a time window
+  `CREATE TABLE IF NOT EXISTS throttle (k TEXT PRIMARY KEY, n INTEGER, reset INTEGER)`
 ];
-// password for /stats (only its SHA-256 is stored here)
-const STATS_KEY_SHA256 = 'd38ac90ed5baac73579f69da615e0fe79b865be8ddf0bdde5599e23d8ed5d99b';
+// password for /stats: set it as a Worker secret (Cloudflare dashboard → Settings → Variables and Secrets,
+// or `npx wrangler secret put STATS_KEY`). Nothing about it is stored in this public repo.
 const sha256 = async t => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)))].map(b => b.toString(16).padStart(2, '0')).join('');
+async function keyOk(req, env) {
+  const want = env.STATS_KEY;
+  if (typeof want !== 'string' || want.length < 12) return false;          // no secret set → stats stay locked
+  const [a, b] = await Promise.all([sha256(req.headers.get('x-key') || ''), sha256(want)]);
+  let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i);   // compare without early exit
+  return d === 0;
+}
+// count one hit for this network + bucket; true when the limit is already reached
+async function overLimit(req, env, bucket, limit, windowMs) {
+  const ip = req.headers.get('cf-connecting-ip') || '';
+  const k = bucket + ':' + (await sha256('jac-thr|' + ip)).slice(0, 20), now = Date.now();
+  const r = await env.DB.prepare(`INSERT INTO throttle (k, n, reset) VALUES (?, 1, ?)
+      ON CONFLICT(k) DO UPDATE SET n = CASE WHEN reset < ? THEN 1 ELSE n + 1 END, reset = CASE WHEN reset < ? THEN excluded.reset ELSE reset END
+      RETURNING n`).bind(k, now + windowMs, now, now).first();
+  return !!r && r.n > limit;
+}
 let ready = false;
 async function ensure(db) {
   if (ready) return;
@@ -47,9 +65,23 @@ function phoneType(ua) {           // "iPhone iOS 18", "Android 14 SM-S911B", �
   return ua.slice(0, 40);
 }
 
+// keep only the fields the app sends, with the right types — the stats page renders these
+const num = v => Number.isFinite(+v) ? Math.max(0, Math.min(1e6, Math.round(+v))) : 0;
+const str = (v, n) => String(v == null ? '' : v).replace(/[<>"'`\\]/g, '').slice(0, n);
+function cleanSummary(sm) {
+  if (!sm || typeof sm !== 'object' || !Array.isArray(sm.cats)) return null;
+  const cats = sm.cats.slice(0, 200).filter(c => c && typeof c === 'object' && PARTS.includes(c.part))
+    .map(c => ({ id: str(c.id, 40), th: str(c.th, 80), part: c.part, c: num(c.c), t: num(c.t), done: num(c.done), tried: num(c.tried), total: num(c.total), wrong: num(c.wrong) }));
+  const parts = {};
+  if (sm.parts && typeof sm.parts === 'object') PARTS.forEach(p => { const x = sm.parts[p]; if (x && typeof x === 'object') parts[p] = { n: num(x.n), pass: num(x.pass), min: num(x.min) }; });
+  return { cats, parts, exam: str(sm.exam, 20), lset: str(sm.lset, 20) };
+}
+
 async function ping(req, env) {
   let b; try { b = await req.json(); } catch (e) { return json({ ok: false }, 400); }
   if (!devOk(b.dev)) return json({ ok: false }, 400);
+  // a phone pings a few times a minute at most; this only stops scripts filling the database
+  if (await overLimit(req, env, 'ping', 1200, 3600e3)) return json({ ok: false, error: 'busy' }, 429);
   const now = Date.now(), part = PARTS.includes(b.part) ? b.part : '';
   const name = String(b.name || '').replace(/[<>"'`\\]/g, '').trim().slice(0, 24);
   const stmts = [
@@ -59,7 +91,8 @@ async function ping(req, env) {
   if (typeof b.avatar === 'string' && /^data:image\/(jpeg|webp|png);base64,[A-Za-z0-9+/=]+$/.test(b.avatar) && b.avatar.length < 40000)
     stmts.push(env.DB.prepare('INSERT INTO avatars (dev, img, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET img = excluded.img, updated = excluded.updated').bind(b.dev, b.avatar, now));
   if (b.avatar === '') stmts.push(env.DB.prepare('DELETE FROM avatars WHERE dev = ?').bind(b.dev));
-  if (b.summary && typeof b.summary === 'object') { const t = JSON.stringify(b.summary); if (t.length < 20000)
+  const sm = cleanSummary(b.summary);
+  if (sm) { const t = JSON.stringify(sm); if (t.length < 20000)
     stmts.push(env.DB.prepare('INSERT INTO summaries (dev, data, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET data = excluded.data, updated = excluded.updated').bind(b.dev, t, now));
     stmts.push(env.DB.prepare('INSERT INTO monthly (dev, month, data, updated) VALUES (?, ?, ?, ?) ON CONFLICT(dev, month) DO UPDATE SET data = excluded.data, updated = excluded.updated').bind(b.dev, jstDay(now).slice(0, 7), t, now)); }
   if (name) stmts.push(env.DB.prepare('INSERT INTO names (dev, name, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET name = excluded.name, updated = excluded.updated').bind(b.dev, name, now));
@@ -86,7 +119,8 @@ async function ping(req, env) {
     const r = await env.DB.prepare('SELECT n.name, a.img FROM names n LEFT JOIN avatars a ON a.dev = n.dev WHERE n.dev = ?').bind(b.dev).first();
     if (r && r.name) { out.name = r.name; if (r.img) out.avatar = r.img; }
   } else if (b.noav) {
-    const r = await env.DB.prepare('SELECT a.img FROM names n JOIN avatars a ON a.dev = n.dev WHERE LOWER(n.name) = LOWER(?) ORDER BY a.updated DESC LIMIT 1').bind(name).first();
+    // only this device's own picture — never another person's picture looked up by nickname
+    const r = await env.DB.prepare('SELECT img FROM avatars WHERE dev = ?').bind(b.dev).first();
     if (r && r.img) out.avatar = r.img;
   }
   return json(out);
@@ -208,21 +242,30 @@ async function person(env, k) {
    op 'load'  {name,pin}             → { data, updated }
    op 'save'  {name,pin,dev,base,data,force} → { updated } | 409 { updated } when another device saved since `base`
    5 wrong PINs → that name is locked for 15 minutes. */
-const SYNC_MAX = 1500000;
+const SYNC_MAX = 600000;           // a full progress copy is far below this
+const PIN_FAILS_PER_NET = 20;      // wrong PINs allowed from one network per hour, across all names
 async function sync(req, env) {
   let b; try { b = await req.json(); } catch (e) { return json({ ok: false }, 400); }
   const name = String(b.name || '').replace(/[<>"'`\\]/g, '').replace(/\s+/g, ' ').trim().slice(0, 24);
   const nk = name.toLowerCase(), now = Date.now();
   if (!nk) return json({ error: 'name' }, 400);
+  if (await overLimit(req, env, 'sync', 300, 3600e3)) return json({ error: 'locked', until: now + 3600e3 }, 429);
   const row = await env.DB.prepare('SELECT pinh, updated, dev, fails, lock FROM sync WHERE nk = ?').bind(nk).first();
   if (b.op === 'check') return json({ exists: !!row, updated: row ? row.updated : 0 });
   if (!/^\d{4}$/.test(String(b.pin || ''))) return json({ error: 'pin' }, 400);
-  const pinh = await sha256('jac-sync|' + nk + '|' + b.pin);
   if (row && row.lock > now) return json({ error: 'locked', until: row.lock }, 429);
+  // reserve one attempt atomically before checking the PIN (so a burst of parallel requests is counted too);
+  // a correct PIN gives the attempt back below
+  const thrKey = 'pinfail:' + (await sha256('jac-thr|' + (req.headers.get('cf-connecting-ip') || ''))).slice(0, 20);
+  if (await overLimit(req, env, 'pinfail', PIN_FAILS_PER_NET, 3600e3)) return json({ error: 'locked', until: now + 3600e3 }, 429);
+  const pinh = await sha256('jac-sync|' + nk + '|' + b.pin);
+  if (!row || row.pinh === pinh) await env.DB.prepare('UPDATE throttle SET n = MAX(n - 1, 0) WHERE k = ?').bind(thrKey).run();
   if (row && row.pinh !== pinh) {
-    const f = (row.fails || 0) + 1;
-    await env.DB.prepare('UPDATE sync SET fails = ?, lock = ? WHERE nk = ?').bind(f >= 5 ? 0 : f, f >= 5 ? now + 15 * 60e3 : 0, nk).run();
-    return json({ error: 'wrongpin', left: f >= 5 ? 0 : 5 - f }, 403);
+    // count in one atomic statement so requests sent at the same moment can't all see the old count
+    const r = await env.DB.prepare(`UPDATE sync SET fails = CASE WHEN fails + 1 >= 5 THEN 0 ELSE fails + 1 END,
+        lock = CASE WHEN fails + 1 >= 5 THEN ? ELSE lock END WHERE nk = ? RETURNING fails, lock`).bind(now + 15 * 60e3, nk).first();
+    const locked = r && r.lock > now;
+    return json({ error: 'wrongpin', left: locked ? 0 : 5 - (r ? r.fails : 0) }, 403);
   }
   if (row && row.fails) await env.DB.prepare('UPDATE sync SET fails = 0 WHERE nk = ?').bind(nk).run();
   if (b.op === 'head') return json({ exists: !!row, updated: row ? row.updated : 0, same: !!row && row.dev === b.dev });
@@ -236,6 +279,7 @@ async function sync(req, env) {
     let d; try { d = JSON.parse(b.data); } catch (e) { return json({ error: 'data' }, 400); }
     if (!d || d.app !== 'jac-exam' || !d.keys || typeof d.keys !== 'object') return json({ error: 'data' }, 400);
     if (row && !b.force && row.updated !== Number(b.base) && row.dev !== b.dev) return json({ error: 'newer', updated: row.updated }, 409);
+    if (!row && await overLimit(req, env, 'newname', 10, 864e5)) return json({ error: 'locked', until: now + 864e5 }, 429);
     await env.DB.prepare('INSERT INTO sync (nk, pinh, data, updated, dev) VALUES (?, ?, ?, ?, ?) ON CONFLICT(nk) DO UPDATE SET data = excluded.data, updated = excluded.updated, dev = excluded.dev')
       .bind(nk, pinh, b.data, now, b.dev).run();
     return json({ updated: now, created: !row });
@@ -254,19 +298,18 @@ export default {
       await ensure(env.DB);
       if (path === '/api/ping' && req.method === 'POST') return await ping(req, env);
       if (path === '/api/sync' && req.method === 'POST') return await sync(req, env);
-      if (path === '/api/person') {
-        if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);
-        return await person(env, new URL(req.url).searchParams.get('k') || '');
-      }
-      if (path === '/api/monthly') {
-        if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);
-        return await monthly(env, new URL(req.url).searchParams.get('m') || '');
-      }
-      if (path === '/api/stats') {
-        if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);
+      if (path === '/api/person' || path === '/api/monthly' || path === '/api/stats') {
+        // reserve an attempt first (atomic, so parallel guesses are counted); a correct key gives it back
+        if (await overLimit(req, env, 'statskey', 10, 3600e3)) return json({ error: 'locked' }, 429);
+        if (!(await keyOk(req, env))) return json({ error: 'key' }, 401);
+        const thrKey = 'statskey:' + (await sha256('jac-thr|' + (req.headers.get('cf-connecting-ip') || ''))).slice(0, 20);
+        await env.DB.prepare('UPDATE throttle SET n = MAX(n - 1, 0) WHERE k = ?').bind(thrKey).run();
+        const q = new URL(req.url).searchParams;
+        if (path === '/api/person') return await person(env, q.get('k') || '');
+        if (path === '/api/monthly') return await monthly(env, q.get('m') || '');
         return await stats(env);
       }
       return json({ error: 'not found' }, 404);
-    } catch (e) { return json({ error: String(e && e.message || e).slice(0, 200) }, 500); }
+    } catch (e) { console.error(e); return json({ error: 'server' }, 500); }
   }
 };
