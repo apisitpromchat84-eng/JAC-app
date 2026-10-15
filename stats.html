@@ -55,6 +55,17 @@ table{ width:100%; border-collapse:collapse; font-size:14px } th,td{ text-align:
 #gate{ padding:18px; margin:22px 0 } #gate input{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font:inherit; margin:10px 0 }
 .btn{ border:0; border-radius:10px; padding:11px 18px; background:var(--ink); color:var(--surf); font-weight:600; cursor:pointer }
 
+/* ---------- monthly ---------- */
+.mhead{ display:flex; gap:8px; align-items:center; justify-content:space-between; margin:28px 0 10px; flex-wrap:wrap }
+.mhead h2{ margin:0 }
+.mhead select{ font:inherit; font-size:14px; padding:7px 10px; border-radius:10px; border:1px solid var(--line); background:var(--surf); color:var(--ink) }
+.dl{ border:1px solid var(--line); background:var(--surf); color:var(--ink); border-radius:10px; padding:8px 12px; font-size:13.5px; font-weight:600; cursor:pointer; white-space:nowrap }
+.dl:hover{ background:var(--track) }
+.mt{ width:100%; overflow-x:auto } .mt table{ font-size:13.5px } .mt td, .mt th{ padding:9px 6px; white-space:nowrap } .mt td:first-child, .mt th:first-child{ padding-left:14px } .mt td:last-child, .mt th:last-child{ padding-right:14px } .mt td.nm{ white-space:normal; font-weight:600 } .mt th{ font-size:12px }
+.mt tr.click{ cursor:pointer } .mt tr.click:hover td{ background:var(--track) }
+.dv{ display:block; font-size:11.5px; font-weight:600 } .dv.up{ color:var(--ok) } .dv.down{ color:var(--low) } .dv.same{ color:var(--faint) }
+.mfoot{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 14px; border-top:1px solid var(--line); font-size:12.5px; color:var(--mute); flex-wrap:wrap }
+
 /* ---------- person sheet ---------- */
 dialog{ border:0; padding:0; margin:auto 0 0; width:100%; max-width:100%; max-height:94vh; border-radius:20px 20px 0 0; background:var(--bg); color:var(--ink) }
 @media (min-width:760px){ dialog{ margin:auto; width:720px; border-radius:20px } }
@@ -108,6 +119,9 @@ dialog::backdrop{ background:rgba(10,15,20,.55) }
   <div class="panel" id="people"></div>
   <h2>คนที่ทำแบบทดสอบ 14 วัน <small>สีเหลือง = วันนี้</small></h2>
   <div class="panel"><div class="bars" id="chart"></div><div class="days" id="chartd"></div></div>
+  <div class="mhead"><h2>สรุปรายเดือน</h2><select id="mSel" aria-label="เลือกเดือน"></select></div>
+  <div class="panel"><div class="mt" id="monthly"><div class="empty">กำลังโหลด…</div></div>
+    <div class="mfoot"><span>วัน = วันที่ทำ · ข้อ = ข้อที่ตอบ · ตัวเลขเล็ก = เทียบเดือนก่อน · กดชื่อดูรายละเอียด</span><button class="dl" id="mDl">📥 ดาวน์โหลดเดือนนี้ (CSV)</button></div></div>
   <details class="extra"><summary>รายละเอียดเพิ่มเติม</summary>
     <h2>วันนี้แยกตามภาค</h2><div class="panel" id="parts"></div>
     <h2>สอบจำลอง 14 วัน</h2><div class="panel" id="mocks"></div>
@@ -129,6 +143,71 @@ function esc(v){ return String(v == null ? '' : v).replace(/[&<>"']/g, function(
 function lvl(v){ return v == null ? '' : v >= 75 ? 'ok' : v >= 60 ? 'mid' : 'low'; }
 function avatar(src, name){ return src ? '<img class="av" src="' + src + '" alt="">' : '<span class="av">' + esc((name || '?').slice(0, 1)) + '</span>'; }
 var showAll = false, last = null;
+
+/* ---------- monthly summary ---------- */
+var TMON = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+function monthTh(m){ return m ? TMON[+m.slice(5, 7) - 1] + ' ' + m.slice(0, 4) : ''; }
+function mAcc(o){ return o && o.n ? Math.round(o.s / o.n * 100) : null; }
+function mCov(o){ if (!o || !o.parts) return null; var t = 0, d = 0;
+  Object.keys(o.parts).forEach(function(p){ var x = o.parts[p]; if (x.total && x.tried) { t += x.total; d += x.tried; } });
+  return t ? Math.round(d / t * 100) : null; }
+function dv(a, b, unit){ if (a == null || b == null) return ''; var d = a - b;
+  return '<span class="dv ' + (d > 0 ? 'up' : d < 0 ? 'down' : 'same') + '">' + (d > 0 ? '▲ +' + d : d < 0 ? '▼ ' + d : '＝') + (d ? unit || '' : '') + '</span>'; }
+function cell(v, unit, prev){ return '<td class="n">' + (v == null ? '—' : v + (unit || '')) + dv(v, prev, unit) + '</td>'; }
+var PARTS3 = ['gakka', 'jitsugi', 'life'];
+function monthCols(o){                      // one month → the columns used in the CSV files
+  o = o || {}; var r = [o.days || 0, o.quizzes || 0, o.n || 0, o.s || 0, mAcc(o), o.mocks || 0, o.mockAvg, o.mockBest, mCov(o)];
+  PARTS3.forEach(function(p){ var x = (o.parts || {})[p] || {}; r.push(x.n || 0, x.n ? Math.round(x.s / x.n * 100) : null, x.mockAvg, x.tried, x.total, x.total && x.tried != null ? Math.round(x.tried / x.total * 100) : null); });
+  return r;
+}
+var MONTH_HEAD = ['วันที่ทำ', 'จำนวนชุด', 'ข้อที่ตอบ', 'ตอบถูก', '%ถูก', 'สอบจำลอง (ครั้ง)', 'สอบจำลองเฉลี่ย%', 'สอบจำลองสูงสุด%', '%ทำแล้ว (ทุกภาคที่เรียน)'];
+PARTS3.forEach(function(p){ var t = PTAB[p]; MONTH_HEAD.push(t + ' ข้อที่ตอบ', t + ' %ถูก', t + ' สอบจำลองเฉลี่ย%', t + ' ทำแล้ว (ข้อ)', t + ' ทั้งหมด (ข้อ)', t + ' %ทำแล้ว'); });
+function csvDownload(name, rows){
+  var txt = '\ufeff' + rows.map(function(r){ return r.map(function(v){ v = v == null ? '' : String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\r\n');
+  var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/csv;charset=utf-8' })); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+}
+var mData = null, mWant = '';
+function loadMonthly(m){
+  fetch('/api/monthly?m=' + encodeURIComponent(m || ''), { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){ return r.json(); }).then(function(d){
+    if (d.error) return; mData = d; mWant = d.m;
+    var opts = d.months.length ? d.months : [d.m];
+    $('mSel').innerHTML = opts.map(function(x){ return '<option value="' + x + '"' + (x === d.m ? ' selected' : '') + '>' + monthTh(x) + '</option>'; }).join('');
+    var rows = d.rows.filter(function(r){ return r.cur; }).sort(function(a, b){ return (b.cur.n || 0) - (a.cur.n || 0); });
+    $('monthly').innerHTML = rows.length ? '<table><tr><th>ชื่อ</th><th class="n">วัน</th><th class="n">ข้อ</th><th class="n">ถูก</th><th class="n">สอบจำลอง</th><th class="n">ทำแล้ว</th></tr>' +
+      rows.map(function(r){ var c = r.cur, p = r.prev;
+        return '<tr class="click" data-pk="' + esc(r.k) + '"><td class="nm">' + (r.name ? esc(r.name) : 'ไม่ระบุชื่อ') + '</td>' + cell(c.days, '', p && p.days) + cell(c.n, '', p && p.n) +
+          cell(mAcc(c), '%', mAcc(p)) + cell(c.mockAvg, '%', p && p.mockAvg) + cell(mCov(c), '%', mCov(p)) + '</tr>'; }).join('') + '</table>'
+      : '<div class="empty">เดือน' + monthTh(d.m) + ' ยังไม่มีใครทำแบบทดสอบ</div>';
+  }).catch(function(){});
+}
+$('mSel').onchange = function(){ loadMonthly(this.value); };
+$('mDl').onclick = function(){
+  if (!mData) return; var d = mData;
+  var head = ['ชื่อ', 'เดือน'].concat(MONTH_HEAD, ['ข้อที่ตอบ (เดือนก่อน)', '%ถูก (เดือนก่อน)', 'สอบจำลองเฉลี่ย% (เดือนก่อน)', '%ทำแล้ว (เดือนก่อน)', 'เปลี่ยนแปลง ข้อที่ตอบ', 'เปลี่ยนแปลง %ถูก', 'เปลี่ยนแปลง %ทำแล้ว']);
+  var rows = [head];
+  d.rows.forEach(function(r){ var c = r.cur, p = r.prev, df = function(a, b){ return a == null || b == null ? '' : a - b; };
+    rows.push([r.name || 'ไม่ระบุชื่อ', d.m].concat(monthCols(c), [p ? p.n || 0 : '', mAcc(p), p ? p.mockAvg : '', mCov(p), df(c ? c.n || 0 : 0, p ? p.n || 0 : null), df(mAcc(c), mAcc(p)), df(mCov(c), mCov(p))])); });
+  csvDownload('jac-monthly-' + d.m + '.csv', rows);
+};
+function personMonthsHTML(d){
+  var ms = (d.months || []).slice().reverse();
+  if (!ms.length) return '<div class="empty">ยังไม่มีข้อมูล</div>';
+  return '<div class="mt"><table><tr><th>เดือน</th><th class="n">วัน</th><th class="n">ข้อ</th><th class="n">ถูก</th><th class="n">สอบจำลอง</th><th class="n">ทำแล้ว</th></tr>' +
+    ms.map(function(o, i){ var p = ms[i + 1];
+      return '<tr><td class="nm">' + monthTh(o.m) + '</td>' + cell(o.days, '', p && p.days) + cell(o.n, '', p && p.n) + cell(mAcc(o), '%', mAcc(p)) +
+        cell(o.mockAvg, '%', p && p.mockAvg) + cell(mCov(o), '%', mCov(p)) + '</tr>'; }).join('') + '</table></div>';
+}
+function personCSV(d){
+  var rows = [['ชื่อ', 'เดือน'].concat(MONTH_HEAD)];
+  (d.months || []).forEach(function(o){ rows.push([d.name || 'ไม่ระบุชื่อ', o.m].concat(monthCols(o))); });
+  rows.push([]); rows.push(['รายหมวด (สะสมถึงสิ้นเดือน)']); rows.push(['เดือน', 'ภาค', 'หมวด', 'ตอบสะสม', 'ถูกสะสม', '%ถูกสะสม', 'ทำแล้ว (ข้อ)', 'ทั้งหมด (ข้อ)', '%ทำแล้ว']);
+  (d.months || []).forEach(function(o){ (o.cats || []).forEach(function(c){ if (!c.t && !c.tried) return;
+    rows.push([o.m, PTAB[c.part] || c.part, c.th || c.id, c.t, c.c, c.t ? Math.round(c.c / c.t * 100) : '', c.tried, c.total, c.total ? Math.round(c.tried / c.total * 100) : '']); }); });
+  // file names stay English (Thai names failed to open on some phones); the name is inside the file
+  var h = 0, nm = String(d.name || d.k || ''); for (var i = 0; i < nm.length; i++) h = (h * 31 + nm.charCodeAt(i)) >>> 0;
+  csvDownload('jac-person-' + h.toString(36).slice(0, 5) + '-monthly-' + new Date(d.now + 9 * 3600e3).toISOString().slice(0, 10) + '.csv', rows);
+}
 
 function renderPeople(d){
   var ps = d.people || [];
@@ -227,6 +306,8 @@ function drawPerson(){
     if (parts.length > 1) h += '<div class="tabs">' + parts.map(function(p){ return '<button data-tab="' + p + '" class="' + (p === dpTab ? 'on' : '') + '">' + PTAB[p] + '</button>'; }).join('') + '</div>';
     h += partView(dpTab, s.cats.filter(function(c){ return c.part === dpTab; }), s.parts[dpTab] || { n: 25, pass: 75 }, d.events.filter(function(e){ return e.part === dpTab && e.mode === 'real'; }));
   } else h += '<div class="empty">ยังไม่มีข้อมูลรายหมวด — ต้องเปิดแอปเวอร์ชันใหม่และทำแบบทดสอบก่อน</div>';
+  h += '<div class="mhead"><h2>สรุปรายเดือน</h2><button class="dl" id="pDl">📥 ดาวน์โหลด (CSV)</button></div><div class="panel">' + personMonthsHTML(d) +
+    '<div class="mfoot"><span>ตัวเลขเล็ก = เทียบกับเดือนก่อน · "ทำแล้ว" = ข้อที่เคยตอบ ÷ ข้อทั้งหมดของภาคที่เรียน</span></div></div>';
   // 14 days as a row of squares
   var byDay = {}; d.days.forEach(function(x){ byDay[x.day] = x.n; }); var arr = [];
   for (var i = 13; i >= 0; i--) arr.push(byDay[new Date(d.now + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10)] || 0);
@@ -239,6 +320,8 @@ document.addEventListener('click', function(e){
   var r = e.target.closest('.prow'); if (r) { openPerson(r.dataset.k); return; }
   var t = e.target.closest('[data-tab]'); if (t) { dpTab = t.dataset.tab; var y = $('dlg').scrollTop; drawPerson(); $('dlg').scrollTop = y; return; }
   if (e.target.closest('#dlgClose')) { $('dlg').close(); return; }
+  if (e.target.closest('#pDl')) { personCSV(dp); return; }
+  var mr = e.target.closest('[data-pk]'); if (mr) { openPerson(mr.dataset.pk); return; }
   if (e.target.closest('#showAll')) { showAll = !showAll; renderPeople(last); }
 });
 $('dlg').addEventListener('click', function(e){ if (e.target === $('dlg')) $('dlg').close(); });
@@ -247,7 +330,7 @@ function load(){
   fetch('/api/stats', { cache: 'no-store', headers: { 'x-key': KEY } }).then(function(r){
     if (r.status === 401) { $('gate').style.display = 'block'; $('dash').hidden = true; $('live').innerHTML = '<span class="dot"></span>ล็อกอยู่'; if (KEY) $('gmsg').textContent = 'รหัสผ่านไม่ถูกต้อง'; throw 'key'; }
     return r.json();
-  }).then(function(d){ $('gate').style.display = 'none'; render(d); }).catch(function(e){ if (e !== 'key') $('live').innerHTML = '<span class="dot"></span>โหลดไม่ได้'; });
+  }).then(function(d){ $('gate').style.display = 'none'; render(d); if (!mData) loadMonthly(''); }).catch(function(e){ if (e !== 'key') $('live').innerHTML = '<span class="dot"></span>โหลดไม่ได้'; });
 }
 $('go').onclick = function(){ KEY = $('key').value.trim(); try { localStorage.setItem('jac-statskey', KEY); } catch (e) {} load(); };
 $('key').onkeydown = function(e){ if (e.key === 'Enter') $('go').click(); };

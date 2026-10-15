@@ -15,6 +15,8 @@ const SCHEMA = [
   // (hash of network address + phone type + screen) so Safari, the home-screen app and the LINE browser
   // of one phone count as one person. Only the hash is stored, never the address itself.
   `CREATE TABLE IF NOT EXISTS who (dev TEXT PRIMARY KEY, fp TEXT, pkey TEXT, updated INTEGER)`,
+  // per-category snapshot kept once per month (the last one sent in that month), for month-to-month comparison
+  `CREATE TABLE IF NOT EXISTS monthly (dev TEXT, month TEXT, data TEXT, updated INTEGER, PRIMARY KEY (dev, month))`,
   // cloud copy of a person's progress (opt-in): nickname + 4-digit PIN; only a hash of the PIN is stored
   `CREATE TABLE IF NOT EXISTS sync (nk TEXT PRIMARY KEY, pinh TEXT, data TEXT, updated INTEGER, dev TEXT, fails INTEGER DEFAULT 0, lock INTEGER DEFAULT 0)`
 ];
@@ -28,6 +30,7 @@ async function ensure(db) {
   try { await db.prepare('ALTER TABLE events ADD COLUMN rid TEXT').run(); } catch (e) {}      // older databases
   await db.prepare('CREATE UNIQUE INDEX IF NOT EXISTS events_rid ON events (dev, rid)').run();
   await db.prepare("INSERT OR IGNORE INTO who (dev, pkey, updated) SELECT dev, 'n:' || LOWER(name), updated FROM names").run();
+  await db.prepare("INSERT OR IGNORE INTO monthly (dev, month, data, updated) SELECT dev, strftime('%Y-%m', updated / 1000 + 32400, 'unixepoch'), data, updated FROM summaries").run();
   ready = true;
 }
 
@@ -57,7 +60,8 @@ async function ping(req, env) {
     stmts.push(env.DB.prepare('INSERT INTO avatars (dev, img, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET img = excluded.img, updated = excluded.updated').bind(b.dev, b.avatar, now));
   if (b.avatar === '') stmts.push(env.DB.prepare('DELETE FROM avatars WHERE dev = ?').bind(b.dev));
   if (b.summary && typeof b.summary === 'object') { const t = JSON.stringify(b.summary); if (t.length < 20000)
-    stmts.push(env.DB.prepare('INSERT INTO summaries (dev, data, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET data = excluded.data, updated = excluded.updated').bind(b.dev, t, now)); }
+    stmts.push(env.DB.prepare('INSERT INTO summaries (dev, data, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET data = excluded.data, updated = excluded.updated').bind(b.dev, t, now));
+    stmts.push(env.DB.prepare('INSERT INTO monthly (dev, month, data, updated) VALUES (?, ?, ?, ?) ON CONFLICT(dev, month) DO UPDATE SET data = excluded.data, updated = excluded.updated').bind(b.dev, jstDay(now).slice(0, 7), t, now)); }
   if (name) stmts.push(env.DB.prepare('INSERT INTO names (dev, name, updated) VALUES (?, ?, ?) ON CONFLICT(dev) DO UPDATE SET name = excluded.name, updated = excluded.updated').bind(b.dev, name, now));
   {
     const ip = req.headers.get('cf-connecting-ip') || '', scr = String(b.scr || '').slice(0, 24);
@@ -118,16 +122,11 @@ async function stats(env) {
 }
 
 // one person (all devices that share the nickname)
-async function person(env, k) {
-  const KEY = "COALESCE(w.pkey, 'dev:' || d.dev)";
-  const devs = (await env.DB.prepare(`SELECT d.dev FROM (SELECT dev FROM pings UNION SELECT dev FROM events) d LEFT JOIN who w ON w.dev = d.dev WHERE ${KEY} = ?`).bind(k).all()).results.map(r => r.dev);
-  if (!devs.length) return json({ error: 'not found' }, 404);
-  const qs = devs.map(() => '?').join(',');
-  const now = Date.now();
-  const sums = (await env.DB.prepare(`SELECT data, updated FROM summaries WHERE dev IN (${qs}) ORDER BY updated DESC`).bind(...devs).all()).results;
-  // one person on several devices (phone + tablet): per category keep the device that practised it most
+// one person on several devices (phone + tablet): per category keep the device that practised it most
+function mergeSums(rows) {
   let sum = null;
-  sums.forEach(r => { let d; try { d = JSON.parse(r.data); } catch (e) { return; }
+  rows.forEach(r => { let d; try { d = JSON.parse(r.data); } catch (e) { return; }
+    if (!d || !Array.isArray(d.cats)) return;
     if (!sum) { sum = { data: d, updated: r.updated }; return; }
     const m = {}; sum.data.cats.forEach(c => m[c.part + '|' + c.id] = c);
     (d.cats || []).forEach(c => { const k = c.part + '|' + c.id, o = m[k];
@@ -135,13 +134,72 @@ async function person(env, k) {
       if ((c.t || 0) > (o.t || 0)) { o.c = c.c; o.t = c.t; o.wrong = c.wrong; }
       o.done = Math.max(o.done || 0, c.done || 0); o.tried = Math.max(o.tried == null ? o.done : o.tried, c.tried == null ? c.done : c.tried); });
     if (!sum.data.exam && d.exam) sum.data.exam = d.exam; });
+  return sum;
+}
+// month rows: activity from the quiz results of that month + the per-category snapshot at the end of that month
+const MONTH_SQL = (where) => `SELECT substr(day, 1, 7) AS m, part, COUNT(*) AS quizzes, SUM(n) AS n, SUM(s) AS s, COUNT(DISTINCT day) AS days,
+  SUM(mode = 'real') AS mocks, AVG(CASE WHEN mode = 'real' THEN s * 100.0 / n END) AS mockAvg, MAX(CASE WHEN mode = 'real' THEN s * 100.0 / n END) AS mockBest
+  FROM events WHERE ${where} GROUP BY m, part`;
+function buildMonths(evRows, dayRows, snapRows) {
+  const M = {};
+  const get = m => M[m] || (M[m] = { m, days: 0, quizzes: 0, n: 0, s: 0, mocks: 0, mockSum: 0, mockBest: null, parts: {} });
+  evRows.forEach(r => { const o = get(r.m), p = r.part || 'other';
+    o.quizzes += r.quizzes; o.n += r.n || 0; o.s += r.s || 0; o.mocks += r.mocks || 0;
+    if (r.mocks) { o.mockSum += r.mockAvg * r.mocks; o.mockBest = Math.max(o.mockBest || 0, r.mockBest); }
+    o.parts[p] = { quizzes: r.quizzes, n: r.n || 0, s: r.s || 0, mocks: r.mocks || 0, mockAvg: r.mocks ? Math.round(r.mockAvg) : null, mockBest: r.mocks ? Math.round(r.mockBest) : null }; });
+  dayRows.forEach(r => { get(r.m).days = r.days; });
+  const byMonth = {}; snapRows.forEach(r => (byMonth[r.month] = byMonth[r.month] || []).push(r));
+  Object.keys(byMonth).forEach(m => { const sm = mergeSums(byMonth[m]); if (!sm) return; const o = get(m);
+    o.cats = sm.data.cats.map(c => ({ part: c.part, id: c.id, th: c.th, c: c.c || 0, t: c.t || 0, tried: c.tried == null ? c.done || 0 : c.tried, total: c.total || 0 }));
+    ['gakka', 'jitsugi', 'life'].forEach(p => { const cs = o.cats.filter(c => c.part === p); if (!cs.length) return;
+      const pp = o.parts[p] || (o.parts[p] = { quizzes: 0, n: 0, s: 0, mocks: 0, mockAvg: null, mockBest: null });
+      pp.tried = cs.reduce((a, c) => a + c.tried, 0); pp.total = cs.reduce((a, c) => a + c.total, 0); }); });
+  return Object.values(M).map(o => { o.mockAvg = o.mocks ? Math.round(o.mockSum / o.mocks) : null; o.mockBest = o.mockBest == null ? null : Math.round(o.mockBest); delete o.mockSum; return o; })
+    .sort((a, b) => a.m < b.m ? -1 : 1);
+}
+async function personMonths(env, devs) {
+  const qs = devs.map(() => '?').join(',');
+  const ev = (await env.DB.prepare(MONTH_SQL(`dev IN (${qs})`)).bind(...devs).all()).results;
+  const dd = (await env.DB.prepare(`SELECT substr(day, 1, 7) AS m, COUNT(DISTINCT day) AS days FROM events WHERE dev IN (${qs}) GROUP BY m`).bind(...devs).all()).results;
+  const sn = (await env.DB.prepare(`SELECT month, data, updated FROM monthly WHERE dev IN (${qs}) ORDER BY updated DESC`).bind(...devs).all()).results;
+  return buildMonths(ev, dd, sn);
+}
+// everyone's summary for one month (and the month before, to show growth) — for the table + CSV download
+async function monthly(env, m) {
+  const months = (await env.DB.prepare("SELECT DISTINCT substr(day, 1, 7) AS m FROM events ORDER BY m DESC").all()).results.map(r => r.m);
+  if (!/^\d{4}-\d{2}$/.test(m || '')) m = months[0] || jstDay(Date.now()).slice(0, 7);
+  const d = new Date(m + '-01T00:00:00Z'); d.setUTCMonth(d.getUTCMonth() - 1); const pm = d.toISOString().slice(0, 7);
+  const KEY = "COALESCE(w.pkey, 'dev:' || e.dev)";
+  const people = (await env.DB.prepare(`SELECT DISTINCT ${KEY} AS k FROM events e LEFT JOIN who w ON w.dev = e.dev WHERE substr(e.day, 1, 7) IN (?, ?)`).bind(m, pm).all()).results.map(r => r.k);
+  const rows = [];
+  for (const k of people) {
+    const devs = (await env.DB.prepare(`SELECT d.dev FROM (SELECT dev FROM pings UNION SELECT dev FROM events) d LEFT JOIN who w ON w.dev = d.dev WHERE COALESCE(w.pkey, 'dev:' || d.dev) = ?`).bind(k).all()).results.map(r => r.dev);
+    if (!devs.length) continue;
+    const qs = devs.map(() => '?').join(',');
+    const ms = await personMonths(env, devs);
+    const cur = ms.find(x => x.m === m), prev = ms.find(x => x.m === pm);
+    if (!cur && !prev) continue;
+    const name = await env.DB.prepare(`SELECT name FROM names WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
+    rows.push({ k, name: name && name.name, cur: cur || null, prev: prev || null });
+  }
+  return json({ m, pm, months, rows });
+}
+
+async function person(env, k) {
+  const KEY = "COALESCE(w.pkey, 'dev:' || d.dev)";
+  const devs = (await env.DB.prepare(`SELECT d.dev FROM (SELECT dev FROM pings UNION SELECT dev FROM events) d LEFT JOIN who w ON w.dev = d.dev WHERE ${KEY} = ?`).bind(k).all()).results.map(r => r.dev);
+  if (!devs.length) return json({ error: 'not found' }, 404);
+  const qs = devs.map(() => '?').join(',');
+  const now = Date.now();
+  const sums = (await env.DB.prepare(`SELECT data, updated FROM summaries WHERE dev IN (${qs}) ORDER BY updated DESC`).bind(...devs).all()).results;
+  const sum = mergeSums(sums);
   const name = await env.DB.prepare(`SELECT name FROM names WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
   const av = await env.DB.prepare(`SELECT img FROM avatars WHERE dev IN (${qs}) ORDER BY updated DESC LIMIT 1`).bind(...devs).first();
   const last = await env.DB.prepare(`SELECT MAX(ts) AS ts FROM pings WHERE dev IN (${qs})`).bind(...devs).first();
   const events = (await env.DB.prepare(`SELECT ts, day, part, mode, n, s FROM events WHERE dev IN (${qs}) ORDER BY ts DESC LIMIT 300`).bind(...devs).all()).results;
   const days = (await env.DB.prepare(`SELECT day, SUM(n) AS n, SUM(s) AS s FROM events WHERE dev IN (${qs}) AND day >= ? GROUP BY day`).bind(...devs, jstDay(now - 13 * 864e5)).all()).results;
   return json({ now, today: jstDay(now), k, devices: devs.length, name: name && name.name, avatar: av && av.img, last: last && last.ts,
-    summary: sum ? sum.data : null, synced: sum ? sum.updated : 0, events, days });
+    summary: sum ? sum.data : null, synced: sum ? sum.updated : 0, events, days, months: await personMonths(env, devs) });
 }
 
 /* ---------- progress sync (nickname + PIN) ----------
@@ -199,6 +257,10 @@ export default {
       if (path === '/api/person') {
         if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);
         return await person(env, new URL(req.url).searchParams.get('k') || '');
+      }
+      if (path === '/api/monthly') {
+        if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);
+        return await monthly(env, new URL(req.url).searchParams.get('m') || '');
       }
       if (path === '/api/stats') {
         if (await sha256(req.headers.get('x-key') || '') !== STATS_KEY_SHA256) return json({ error: 'key' }, 401);

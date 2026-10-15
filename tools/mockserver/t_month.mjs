@@ -1,0 +1,16 @@
+const B = 'http://localhost:8790', UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X)';
+const day = (s) => new Date(s + 'T12:00:00+09:00').getTime();
+let rid = 0;
+const ev = (d, part, mode, n, s) => ({ rid: 'r' + (rid++), ts: day(d), part, mode, n, s });
+const sum = (tried, c, t) => ({ cats: [{ id: 'anzen', th: 'ความปลอดภัย', part: 'gakka', c, t, done: tried, tried, total: 46 }, { id: 'hourei', th: 'กฎหมาย', part: 'gakka', c: Math.round(c / 2), t: Math.round(t / 2), done: 5, tried: Math.round(tried / 2), total: 30 }], parts: { gakka: { n: 30, pass: 65, min: 60 } }, exam: '2026-12' });
+const ping = (dev, ip, name, events, summary) => fetch(B + '/api/ping', { method: 'POST', headers: { 'content-type': 'application/json', 'user-agent': UA, 'cf-connecting-ip': ip }, body: JSON.stringify({ dev, name, part: 'gakka', events, scr: '393x852@3', summary }) });
+await ping('armdev0001', '1.1.1.1', 'ชายอาม', [ev('2026-09-03', 'gakka', 'mini', 10, 5), ev('2026-09-10', 'gakka', 'mini', 10, 6), ev('2026-09-20', 'gakka', 'real', 30, 15)]);
+await ping('armdev0001', '1.1.1.1', 'ชายอาม', [ev('2026-10-02', 'gakka', 'mini', 10, 8), ev('2026-10-05', 'gakka', 'mini', 10, 7), ev('2026-10-09', 'gakka', 'real', 30, 22), ev('2026-10-12', 'jitsugi', 'mini', 10, 6)], sum(40, 60, 80));
+await ping('noidev0002', '2.2.2.2', 'น้อย', [ev('2026-09-15', 'gakka', 'mini', 10, 7)]);
+await ping('noidev0002', '2.2.2.2', 'น้อย', [ev('2026-10-14', 'gakka', 'mini', 10, 6), ev('2026-10-14', 'gakka', 'real', 30, 18)], sum(20, 20, 30));
+const K = { 'x-key': process.env.STATS_KEY };
+const m = await (await fetch(B + '/api/monthly?m=2026-10', { headers: K })).json();
+console.log('months', m.months, 'rows', m.rows.map(r => [r.name, r.cur && r.cur.n, r.cur && r.cur.mockAvg, r.prev && r.prev.n]));
+const k = m.rows.find(r => r.name === 'ชายอาม').k;
+const p = await (await fetch(B + '/api/person?k=' + encodeURIComponent(k), { headers: K })).json();
+console.log('person months', JSON.stringify(p.months.map(o => [o.m, o.days, o.n, o.s, o.mockAvg, o.parts.gakka && o.parts.gakka.tried, o.cats ? o.cats.length : 0])));
