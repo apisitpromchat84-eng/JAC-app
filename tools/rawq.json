@@ -1,0 +1,277 @@
+{
+"m137": {
+"code": "ล2-137",
+"stem": "<ruby>写真<rt>しゃしん</rt></ruby>のように<ruby>道路上<rt>どうろじょう</rt></ruby>で<ruby>作業<rt>さぎょう</rt></ruby>する<ruby>場合<rt>ばあい</rt></ruby>の<ruby>注意事項<rt>ちゅういじこう</rt></ruby>として、<ruby>適切<rt>てきせつ</rt></ruby>でないものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"<ruby>許可条件<rt>きょかじょうけん</rt></ruby>（<ruby>作業時間<rt>さぎょうじかん</rt></ruby>、<ruby>作業条件<rt>さぎょうじょうけん</rt></ruby>など）を<ruby>守<rt>まも</rt></ruby>る",
+"<ruby>工事現場<rt>こうじげんば</rt></ruby>には<ruby>保安施設<rt>ほあんしせつ</rt></ruby>を<ruby>設置<rt>せっち</rt></ruby>して、<ruby>工事<rt>こうじ</rt></ruby>に<ruby>関係<rt>かんけい</rt></ruby>のない<ruby>人<rt>ひと</rt></ruby>の<ruby>立<rt>た</rt></ruby>ち<ruby>入<rt>い</rt></ruby>りを<ruby>禁止<rt>きんし</rt></ruby>する",
+"<ruby>道路使用許可証<rt>どうろしようきょかしょう</rt></ruby>は<ruby>事務所<rt>じむしょ</rt></ruby>に<ruby>保管<rt>ほかん</rt></ruby>し、<ruby>作業責任者<rt>さぎょうせきにんしゃ</rt></ruby>は<ruby>携行<rt>けいこう</rt></ruby>しなくてよい",
+"<ruby>交通整理員<rt>こうつうせいりいん</rt></ruby>を<ruby>配置<rt>はいち</rt></ruby>して、<ruby>交通<rt>こうつう</rt></ruby>の<ruby>流<rt>なが</rt></ruby>れを<ruby>阻害<rt>そがい</rt></ruby>しないようにする"
+],
+"ans": 3
+},
+"g066": {
+"code": "ท-066",
+"stem": "<ruby>安全管理<rt>あんぜんかんり</rt></ruby>について、<ruby>間違<rt>まちが</rt></ruby>っていることを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>危険個所<rt>きけんかしょ</rt></ruby>は、<ruby>見<rt>み</rt></ruby>ただけで<ruby>分<rt>わ</rt></ruby>かるようにしておくことも<ruby>安全管理<rt>あんぜんかんり</rt></ruby>として<ruby>効果的<rt>こうかてき</rt></ruby>です",
+"<ruby>職長<rt>しょくちょう</rt></ruby>は、<ruby>安全規則<rt>あんぜんきそく</rt></ruby>が<ruby>守<rt>まも</rt></ruby>られているかきびしく<ruby>監督<rt>かんとく</rt></ruby>し、<ruby>違反<rt>いはん</rt></ruby>があった<ruby>場合<rt>ばあい</rt></ruby>には、<ruby>速<rt>すみ</rt></ruby>やかに<ruby>指導<rt>しどう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う<ruby>必要<rt>ひつよう</rt></ruby>がある",
+"<ruby>作業員<rt>さぎょういん</rt></ruby><ruby>全員<rt>ぜんいん</rt></ruby>の<ruby>安全意識<rt>あんぜんいしき</rt></ruby>を<ruby>向上<rt>こうじょう</rt></ruby>させることは、すぐにできることではありません",
+"<ruby>事業所<rt>じぎょうしょ</rt></ruby>の<ruby>規模<rt>きぼ</rt></ruby>にかかわらず、<ruby>職長<rt>しょくちょう</rt></ruby>を<ruby>配置<rt>はいち</rt></ruby>すれば、<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>を<ruby>選任<rt>せんにん</rt></ruby>する<ruby>必要<rt>ひつよう</rt></ruby>はない"
+],
+"ans": 4
+},
+"m174": {
+"code": "ล2-174",
+"stem": "<ruby>写真<rt>しゃしん</rt></ruby>のフルハーネス<ruby>型墜落制止用器具<rt>がたついらくせいしようきぐ</rt></ruby>について、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>墜落<rt>ついらく</rt></ruby>を<ruby>制止<rt>せいし</rt></ruby>するための<ruby>器具<rt>きぐ</rt></ruby>である",
+"<ruby>建設業<rt>けんせつぎょう</rt></ruby>では、5mを<ruby>超<rt>こ</rt></ruby>える<ruby>高<rt>たか</rt></ruby>さの<ruby>作業<rt>さぎょう</rt></ruby>でも<ruby>使用<rt>しよう</rt></ruby>が<ruby>求<rt>もと</rt></ruby>められている",
+"<ruby>装備<rt>そうび</rt></ruby>していれば、フックを<ruby>掛<rt>か</rt></ruby>けなくても<ruby>墜落<rt>ついらく</rt></ruby>を<ruby>防<rt>ふせ</rt></ruby>げる",
+"<ruby>作業床<rt>さぎょうゆか</rt></ruby>の<ruby>高<rt>たか</rt></ruby>さが6.75mを<ruby>超<rt>こ</rt></ruby>える<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>装着<rt>そうちゃく</rt></ruby>が<ruby>義務付<rt>ぎむづ</rt></ruby>けられている"
+],
+"ans": 3
+},
+"m117": {
+"code": "ล2-117",
+"stem": "<ruby>築炉<rt>ちくろ</rt></ruby>の<ruby>煉瓦積<rt>れんがづ</rt></ruby>みで<ruby>必<rt>かなら</rt></ruby>ず<ruby>守<rt>まも</rt></ruby>らなければならないことについて、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"<ruby>長<rt>なが</rt></ruby>さを1/4<ruby>以下<rt>いか</rt></ruby>に<ruby>割<rt>わ</rt></ruby>った<ruby>小<rt>ちい</rt></ruby>さな<ruby>煉瓦<rt>れんが</rt></ruby>は<ruby>使用<rt>しよう</rt></ruby>しない",
+"<ruby>煉瓦<rt>れんが</rt></ruby>の<ruby>平壁積<rt>ひらかべづ</rt></ruby>みでは、<ruby>継<rt>つ</rt></ruby>ぎをとらずに<ruby>積<rt>つ</rt></ruby>む",
+"モルタルを<ruby>十分<rt>じゅうぶん</rt></ruby>にまわし、<ruby>目地<rt>めじ</rt></ruby>を<ruby>均一<rt>きんいつ</rt></ruby>にする",
+"<ruby>煉瓦積<rt>れんがづ</rt></ruby>みは、<ruby>水平<rt>すいへい</rt></ruby>・<ruby>垂直<rt>すいちょく</rt></ruby>を<ruby>基準<rt>きじゅん</rt></ruby>とする"
+],
+"ans": 2
+},
+"g072": {
+"code": "ท-072",
+"stem": "5S<ruby>活動<rt>かつどう</rt></ruby>における<ruby>職長<rt>しょくちょう</rt></ruby>の<ruby>役割<rt>やくわり</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しくないものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>作業員<rt>さぎょういん</rt></ruby>の<ruby>意識改革<rt>いしきかいかく</rt></ruby>や<ruby>生産性<rt>せいさんせい</rt></ruby>の<ruby>向上<rt>こうじょう</rt></ruby>を<ruby>促進<rt>そくしん</rt></ruby>させる",
+"5S<ruby>活動<rt>かつどう</rt></ruby>の<ruby>必要性<rt>ひつようせい</rt></ruby>や<ruby>方法<rt>ほうほう</rt></ruby>、ルールなどを<ruby>指導<rt>しどう</rt></ruby>し、<ruby>定期的<rt>ていきてき</rt></ruby>なチェックや<ruby>評価<rt>ひょうか</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う",
+"<ruby>作業環境<rt>さぎょうかんきょう</rt></ruby>の<ruby>整備<rt>せいび</rt></ruby>や<ruby>清掃<rt>せいそう</rt></ruby>、<ruby>整頓<rt>せいとん</rt></ruby>、を<ruby>自<rt>みずか</rt></ruby>ら<ruby>率先<rt>そっせん</rt></ruby>して<ruby>行<rt>おこな</rt></ruby>うのではなく、できれば<ruby>作業員<rt>さぎょういん</rt></ruby>に<ruby>行<rt>おこな</rt></ruby>わせる",
+"<ruby>現場<rt>げんば</rt></ruby>の<ruby>危険個所<rt>きけんかしょ</rt></ruby>や<ruby>改善点<rt>かいぜんてん</rt></ruby>を<ruby>指摘<rt>してき</rt></ruby>し、<ruby>作業員<rt>さぎょういん</rt></ruby>と<ruby>協力<rt>きょうりょく</rt></ruby>して<ruby>改善策<rt>かいぜんさく</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>する"
+],
+"ans": 3
+},
+"g096": {
+"code": "ท-096",
+"stem": "<ruby>施工品質<rt>せこうひんしつ</rt></ruby>と<ruby>施工図<rt>せこうず</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>で<ruby>間違<rt>まちが</rt></ruby>いはどれですか。",
+"opts": [
+"<ruby>施工図<rt>せこうず</rt></ruby>に<ruby>不備<rt>ふび</rt></ruby>があると、<ruby>設計図<rt>せっけいず</rt></ruby>で<ruby>求<rt>もと</rt></ruby>めていた<ruby>品質<rt>ひんしつ</rt></ruby>を<ruby>実現<rt>じつげん</rt></ruby>できない。",
+"<ruby>施工図通<rt>せこうずどお</rt></ruby>りの<ruby>完成物<rt>かんせいぶつ</rt></ruby>を<ruby>作<rt>つく</rt></ruby>るための<ruby>工夫<rt>くふう</rt></ruby>をするのは、<ruby>職長<rt>しょくちょう</rt></ruby>ではなく、よく<ruby>現場<rt>げんば</rt></ruby>を<ruby>知<rt>し</rt></ruby>っている<ruby>作業員<rt>さぎょういん</rt></ruby>の<ruby>責任<rt>せきにん</rt></ruby>である。",
+"<ruby>現場<rt>げんば</rt></ruby>の<ruby>作業者<rt>さぎょうしゃ</rt></ruby>は、<ruby>施工図通<rt>せこうずどお</rt></ruby>りに<ruby>完成物<rt>かんせいぶつ</rt></ruby>を<ruby>作<rt>つく</rt></ruby>ることが<ruby>原則<rt>げんそく</rt></ruby>です。",
+"<ruby>実際<rt>じっさい</rt></ruby>の<ruby>施工<rt>せこう</rt></ruby>では、<ruby>様々<rt>さまざま</rt></ruby>な<ruby>工夫<rt>くふう</rt></ruby>をしないと<ruby>実現<rt>じつげん</rt></ruby>できない<ruby>場合<rt>ばあい</rt></ruby>もあります。"
+],
+"ans": 2
+},
+"m166": {
+"code": "ล2-166",
+"stem": "<ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>について、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"めまい・<ruby>失神<rt>しっしん</rt></ruby>や、<ruby>筋肉痛<rt>きんにくつう</rt></ruby>・<ruby>筋肉<rt>きんにく</rt></ruby>の<ruby>硬直<rt>こうちょく</rt></ruby>などの<ruby>症状<rt>しょうじょう</rt></ruby>が<ruby>現<rt>あらわ</rt></ruby>れる",
+"<ruby>大量<rt>たいりょう</rt></ruby>の<ruby>発汗<rt>はっかん</rt></ruby>、<ruby>頭痛<rt>ずつう</rt></ruby>、<ruby>吐<rt>は</rt></ruby>き<ruby>気<rt>け</rt></ruby>、<ruby>嘔吐<rt>おうと</rt></ruby>などの<ruby>症状<rt>しょうじょう</rt></ruby>が<ruby>現<rt>あらわ</rt></ruby>れる",
+"<ruby>意識障害<rt>いしきしょうがい</rt></ruby>・<ruby>痙攣<rt>けいれん</rt></ruby>・<ruby>高体温<rt>こうたいおん</rt></ruby>などの<ruby>症状<rt>しょうじょう</rt></ruby>が<ruby>現<rt>あらわ</rt></ruby>れる",
+"<ruby>作業<rt>さぎょう</rt></ruby>を<ruby>続<rt>つづ</rt></ruby>けられなくなることはあるが、<ruby>死<rt>し</rt></ruby>に<ruby>至<rt>いた</rt></ruby>ることはない"
+],
+"ans": 4
+},
+"g067": {
+"code": "ท-067",
+"stem": "<ruby>安全衛生管理<rt>あんぜんえいせいかんり</rt></ruby>における<ruby>説明<rt>せつめい</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しくないものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>と<ruby>衛生管理者<rt>えいせいかんりしゃ</rt></ruby>は<ruby>職長<rt>しょくちょう</rt></ruby>が<ruby>兼務<rt>けんむ</rt></ruby>することができる",
+"<ruby>休憩室<rt>きゅうけいしつ</rt></ruby>と<ruby>更衣室<rt>こういしつ</rt></ruby>は<ruby>作業環境<rt>さぎょうかんきょう</rt></ruby>ではない",
+"<ruby>朝礼<rt>ちょうれい</rt></ruby>で<ruby>健康状態<rt>けんこうじょうたい</rt></ruby>を<ruby>自己<rt>じこ</rt></ruby>チェックさせて<ruby>申告<rt>しんこく</rt></ruby>させる",
+"<ruby>労働者<rt>ろうどうしゃ</rt></ruby>の<ruby>健康<rt>けんこう</rt></ruby>を<ruby>守<rt>まも</rt></ruby>り、<ruby>働<rt>はたら</rt></ruby>きやすい<ruby>環境<rt>かんきょう</rt></ruby>を<ruby>提供<rt>ていきょう</rt></ruby>する"
+],
+"ans": 2
+},
+"l074": {
+"code": "ล-074",
+"stem": "ねじ<ruby>切<rt>き</rt></ruby>り<ruby>機<rt>き</rt></ruby>によるねじ<ruby>加工<rt>かこう</rt></ruby>で、してはいけない<ruby>作業<rt>さぎょう</rt></ruby>はどれですか。",
+"opts": [
+"<ruby>適切<rt>てきせつ</rt></ruby>なダイヘッドを<ruby>取<rt>と</rt></ruby>り<ruby>付<rt>つ</rt></ruby>ける",
+"<ruby>軍手<rt>ぐんて</rt></ruby>を<ruby>着<rt>つ</rt></ruby>けたまま<ruby>作業<rt>さぎょう</rt></ruby>する",
+"<ruby>加工<rt>かこう</rt></ruby><ruby>後<rt>ご</rt></ruby>にねじゲージで<ruby>検査<rt>けんさ</rt></ruby>する",
+"<ruby>切断<rt>せつだん</rt></ruby><ruby>後<rt>ご</rt></ruby>の<ruby>管<rt>かん</rt></ruby>にねじ<ruby>加工<rt>かこう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う"
+],
+"ans": 2
+},
+"g101": {
+"code": "ท-101",
+"stem": "<ruby>安全管理<rt>あんぜんかんり</rt></ruby>について<ruby>間違<rt>まちが</rt></ruby>いはどれですか。",
+"opts": [
+"パトロールが<ruby>来<rt>き</rt></ruby>た<ruby>時<rt>とき</rt></ruby>だけ、しっかり<ruby>手順通<rt>てじゅんどお</rt></ruby>りに<ruby>作業<rt>さぎょう</rt></ruby>する。",
+"<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>に<ruby>選任<rt>せんにん</rt></ruby>されなかった<ruby>場合<rt>ばあい</rt></ruby>も、<ruby>職長<rt>しょくちょう</rt></ruby>は、<ruby>現場<rt>げんば</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>を<ruby>保<rt>たも</rt></ruby>つための<ruby>行動<rt>こうどう</rt></ruby>が<ruby>求<rt>もと</rt></ruby>められます。",
+"<ruby>事業場<rt>じぎょうば</rt></ruby>の<ruby>規模<rt>きぼ</rt></ruby>が50<ruby>人<rt>にん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>および<ruby>衛生管理者<rt>えいせいかんりしゃ</rt></ruby>を<ruby>選任<rt>せんにん</rt></ruby>することが<ruby>義務付<rt>ぎむづ</rt></ruby>けられている。",
+"<ruby>職長<rt>しょくちょう</rt></ruby>は、<ruby>安全規則違反<rt>あんぜんきそくいはん</rt></ruby>があった<ruby>場合<rt>ばあい</rt></ruby>には<ruby>速<rt>すみ</rt></ruby>やかに<ruby>指導<rt>しどう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う。"
+],
+"ans": 1
+},
+"j093": {
+"code": "ป-093",
+"stem": "<ruby>解体工事<rt>かいたいこうじ</rt></ruby>に<ruby>関<rt>かん</rt></ruby>する<ruby>説明<rt>せつめい</rt></ruby>で<ruby>正<rt>ただ</rt></ruby>しくないものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"<ruby>電気<rt>でんき</rt></ruby>、<ruby>電話<rt>でんわ</rt></ruby>、ガス、<ruby>水道<rt>すいどう</rt></ruby>などが<ruby>止<rt>と</rt></ruby>められているか<ruby>確認<rt>かくにん</rt></ruby>してから<ruby>作業<rt>さぎょう</rt></ruby>します。",
+"<ruby>騒音対策<rt>そうおんたいさく</rt></ruby>と<ruby>粉<rt>ふん</rt></ruby>じんの<ruby>飛散防止<rt>ひさんぼうし</rt></ruby>のために、<ruby>防音<rt>ぼうおん</rt></ruby>パネル・<ruby>防音<rt>ぼうおん</rt></ruby>シートで<ruby>覆<rt>おお</rt></ruby>います。",
+"<ruby>建具<rt>たてぐ</rt></ruby>、<ruby>石膏<rt>せっこう</rt></ruby>ボード、サッシ、<ruby>各種設備<rt>かくしゅせつび</rt></ruby>など<ruby>手作業<rt>てさぎょう</rt></ruby>で<ruby>取<rt>と</rt></ruby>り<ruby>除<rt>のぞ</rt></ruby>き、リサイクルできるものは、<ruby>分別<rt>ぶんべつ</rt></ruby>します。",
+"<ruby>敷地内<rt>しきちない</rt></ruby>にあるものは、すべて<ruby>解体<rt>かいたい</rt></ruby>します。"
+],
+"ans": 4
+},
+"g070": {
+"code": "ท-070",
+"stem": "<ruby>主任技術者<rt>しゅにんぎじゅつしゃ</rt></ruby>について、ふさわしくないものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>小<rt>ちい</rt></ruby>さな<ruby>規模<rt>きぼ</rt></ruby>の<ruby>現場<rt>げんば</rt></ruby>では、<ruby>現場代理人<rt>げんばだいりにん</rt></ruby>が<ruby>主任技術者<rt>しゅにんぎじゅつしゃ</rt></ruby>を<ruby>兼務<rt>けんむ</rt></ruby>することがあります",
+"<ruby>主任技術者<rt>しゅにんぎじゅつしゃ</rt></ruby>の<ruby>役割<rt>やくわり</rt></ruby>は、<ruby>施工計画<rt>せこうけいかく</rt></ruby>の<ruby>作成<rt>さくせい</rt></ruby>や<ruby>工程管理<rt>こうていかんり</rt></ruby>、<ruby>品質管理<rt>ひんしつかんり</rt></ruby>、<ruby>安全管理<rt>あんぜんかんり</rt></ruby>などの<ruby>監督業務<rt>かんとくぎょうむ</rt></ruby>をすることです",
+"<ruby>業種<rt>ぎょうしゅ</rt></ruby>ごとに<ruby>工事現場<rt>こうじげんば</rt></ruby>に「<ruby>主任技術者<rt>しゅにんぎじゅつしゃ</rt></ruby>」または「<ruby>監理技術者<rt>かんりぎじゅつしゃ</rt></ruby>」を<ruby>設置<rt>せっち</rt></ruby>することが<ruby>求<rt>もと</rt></ruby>められます",
+"<ruby>主任技術者<rt>しゅにんぎじゅつしゃ</rt></ruby>になるためには、1<ruby>級<rt>きゅう</rt></ruby>・2<ruby>級<rt>きゅう</rt></ruby><ruby>国家資格<rt>こっかしかく</rt></ruby>をもっているのと、<ruby>一定期間<rt>いっていきかん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>実務経験<rt>じつむけいけん</rt></ruby>を<ruby>積<rt>つ</rt></ruby>むなどの<ruby>両方<rt>りょうほう</rt></ruby>の<ruby>条件<rt>じょうけん</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>"
+],
+"ans": 4
+},
+"m153": {
+"code": "ล2-153",
+"stem": "<ruby>図<rt>ず</rt></ruby>のような<ruby>既存埋設管<rt>きぞんまいせつかん</rt></ruby>の<ruby>切断事故<rt>せつだんじこ</rt></ruby>を<ruby>防<rt>ふせ</rt></ruby>ぐための<ruby>対策<rt>たいさく</rt></ruby>として、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"<ruby>工事開始前<rt>こうじかいしまえ</rt></ruby>に、<ruby>十分<rt>じゅうぶん</rt></ruby>な<ruby>試掘調査<rt>しくつちょうさ</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う",
+"<ruby>掘削時<rt>くっさくじ</rt></ruby>には、<ruby>鋼管<rt>こうかん</rt></ruby>・ケーブル<ruby>探知機<rt>たんちき</rt></ruby>を<ruby>用<rt>もち</rt></ruby>いて<ruby>既存<rt>きぞん</rt></ruby>の<ruby>埋設管<rt>まいせつかん</rt></ruby>の<ruby>位置<rt>いち</rt></ruby>を<ruby>探知<rt>たんち</rt></ruby>する",
+"<ruby>既存埋設管<rt>きぞんまいせつかん</rt></ruby>の<ruby>周辺<rt>しゅうへん</rt></ruby>50cm<ruby>以内<rt>いない</rt></ruby>でも、バックホウで<ruby>慎重<rt>しんちょう</rt></ruby>に<ruby>掘削<rt>くっさく</rt></ruby>する",
+"<ruby>地下埋設物<rt>ちかまいせつぶつ</rt></ruby>と<ruby>地表<rt>ちひょう</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に、<ruby>地下埋設物表示<rt>ちかまいせつぶつひょうじ</rt></ruby>シートを<ruby>敷設<rt>ふせつ</rt></ruby>する"
+],
+"ans": 3
+},
+"j029": {
+"code": "ป-029",
+"stem": "<ruby>機械土工事<rt>きかいどこうじ</rt></ruby>で1<ruby>日<rt>にち</rt></ruby>の<ruby>作業終了後<rt>さぎょうしゅうりょうご</rt></ruby>の<ruby>行動<rt>こうどう</rt></ruby>で<ruby>正<rt>ただ</rt></ruby>しくないものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>機械<rt>きかい</rt></ruby>から<ruby>降<rt>お</rt></ruby>りて<ruby>油漏<rt>あぶらも</rt></ruby>れや<ruby>冷却水<rt>れいきゃくすい</rt></ruby>の<ruby>漏<rt>も</rt></ruby>れなどを<ruby>確認<rt>かくにん</rt></ruby>します。",
+"<ruby>一日<rt>いちにち</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>が<ruby>終<rt>お</rt></ruby>わって、<ruby>機械<rt>きかい</rt></ruby>のエンジンを<ruby>止<rt>と</rt></ruby>めてすぐに<ruby>帰<rt>かえ</rt></ruby>る<ruby>準備<rt>じゅんび</rt></ruby>をします。",
+"セーフティレバーをロックの<ruby>位置<rt>いち</rt></ruby>にしたら、5<ruby>分間<rt>ふんかん</rt></ruby><ruby>程度<rt>ていど</rt></ruby>アイドリングをします。",
+"<ruby>安全<rt>あんぜん</rt></ruby>な<ruby>場所<rt>ばしょ</rt></ruby>に<ruby>駐車<rt>ちゅうしゃ</rt></ruby>し、バケット<ruby>等<rt>とう</rt></ruby>の<ruby>作業装置<rt>さぎょうそうち</rt></ruby>を<ruby>地上<rt>ちじょう</rt></ruby>に<ruby>降<rt>お</rt></ruby>ろします。"
+],
+"ans": 2
+},
+"m109": {
+"code": "ล2-109",
+"stem": "<ruby>冷媒用<rt>れいばいよう</rt></ruby><ruby>銅管<rt>どうかん</rt></ruby>の<ruby>切断<rt>せつだん</rt></ruby>について、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"パイプカッターを<ruby>配管<rt>はいかん</rt></ruby>に<ruby>対<rt>たい</rt></ruby>し<ruby>直角<rt>ちょっかく</rt></ruby>にあてがう",
+"パイプカッターをゆっくり<ruby>締<rt>し</rt></ruby>め<ruby>込<rt>こ</rt></ruby>みながら<ruby>回転<rt>かいてん</rt></ruby>させる",
+"<ruby>銅管<rt>どうかん</rt></ruby>に<ruby>変形<rt>へんけい</rt></ruby>が<ruby>無<rt>な</rt></ruby>いように<ruby>切断<rt>せつだん</rt></ruby>する",
+"<ruby>作業<rt>さぎょう</rt></ruby>を<ruby>早<rt>はや</rt></ruby>くするため、<ruby>金<rt>かな</rt></ruby>ノコやグラインダーで<ruby>切断<rt>せつだん</rt></ruby>する"
+],
+"ans": 4
+},
+"m110": {
+"code": "ล2-110",
+"stem": "<ruby>冷媒用<rt>れいばいよう</rt></ruby><ruby>銅管<rt>どうかん</rt></ruby>のバリ<ruby>取<rt>と</rt></ruby>りについて、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"パイプカッターで<ruby>切断<rt>せつだん</rt></ruby>した<ruby>銅管<rt>どうかん</rt></ruby>の<ruby>内面<rt>ないめん</rt></ruby>には「まくり」が<ruby>出<rt>で</rt></ruby>る",
+"バリ<ruby>取<rt>と</rt></ruby>りには、リーマやスクレーパなどの<ruby>専用工具<rt>せんようこうぐ</rt></ruby>を<ruby>使用<rt>しよう</rt></ruby>する",
+"バリを<ruby>取<rt>と</rt></ruby>ることで、フレア<ruby>加工<rt>かこう</rt></ruby>などがスムーズに<ruby>行<rt>おこな</rt></ruby>える",
+"<ruby>削<rt>けず</rt></ruby>り<ruby>粉<rt>こな</rt></ruby>を<ruby>取<rt>と</rt></ruby>り<ruby>除<rt>のぞ</rt></ruby>きやすいよう、<ruby>銅管<rt>どうかん</rt></ruby>を<ruby>上向<rt>うわむ</rt></ruby>きにして<ruby>作業<rt>さぎょう</rt></ruby>する"
+],
+"ans": 4
+},
+"g077": {
+"code": "ท-077",
+"stem": "<ruby>安全管理<rt>あんぜんかんり</rt></ruby>において、<ruby>正<rt>ただ</rt></ruby>しくないものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>職長<rt>しょくちょう</rt></ruby>は、<ruby>安全規則違反<rt>あんぜんきそくいはん</rt></ruby>があった<ruby>場合<rt>ばあい</rt></ruby>には<ruby>速<rt>すみ</rt></ruby>やかに<ruby>指導<rt>しどう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う。",
+"<ruby>事業場<rt>じぎょうば</rt></ruby>の<ruby>規模<rt>きぼ</rt></ruby>が50<ruby>人<rt>にん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>および<ruby>衛生管理者<rt>えいせいかんりしゃ</rt></ruby>を<ruby>選任<rt>せんにん</rt></ruby>することが<ruby>義務付<rt>ぎむづ</rt></ruby>けられている。",
+"<ruby>事故<rt>じこ</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>したら、<ruby>上司<rt>じょうし</rt></ruby>に<ruby>連絡<rt>れんらく</rt></ruby>してから、<ruby>救助作業<rt>きゅうじょさぎょう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う。",
+"<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>に<ruby>選任<rt>せんにん</rt></ruby>されなかった<ruby>場合<rt>ばあい</rt></ruby>も、<ruby>職長<rt>しょくちょう</rt></ruby>は、<ruby>現場<rt>げんば</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>を<ruby>保<rt>たも</rt></ruby>つための<ruby>行動<rt>こうどう</rt></ruby>が<ruby>求<rt>もと</rt></ruby>められます。"
+],
+"ans": 3
+},
+"m101": {
+"code": "ล2-101",
+"stem": "はしごの<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>について、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"<ruby>立<rt>た</rt></ruby>てかけたときの<ruby>角度<rt>かくど</rt></ruby>は、<ruby>約<rt>やく</rt></ruby>75<ruby>度<rt>ど</rt></ruby>とする",
+"<ruby>踏<rt>ふ</rt></ruby>みさんに<ruby>足<rt>あし</rt></ruby>をかけて<ruby>登<rt>のぼ</rt></ruby>る",
+"<ruby>必<rt>かなら</rt></ruby>ず、はしごを<ruby>支<rt>ささ</rt></ruby>える<ruby>補助者<rt>ほじょしゃ</rt></ruby>と<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>作業<rt>さぎょう</rt></ruby>をする",
+"<ruby>立<rt>た</rt></ruby>てかけたときの<ruby>角度<rt>かくど</rt></ruby>が<ruby>急<rt>きゅう</rt></ruby>なほど、<ruby>倒<rt>たお</rt></ruby>れにくく<ruby>安全<rt>あんぜん</rt></ruby>である"
+],
+"ans": 4
+},
+"g071": {
+"code": "ท-071",
+"stem": "<ruby>原価<rt>げんか</rt></ruby>－<ruby>工期<rt>こうき</rt></ruby>－<ruby>品質<rt>ひんしつ</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby>として、<ruby>間違<rt>まちが</rt></ruby>いを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>工期<rt>こうき</rt></ruby>を<ruby>早<rt>はや</rt></ruby>くすると、<ruby>原価<rt>げんか</rt></ruby>が<ruby>高<rt>たか</rt></ruby>くなる。",
+"<ruby>工期<rt>こうき</rt></ruby>をもっと<ruby>早<rt>はや</rt></ruby>くすると、<ruby>原価<rt>げんか</rt></ruby>はもっと<ruby>低<rt>ひく</rt></ruby>くなる。",
+"<ruby>原価<rt>げんか</rt></ruby>が<ruby>低<rt>ひく</rt></ruby>ければ、<ruby>品質<rt>ひんしつ</rt></ruby>は<ruby>悪<rt>わる</rt></ruby>くなる。",
+"<ruby>工期<rt>こうき</rt></ruby>が、<ruby>遅<rt>おそ</rt></ruby>くなると<ruby>原価<rt>げんか</rt></ruby>が<ruby>高<rt>たか</rt></ruby>くなる。"
+],
+"ans": 2
+},
+"j015": {
+"code": "ป-015",
+"stem": "<ruby>法面保護工事<rt>のりめんほごこうじ</rt></ruby>において、<ruby>正<rt>ただ</rt></ruby>しくないものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"モルタルの<ruby>吹<rt>ふ</rt></ruby>き<ruby>付<rt>つ</rt></ruby>けは、<ruby>下部<rt>かぶ</rt></ruby>から<ruby>行<rt>おこな</rt></ruby>う。",
+"<ruby>吹<rt>ふ</rt></ruby>き<ruby>付<rt>つ</rt></ruby>け<ruby>面<rt>めん</rt></ruby>が<ruby>土砂<rt>どしゃ</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>吹付<rt>ふきつ</rt></ruby>けの<ruby>圧力<rt>あつりょく</rt></ruby>で<ruby>土砂<rt>どしゃ</rt></ruby>が<ruby>散乱<rt>さんらん</rt></ruby>しないよう<ruby>注意<rt>ちゅうい</rt></ruby>する。",
+"<ruby>吹<rt>ふ</rt></ruby>き<ruby>付<rt>つ</rt></ruby>け<ruby>面<rt>めん</rt></ruby>が<ruby>岩盤<rt>がんばん</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>浮石<rt>うきいし</rt></ruby>、<ruby>泥土<rt>でいど</rt></ruby>、ごみなどを<ruby>先<rt>さき</rt></ruby>に<ruby>除去<rt>じょきょ</rt></ruby>する。",
+"<ruby>芝付<rt>しばつ</rt></ruby>けされた<ruby>芝<rt>しば</rt></ruby>への<ruby>散水<rt>さんすい</rt></ruby>は、<ruby>晴<rt>は</rt></ruby>れた<ruby>日<rt>ひ</rt></ruby>は<ruby>日中<rt>にっちゅう</rt></ruby>を<ruby>避<rt>さ</rt></ruby>け、<ruby>朝夕<rt>あさゆう</rt></ruby>に<ruby>行<rt>おこな</rt></ruby>う。"
+],
+"ans": 1
+},
+"j076": {
+"code": "ป-076",
+"stem": "<ruby>海洋土木工事<rt>かいようどぼくこうじ</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>で<ruby>間違<rt>まちが</rt></ruby>いを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>海<rt>うみ</rt></ruby>の<ruby>作業<rt>さぎょう</rt></ruby>では、<ruby>必<rt>かなら</rt></ruby>ず<ruby>救命胴衣<rt>きゅうめいどうい</rt></ruby>を<ruby>着<rt>き</rt></ruby>ます。",
+"<ruby>立<rt>た</rt></ruby>ち<ruby>入<rt>い</rt></ruby>り<ruby>禁止<rt>きんし</rt></ruby><ruby>場所<rt>ばしょ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ってはいけません。",
+"<ruby>船<rt>ふね</rt></ruby>と<ruby>船<rt>ふね</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>で、<ruby>荷物<rt>にもつ</rt></ruby>を<ruby>運<rt>はこ</rt></ruby>ぶ<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>歩<rt>あゆ</rt></ruby>み<ruby>板<rt>いた</rt></ruby>を<ruby>片方<rt>かたほう</rt></ruby>だけ<ruby>船<rt>ふね</rt></ruby>に<ruby>固定<rt>こてい</rt></ruby>します。",
+"<ruby>作業船<rt>さぎょうせん</rt></ruby>の<ruby>甲板上<rt>かんぱんじょう</rt></ruby>にあるロープを<ruby>踏<rt>ふ</rt></ruby>むこと"
+],
+"ans": 4
+},
+"m074": {
+"code": "ล2-074",
+"stem": "<ruby>写真<rt>しゃしん</rt></ruby>の<ruby>道具<rt>どうぐ</rt></ruby>の<ruby>説明<rt>せつめい</rt></ruby>で<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>土<rt>つち</rt></ruby>やアスファルトなどをすくって<ruby>運<rt>はこ</rt></ruby>ぶための<ruby>道具<rt>どうぐ</rt></ruby>で、<ruby>刃先<rt>はさき</rt></ruby>はまっすぐになっている",
+"<ruby>上部<rt>じょうぶ</rt></ruby>に<ruby>足<rt>あし</rt></ruby>をかけて<ruby>地面<rt>じめん</rt></ruby>を<ruby>掘<rt>ほ</rt></ruby>るための<ruby>道具<rt>どうぐ</rt></ruby>で、「てこ」として<ruby>使<rt>つか</rt></ruby>ってはいけない",
+"<ruby>地面<rt>じめん</rt></ruby>を<ruby>突<rt>つ</rt></ruby>いて<ruby>深<rt>ふか</rt></ruby>い<ruby>穴<rt>あな</rt></ruby>を<ruby>掘<rt>ほ</rt></ruby>り、<ruby>掘<rt>ほ</rt></ruby>った<ruby>土<rt>つち</rt></ruby>をそのままつかんで<ruby>出<rt>だ</rt></ruby>すことができる<ruby>道具<rt>どうぐ</rt></ruby>",
+"<ruby>堅<rt>かた</rt></ruby>い<ruby>地面<rt>じめん</rt></ruby>を<ruby>掘削<rt>くっさく</rt></ruby>したり、アスファルトを<ruby>砕<rt>くだ</rt></ruby>いたりするための<ruby>道具<rt>どうぐ</rt></ruby>"
+],
+"ans": 2
+},
+"l093": {
+"code": "ล-093",
+"stem": "<ruby>地下<rt>ちか</rt></ruby><ruby>管路<rt>かんろ</rt></ruby>の「<ruby>勾配<rt>こうばい</rt></ruby>」の<ruby>説明<rt>せつめい</rt></ruby>として、<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"<ruby>道路<rt>どうろ</rt></ruby>の<ruby>表面<rt>ひょうめん</rt></ruby>から、<ruby>管路<rt>かんろ</rt></ruby>の<ruby>上端<rt>じょうたん</rt></ruby>までの<ruby>距離<rt>きょり</rt></ruby>のこと",
+"マンホール、ハンドホール、とう<ruby>道<rt>どう</rt></ruby>、<ruby>引上柱<rt>ひきあげちゅう</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>を<ruby>結<rt>むす</rt></ruby>ぶ<ruby>管<rt>かん</rt></ruby>のこと",
+"<ruby>地中<rt>ちちゅう</rt></ruby><ruby>配管<rt>はいかん</rt></ruby>の<ruby>分岐点<rt>ぶんきてん</rt></ruby>に<ruby>設<rt>もう</rt></ruby>けられる<ruby>小<rt>ちい</rt></ruby>さなマンホールのこと",
+"マンホール<ruby>間<rt>かん</rt></ruby>での<ruby>管<rt>かん</rt></ruby>の<ruby>傾<rt>かたむ</rt></ruby>きのことで、<ruby>管路<rt>かんろ</rt></ruby>の<ruby>内部<rt>ないぶ</rt></ruby>に<ruby>水<rt>みず</rt></ruby>や<ruby>土砂<rt>どしゃ</rt></ruby>が<ruby>停滞<rt>ていたい</rt></ruby>せずに<ruby>流<rt>なが</rt></ruby>れるように<ruby>設定<rt>せってい</rt></ruby>するもの"
+],
+"ans": 4
+},
+"m114": {
+"code": "ล2-114",
+"stem": "<ruby>消防設備<rt>しょうぼうせつび</rt></ruby>の<ruby>配管<rt>はいかん</rt></ruby>について、<ruby>誤<rt>あやま</rt></ruby>っているものを<ruby>選<rt>えら</rt></ruby>びなさい。",
+"opts": [
+"<ruby>消防施設<rt>しょうぼうしせつ</rt></ruby>は<ruby>平時<rt>へいじ</rt></ruby>には<ruby>稼働<rt>かどう</rt></ruby>せず、<ruby>緊急時<rt>きんきゅうじ</rt></ruby>に<ruby>使用<rt>しよう</rt></ruby>することがほとんどである",
+"<ruby>管内<rt>かんない</rt></ruby>に<ruby>水<rt>みず</rt></ruby>が<ruby>入<rt>はい</rt></ruby>っていない<ruby>場合<rt>ばあい</rt></ruby>、<ruby>配管<rt>はいかん</rt></ruby>は<ruby>火炎<rt>かえん</rt></ruby>で<ruby>高温<rt>こうおん</rt></ruby>になることが<ruby>考<rt>かんが</rt></ruby>えられる",
+"<ruby>水系消火栓<rt>すいけいしょうかせん</rt></ruby>では、<ruby>吐<rt>は</rt></ruby>き<ruby>出<rt>だ</rt></ruby>し<ruby>側<rt>がわ</rt></ruby>の<ruby>配管<rt>はいかん</rt></ruby>に<ruby>水<rt>みず</rt></ruby>が<ruby>入<rt>はい</rt></ruby>っていなくても、ポンプを<ruby>運転<rt>うんてん</rt></ruby>して<ruby>水<rt>みず</rt></ruby>を<ruby>送<rt>おく</rt></ruby>る<ruby>場合<rt>ばあい</rt></ruby>がある",
+"<ruby>防食<rt>ぼうしょく</rt></ruby>のため、<ruby>内面<rt>ないめん</rt></ruby>ライニング<ruby>鋼管<rt>こうかん</rt></ruby>を<ruby>使用<rt>しよう</rt></ruby>する"
+],
+"ans": 4
+},
+"g075": {
+"code": "ท-075",
+"stem": "ヒヤリ・ハット<ruby>活動<rt>かつどう</rt></ruby>について、<ruby>不適切<rt>ふてきせつ</rt></ruby>なものを<ruby>選<rt>えら</rt></ruby>べ。",
+"opts": [
+"<ruby>報告<rt>ほうこく</rt></ruby>された<ruby>内容<rt>ないよう</rt></ruby>を<ruby>分析<rt>ぶんせき</rt></ruby>して、<ruby>同様<rt>どうよう</rt></ruby>の<ruby>事故<rt>じこ</rt></ruby>やトラブルが<ruby>起<rt>お</rt></ruby>こらないように<ruby>改善点<rt>かいぜんてん</rt></ruby>を<ruby>導<rt>みちび</rt></ruby>き<ruby>出<rt>だ</rt></ruby>す。",
+"<ruby>再発生<rt>さいはっせい</rt></ruby>しないため、ヒヤリ・ハットを<ruby>経験<rt>けいけん</rt></ruby>した<ruby>作業員<rt>さぎょういん</rt></ruby>の<ruby>責任<rt>せきにん</rt></ruby>を<ruby>追及<rt>ついきゅう</rt></ruby>して、<ruby>反省<rt>はんせい</rt></ruby>を<ruby>促<rt>うなが</rt></ruby>す。",
+"<ruby>作業員<rt>さぎょういん</rt></ruby>が<ruby>経験<rt>けいけん</rt></ruby>したヒヤリ・ハットを<ruby>全員<rt>ぜんいん</rt></ruby>で<ruby>共有<rt>きょうゆう</rt></ruby>することで、<ruby>現場<rt>げんば</rt></ruby>の<ruby>安全性<rt>あんぜんせい</rt></ruby>を<ruby>高<rt>たか</rt></ruby>める。",
+"<ruby>同様<rt>どうよう</rt></ruby>のヒヤリ・ハットが<ruby>発生<rt>はっせい</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>のあるものに<ruby>優先的<rt>ゆうせんてき</rt></ruby>に<ruby>取<rt>と</rt></ruby>り<ruby>組<rt>く</rt></ruby>み、<ruby>改善<rt>かいぜん</rt></ruby>を<ruby>進<rt>すす</rt></ruby>めます。"
+],
+"ans": 2
+}
+}

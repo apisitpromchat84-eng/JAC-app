@@ -41,3 +41,6 @@ Start from `guides/template_phone.html` (steps + phone screenshot) or `guides/te
 |---|---|
 | t_sync.py | device A turns ☁️ sync on → fresh device B with the same nickname is offered the pull and pulls → B studies → A is told B is newer and pulls → wrong PIN on device C is refused |
 | t_confhelp.py | มั่นใจ / ยังเดาอยู่ explainer: open on the first practice quiz, ? toggles, "เข้าใจแล้ว" closes for good |
+
+## Trap-grammar handout
+`make_trap_pdf.py` (+ `rawq.json`, `trap_stats.json`) → jac_trap_grammar.html, print to PDF. Negative / extreme grammar in "choose the WRONG one" questions.
