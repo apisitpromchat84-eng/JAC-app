@@ -60,12 +60,46 @@ SAFE = [
  ('〜ずに (บรรยาย)', 'โดยไม่〜', 'l093', 4, r'停滞せずに', 'ข้อนี้ถูก'),
 ]
 
+IMG = 'file:///home/claude/build/'
+def qblock(qid):
+    q = D[qid]
+    thumb = f'<img class="thumb" src="{IMG + q["img"]}">' if q.get('img') else ''
+    return (f'<div class="q">{thumb}<span class="lab">โจทย์</span><span class="ja">{q["stem"]}</span>'
+            f'<span class="qt">แปล: {q["sth"]}</span></div>')
+
+def note(cls, qid, i, why):
+    is_ans = D[qid]['ans'] == i
+    if cls == 'bad':
+        assert is_ans, (qid, i)                 # every ❌ example must be the real answer
+        return 'ข้อนี้คือคำตอบ (ข้อที่ผิด) — ' + why
+    return ('ข้อความนี้ถูก และเป็นคำตอบของข้อนี้ (โจทย์ให้หาข้อถูก)' if is_ans
+            else 'ข้อความนี้ถูก จึงไม่ใช่คำตอบ (โจทย์ให้หาข้อผิด)')
+
 def table(rows, cls):
     trs = ''
     for g, th, qid, i, rx, why in rows:
         ex, code = opt(qid, i, rx)
-        trs += f'<tr><td class="g ja">{g}</td><td class="m">{th}</td><td class="ex"><span class="ja">{ex}</span><span class="why">{"✗ " if cls == "bad" else "✓ "}{why} <i>{code}</i></span></td></tr>'
-    return f'<table class="{cls}"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tr><th>ไวยากรณ์</th><th>ความหมาย</th><th>ตัวอย่างจากข้อสอบจริงในแอป</th></tr>{trs}</table>'
+        mark = '✗' if cls == 'bad' else '✓'
+        trs += (f'<tr><td class="g ja">{g}</td><td class="m">{th}</td><td class="ex">{qblock(qid)}'
+                f'<div class="o"><span class="lab">ตัวเลือก {i}</span><span class="ja">{ex}</span></div>'
+                f'<span class="why">{mark} {note(cls, qid, i, why)} <i>{code}</i></span></td></tr>')
+    return f'<table class="{cls}"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tr><th>ไวยากรณ์</th><th>ความหมาย</th><th>โจทย์จริงในแอป → ตัวเลือกที่มีคำนี้</th></tr>{trs}</table>'
+
+# one full worked question, all four options
+WQ = 'g101'
+W_TH = ['ทำตามขั้นตอนอย่างดี <b>เฉพาะ</b>ตอนมีคนมาตรวจ', 'ถึงไม่ได้ถูกแต่งตั้งเป็น ' + R('安全管理者','あんぜんかんりしゃ') + ' หัวหน้างานก็ต้องรักษาความปลอดภัย',
+        'สถานประกอบการ 50 คนขึ้นไป ต้องแต่งตั้ง ' + R('安全管理者','あんぜんかんりしゃ') + ' และ ' + R('衛生管理者','えいせいかんりしゃ'), 'ถ้ามีการฝ่าฝืนกฎ หัวหน้างานต้องตักเตือนทันที']
+def worked():
+    q = D[WQ]
+    li = ''
+    for k, o in enumerate(q['opts']):
+        ans = k + 1 == q['ans']
+        h = marked(o, r'時だけ') if ans else o
+        li += f'<li class="{"ans" if ans else ""}"><span class="no">{k + 1}</span><div><span class="ja">{h}</span><small>{W_TH[k]}</small></div><span class="tick">{"❌ ข้อผิด = คำตอบ" if ans else "✓ ถูกตามกฎ"}</span></li>'
+    return f'''<div class="work"><b class="t">ดูตัวอย่างเต็ม 1 ข้อ <i>{q["code"]}</i></b>
+<div class="q big"><span class="lab">โจทย์</span><span class="ja">{q["stem"]}</span><span class="qt">แปล: {q["sth"]}</span></div>
+<div class="flow"><span>① ท้ายโจทย์มี <b class="ja">{R("間違","まちが")}い</b> → หา<b>ข้อที่ผิด</b></span><span>② สแกนหาคำกับดัก → เจอ <b class="ja">だけ</b> ในข้อ 1</span><span>③ ข้ออื่นเป็นกฎปกติ → ตอบ <b>1</b></span></div>
+<ol class="opts">{li}</ol></div>'''
 
 S = STATS
 page = f'''<!doctype html><html lang="th"><head><meta charset="utf-8"><title>JAC trap grammar</title><style>
@@ -87,12 +121,28 @@ h2 {{ font-size: 12pt; margin: 7px 0 2px; break-after: avoid }} h2 small {{ font
 h2 .tag {{ border-radius: 6px; padding: 0 7px; color: #fff; font-size: 10pt; margin-right: 6px }}
 .tag.bad {{ background: #c0392b }} .tag.ok {{ background: #1f9d55 }}
 table {{ width: 100%; border-collapse: collapse; table-layout: fixed }}
-col.c1 {{ width: 21% }} col.c2 {{ width: 20% }} col.c3 {{ width: 59% }}
+col.c1 {{ width: 17% }} col.c2 {{ width: 15% }} col.c3 {{ width: 68% }}
 th {{ text-align: left; font-size: 8.2pt; color: #5b6b7b; font-weight: normal; border-bottom: 1.5px solid #1d2b3a; padding: 2px 4px }}
 td {{ border-bottom: 1px solid #dde3e8; padding: 2px 4px; vertical-align: middle }}
 tr {{ break-inside: avoid }}
 td.g {{ font-size: 11pt; font-weight: 700 }} table.bad td.g {{ color: #b23a0a }} table.ok td.g {{ color: #17804a }}
 td.m {{ font-size: 9.4pt }}
+.q {{ background: #f4f6f8; border-radius: 6px; padding: 3px 6px; margin: 1px 0 3px; font-size: 8.8pt; overflow: hidden }}
+.q .ja {{ font-size: 9.2pt }} .q .qt {{ display: block; color: #4a5a6a; font-size: 8.2pt }}
+.q .thumb {{ float: right; width: 52px; height: 52px; object-fit: cover; border-radius: 5px; margin-left: 6px }}
+.lab {{ display: inline-block; background: #1d2b3a; color: #fff; border-radius: 4px; font-size: 7.4pt; padding: 0 5px; margin-right: 5px; vertical-align: 1px }}
+.o .lab {{ background: #8a97a3 }} table.bad .o .lab {{ background: #c0392b }} table.ok .o .lab {{ background: #1f9d55 }}
+td.ex .o .ja {{ font-size: 9.8pt }}
+.work {{ border: 2px solid #1d2b3a; border-radius: 10px; padding: 7px 10px; margin: 0 0 6px; break-inside: avoid }}
+.work b.t {{ font-size: 11pt }} .work b.t i {{ color: #8a97a3; font-style: normal; font-size: 8.5pt; margin-left: 6px }}
+.q.big .ja {{ font-size: 11pt }}
+.flow {{ display: flex; gap: 6px; margin: 4px 0 }} .flow span {{ flex: 1; background: #fff8e1; border-radius: 6px; padding: 3px 7px; font-size: 8.8pt }}
+ol.opts {{ list-style: none; margin: 0; padding: 0 }}
+ol.opts li {{ display: flex; gap: 8px; align-items: center; border: 1.5px solid #dde3e8; border-radius: 7px; padding: 3px 8px; margin: 3px 0 }}
+ol.opts li.ans {{ border-color: #c0392b; background: #fdecea }} ol.opts li .no {{ font-weight: 800; width: 14px }}
+ol.opts li div {{ flex: 1 }} ol.opts li .ja {{ font-size: 10pt; display: block }} ol.opts li small {{ color: #4a5a6a; font-size: 8.3pt }}
+ol.opts li .tick {{ font-size: 8.3pt; white-space: nowrap; color: #17804a }} ol.opts li.ans .tick {{ color: #c0392b; font-weight: 700 }}
+ol.opts mark {{ background: #ffd3cc }}
 td.ex .ja {{ font-size: 9.6pt }} td.ex .why {{ display: block; font-size: 8.4pt; color: #5b6b7b }} td.ex .why i {{ color: #8a97a3; font-style: normal; margin-left: 4px }}
 table.bad mark {{ background: #ffd3cc; padding: 0 1px; border-radius: 2px }} table.ok mark {{ background: #c9f0d8; padding: 0 1px; border-radius: 2px }}
 .steps {{ border: 2px solid #1d2b3a; border-radius: 10px; padding: 7px 12px; margin-top: 10px; break-inside: avoid }}
@@ -108,6 +158,7 @@ table.bad mark {{ background: #ffd3cc; padding: 0 1px; border-radius: 2px }} tab
 <div class="two"><div class="bad">❌ <b>"ไม่ต้องทำ / ข้ามขั้นตอน / โยนหน้าที่ / ไม่มีทาง"</b><br>= มักเป็น<b>ข้อที่ผิด</b> (ข้อสอบชอบหลอกว่าทำง่ายๆ ก็ได้)</div>
 <div class="ok">✅ <b>"ห้าม / ต้องป้องกัน / ต้องทำเสมอ"</b><br>= มักเป็น<b>ข้อที่ถูก</b> (กฎความปลอดภัยพูดแบบนี้)</div></div></div>
 
+{worked()}
 <h2><span class="tag bad">❌ 1</span>"ไม่ต้องทำก็ได้" · ข้ามขั้นตอน · โยนหน้าที่<small>เจอคำพวกนี้ในข้อ "เลือกข้อผิด" ให้สงสัยก่อน</small></h2>
 {table(TRAP_SKIP, 'bad')}
 <h2><span class="tag bad">❌ 2</span>คำสุดโต่ง / จำกัดเกินจริง<small>"เฉพาะ" "ทั้งหมด" "ไม่ว่า…ก็" — โลกจริงมีข้อยกเว้นเสมอ</small></h2>

@@ -8,7 +8,9 @@
 "<ruby>道路使用許可証<rt>どうろしようきょかしょう</rt></ruby>は<ruby>事務所<rt>じむしょ</rt></ruby>に<ruby>保管<rt>ほかん</rt></ruby>し、<ruby>作業責任者<rt>さぎょうせきにんしゃ</rt></ruby>は<ruby>携行<rt>けいこう</rt></ruby>しなくてよい",
 "<ruby>交通整理員<rt>こうつうせいりいん</rt></ruby>を<ruby>配置<rt>はいち</rt></ruby>して、<ruby>交通<rt>こうつう</rt></ruby>の<ruby>流<rt>なが</rt></ruby>れを<ruby>阻害<rt>そがい</rt></ruby>しないようにする"
 ],
-"ans": 3
+"ans": 3,
+"sth": "ข้อใด<b>ไม่เหมาะสม</b>สำหรับการทำงานบนถนนแบบในภาพ",
+"img": "img/l2_137.jpg"
 },
 "g066": {
 "code": "ท-066",
@@ -19,7 +21,9 @@
 "<ruby>作業員<rt>さぎょういん</rt></ruby><ruby>全員<rt>ぜんいん</rt></ruby>の<ruby>安全意識<rt>あんぜんいしき</rt></ruby>を<ruby>向上<rt>こうじょう</rt></ruby>させることは、すぐにできることではありません",
 "<ruby>事業所<rt>じぎょうしょ</rt></ruby>の<ruby>規模<rt>きぼ</rt></ruby>にかかわらず、<ruby>職長<rt>しょくちょう</rt></ruby>を<ruby>配置<rt>はいち</rt></ruby>すれば、<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>を<ruby>選任<rt>せんにん</rt></ruby>する<ruby>必要<rt>ひつよう</rt></ruby>はない"
 ],
-"ans": 4
+"ans": 4,
+"sth": "เรื่องการจัดการความปลอดภัย (<ruby>安全管理<rt>あんぜんかんり</rt></ruby>) ข้อใด<b>ผิด</b>",
+"img": ""
 },
 "m174": {
 "code": "ล2-174",
@@ -30,7 +34,9 @@
 "<ruby>装備<rt>そうび</rt></ruby>していれば、フックを<ruby>掛<rt>か</rt></ruby>けなくても<ruby>墜落<rt>ついらく</rt></ruby>を<ruby>防<rt>ふせ</rt></ruby>げる",
 "<ruby>作業床<rt>さぎょうゆか</rt></ruby>の<ruby>高<rt>たか</rt></ruby>さが6.75mを<ruby>超<rt>こ</rt></ruby>える<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>装着<rt>そうちゃく</rt></ruby>が<ruby>義務付<rt>ぎむづ</rt></ruby>けられている"
 ],
-"ans": 3
+"ans": 3,
+"sth": "เกี่ยวกับฟูลฮาร์เนส (フルハーネス<ruby>型墜落制止用器具<rt>がたついらくせいしようきぐ</rt></ruby>) ในภาพ ข้อใดผิด",
+"img": "img/l2_174.jpg"
 },
 "m117": {
 "code": "ล2-117",
@@ -41,7 +47,9 @@
 "モルタルを<ruby>十分<rt>じゅうぶん</rt></ruby>にまわし、<ruby>目地<rt>めじ</rt></ruby>を<ruby>均一<rt>きんいつ</rt></ruby>にする",
 "<ruby>煉瓦積<rt>れんがづ</rt></ruby>みは、<ruby>水平<rt>すいへい</rt></ruby>・<ruby>垂直<rt>すいちょく</rt></ruby>を<ruby>基準<rt>きじゅん</rt></ruby>とする"
 ],
-"ans": 2
+"ans": 2,
+"sth": "ข้อใด<b>ผิด</b>เกี่ยวกับกฎที่ต้องทำตามเสมอในการก่ออิฐเตา",
+"img": ""
 },
 "g072": {
 "code": "ท-072",
@@ -52,7 +60,9 @@
 "<ruby>作業環境<rt>さぎょうかんきょう</rt></ruby>の<ruby>整備<rt>せいび</rt></ruby>や<ruby>清掃<rt>せいそう</rt></ruby>、<ruby>整頓<rt>せいとん</rt></ruby>、を<ruby>自<rt>みずか</rt></ruby>ら<ruby>率先<rt>そっせん</rt></ruby>して<ruby>行<rt>おこな</rt></ruby>うのではなく、できれば<ruby>作業員<rt>さぎょういん</rt></ruby>に<ruby>行<rt>おこな</rt></ruby>わせる",
 "<ruby>現場<rt>げんば</rt></ruby>の<ruby>危険個所<rt>きけんかしょ</rt></ruby>や<ruby>改善点<rt>かいぜんてん</rt></ruby>を<ruby>指摘<rt>してき</rt></ruby>し、<ruby>作業員<rt>さぎょういん</rt></ruby>と<ruby>協力<rt>きょうりょく</rt></ruby>して<ruby>改善策<rt>かいぜんさく</rt></ruby>を<ruby>実施<rt>じっし</rt></ruby>する"
 ],
-"ans": 3
+"ans": 3,
+"sth": "จงเลือกสิ่งที่ไม่ถูกต้อง ในฐานะบทบาทของ <ruby>職長<rt>しょくちょう</rt></ruby> (หัวหน้าชุดงาน/โฟร์แมน) ในกิจกรรม 5S<ruby>活動<rt>かつどう</rt></ruby> (5ส)",
+"img": ""
 },
 "g096": {
 "code": "ท-096",
@@ -63,7 +73,9 @@
 "<ruby>現場<rt>げんば</rt></ruby>の<ruby>作業者<rt>さぎょうしゃ</rt></ruby>は、<ruby>施工図通<rt>せこうずどお</rt></ruby>りに<ruby>完成物<rt>かんせいぶつ</rt></ruby>を<ruby>作<rt>つく</rt></ruby>ることが<ruby>原則<rt>げんそく</rt></ruby>です。",
 "<ruby>実際<rt>じっさい</rt></ruby>の<ruby>施工<rt>せこう</rt></ruby>では、<ruby>様々<rt>さまざま</rt></ruby>な<ruby>工夫<rt>くふう</rt></ruby>をしないと<ruby>実現<rt>じつげん</rt></ruby>できない<ruby>場合<rt>ばあい</rt></ruby>もあります。"
 ],
-"ans": 2
+"ans": 2,
+"sth": "ข้อใด<b>ผิด</b> เกี่ยวกับคุณภาพงานก่อสร้าง (<ruby>施工品質<rt>せこうひんしつ</rt></ruby>) และแบบทำงาน (<ruby>施工図<rt>せこうず</rt></ruby>)",
+"img": ""
 },
 "m166": {
 "code": "ล2-166",
@@ -74,7 +86,9 @@
 "<ruby>意識障害<rt>いしきしょうがい</rt></ruby>・<ruby>痙攣<rt>けいれん</rt></ruby>・<ruby>高体温<rt>こうたいおん</rt></ruby>などの<ruby>症状<rt>しょうじょう</rt></ruby>が<ruby>現<rt>あらわ</rt></ruby>れる",
 "<ruby>作業<rt>さぎょう</rt></ruby>を<ruby>続<rt>つづ</rt></ruby>けられなくなることはあるが、<ruby>死<rt>し</rt></ruby>に<ruby>至<rt>いた</rt></ruby>ることはない"
 ],
-"ans": 4
+"ans": 4,
+"sth": "เกี่ยวกับโรคลมแดด (<ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>) ข้อใดผิด",
+"img": ""
 },
 "g067": {
 "code": "ท-067",
@@ -85,7 +99,9 @@
 "<ruby>朝礼<rt>ちょうれい</rt></ruby>で<ruby>健康状態<rt>けんこうじょうたい</rt></ruby>を<ruby>自己<rt>じこ</rt></ruby>チェックさせて<ruby>申告<rt>しんこく</rt></ruby>させる",
 "<ruby>労働者<rt>ろうどうしゃ</rt></ruby>の<ruby>健康<rt>けんこう</rt></ruby>を<ruby>守<rt>まも</rt></ruby>り、<ruby>働<rt>はたら</rt></ruby>きやすい<ruby>環境<rt>かんきょう</rt></ruby>を<ruby>提供<rt>ていきょう</rt></ruby>する"
 ],
-"ans": 2
+"ans": 2,
+"sth": "ข้อใด<b>ไม่ถูกต้อง</b>เกี่ยวกับการจัดการความปลอดภัยและอาชีวอนามัย (<ruby>安全衛生管理<rt>あんぜんえいせいかんり</rt></ruby>)",
+"img": ""
 },
 "l074": {
 "code": "ล-074",
@@ -96,7 +112,9 @@
 "<ruby>加工<rt>かこう</rt></ruby><ruby>後<rt>ご</rt></ruby>にねじゲージで<ruby>検査<rt>けんさ</rt></ruby>する",
 "<ruby>切断<rt>せつだん</rt></ruby><ruby>後<rt>ご</rt></ruby>の<ruby>管<rt>かん</rt></ruby>にねじ<ruby>加工<rt>かこう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う"
 ],
-"ans": 2
+"ans": 2,
+"sth": "ในการทำเกลียวท่อด้วยเครื่องทำเกลียวท่อ (ねじ<ruby>切<rt>き</rt></ruby>り<ruby>機<rt>き</rt></ruby>) ข้อใดคือสิ่งที่ห้ามทำ",
+"img": ""
 },
 "g101": {
 "code": "ท-101",
@@ -107,7 +125,9 @@
 "<ruby>事業場<rt>じぎょうば</rt></ruby>の<ruby>規模<rt>きぼ</rt></ruby>が50<ruby>人<rt>にん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>および<ruby>衛生管理者<rt>えいせいかんりしゃ</rt></ruby>を<ruby>選任<rt>せんにん</rt></ruby>することが<ruby>義務付<rt>ぎむづ</rt></ruby>けられている。",
 "<ruby>職長<rt>しょくちょう</rt></ruby>は、<ruby>安全規則違反<rt>あんぜんきそくいはん</rt></ruby>があった<ruby>場合<rt>ばあい</rt></ruby>には<ruby>速<rt>すみ</rt></ruby>やかに<ruby>指導<rt>しどう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う。"
 ],
-"ans": 1
+"ans": 1,
+"sth": "ข้อใด<b>ผิด</b> เกี่ยวกับการบริหารความปลอดภัย (<ruby>安全管理<rt>あんぜんかんり</rt></ruby>)",
+"img": ""
 },
 "j093": {
 "code": "ป-093",
@@ -118,7 +138,9 @@
 "<ruby>建具<rt>たてぐ</rt></ruby>、<ruby>石膏<rt>せっこう</rt></ruby>ボード、サッシ、<ruby>各種設備<rt>かくしゅせつび</rt></ruby>など<ruby>手作業<rt>てさぎょう</rt></ruby>で<ruby>取<rt>と</rt></ruby>り<ruby>除<rt>のぞ</rt></ruby>き、リサイクルできるものは、<ruby>分別<rt>ぶんべつ</rt></ruby>します。",
 "<ruby>敷地内<rt>しきちない</rt></ruby>にあるものは、すべて<ruby>解体<rt>かいたい</rt></ruby>します。"
 ],
-"ans": 4
+"ans": 4,
+"sth": "เลือกข้อความเกี่ยวกับ<ruby>解体工事<rt>かいたいこうじ</rt></ruby> (งานรื้อถอน) ที่<b>ไม่ถูกต้อง</b>",
+"img": ""
 },
 "g070": {
 "code": "ท-070",
@@ -129,7 +151,9 @@
 "<ruby>業種<rt>ぎょうしゅ</rt></ruby>ごとに<ruby>工事現場<rt>こうじげんば</rt></ruby>に「<ruby>主任技術者<rt>しゅにんぎじゅつしゃ</rt></ruby>」または「<ruby>監理技術者<rt>かんりぎじゅつしゃ</rt></ruby>」を<ruby>設置<rt>せっち</rt></ruby>することが<ruby>求<rt>もと</rt></ruby>められます",
 "<ruby>主任技術者<rt>しゅにんぎじゅつしゃ</rt></ruby>になるためには、1<ruby>級<rt>きゅう</rt></ruby>・2<ruby>級<rt>きゅう</rt></ruby><ruby>国家資格<rt>こっかしかく</rt></ruby>をもっているのと、<ruby>一定期間<rt>いっていきかん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>実務経験<rt>じつむけいけん</rt></ruby>を<ruby>積<rt>つ</rt></ruby>むなどの<ruby>両方<rt>りょうほう</rt></ruby>の<ruby>条件<rt>じょうけん</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>"
 ],
-"ans": 4
+"ans": 4,
+"sth": "จงเลือกข้อความที่ไม่เหมาะสมเกี่ยวกับ <ruby>主任技術者<rt>しゅにんぎじゅつしゃ</rt></ruby> (วิศวกรผู้ควบคุมงานประจำไซต์)",
+"img": ""
 },
 "m153": {
 "code": "ล2-153",
@@ -140,7 +164,9 @@
 "<ruby>既存埋設管<rt>きぞんまいせつかん</rt></ruby>の<ruby>周辺<rt>しゅうへん</rt></ruby>50cm<ruby>以内<rt>いない</rt></ruby>でも、バックホウで<ruby>慎重<rt>しんちょう</rt></ruby>に<ruby>掘削<rt>くっさく</rt></ruby>する",
 "<ruby>地下埋設物<rt>ちかまいせつぶつ</rt></ruby>と<ruby>地表<rt>ちひょう</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に、<ruby>地下埋設物表示<rt>ちかまいせつぶつひょうじ</rt></ruby>シートを<ruby>敷設<rt>ふせつ</rt></ruby>する"
 ],
-"ans": 3
+"ans": 3,
+"sth": "มาตรการป้องกันอุบัติเหตุรถขุดทำท่อใต้ดินเดิมขาดแบบในรูป ข้อใด<b>ผิด</b>",
+"img": "img/l2_153.jpg"
 },
 "j029": {
 "code": "ป-029",
@@ -151,7 +177,9 @@
 "セーフティレバーをロックの<ruby>位置<rt>いち</rt></ruby>にしたら、5<ruby>分間<rt>ふんかん</rt></ruby><ruby>程度<rt>ていど</rt></ruby>アイドリングをします。",
 "<ruby>安全<rt>あんぜん</rt></ruby>な<ruby>場所<rt>ばしょ</rt></ruby>に<ruby>駐車<rt>ちゅうしゃ</rt></ruby>し、バケット<ruby>等<rt>とう</rt></ruby>の<ruby>作業装置<rt>さぎょうそうち</rt></ruby>を<ruby>地上<rt>ちじょう</rt></ruby>に<ruby>降<rt>お</rt></ruby>ろします。"
 ],
-"ans": 2
+"ans": 2,
+"sth": "ในงานดินด้วยเครื่องจักร (<ruby>機械土工事<rt>きかいどこうじ</rt></ruby>) จงเลือกการกระทำหลังเลิกงานประจำวันที่ไม่ถูกต้อง",
+"img": ""
 },
 "m109": {
 "code": "ล2-109",
@@ -162,7 +190,9 @@
 "<ruby>銅管<rt>どうかん</rt></ruby>に<ruby>変形<rt>へんけい</rt></ruby>が<ruby>無<rt>な</rt></ruby>いように<ruby>切断<rt>せつだん</rt></ruby>する",
 "<ruby>作業<rt>さぎょう</rt></ruby>を<ruby>早<rt>はや</rt></ruby>くするため、<ruby>金<rt>かな</rt></ruby>ノコやグラインダーで<ruby>切断<rt>せつだん</rt></ruby>する"
 ],
-"ans": 4
+"ans": 4,
+"sth": "ข้อใด<b>ไม่ถูกต้อง</b> เกี่ยวกับการตัดท่อทองแดงสำหรับสารทำความเย็น",
+"img": ""
 },
 "m110": {
 "code": "ล2-110",
@@ -173,7 +203,9 @@
 "バリを<ruby>取<rt>と</rt></ruby>ることで、フレア<ruby>加工<rt>かこう</rt></ruby>などがスムーズに<ruby>行<rt>おこな</rt></ruby>える",
 "<ruby>削<rt>けず</rt></ruby>り<ruby>粉<rt>こな</rt></ruby>を<ruby>取<rt>と</rt></ruby>り<ruby>除<rt>のぞ</rt></ruby>きやすいよう、<ruby>銅管<rt>どうかん</rt></ruby>を<ruby>上向<rt>うわむ</rt></ruby>きにして<ruby>作業<rt>さぎょう</rt></ruby>する"
 ],
-"ans": 4
+"ans": 4,
+"sth": "ข้อใด<b>ไม่ถูกต้อง</b> เกี่ยวกับการลบครีบท่อทองแดงสำหรับสารทำความเย็น",
+"img": ""
 },
 "g077": {
 "code": "ท-077",
@@ -184,7 +216,9 @@
 "<ruby>事故<rt>じこ</rt></ruby>が<ruby>発生<rt>はっせい</rt></ruby>したら、<ruby>上司<rt>じょうし</rt></ruby>に<ruby>連絡<rt>れんらく</rt></ruby>してから、<ruby>救助作業<rt>きゅうじょさぎょう</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>う。",
 "<ruby>安全管理者<rt>あんぜんかんりしゃ</rt></ruby>に<ruby>選任<rt>せんにん</rt></ruby>されなかった<ruby>場合<rt>ばあい</rt></ruby>も、<ruby>職長<rt>しょくちょう</rt></ruby>は、<ruby>現場<rt>げんば</rt></ruby>の<ruby>安全<rt>あんぜん</rt></ruby>を<ruby>保<rt>たも</rt></ruby>つための<ruby>行動<rt>こうどう</rt></ruby>が<ruby>求<rt>もと</rt></ruby>められます。"
 ],
-"ans": 3
+"ans": 3,
+"sth": "เรื่อง<ruby>安全管理<rt>あんぜんかんり</rt></ruby> (การจัดการความปลอดภัย) จงเลือกข้อที่<b>ไม่ถูกต้อง</b>",
+"img": ""
 },
 "m101": {
 "code": "ล2-101",
@@ -195,7 +229,9 @@
 "<ruby>必<rt>かなら</rt></ruby>ず、はしごを<ruby>支<rt>ささ</rt></ruby>える<ruby>補助者<rt>ほじょしゃ</rt></ruby>と<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>作業<rt>さぎょう</rt></ruby>をする",
 "<ruby>立<rt>た</rt></ruby>てかけたときの<ruby>角度<rt>かくど</rt></ruby>が<ruby>急<rt>きゅう</rt></ruby>なほど、<ruby>倒<rt>たお</rt></ruby>れにくく<ruby>安全<rt>あんぜん</rt></ruby>である"
 ],
-"ans": 4
+"ans": 4,
+"sth": "เกี่ยวกับวิธีใช้บันได (はしご) ข้อใด<b>ไม่ถูกต้อง</b>",
+"img": ""
 },
 "g071": {
 "code": "ท-071",
@@ -206,7 +242,9 @@
 "<ruby>原価<rt>げんか</rt></ruby>が<ruby>低<rt>ひく</rt></ruby>ければ、<ruby>品質<rt>ひんしつ</rt></ruby>は<ruby>悪<rt>わる</rt></ruby>くなる。",
 "<ruby>工期<rt>こうき</rt></ruby>が、<ruby>遅<rt>おそ</rt></ruby>くなると<ruby>原価<rt>げんか</rt></ruby>が<ruby>高<rt>たか</rt></ruby>くなる。"
 ],
-"ans": 2
+"ans": 2,
+"sth": "จงเลือกข้อความที่ผิด เกี่ยวกับความสัมพันธ์ระหว่าง <ruby>原価<rt>げんか</rt></ruby> (ต้นทุน) – <ruby>工期<rt>こうき</rt></ruby> (ระยะเวลาก่อสร้าง) – <ruby>品質<rt>ひんしつ</rt></ruby> (คุณภาพ)",
+"img": ""
 },
 "j015": {
 "code": "ป-015",
@@ -217,7 +255,9 @@
 "<ruby>吹<rt>ふ</rt></ruby>き<ruby>付<rt>つ</rt></ruby>け<ruby>面<rt>めん</rt></ruby>が<ruby>岩盤<rt>がんばん</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>浮石<rt>うきいし</rt></ruby>、<ruby>泥土<rt>でいど</rt></ruby>、ごみなどを<ruby>先<rt>さき</rt></ruby>に<ruby>除去<rt>じょきょ</rt></ruby>する。",
 "<ruby>芝付<rt>しばつ</rt></ruby>けされた<ruby>芝<rt>しば</rt></ruby>への<ruby>散水<rt>さんすい</rt></ruby>は、<ruby>晴<rt>は</rt></ruby>れた<ruby>日<rt>ひ</rt></ruby>は<ruby>日中<rt>にっちゅう</rt></ruby>を<ruby>避<rt>さ</rt></ruby>け、<ruby>朝夕<rt>あさゆう</rt></ruby>に<ruby>行<rt>おこな</rt></ruby>う。"
 ],
-"ans": 1
+"ans": 1,
+"sth": "ในงานป้องกันลาดดิน (<ruby>法面保護工事<rt>のりめんほごこうじ</rt></ruby>) จงเลือกข้อที่<b>ไม่ถูกต้อง</b>",
+"img": ""
 },
 "j076": {
 "code": "ป-076",
@@ -228,7 +268,9 @@
 "<ruby>船<rt>ふね</rt></ruby>と<ruby>船<rt>ふね</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>で、<ruby>荷物<rt>にもつ</rt></ruby>を<ruby>運<rt>はこ</rt></ruby>ぶ<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>歩<rt>あゆ</rt></ruby>み<ruby>板<rt>いた</rt></ruby>を<ruby>片方<rt>かたほう</rt></ruby>だけ<ruby>船<rt>ふね</rt></ruby>に<ruby>固定<rt>こてい</rt></ruby>します。",
 "<ruby>作業船<rt>さぎょうせん</rt></ruby>の<ruby>甲板上<rt>かんぱんじょう</rt></ruby>にあるロープを<ruby>踏<rt>ふ</rt></ruby>むこと"
 ],
-"ans": 4
+"ans": 4,
+"sth": "จงเลือกข้อที่<b>ผิด</b>เรื่องความปลอดภัยในงานโยธาทางทะเล (<ruby>海洋土木工事<rt>かいようどぼくこうじ</rt></ruby>)",
+"img": ""
 },
 "m074": {
 "code": "ล2-074",
@@ -239,7 +281,9 @@
 "<ruby>地面<rt>じめん</rt></ruby>を<ruby>突<rt>つ</rt></ruby>いて<ruby>深<rt>ふか</rt></ruby>い<ruby>穴<rt>あな</rt></ruby>を<ruby>掘<rt>ほ</rt></ruby>り、<ruby>掘<rt>ほ</rt></ruby>った<ruby>土<rt>つち</rt></ruby>をそのままつかんで<ruby>出<rt>だ</rt></ruby>すことができる<ruby>道具<rt>どうぐ</rt></ruby>",
 "<ruby>堅<rt>かた</rt></ruby>い<ruby>地面<rt>じめん</rt></ruby>を<ruby>掘削<rt>くっさく</rt></ruby>したり、アスファルトを<ruby>砕<rt>くだ</rt></ruby>いたりするための<ruby>道具<rt>どうぐ</rt></ruby>"
 ],
-"ans": 2
+"ans": 2,
+"sth": "ข้อใดอธิบายเครื่องมือในรูปได้ถูกต้อง",
+"img": "img/l2_074.jpg"
 },
 "l093": {
 "code": "ล-093",
@@ -250,7 +294,9 @@
 "<ruby>地中<rt>ちちゅう</rt></ruby><ruby>配管<rt>はいかん</rt></ruby>の<ruby>分岐点<rt>ぶんきてん</rt></ruby>に<ruby>設<rt>もう</rt></ruby>けられる<ruby>小<rt>ちい</rt></ruby>さなマンホールのこと",
 "マンホール<ruby>間<rt>かん</rt></ruby>での<ruby>管<rt>かん</rt></ruby>の<ruby>傾<rt>かたむ</rt></ruby>きのことで、<ruby>管路<rt>かんろ</rt></ruby>の<ruby>内部<rt>ないぶ</rt></ruby>に<ruby>水<rt>みず</rt></ruby>や<ruby>土砂<rt>どしゃ</rt></ruby>が<ruby>停滞<rt>ていたい</rt></ruby>せずに<ruby>流<rt>なが</rt></ruby>れるように<ruby>設定<rt>せってい</rt></ruby>するもの"
 ],
-"ans": 4
+"ans": 4,
+"sth": "ข้อใดอธิบาย「<ruby>勾配<rt>こうばい</rt></ruby>」(ความลาดเอียง) ของท่อร้อยสายใต้ดินได้ถูกต้อง",
+"img": ""
 },
 "m114": {
 "code": "ล2-114",
@@ -261,7 +307,9 @@
 "<ruby>水系消火栓<rt>すいけいしょうかせん</rt></ruby>では、<ruby>吐<rt>は</rt></ruby>き<ruby>出<rt>だ</rt></ruby>し<ruby>側<rt>がわ</rt></ruby>の<ruby>配管<rt>はいかん</rt></ruby>に<ruby>水<rt>みず</rt></ruby>が<ruby>入<rt>はい</rt></ruby>っていなくても、ポンプを<ruby>運転<rt>うんてん</rt></ruby>して<ruby>水<rt>みず</rt></ruby>を<ruby>送<rt>おく</rt></ruby>る<ruby>場合<rt>ばあい</rt></ruby>がある",
 "<ruby>防食<rt>ぼうしょく</rt></ruby>のため、<ruby>内面<rt>ないめん</rt></ruby>ライニング<ruby>鋼管<rt>こうかん</rt></ruby>を<ruby>使用<rt>しよう</rt></ruby>する"
 ],
-"ans": 4
+"ans": 4,
+"sth": "ข้อใด<b>ผิด</b>เกี่ยวกับท่อของระบบดับเพลิง",
+"img": ""
 },
 "g075": {
 "code": "ท-075",
@@ -272,6 +320,8 @@
 "<ruby>作業員<rt>さぎょういん</rt></ruby>が<ruby>経験<rt>けいけん</rt></ruby>したヒヤリ・ハットを<ruby>全員<rt>ぜんいん</rt></ruby>で<ruby>共有<rt>きょうゆう</rt></ruby>することで、<ruby>現場<rt>げんば</rt></ruby>の<ruby>安全性<rt>あんぜんせい</rt></ruby>を<ruby>高<rt>たか</rt></ruby>める。",
 "<ruby>同様<rt>どうよう</rt></ruby>のヒヤリ・ハットが<ruby>発生<rt>はっせい</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>のあるものに<ruby>優先的<rt>ゆうせんてき</rt></ruby>に<ruby>取<rt>と</rt></ruby>り<ruby>組<rt>く</rt></ruby>み、<ruby>改善<rt>かいぜん</rt></ruby>を<ruby>進<rt>すす</rt></ruby>めます。"
 ],
-"ans": 2
+"ans": 2,
+"sth": "จงเลือกข้อความที่ไม่เหมาะสมเกี่ยวกับกิจกรรม ヒヤリ・ハット (เหตุการณ์เกือบเกิดอุบัติเหตุ ที่ทำให้ตกใจ \"เฮือก\")",
+"img": ""
 }
 }
