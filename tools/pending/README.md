@@ -2,6 +2,13 @@
 Apisit picks 2 per topic; when every topic is done, add the picked ones to the app in one update,
 part = life (ライフライン), each marked 🔥 "เคยออกสอบ" (seen in the real exam, Oct 2026), with ruby + full explanation (sth/ath/oth/th).
 
+## Topic A3 — PICKED ✅ (Apisit: "น่าจะใช่" = closest to the real exam, 2026-10-17)
+k5 (E 正式名称, both names in stem) 「HIVP管とHT管のうち、HT管の正式な名称はどれですか。」
+   1 耐衝撃性硬質ポリ塩化ビニル管 (= HIVP, main trap)  2 耐熱性硬質ポリ塩化ビニル管 ✅  3 水道用硬質塩化ビニルライニング鋼管  4 配管用炭素鋼鋼管
+   Real exam options included 耐熱性… and 耐衝撃性…; Apisit answered 耐熱性.
+   Explain: 熱=ร้อน↔HT (heaT), 衝撃=กระแทก↔HIVP (Impact); colours 赤茶色 / 濃い青.
+   Second pick from A2 still open (suggested B or C).
+
 ## Topic A2 — HIVP管 + HT管 in ONE stem (Apisit: the real question had both names in one stem) — waiting for pick
 k1 (A 穴埋め) HIVP管は（①）に強く、HT管は（②）に強くした塩ビ管 → ①衝撃 ②熱 (trap: swapped pair)
 k2 (B 正しい) HIVP管とHT管の説明として正しいもの → HIVP管は濃い青で衝撃に強く、HT管は赤茶色で熱に強い
