@@ -40,3 +40,12 @@ q4 塩ビ管の特徴で正しいもの → 内面が滑らかで摩擦抵抗が
 q5 説明で誤っているもの → VP管は薄肉管、VU管は厚肉管 (same as app ล-051)
 q6 衝撃が大きい場所・濃い青 → HIVP管 (app ล-109)
 q7 赤茶色・温泉配管 → HT管 (app ล2-042)
+
+## Topic D — QCDSE「含まれないもの／ข้อใดไม่ใช่」(seen in exam 2026-10-17, from textbook page 施工管理の5つの管理) — waiting for pick (2 of 5)
+App already has: D/S letter questions + description→name (ป-008, ล-068/070/072/111, ล2-077/079/080/199). None of the "which is NOT" type.
+n1 5つの管理（QCDSE）に含まれないもの → 営業管理 (others 品質・工程・環境保全)
+n2 アルファベットと管理の組み合わせで誤り → E ― 設備管理 (E = 環境保全管理)
+n3 5つの管理の説明で適切でないもの → 予算の管理：作業員の休日を決める
+n4 環境保全管理の対象に含まれないもの → 材料の品質試験 (騒音・振動・水質汚濁 are E)
+n5 安全管理の内容に当てはまらないもの → 工事費が予算を超えないようにする (others 墜落・落下, 熱中症・じん肺, 危険予知活動)
+   NOTE: the chat quiz showed a typo 墤落 in n5 — must be 墜落（ついらく）.
