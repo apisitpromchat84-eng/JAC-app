@@ -87,3 +87,9 @@ Writing rule for ชุด 3: 1 textbook sentence → short stem (+ small tweak)
 - 実技 土木 questions also match the real exam closely (they came from a tutor of that track) → do NOT touch.
 - 実技 ライフライン questions are less close to the real exam (still understandable thanks to translation/explanations)
   → ชุด 3 (short, textbook-sentence style) is for the ライフライン part only. Source = Apisit's textbook PDFs (text5l, text6l… on his iPad).
+
+## Topic F — 塩ビ管の接着接合: step before applying glue (textbook text6l p.11, ③→④) — seen in exam, NEW (not in app) — waiting for pick (1 of 2)
+Exam: green = 「④管と継手に接着剤を塗る」 used as the stem ("ก่อนทำขั้นตอนนี้?"), answer red = 「③飲み込みのマーキングをする」.
+s1 「管と継手に接着剤を塗る前に行う作業はどれですか。」 → 飲み込みのマーキングをする (distractors are all AFTER gluing: 差し込む / はみ出した接着剤を拭き取る / しばらく押さえる)
+s2 「管が継手の奥まで入ったか確認するために、接着剤を塗る前に行う作業はどれですか。」 → 飲み込みのマーキング (水圧試験 / 差し込む / シールテープ)
+Avoid 切断・面取り as distractors: they are also before gluing (ambiguous).
