@@ -73,3 +73,11 @@ Today the life part has a set switch: ทั้งหมด / ชุด 1 (ids l
 Plan: ids n001… = ชุด 3 "แนวข้อสอบจริง (สั้น)"; add button v3; lsetOk: v3 → id[0]==='n'; "ทั้งหมด" includes 1+2+3;
 update miniSet label, asstPool filter, mock-exam picker, stats summary lset. All ชุด 3 questions short (exam style) and marked 🔥.
 Still collecting — upload everything in one update when Apisit says the topics are done.
+
+## HYPOTHESIS (Apisit, 2026-10-18) — how the real exam builds questions — 4/4 examples fit, keep collecting
+The exam takes ONE sentence from the textbook, hides the key noun, asks for it; options = sibling items from the same page.
+- 道路使用上の注意 p.162: 「作業責任者は、道路使用許可証を携行します」 → 携行するのは誰 → 作業責任者
+- 施工管理 「次の5つの管理（「QCDSE」と言います）」 → 含まれないもの
+- グラスウール保温材 p.115: 「ガラス（主にリサイクルガラス）を高温で溶かし…」 → 原料 → リサイクルガラス
+- HIVP/HT: textbook names 耐熱性… / 耐衝撃性… → 正式な名称
+Writing rule for ชุด 3: 1 textbook sentence → short stem (+ small tweak), answer = the hidden noun, distractors from the same page.
