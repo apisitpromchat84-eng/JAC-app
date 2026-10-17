@@ -84,5 +84,6 @@ Writing rule for ชุด 3: 1 textbook sentence → short stem (+ small tweak)
 
 ## SCOPE (Apisit, 2026-10-18)
 - 学科 (theory) questions in the app match the real exam almost word-for-word → do NOT touch; no ชุด 3 for theory.
+- 実技 土木 questions also match the real exam closely (they came from a tutor of that track) → do NOT touch.
 - 実技 ライフライン questions are less close to the real exam (still understandable thanks to translation/explanations)
   → ชุด 3 (short, textbook-sentence style) is for the ライフライン part only. Source = Apisit's textbook PDFs (text5l, text6l… on his iPad).
