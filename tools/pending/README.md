@@ -24,7 +24,13 @@ h4 寒冷地・衝撃を受けやすい場所の給水管に適した塩ビ管 �
 h5 種類と色の組み合わせ → HIVP 濃い青 / HT 赤茶色
 h6 一般の塩ビ管の弱点を改良した組み合わせ → 衝撃に弱い→HIVP、熱に弱い→HT
 
-## Topic B — 道路使用許可: who applies (seen in exam 2026-10-16) — not picked yet
+## Topic B2 — 道路使用上の注意 (textbook ライフライン p.162, 6.7.5) — REAL exam answer = 作業責任者 (Apisit marked the page) — waiting for pick
+Stem in exam was built from 「道路上で作業する場合は、関係する法令等に留意します」; answer 「作業責任者は、道路使用許可証を携行します」.
+r1 道路上で作業する場合、道路使用許可証を携行するのは誰 → 作業責任者 (作業員 / 交通整理員 / 発注者)
+r2 携行し、許可条件（作業時間、作業条件など）を守るのは誰 → 作業責任者 (道路管理者 / 所轄の警察署長 / 通行人)
+r3 注意事項として正しいもの → 作業責任者は、道路使用許可証を携行する (作業員全員が… / 事務所に保管 / 発注者が携行)
+
+## Topic B — SUPERSEDED by B2 (law-based "who applies"; the exam follows the textbook instead)
 p1 道路使用許可を受けなければならないのは誰 → 道路で工事をしようとする者、またはその請負人
 p2 申請先 → 所轄の警察署長
 p3 道路に物件を継続設置 → 道路占用許可 ― 道路管理者
@@ -41,7 +47,7 @@ q5 説明で誤っているもの → VP管は薄肉管、VU管は厚肉管 (sam
 q6 衝撃が大きい場所・濃い青 → HIVP管 (app ล-109)
 q7 赤茶色・温泉配管 → HT管 (app ล2-042)
 
-## Topic D — QCDSE「含まれないもの／ข้อใดไม่ใช่」(seen in exam 2026-10-17, from textbook page 施工管理の5つの管理) — waiting for pick (2 of 5)
+## Topic D — QCDSE「含まれないもの／ข้อใดไม่ใช่」(seen in exam 2026-10-17, from textbook page 施工管理の5つの管理) — PICKED ✅ n1 only (Apisit: เอาข้อหนึ่ง)
 App already has: D/S letter questions + description→name (ป-008, ล-068/070/072/111, ล2-077/079/080/199). None of the "which is NOT" type.
 n1 5つの管理（QCDSE）に含まれないもの → 営業管理 (others 品質・工程・環境保全)
 n2 アルファベットと管理の組み合わせで誤り → E ― 設備管理 (E = 環境保全管理)
