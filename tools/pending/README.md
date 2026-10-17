@@ -2,7 +2,13 @@
 Apisit picks 2 per topic; when every topic is done, add the picked ones to the app in one update,
 part = life (ライフライン), each marked 🔥 "เคยออกสอบ" (seen in the real exam, Oct 2026), with ruby + full explanation (sth/ath/oth/th).
 
-## Topic A — HIVP管 vs HT管 (seen in exam 2026-10-17)  — waiting for pick (2 of 6)
+## Topic A2 — HIVP管 + HT管 in ONE stem (Apisit: the real question had both names in one stem) — waiting for pick
+k1 (A 穴埋め) HIVP管は（①）に強く、HT管は（②）に強くした塩ビ管 → ①衝撃 ②熱 (trap: swapped pair)
+k2 (B 正しい) HIVP管とHT管の説明として正しいもの → HIVP管は濃い青で衝撃に強く、HT管は赤茶色で熱に強い
+k3 (C 誤り) HIVP管とHT管について誤っているもの → HT管は熱に強いので、衝撃にも強く、寒冷地でもHIVP管のかわりに使える
+k4 (D 共通) HIVP管とHT管に共通する特徴 → どちらも塩ビ管で、錆びず、内面が滑らか (distractors: どちらもグレー / 温泉配管 / 溶接)
+
+## Topic A — HIVP管 vs HT管 (seen in exam 2026-10-17)  — older set, one pipe per stem (Apisit said the real one was not like this)
 h1 HIVP管の正式な名称 → 耐衝撃性硬質ポリ塩化ビニル管 (distractor 耐熱性…)
 h2 HT管の特徴として正しいもの → 赤茶色・給湯や温泉配管
 h3 HIVP管の説明で誤っているもの → 熱に強いので温泉配管に適している
