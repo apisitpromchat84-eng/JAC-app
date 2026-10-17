@@ -67,3 +67,9 @@ Real exam (Apisit): short stem about グラスウール保温材 → short answe
 ## STYLE NOTE from the real exam (Apisit, 2026-10-18)
 Real JAC questions are SHORT — short stem and short options. When writing the new questions keep both short
 (one clause stem, options of a few words). The road-permit r1 keeps the 場合は sentence only because Apisit asked for it.
+
+## DECISION (Apisit, 2026-10-18): put the new questions in a NEW "ชุด 3" of the ライフライン part
+Today the life part has a set switch: ทั้งหมด / ชุด 1 (ids l…) / ชุด 2 จุดที่ออกสอบ (ids m…) — see lsetOk() and [data-lset] in index.html.
+Plan: ids n001… = ชุด 3 "แนวข้อสอบจริง (สั้น)"; add button v3; lsetOk: v3 → id[0]==='n'; "ทั้งหมด" includes 1+2+3;
+update miniSet label, asstPool filter, mock-exam picker, stats summary lset. All ชุด 3 questions short (exam style) and marked 🔥.
+Still collecting — upload everything in one update when Apisit says the topics are done.
