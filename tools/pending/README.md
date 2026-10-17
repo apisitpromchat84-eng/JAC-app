@@ -7,7 +7,8 @@ k5 (E 正式名称, both names in stem) 「HIVP管とHT管のうち、HT管の�
    1 耐衝撃性硬質ポリ塩化ビニル管 (= HIVP, main trap)  2 耐熱性硬質ポリ塩化ビニル管 ✅  3 水道用硬質塩化ビニルライニング鋼管  4 配管用炭素鋼鋼管
    Real exam options included 耐熱性… and 耐衝撃性…; Apisit answered 耐熱性.
    Explain: 熱=ร้อน↔HT (heaT), 衝撃=กระแทก↔HIVP (Impact); colours 赤茶色 / 濃い青.
-   Second pick from A2 still open (suggested B or C).
+k6 (E, mirror) 「HIVP管とHT管のうち、HIVP管の正式な名称はどれですか。」 → 耐衝撃性硬質ポリ塩化ビニル管 (trap 耐熱性…)
+   Apisit picked pattern E for the second slot too (no colour question — the app already has those). Topic A done: k5 + k6.
 
 ## Topic A2 — HIVP管 + HT管 in ONE stem (Apisit: the real question had both names in one stem) — waiting for pick
 k1 (A 穴埋め) HIVP管は（①）に強く、HT管は（②）に強くした塩ビ管 → ①衝撃 ②熱 (trap: swapped pair)
