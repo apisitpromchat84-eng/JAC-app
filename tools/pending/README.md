@@ -81,3 +81,8 @@ The exam takes ONE sentence from the textbook, hides the key noun, asks for it; 
 - グラスウール保温材 p.115: 「ガラス（主にリサイクルガラス）を高温で溶かし…」 → 原料 → リサイクルガラス
 - HIVP/HT: textbook names 耐熱性… / 耐衝撃性… → 正式な名称
 Writing rule for ชุด 3: 1 textbook sentence → short stem (+ small tweak), answer = the hidden noun, distractors from the same page.
+
+## SCOPE (Apisit, 2026-10-18)
+- 学科 (theory) questions in the app match the real exam almost word-for-word → do NOT touch; no ชุด 3 for theory.
+- 実技 ライフライン questions are less close to the real exam (still understandable thanks to translation/explanations)
+  → ชุด 3 (short, textbook-sentence style) is for the ライフライン part only. Source = Apisit's textbook PDFs (text5l, text6l… on his iPad).
