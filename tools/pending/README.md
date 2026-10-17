@@ -57,3 +57,13 @@ n3 5つの管理の説明で適切でないもの → 予算の管理：作業�
 n4 環境保全管理の対象に含まれないもの → 材料の品質試験 (騒音・振動・水質汚濁 are E)
 n5 安全管理の内容に当てはまらないもの → 工事費が予算を超えないようにする (others 墜落・落下, 熱中症・じん肺, 危険予知活動)
    NOTE: the chat quiz showed a typo 墤落 in n5 — must be 墜落（ついらく）.
+
+## Topic E — グラスウール保温材 (textbook ライフライン p.115, 5.1.7) — seen in exam; app ALREADY has it
+Real exam (Apisit): short stem about グラスウール保温材 → short answer リサイクルガラス. He answered right because the app had it.
+- Mark existing ล-057 (主にリサイクルガラスを…保温材はどれ → グラスウール保温材) and ล2-070 (グラスウール保温材の説明) as 🔥 exam-seen.
+- Proposed NEW short reverse question (same direction as the exam), waiting for OK:
+  「グラスウール保温材の主な原料はどれですか。」 1 リサイクルガラス ✅ 2 玄武岩（ロックウール）3 ポリスチレン 4 天然ゴム
+
+## STYLE NOTE from the real exam (Apisit, 2026-10-18)
+Real JAC questions are SHORT — short stem and short options. When writing the new questions keep both short
+(one clause stem, options of a few words). The road-permit r1 keeps the 場合は sentence only because Apisit asked for it.
