@@ -26,7 +26,9 @@ h6 一般の塩ビ管の弱点を改良した組み合わせ → 衝撃に弱い
 
 ## Topic B2 — 道路使用上の注意 (textbook ライフライン p.162, 6.7.5) — REAL exam answer = 作業責任者 (Apisit marked the page) — waiting for pick
 Stem in exam was built from 「道路上で作業する場合は、関係する法令等に留意します」; answer 「作業責任者は、道路使用許可証を携行します」.
-r1 道路上で作業する場合、道路使用許可証を携行するのは誰 → 作業責任者 (作業員 / 交通整理員 / 発注者)
+r1 PICKED ✅ — stem must follow the textbook sentence with 〜場合は (Apisit: the exam used 場合 exactly like the underlined line):
+   「道路上で作業する場合は、関係する法令等に留意します。道路使用許可証を携行するのは誰ですか。」
+   options 作業員 / 交通整理員 / 作業責任者 ✅ / 発注者 · explain 〜場合は = "ในกรณีที่〜" + 携行 = พกติดตัว
 r2 携行し、許可条件（作業時間、作業条件など）を守るのは誰 → 作業責任者 (道路管理者 / 所轄の警察署長 / 通行人)
 r3 注意事項として正しいもの → 作業責任者は、道路使用許可証を携行する (作業員全員が… / 事務所に保管 / 発注者が携行)
 
